@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Trilha de Eletromagnetismo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --fundo: #F4F6F3;
+  --grade: rgba(30, 60, 40, 0.06);
+  --superficie: #FFFFFF;
+  --superficie-2: #ECEFEA;
+  --linha: #D5D9D2;
+  --tinta: #1C1D1B;
+  --tinta-2: #565A54;
+  --destaque: #8A6A00;
+  --destaque-fundo: #FFF3C2;
+  --destaque-tinta: #1C1D1B;
+  --erro: #B0362B;
+  --erro-fundo: #FBE6E3;
+  --acerto: #2F7524;
+  --acerto-fundo: #E3F1DC;
+  --azul: #1B7D98;
+  --carga-pos: #CF5044;
+  --carga-neg: #1F93B5;
+  --sombra: 0 1px 0 rgba(0,0,0,0.04);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --fundo: #181818;
+    --grade: rgba(255, 255, 255, 0.035);
+    --superficie: #202020;
+    --superficie-2: #2A2A2A;
+    --linha: #383838;
+    --tinta: #ECEAE4;
+    --tinta-2: #A9A7A1;
+    --destaque: #F7D96F;
+    --destaque-fundo: #3A3320;
+    --destaque-tinta: #181818;
+    --erro: #E8786C;
+    --erro-fundo: #3B2320;
+    --acerto: #9BD17E;
+    --acerto-fundo: #22321D;
+    --azul: #29ABCA;
+    --carga-pos: #CF5044;
+    --carga-neg: #29ABCA;
+    --sombra: none;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --fundo: #181818;
+  --grade: rgba(255, 255, 255, 0.035);
+  --superficie: #202020;
+  --superficie-2: #2A2A2A;
+  --linha: #383838;
+  --tinta: #ECEAE4;
+  --tinta-2: #A9A7A1;
+  --destaque: #F7D96F;
+  --destaque-fundo: #3A3320;
+  --destaque-tinta: #181818;
+  --erro: #E8786C;
+  --erro-fundo: #3B2320;
+  --acerto: #9BD17E;
+  --acerto-fundo: #22321D;
+  --azul: #29ABCA;
+  --carga-pos: #CF5044;
+  --carga-neg: #29ABCA;
+  --sombra: none;
+  color-scheme: dark;
+}
+:root {
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+html { scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 72px); }
+*, *::before, *::after { box-sizing: inherit; }
+body {
+  margin: 0;
+  background-color: var(--fundo);
+  background-image:
+    linear-gradient(var(--grade) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grade) 1px, transparent 1px);
+  background-size: 24px 24px;
+  color: var(--tinta);
+  font-family: "Atkinson Hyperlegible", "Segoe UI", system-ui, -apple-system, sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+  z-index: 10; background: var(--superficie);
+}
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--destaque); outline-offset: 2px; }
+
+/* ---------- Cabeçalho ---------- */
+.topo {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: var(--superficie); border-bottom: 1px solid var(--linha);
+  display: flex; align-items: center; gap: 20px; padding: 10px 24px; flex-wrap: wrap;
+}
+.marca { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; white-space: nowrap; }
+.marca svg { flex: none; }
+.guias { display: flex; gap: 4px; flex: 1; min-width: 0; overflow-x: auto; scrollbar-width: none; }
+.guias::-webkit-scrollbar { display: none; }
+.guia {
+  border: 1px solid transparent; background: none; border-radius: 999px; padding: 6px 14px;
+  cursor: pointer; white-space: nowrap; color: var(--tinta-2); display: flex; align-items: center; gap: 8px;
+}
+.guia .num { font-weight: 700; }
+.guia[aria-selected="true"] { background: var(--destaque); color: var(--destaque-tinta); font-weight: 700; }
+.guia .em-breve { font-size: 13px; padding: 1px 8px; border-radius: 999px; background: var(--superficie-2); color: var(--tinta-2); }
+.guia[aria-selected="true"] .em-breve { background: rgba(0,0,0,0.12); color: inherit; }
+.placar { display: flex; align-items: center; gap: 14px; white-space: nowrap; }
+.xp { display: flex; align-items: baseline; gap: 6px; }
+.xp strong { font-size: 22px; color: var(--destaque); font-variant-numeric: tabular-nums; }
+.xp span { color: var(--tinta-2); font-size: 14px; }
+.tema {
+  border: 1px solid var(--linha); background: var(--superficie-2); border-radius: 8px;
+  width: 36px; height: 36px; cursor: pointer; display: grid; place-items: center;
+}
+
+/* ---------- Corpo ---------- */
+.palco { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 32px; max-width: 1180px; margin: 0 auto; padding: 28px 24px 64px; }
+.mapa { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 84px); align-self: start; }
+.mapa-cab { display: flex; justify-content: space-between; align-items: baseline; margin: 0 0 6px; }
+.mapa-cab h2 { margin: 0; font-size: 16px; }
+.mapa-cab span { color: var(--tinta-2); font-size: 14px; font-variant-numeric: tabular-nums; }
+.barra { height: 6px; background: var(--superficie-2); border-radius: 3px; overflow: hidden; margin-bottom: 14px; }
+.barra i { display: block; height: 100%; background: var(--destaque); border-radius: 3px; transition: width .5s ease; }
+.linha-campo { position: relative; }
+.linha-campo svg { position: absolute; inset: 0; overflow: visible; pointer-events: none; }
+.no {
+  position: absolute; display: flex; align-items: center; gap: 12px; background: none; border: 0;
+  padding: 0; cursor: pointer; text-align: left; width: 240px;
+}
+.no:disabled { cursor: not-allowed; }
+.no .bola {
+  flex: none; width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center;
+  font-weight: 700; font-size: 14px; border: 2px solid var(--linha); background: var(--superficie); color: var(--tinta-2);
+  font-variant-numeric: tabular-nums;
+}
+.no .rotulo { font-size: 14px; line-height: 1.25; color: var(--tinta-2); }
+.no .rotulo small { display: block; color: var(--destaque); letter-spacing: 1px; font-size: 12px; }
+.no.feito .bola { background: var(--destaque); border-color: var(--destaque); color: var(--destaque-tinta); }
+.no.feito .rotulo { color: var(--tinta); }
+.no.atual .bola { border-color: var(--destaque); color: var(--tinta); box-shadow: 0 0 0 5px var(--destaque-fundo); }
+.no.atual .rotulo { color: var(--tinta); font-weight: 700; }
+.no.aberta .bola { outline: 2px solid var(--tinta); outline-offset: 3px; }
+@media (prefers-reduced-motion: no-preference) {
+  .no.atual .bola { animation: pulso 2.2s ease-in-out infinite; }
+  @keyframes pulso { 0%, 100% { box-shadow: 0 0 0 4px var(--destaque-fundo); } 50% { box-shadow: 0 0 0 9px var(--destaque-fundo); } }
+}
+.recomecar { margin-top: 18px; background: none; border: 0; color: var(--tinta-2); text-decoration: underline; cursor: pointer; padding: 0; font-size: 14px; }
+
+/* ---------- Etapa ---------- */
+.etapa { max-width: 760px; }
+.etapa-pos { color: var(--tinta-2); margin: 0; font-size: 15px; }
+.etapa h1 { font-size: clamp(28px, 4vw, 38px); line-height: 1.15; margin: 4px 0 14px; letter-spacing: -0.5px; }
+.texto { margin: 0 0 22px; max-width: 64ch; font-size: 18px; }
+.video {
+  position: relative; aspect-ratio: 16 / 9; background: #181818; border-radius: 12px; overflow: hidden;
+  border: 1px solid var(--linha); margin-bottom: 10px;
+}
+.video video { width: 100%; height: 100%; display: block; background: #181818; }
+.video .vazio[hidden] { display: none; }
+.video .vazio {
+  position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 24px; color: #CFCDC6;
+}
+.video .vazio p { margin: 6px 0; max-width: 46ch; }
+.video .vazio code { background: #2B2B2B; padding: 2px 6px; border-radius: 4px; font-size: 14px; color: #F7D96F; }
+.video-acoes { display: flex; gap: 14px; align-items: center; margin-bottom: 30px; font-size: 14px; color: var(--tinta-2); min-height: 22px; flex-wrap: wrap; }
+.botao {
+  border: 0; border-radius: 10px; padding: 12px 20px; font-weight: 700; cursor: pointer;
+  background: var(--destaque); color: var(--destaque-tinta);
+}
+.botao.sec { background: var(--superficie-2); color: var(--tinta); border: 1px solid var(--linha); }
+.botao:disabled { opacity: .5; cursor: wait; }
+.link { background: none; border: 0; padding: 0; color: var(--azul); text-decoration: underline; cursor: pointer; font-size: 14px; }
+
+.quiz { background: var(--superficie); border: 1px solid var(--linha); border-radius: 14px; padding: 22px 24px 24px; box-shadow: var(--sombra); }
+.quiz-cab { display: flex; justify-content: space-between; align-items: center; color: var(--tinta-2); font-size: 15px; margin-bottom: 8px; }
+.pontos { display: flex; gap: 6px; }
+.pontos i { width: 10px; height: 10px; border-radius: 50%; background: var(--superficie-2); border: 1px solid var(--linha); }
+.pontos i.ok { background: var(--acerto); border-color: var(--acerto); }
+.pontos i.agora { background: var(--destaque); border-color: var(--destaque); }
+.enunciado { font-size: 21px; line-height: 1.35; margin: 0 0 16px; }
+.opcoes { display: grid; gap: 10px; }
+.opcao {
+  display: grid; grid-template-columns: 30px 1fr; gap: 12px; align-items: start; text-align: left;
+  border: 1.5px solid var(--linha); background: var(--superficie); border-radius: 10px; padding: 12px 14px; cursor: pointer;
+}
+.opcao .letra {
+  width: 30px; height: 30px; border-radius: 8px; display: grid; place-items: center; font-weight: 700;
+  background: var(--superficie-2); font-size: 15px;
+}
+.opcao:hover:not(:disabled) { border-color: var(--destaque); }
+.opcao:disabled { cursor: default; }
+.opcao.errada { border-color: var(--erro); background: var(--erro-fundo); }
+.opcao.errada .letra { background: var(--erro); color: #fff; }
+.opcao.certa { border-color: var(--acerto); background: var(--acerto-fundo); }
+.opcao.certa .letra { background: var(--acerto); color: #fff; }
+.opcao.apagada { opacity: .55; }
+.feedback { margin-top: 14px; border-radius: 10px; padding: 14px 16px; border-left: 5px solid; }
+.feedback[hidden] { display: none; }
+.feedback.erro { background: var(--erro-fundo); border-color: var(--erro); }
+.feedback.acerto { background: var(--acerto-fundo); border-color: var(--acerto); }
+.feedback strong { display: block; margin-bottom: 4px; }
+.feedback p { margin: 0; }
+.feedback .tente { margin-top: 8px; color: var(--tinta-2); font-size: 15px; }
+.rodape-quiz { display: flex; justify-content: flex-end; margin-top: 16px; }
+
+.conclusao { text-align: left; }
+.estrelas { display: flex; gap: 8px; margin: 6px 0 10px; }
+.estrelas svg { width: 40px; height: 40px; }
+.conclusao h2 { margin: 0 0 6px; font-size: 24px; }
+.conclusao p { margin: 0 0 16px; color: var(--tinta-2); }
+.conclusao .acoes { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.revisao { display: grid; gap: 14px; margin-top: 8px; }
+.revisao article { border-top: 1px solid var(--linha); padding-top: 14px; }
+.revisao h3 { font-size: 17px; margin: 0 0 6px; }
+.revisao .resp { color: var(--acerto); font-weight: 700; margin: 0 0 4px; }
+.revisao p { margin: 0; }
+
+.breve { max-width: 640px; }
+.breve h1 { font-size: 34px; margin: 6px 0 12px; }
+.breve p { font-size: 18px; }
+.breve ol { padding-left: 22px; color: var(--tinta-2); }
+
+.aviso { color: var(--tinta-2); font-size: 14px; margin-top: 10px; }
+
+@media (max-width: 860px) {
+  .palco { grid-template-columns: 1fr; gap: 18px; padding-top: 18px; }
+  .mapa { position: static; }
+  .linha-campo { height: auto !important; display: flex; gap: 10px; overflow-x: auto; padding: 6px 2px 10px; scrollbar-width: thin; }
+  .linha-campo svg { display: none; }
+  .no { position: static; width: auto; flex: none; }
+  .no .rotulo { display: none; }
+  .topo { padding: 10px 16px; gap: 10px; }
+  .guias { order: 3; flex-basis: 100%; }
+}
+</style>
+</head>
+<body>
+<header class="topo">
+  <div class="marca">
+    <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true">
+      <circle cx="7" cy="14" r="6" fill="#CF5044"/><path d="M4.5 14h5M7 11.5v5" stroke="#fff" stroke-width="1.8"/>
+      <circle cx="21" cy="14" r="6" fill="#29ABCA"/><path d="M18.5 14h5" stroke="#fff" stroke-width="1.8"/>
+    </svg>
+    Trilha de Física III
+  </div>
+  <nav class="guias" role="tablist" aria-label="Módulos" id="guias"></nav>
+  <div class="placar">
+    <div class="xp" aria-live="polite"><strong id="xp">0</strong><span>XP</span></div>
+    <button class="tema" id="tema" type="button" aria-label="Alternar tema claro e escuro">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="7" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9 2a7 7 0 0 1 0 14z" fill="currentColor"/></svg>
+    </button>
+  </div>
+</header>
+
+<main class="palco" id="palco"></main>
+
+
+<script>
+/* =====================================================================
+   CONTEÚDO DA TRILHA
+   Para adicionar um módulo novo, inclua um objeto em MODULOS com etapas.
+   ===================================================================== */
+const MODULOS = [
+  {
+    id: "coulomb",
+    titulo: "Lei de Coulomb",
+    etapas: [
+      {
+        id: "c01", cena: "CoulombAbertura", titulo: "Atração e repulsão",
+        texto: "Há mais de dois mil anos, os gregos perceberam que o âmbar esfregado em lã atraía pedacinhos de palha. Nesta cena, o mesmo efeito aparece com bastões de vidro e de plástico, e a força elétrica mostra que pode atrair ou repelir.",
+        perguntas: [
+          { q: "Que fenômeno faz o âmbar atrair a palha depois de ser esfregado na lã?",
+            op: [
+              ["Eletrização por atrito", true, "Ao esfregar dois materiais, elétrons passam de um para o outro. O âmbar fica com excesso de carga e passa a atrair objetos leves."],
+              ["Magnetismo", false, "O âmbar não é um ímã. Forças magnéticas aparecem com ímãs ou correntes elétricas e atrairiam objetos de ferro, não palha."],
+              ["Atração gravitacional", false, "A gravidade entre objetos tão pequenos é desprezível e não muda quando o âmbar é esfregado. O efeito só aparece depois do atrito."],
+              ["Indução eletromagnética", false, "Indução eletromagnética exige um campo magnético variando no tempo. Aqui não há ímã nem corrente: há carga transferida por atrito."]
+            ] },
+          { q: "Dois bastões de vidro foram esfregados com seda. O que acontece quando o segundo se aproxima do bastão pendurado?",
+            op: [
+              ["O bastão pendurado se afasta: eles se repelem", true, "Os dois bastões ficam positivos. Cargas de mesmo sinal se repelem, então o bastão pendurado gira para longe."],
+              ["Os bastões se atraem", false, "Atração acontece entre cargas de sinais opostos. Os dois bastões foram esfregados do mesmo jeito e têm carga de mesmo sinal."],
+              ["Nada acontece, porque o vidro é isolante", false, "Ser isolante impede que a carga se espalhe ou escape, mas não impede que o bastão carregado exerça força. É justamente por isso que ele guarda a carga."],
+              ["Um bastão descarrega no outro e os dois ficam neutros", false, "Para descarregar, a carga teria de passar de um bastão para o outro, o que exigiria contato e um material condutor. Os bastões nem se tocam, e o vidro não conduz."]
+            ] },
+          { q: "Ao esfregar o vidro com seda, o que de fato muda de lugar?",
+            op: [
+              ["Elétrons passam do vidro para a seda", true, "Uma pequena quantidade de elétrons sai do vidro e vai para a seda. O vidro fica com excesso de carga positiva, e a seda, com a mesma quantidade de carga negativa."],
+              ["Prótons passam da seda para o vidro", false, "Prótons ficam presos nos núcleos dos átomos. Na eletrização por atrito, quem se move são os elétrons."],
+              ["Cargas positivas são criadas no vidro", false, "Carga não é criada nem destruída: ela se conserva. O vidro fica positivo porque perdeu elétrons."],
+              ["Nada muda de lugar; o atrito só aquece o vidro", false, "O aquecimento existe, mas não explica a repulsão. A força só aparece porque houve transferência de carga."]
+            ] }
+        ]
+      },
+      {
+        id: "c02", cena: "CoulombCondutores", titulo: "Condutores, isolantes e indução",
+        texto: "Objetos comuns têm a mesma quantidade de carga positiva e negativa. O que diferencia os materiais é a liberdade dos elétrons para se mover. Observe o que acontece com uma barra de cobre neutra quando um plástico carregado se aproxima.",
+        perguntas: [
+          { q: "Como se chama a separação de cargas na barra de cobre causada pelo plástico, sem que eles se toquem?",
+            op: [
+              ["Indução eletrostática", true, "A carga do plástico empurra os elétrons livres do cobre para a ponta oposta, sem contato. A barra continua neutra no total, mas com as cargas separadas."],
+              ["Eletrização por atrito", false, "Atrito exige esfregar um material no outro. Aqui o plástico apenas se aproxima da barra."],
+              ["Eletrização por contato", false, "Por contato, carga passaria do plástico para o cobre. O plástico não toca a barra, e ela continua com carga total zero."],
+              ["Magnetização", false, "Não há ímã nem corrente envolvidos. A separação é causada pela força elétrica sobre os elétrons livres."]
+            ] },
+          { q: "A barra de cobre está neutra. Por que mesmo assim ela é atraída pelo plástico negativo?",
+            op: [
+              ["A ponta positiva fica mais perto do plástico, e a atração vence a repulsão", true, "Os elétrons fogem para a ponta distante e deixam a ponta próxima positiva. Como a força diminui com a distância, a atração da ponta próxima é maior que a repulsão da ponta distante."],
+              ["A barra ficou com carga negativa", false, "Nenhum elétron entrou ou saiu da barra; eles só mudaram de lugar dentro dela. A carga total continua zero."],
+              ["O plástico passou sua carga para a barra", false, "Não houve contato, então não houve transferência. O plástico continua negativo e a barra, neutra."],
+              ["A gravidade do plástico puxa a barra", false, "A atração gravitacional entre esses objetos é bilhões de vezes menor que a força elétrica envolvida. Ela não explicaria o giro visível."]
+            ] },
+          { q: "No cobre, quais partículas se deslocam quando o plástico se aproxima?",
+            op: [
+              ["Elétrons de condução", true, "Nos metais, alguns elétrons não ficam presos a um átomo e se movem livremente. São eles que se redistribuem."],
+              ["Íons positivos", false, "Os íons positivos formam a rede do metal e ficam no lugar. Para uma região ficar positiva, basta que os elétrons saiam dela."],
+              ["Prótons", false, "Prótons estão presos nos núcleos, dentro dos íons. Eles não se deslocam pelo metal."],
+              ["Nêutrons", false, "Nêutrons não têm carga, então não sentem a força elétrica do plástico."]
+            ] },
+          { q: "Qual destes materiais é um isolante?",
+            op: [
+              ["Vidro", true, "No vidro as cargas ficam presas no lugar. É por isso que o bastão de vidro consegue guardar a carga do atrito."],
+              ["Cobre", false, "O cobre é o exemplo clássico de condutor: tem muitos elétrons livres. Por isso é usado em fios elétricos."],
+              ["Corpo humano", false, "O corpo humano conduz eletricidade por causa da água e dos sais dissolvidos. É por isso que levamos choque."],
+              ["Água da torneira", false, "A água da torneira tem sais dissolvidos e conduz. Só a água destilada é isolante."]
+            ] }
+        ]
+      },
+      {
+        id: "c03", cena: "CoulombBalanca", titulo: "A balança de torção",
+        texto: "Em 1785, Coulomb transformou a força elétrica em número. Ele mediu o quanto um fio fino de metal torcia quando duas esferas carregadas se repeliam, e criou um jeito simples de dividir cargas ao meio.",
+        perguntas: [
+          { q: "O que Coulomb lia diretamente na balança de torção?",
+            op: [
+              ["O ângulo de torção do fio", true, "O torque do fio é proporcional ao ângulo, τ = K d⁴ φ / l. Lendo o ângulo e conhecendo o fio, ele obtinha a força."],
+              ["A carga de cada esfera", false, "Não havia como medir carga diretamente. Coulomb comparava cargas pela força que exerciam e as dividia por contato."],
+              ["A força, num dinamômetro de mola", false, "As forças eram pequenas demais para uma mola comum. O instrumento sensível era a torção de um fio fino."],
+              ["A massa das esferas", false, "A massa não muda com a carga e não entra no cálculo da força elétrica."]
+            ] },
+          { q: "Uma esfera com carga q₀ toca uma esfera idêntica neutra. Depois, essa segunda esfera toca outra esfera idêntica neutra. Com quanto fica a última?",
+            op: [
+              ["q₀/4", true, "Cada contato entre esferas idênticas divide a carga ao meio: q₀ vira q₀/2 e, no segundo contato, q₀/2 vira q₀/4."],
+              ["q₀/2", false, "Essa é a carga depois do primeiro contato. No segundo, a carga q₀/2 é dividida de novo entre duas esferas iguais."],
+              ["q₀/3", false, "Seria o caso se as três esferas se tocassem ao mesmo tempo. Aqui os contatos acontecem um de cada vez, sempre entre duas esferas."],
+              ["q₀", false, "A carga se divide entre as esferas em contato. Se nada passasse de uma para a outra, a esfera neutra continuaria neutra."]
+            ] },
+          { q: "Se o diâmetro do fio de torção dobrar, mantendo o comprimento, o torque necessário para o mesmo ângulo fica:",
+            op: [
+              ["16 vezes maior", true, "O torque depende de d⁴. Dobrar d multiplica o torque por 2⁴ = 16."],
+              ["2 vezes maior", false, "Isso valeria se o torque fosse proporcional a d. A dependência é com a quarta potência do diâmetro."],
+              ["4 vezes maior", false, "Isso corresponderia a d². A relação medida por Coulomb tem d⁴."],
+              ["16 vezes menor", false, "Um fio mais grosso resiste mais à torção, não menos. O d⁴ está no numerador."]
+            ] }
+        ]
+      },
+      {
+        id: "c04", cena: "CoulombPropriedades", titulo: "As três propriedades",
+        texto: "A força entre duas cargas pontuais cai com o quadrado da distância, aponta ao longo da reta que une as cargas e é proporcional ao produto delas. Fique atento à diferença entre “proporcional” e “crescente”.",
+        perguntas: [
+          { q: "Se a distância entre duas cargas triplica, a força entre elas fica:",
+            op: [
+              ["9 vezes menor", true, "F é proporcional a 1/r². Com r três vezes maior, F fica dividida por 3² = 9."],
+              ["3 vezes menor", false, "Isso seria uma queda com 1/r. A lei de Coulomb tem o quadrado da distância."],
+              ["6 vezes menor", false, "O expoente não multiplica a razão por 2: 3² = 9, não 3 × 2."],
+              ["3 vezes maior", false, "Afastar as cargas diminui a força, não aumenta."]
+            ] },
+          { q: "Uma das cargas dobra e a distância entre elas também dobra. A força:",
+            op: [
+              ["Cai pela metade", true, "A carga dobrada multiplica F por 2; a distância dobrada divide F por 4. O resultado é 2/4 = 1/2."],
+              ["Não muda", false, "Esse resultado esquece o quadrado: a distância dobrada divide a força por 4, não por 2."],
+              ["Fica 4 vezes maior", false, "Afastar as cargas reduz a força. Só a carga aumentou."],
+              ["Fica 4 vezes menor", false, "Isso considera só a distância. A carga dobrada multiplica a força por 2."]
+            ] },
+          { q: "Por que a força entre duas cargas pontuais aponta ao longo da reta que as une?",
+            op: [
+              ["Porque essa é a única direção definida pelas duas cargas", true, "No espaço vazio nenhuma direção é especial. Duas cargas pontuais só definem a reta entre elas, então a força só pode apontar ao longo dela. Uma força assim é chamada de central."],
+              ["Porque as cargas são positivas", false, "O sinal muda o sentido da força (atração ou repulsão), não a direção. Cargas de sinais opostos também interagem ao longo da mesma reta."],
+              ["Por causa do campo magnético da Terra", false, "Campos magnéticos não atuam sobre cargas em repouso. A direção vem da geometria das duas cargas."],
+              ["Porque a força é proporcional ao produto das cargas", false, "O produto das cargas define o tamanho da força, não a sua direção."]
+            ] },
+          { q: "Na relação y = −5x, y é proporcional a x?",
+            op: [
+              ["Sim: y = A·x, com A = −5 constante", true, "Proporcionalidade significa y = A·x, com A independente de x. O sinal de A não importa."],
+              ["Não, porque y diminui quando x aumenta", false, "Isso confunde “proporcional” com “crescente”. Uma grandeza pode ser proporcional e decrescente, como aqui."],
+              ["Não, porque a constante é negativa", false, "A definição só exige que A seja constante. Um A negativo continua dando proporcionalidade."],
+              ["Só para valores positivos de x", false, "A relação y = −5x vale para qualquer x, com a mesma constante em todo o domínio."]
+            ] }
+        ]
+      },
+      {
+        id: "c05", cena: "CoulombFormula", titulo: "A fórmula e o sinal das cargas",
+        texto: "As três propriedades viram uma equação: F = k q₁q₂ r̂ / r². O vetor unitário r̂ só indica direção, e o sinal do produto q₁q₂ decide se a força é de atração ou de repulsão.",
+        perguntas: [
+          { q: "Se o produto q₁q₂ é negativo, a força sobre q₁:",
+            op: [
+              ["Aponta para q₂: é atração", true, "Com produto negativo, a força tem sentido oposto a r̂, que aponta de q₂ para q₁. Ou seja, q₁ é puxada em direção a q₂."],
+              ["Aponta para longe de q₂: é repulsão", false, "Repulsão acontece com produto positivo, quando as cargas têm o mesmo sinal."],
+              ["É nula", false, "Força nula exigiria uma das cargas igual a zero. O produto negativo só muda o sentido da força."],
+              ["É perpendicular à reta entre as cargas", false, "A força de Coulomb é sempre central, ao longo da reta entre as cargas, qualquer que seja o sinal."]
+            ] },
+          { q: "Qual é o valor aproximado da constante k?",
+            op: [
+              ["8,99 × 10⁹ N·m²/C²", true, "k = 1/(4πε₀) ≈ 8,99 × 10⁹ N·m²/C². Para estimativas, 9 × 10⁹ basta."],
+              ["8,85 × 10⁻¹² C²/(N·m²)", false, "Esse é ε₀, a constante elétrica. A constante k vale 1/(4πε₀)."],
+              ["6,67 × 10⁻¹¹ N·m²/kg²", false, "Essa é a constante gravitacional G, da lei de Newton."],
+              ["1,60 × 10⁻¹⁹ C", false, "Essa é a carga elementar e: uma carga, não a constante da força."]
+            ] },
+          { q: "Duas cargas de 1 μC estão a 1 m uma da outra. Qual é o módulo da força entre elas?",
+            op: [
+              ["9 × 10⁻³ N", true, "F = 9 × 10⁹ × (10⁻⁶)² / 1² = 9 × 10⁻³ N."],
+              ["9 × 10³ N", false, "Faltou converter o micro: 1 μC = 10⁻⁶ C. O produto das cargas é 10⁻¹² C², não 1."],
+              ["9 × 10⁻⁶ N", false, "Esse resultado usa só uma das cargas em coulombs. O produto q₁q₂ é 10⁻⁶ × 10⁻⁶ = 10⁻¹² C²."],
+              ["9 N", false, "Confira as potências de dez: 9 × 10⁹ × 10⁻¹² = 9 × 10⁻³."]
+            ] },
+          { q: "A unidade coulomb equivale a:",
+            op: [
+              ["1 ampère × 1 segundo", true, "Como a corrente é i = dq/dt, carga é corrente vezes tempo: 1 C = 1 A·s."],
+              ["1 ampère por segundo", false, "A/s mediria a rapidez com que a corrente muda, não uma quantidade de carga."],
+              ["1 newton × 1 metro", false, "N·m é unidade de energia (joule) ou de torque."],
+              ["1 volt × 1 ampère", false, "V·A é unidade de potência (watt)."]
+            ] }
+        ]
+      },
+      {
+        id: "c06", cena: "CoulombVetorial", titulo: "A forma vetorial",
+        texto: "Para não depender do desenho, a força pode ser escrita com vetores posição: F = k q₁q₂ (r₁ − r₂) / |r₁ − r₂|³. Repare no expoente 3 do denominador.",
+        perguntas: [
+          { q: "O vetor r₁ − r₂ aponta:",
+            op: [
+              ["Da carga 2 para a carga 1", true, "Subtrair r₂ de r₁ dá o deslocamento que leva da posição da carga 2 até a posição da carga 1."],
+              ["Da carga 1 para a carga 2", false, "Esse seria r₂ − r₁. A ordem da subtração define o sentido."],
+              ["Da origem até a carga 1", false, "Esse é o vetor posição r₁ sozinho."],
+              ["Perpendicular à reta entre as cargas", false, "A diferença entre duas posições sempre está sobre a reta que liga os dois pontos."]
+            ] },
+          { q: "No denominador aparece |r₁ − r₂|³. Então a força cai com:",
+            op: [
+              ["1/r²", true, "O numerador traz o vetor r₁ − r₂, cujo módulo é r. Fica r/r³ = 1/r²."],
+              ["1/r³", false, "Esse é o erro mais comum. O cubo compensa o módulo r que está no numerador."],
+              ["1/r", false, "r/r³ simplifica para 1/r², não para 1/r."],
+              ["r³", false, "A força diminui com a distância: o r³ está no denominador."]
+            ] },
+          { q: "Para que situação a lei de Coulomb foi verificada experimentalmente?",
+            op: [
+              ["Cargas em repouso", true, "As medidas de Coulomb e as verificações modernas tratam de cargas paradas. Com cargas em movimento, aparecem também forças magnéticas."],
+              ["Cargas em qualquer movimento", false, "Em movimento, além da força elétrica, surgem forças magnéticas. A lei de Coulomb sozinha não descreve a interação."],
+              ["Apenas cargas positivas", false, "A lei vale para qualquer sinal; o sinal do produto define atração ou repulsão."],
+              ["Apenas no vácuo absoluto", false, "Coulomb fez as medidas no ar. O meio altera um pouco a força, mas a lei foi verificada fora do vácuo."]
+            ] }
+        ]
+      },
+      {
+        id: "c07", cena: "CoulombNucleo", titulo: "Gravidade versus eletricidade",
+        texto: "A lei de Coulomb tem a mesma forma da gravitação de Newton, mas a intensidade é muito diferente. A cena compara as duas forças entre dois prótons dentro de um núcleo de ferro.",
+        perguntas: [
+          { q: "Qual é a diferença essencial entre a força gravitacional e a força elétrica?",
+            op: [
+              ["A gravidade só atrai; a força elétrica atrai ou repele", true, "Existe só um tipo de massa, mas dois tipos de carga. Por isso a força elétrica pode ter os dois sentidos."],
+              ["A gravidade não cai com 1/r²", false, "As duas caem com o inverso do quadrado da distância. É justamente o que elas têm em comum."],
+              ["A força elétrica não depende da distância", false, "Depende, e da mesma forma que a gravidade: com 1/r²."],
+              ["A gravidade é sempre mais forte", false, "Entre partículas é o contrário: a força elétrica entre dois prótons é cerca de 10³⁶ vezes maior."]
+            ] },
+          { q: "Dois prótons a 4,0 × 10⁻¹⁵ m se repelem com cerca de 14 N e se atraem gravitacionalmente com 1,2 × 10⁻³⁵ N. A razão entre as forças é da ordem de:",
+            op: [
+              ["10³⁶", true, "14 / (1,2 × 10⁻³⁵) ≈ 1,2 × 10³⁶."],
+              ["10³⁵", false, "Faltou dividir 14 por 1,2: o resultado é cerca de 12 × 10³⁵, ou seja, 1,2 × 10³⁶."],
+              ["10¹²", false, "Compare os expoentes: 14 N é da ordem de 10¹ e a força gravitacional é da ordem de 10⁻³⁵. A diferença é de 36 ordens de grandeza."],
+              ["1", false, "As forças não são comparáveis: a elétrica é imensamente maior."]
+            ] },
+          { q: "Se os prótons se repelem com tanta força, o que mantém o núcleo unido?",
+            op: [
+              ["A interação forte", true, "Uma força de curtíssimo alcance, muito mais intensa que a repulsão elétrica, prende prótons e nêutrons no núcleo."],
+              ["A gravidade", false, "Ela é cerca de 10³⁶ vezes mais fraca que a repulsão elétrica entre os prótons. Não daria conta."],
+              ["A atração dos elétrons", false, "Os elétrons ficam fora do núcleo, a distâncias muito maiores. Eles não seguram os prótons juntos."],
+              ["Os nêutrons, por terem carga negativa", false, "Nêutrons não têm carga elétrica. Eles participam da interação forte, não da elétrica."]
+            ] }
+        ]
+      },
+      {
+        id: "c08", cena: "CoulombSuperposicao", titulo: "Superposição",
+        texto: "Com várias cargas, a força total é a soma vetorial das forças exercidas por cada uma: F₁,tot = F₁₂ + F₁₃ + … A cena resolve o Exemplo 21.01 do Halliday em três arranjos.",
+        perguntas: [
+          { q: "Qual princípio permite calcular a força de cada carga separadamente e depois somar?",
+            op: [
+              ["Princípio da superposição", true, "A força que uma carga exerce não é alterada pela presença das outras. A força total é a soma vetorial das forças individuais."],
+              ["Conservação da carga", false, "Esse princípio diz que a carga total de um sistema isolado não muda. Ele não trata de somar forças."],
+              ["Terceira lei de Newton", false, "Ela relaciona a força que 1 faz em 2 com a que 2 faz em 1. Não diz como combinar forças de várias cargas."],
+              ["Teorema das cascas", false, "Esse teorema trata de distribuições esféricas de carga, não da soma de forças de cargas pontuais."]
+            ] },
+          { q: "No segundo arranjo, F₁₂ = 1,15 × 10⁻²⁴ N aponta para −x e F₁₃ = 2,05 × 10⁻²⁴ N aponta para +x. A força total sobre a partícula 1 é:",
+            op: [
+              ["9,0 × 10⁻²⁵ N, para +x", true, "Forças na mesma direção e com sentidos opostos: subtraia os módulos e fique com o sentido da maior. 2,05 − 1,15 = 0,90 × 10⁻²⁴ N."],
+              ["3,20 × 10⁻²⁴ N, para +x", false, "Somar os módulos só vale para forças no mesmo sentido. Aqui elas apontam em sentidos opostos."],
+              ["9,0 × 10⁻²⁵ N, para −x", false, "O módulo está certo, mas a força maior, F₁₃, aponta para +x."],
+              ["Zero", false, "As forças só se cancelariam se tivessem o mesmo módulo, e 2,05 é diferente de 1,15."]
+            ] },
+          { q: "No terceiro arranjo, a calculadora dá θ = arctan(F_y/F_x) = −86°, mas a resposta é 94°. Por quê?",
+            op: [
+              ["O arctan só devolve ângulos entre −90° e 90°; como F_x é negativo, é preciso somar 180°", true, "F_x negativo e F_y positivo põem o vetor no segundo quadrante. A calculadora não sabe disso; o desenho sabe."],
+              ["A calculadora estava em radianos", false, "Em radianos o resultado nem seria −86. O problema é o intervalo de valores do arctan, não a unidade."],
+              ["Porque a força resultante sempre aponta para cima", false, "Não existe regra assim. O ângulo vem das componentes, e aqui F_x é negativo."],
+              ["Porque sempre se deve somar 180° ao arctan", false, "Somar 180° só é necessário quando F_x é negativo. Com F_x positivo, o arctan já dá o ângulo certo."]
+            ] }
+        ]
+      },
+      {
+        id: "c09", cena: "CoulombExemplo3D", titulo: "Um exemplo no espaço",
+        texto: "Uma carga q = −1 μC fica em (a, a/2), atraída por q₁ = +1 μC em (a, 0) e por q₂ ≈ 11,18 μC na origem, com a = 1 cm. A força total passa de mil newtons.",
+        perguntas: [
+          { q: "|F₁| = 360 N e |F₂| = 805 N, mas |F₁ + F₂| ≈ 1018 N, e não 1165 N. Por quê?",
+            op: [
+              ["As forças têm direções diferentes, e o módulo de uma soma não é a soma dos módulos", true, "O módulo não é uma função linear. Para vetores em direções diferentes, |a + b| é menor que |a| + |b|."],
+              ["Erro de arredondamento", false, "Uma diferença de quase 150 N é grande demais para arredondamento. Ela vem do ângulo entre as forças."],
+              ["Uma das forças é repulsiva", false, "As duas são de atração: q é negativa e as outras cargas são positivas. A diferença vem das direções diferentes."],
+              ["A força total deveria ser 1165 N", false, "Some as componentes: (0, −360) + (−720, −360) = (−720, −720) N, cujo módulo é 720√2 ≈ 1018 N."]
+            ] },
+          { q: "Em que caso |F₁ + F₂| = |F₁| + |F₂|?",
+            op: [
+              ["Quando as forças têm a mesma direção e o mesmo sentido", true, "Só vetores paralelos e de mesmo sentido somam os módulos. É o caso de igualdade da desigualdade triangular."],
+              ["Quando as forças são perpendiculares", false, "Forças perpendiculares dão |F₁ + F₂| = √(F₁² + F₂²), que é menor que a soma dos módulos."],
+              ["Sempre", false, "Este exemplo mostra que não: 1018 N é diferente de 1165 N."],
+              ["Quando as forças têm sentidos opostos", false, "Com sentidos opostos, os módulos se subtraem."]
+            ] },
+          { q: "Uma força de 1018 N equivale aproximadamente ao peso de:",
+            op: [
+              ["Uma pessoa de cerca de 104 kg", true, "m = P/g = 1018 / 9,8 ≈ 104 kg. Para cargas de microcoulombs a 1 cm, é uma força enorme."],
+              ["Uma maçã de 100 g", false, "Uma maçã de 100 g pesa cerca de 1 N. 1018 N é mil vezes mais."],
+              ["Um carro de uma tonelada", false, "Um carro de 1000 kg pesa cerca de 9800 N, quase dez vezes mais."],
+              ["Uma formiga", false, "Uma formiga pesa milésimos de newton, bilhões de vezes menos."]
+            ] }
+        ]
+      },
+      {
+        id: "c10", cena: "CoulombEquilibrio", titulo: "Equilíbrio de um próton",
+        texto: "Duas cargas estão fixas: +8q na origem e −2q em x = L. Onde um próton pode ficar parado, sem força resultante? A cena resolve o Exemplo 21.02 do Halliday.",
+        perguntas: [
+          { q: "Em que ponto do eixo x o próton fica em equilíbrio?",
+            op: [
+              ["Em x = 2L", true, "À direita de −2q as forças têm sentidos opostos. Igualando 8q/x² = 2q/(x − L)², obtém-se x = 2L."],
+              ["Entre as duas cargas", false, "Ali o próton é repelido por +8q e atraído por −2q: as duas forças apontam para +x e se somam."],
+              ["À esquerda de +8q", false, "Ali as forças têm sentidos opostos, mas a de +8q é sempre maior: a carga é maior e está mais perto."],
+              ["Em x = L/2", false, "Esse ponto fica entre as cargas, onde as duas forças apontam no mesmo sentido."]
+            ] },
+          { q: "Esse equilíbrio é estável ou instável?",
+            op: [
+              ["Instável", true, "Deslocado para a esquerda, a força de −2q cresce mais e o próton vai até ela. Deslocado para a direita, essa força cai mais e o próton se afasta indefinidamente."],
+              ["Estável", false, "Num equilíbrio estável, um pequeno deslocamento gera uma força que traz o próton de volta. Aqui a força o afasta ainda mais."],
+              ["Indiferente", false, "No equilíbrio indiferente a força seria nula também nos pontos vizinhos. Aqui a força resultante muda ao redor de x = 2L."]
+            ] },
+          { q: "Por que só os módulos das cargas entram na equação 8q/x² = 2q/(x − L)²?",
+            op: [
+              ["Porque os sentidos das forças já foram decididos pelo desenho", true, "Primeiro se identifica, pelo desenho, a região onde as forças são opostas. Depois basta igualar os módulos."],
+              ["Porque os sinais não importam na lei de Coulomb", false, "Os sinais importam: definem atração ou repulsão. Eles só foram usados antes, na análise dos sentidos."],
+              ["Porque o próton é neutro", false, "O próton tem carga +e. Ela aparece nos dois lados da equação e se cancela."],
+              ["Porque as duas cargas fixas são iguais", false, "As cargas são 8q e 2q, diferentes. É essa diferença que leva o equilíbrio para fora do segmento entre elas."]
+            ] }
+        ]
+      },
+      {
+        id: "c11", cena: "CoulombCascas", titulo: "Cascas e esferas condutoras",
+        texto: "Uma casca esférica com carga uniforme se comporta de um jeito surpreendente, por fora e por dentro. Depois, duas esferas condutoras iguais dividem a carga, e uma delas é ligada à terra.",
+        perguntas: [
+          { q: "Uma partícula carregada está dentro de uma casca esférica com carga uniforme. Que força a casca exerce sobre ela?",
+            op: [
+              ["Nenhuma", true, "Segundo teorema das cascas: as forças de todas as partes da casca se cancelam em qualquer ponto interno."],
+              ["A mesma de uma carga pontual no centro", false, "Isso vale para pontos fora da casca, pelo primeiro teorema. Dentro, a força é nula."],
+              ["Uma força apontando para a parede mais próxima", false, "A parede mais próxima age com mais intensidade, mas há mais carga do lado oposto. Os efeitos se compensam exatamente."],
+              ["Depende da posição dentro da casca", false, "O cancelamento acontece em qualquer ponto interno, não só no centro."]
+            ] },
+          { q: "Para um ponto fora da casca, ela age como:",
+            op: [
+              ["Uma carga pontual no centro, com toda a carga da casca", true, "É o primeiro teorema das cascas, análogo ao da gravitação."],
+              ["Uma carga nula", false, "Isso é o que acontece dentro da casca. Fora, ela exerce força como se toda a carga estivesse no centro."],
+              ["Uma carga no ponto da superfície mais próximo", false, "A carga está espalhada por toda a superfície; o efeito combinado equivale a toda ela no centro."],
+              ["Um dipolo elétrico", false, "Uma casca uniformemente carregada não tem separação entre cargas positivas e negativas."]
+            ] },
+          { q: "As esferas iguais A (+Q) e B (neutra) são ligadas por um fio condutor. Com quanto cada uma fica?",
+            op: [
+              ["+Q/2", true, "Elétrons de B fluem para A até as esferas, idênticas, ficarem com cargas iguais. A carga total +Q se conserva."],
+              ["A continua com +Q e B com zero", false, "Com o fio, as cargas podem se mover. Elétrons de B vão para A até as duas ficarem iguais."],
+              ["+Q cada uma", false, "Isso criaria carga do nada. A carga total continua sendo +Q."],
+              ["As duas ficam neutras", false, "A carga +Q não desaparece ao ligar as esferas: ela é redistribuída."]
+            ] },
+          { q: "A esfera A, com +Q/2, é ligada à terra. O que acontece?",
+            op: [
+              ["Elétrons sobem da terra e A fica neutra", true, "A terra é um imenso condutor. Elétrons vêm dela até cancelar o excesso positivo de A."],
+              ["Prótons descem de A para a terra", false, "Prótons não se movem pelo condutor. Quem se move são os elétrons, vindos da terra."],
+              ["A fica com −Q/2", false, "Os elétrons só vêm até cancelar o excesso positivo. A esfera para em carga zero."],
+              ["Nada, porque a terra é neutra", false, "A terra é neutra, mas consegue fornecer ou receber elétrons à vontade. Por isso aterrar neutraliza."]
+            ] }
+        ]
+      },
+      {
+        id: "c12", cena: "CoulombQuantizacao", titulo: "Carga quantizada e conservada",
+        texto: "Toda carga é um múltiplo inteiro da carga elementar, e ≈ 1,602 × 10⁻¹⁹ C. E em qualquer processo, do decaimento radioativo à criação de partículas, a carga total se conserva.",
+        perguntas: [
+          { q: "Qual destas cargas um objeto pode ter?",
+            op: [
+              ["3,2 × 10⁻¹⁹ C", true, "3,2 × 10⁻¹⁹ C = 2e, um múltiplo inteiro da carga elementar."],
+              ["1,0 × 10⁻¹⁹ C", false, "Isso daria cerca de 0,62e. Nenhum objeto tem uma fração da carga elementar."],
+              ["2,4 × 10⁻¹⁹ C", false, "Isso é 1,5e. A carga precisa ser um múltiplo inteiro de e."],
+              ["4,0 × 10⁻¹⁹ C", false, "Isso é 2,5e, que não é um número inteiro de cargas elementares."]
+            ] },
+          { q: "No decaimento ²³⁸U → ²³⁴Th + ⁴He, o que acontece com a carga?",
+            op: [
+              ["+92e antes e +90e + 2e = +92e depois", true, "O tório tem 90 prótons e a partícula alfa tem 2. A carga total se conserva."],
+              ["Diminui, porque o urânio perdeu prótons", false, "Os prótons não sumiram: dois saíram na partícula alfa. Somando tudo, a carga é a mesma."],
+              ["Aumenta, porque surgiu uma nova partícula", false, "A partícula alfa leva carga que já estava no urânio. Nada foi criado."],
+              ["Não se conserva em processos nucleares", false, "A conservação da carga vale em todos os processos já observados, inclusive os nucleares."]
+            ] },
+          { q: "Como se chama o processo em que um raio gama se transforma em um elétron e um pósitron?",
+            op: [
+              ["Produção de par", true, "Um fóton, sem carga, gera duas partículas de cargas opostas. A carga total continua zero."],
+              ["Aniquilação", false, "A aniquilação é o processo inverso: elétron e pósitron desaparecem e viram raios gama."],
+              ["Decaimento alfa", false, "No decaimento alfa um núcleo emite um núcleo de hélio. Não há raio gama virando par de partículas."],
+              ["Efeito fotoelétrico", false, "No efeito fotoelétrico a luz arranca elétrons que já existiam no metal. Aqui o par de partículas é criado."]
+            ] }
+        ]
+      },
+      {
+        id: "c13", cena: "CoulombFechamento", titulo: "Revisão e ponte para Gauss",
+        texto: "Uma revisão da lei de Coulomb e a pergunta que abre o próximo capítulo: o que fazer quando são milhões de cargas, como num fio?",
+        perguntas: [
+          { q: "Qual afirmação resume a lei de Coulomb para cargas pontuais em repouso?",
+            op: [
+              ["A força é proporcional a q₁q₂, cai com 1/r² e aponta ao longo da reta entre as cargas", true, "Essas são as três propriedades vistas na trilha, reunidas em F = k q₁q₂ r̂ / r²."],
+              ["A força é proporcional a q₁ + q₂ e cai com 1/r", false, "A força depende do produto das cargas, não da soma, e cai com o quadrado da distância."],
+              ["A força é sempre atrativa e cai com 1/r²", false, "Isso descreve a gravidade. A força elétrica pode ser atrativa ou repulsiva."],
+              ["A força é perpendicular à reta entre as cargas", false, "A força de Coulomb é central: aponta ao longo da reta entre as cargas."]
+            ] },
+          { q: "Por que, para um fio com milhões de cargas, vale a pena usar o campo elétrico e a lei de Gauss?",
+            op: [
+              ["Somar a força de cada carga é impraticável, e a simetria do fio simplifica o cálculo", true, "A lei de Gauss aproveita a simetria cilíndrica do fio para obter o campo de uma vez, sem somar carga por carga."],
+              ["Porque a lei de Coulomb não vale para fios", false, "Ela vale: o campo do fio pode ser obtido somando (integrando) a lei de Coulomb. Só dá muito mais trabalho."],
+              ["Porque as cargas do fio estão em movimento", false, "O fio da cena é eletrostático, com cargas em repouso. A motivação é a quantidade de cargas, não o movimento."],
+              ["Porque a força entre cargas no fio é magnética", false, "Com cargas em repouso não há força magnética. O assunto continua sendo a eletrostática."]
+            ] }
+        ]
+      }
+    ]
+  },
+  {
+    id: "gauss", titulo: "Lei de Gauss", emBreve: true,
+    descricao: "A próxima guia usa os vídeos do notebook da Lei de Gauss para um fio de cargas: a linha de cargas, a superfície gaussiana cilíndrica, o fluxo pelas tampas e pela lateral e o campo E = λ/(2πε₀r).",
+    previstas: ["Do conjunto de cargas ao fio contínuo", "A superfície gaussiana", "Fluxo nas tampas e na lateral", "O campo de um fio infinito"]
+  },
+  {
+    id: "foto", titulo: "Efeito fotoelétrico", emBreve: true,
+    descricao: "Uma guia com as 13 cenas do vídeo do efeito fotoelétrico: de Hertz e da faísca ao gráfico de Millikan e à equação de Einstein.",
+    previstas: ["Hertz e a faísca", "As três surpresas", "A hipótese de Einstein", "O gráfico de Millikan"]
+  }
+];
+
+/* =====================================================================
+   ESTADO, PERSISTÊNCIA E CAPACIDADES
+   ===================================================================== */
+const CHAVE_LOCAL = "trilha-fisica3-progresso-v1";
+const PONTOS = [10, 6, 3];          // XP por acertar na 1ª, 2ª e 3ª tentativa ou depois
+let progresso = carregarLocal();   // { etapas: { c01: { resp: [{t, ok}], fim: bool } }, atualizado }
+let refProgresso = null;           // na versão do GitHub o progresso fica no navegador
+let ui = { modulo: "coulomb", etapa: null, q: null, ultimaErrada: null, revisao: false };
+
+function carregarLocal() {
+  try {
+    const t = localStorage.getItem(CHAVE_LOCAL);
+    if (t) return JSON.parse(t);
+  } catch (e) { /* armazenamento indisponível */ }
+  return { etapas: {}, atualizado: 0 };
+}
+let gravandoDb = false, pendenteDb = false, timerDb = null;
+function salvar() {
+  progresso.atualizado = Date.now();
+  try { localStorage.setItem(CHAVE_LOCAL, JSON.stringify(progresso)); } catch (e) { /* ignora */ }
+  if (!refProgresso) return;
+  clearTimeout(timerDb);
+  timerDb = setTimeout(gravarDb, 700);
+}
+async function gravarDb() {
+  if (gravandoDb) { pendenteDb = true; return; }
+  gravandoDb = true;
+  try { await refProgresso.set({ etapas: progresso.etapas, atualizado: progresso.atualizado }); }
+  catch (e) { /* segue só com o armazenamento local */ }
+  gravandoDb = false;
+  if (pendenteDb) { pendenteDb = false; gravarDb(); }
+}
+
+/* ---------- utilidades ---------- */
+const $ = (s, r = document) => r.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+function modulo(id) { return MODULOS.find(m => m.id === id); }
+function etapasDe(m) { return m.etapas || []; }
+function estadoEtapa(id) {
+  if (!progresso.etapas[id]) progresso.etapas[id] = { resp: [], fim: false };
+  return progresso.etapas[id];
+}
+function hash(s) { let h = 2166136261; for (const c of s) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return h >>> 0; }
+function ordemOpcoes(etapaId, qi, n) {
+  // embaralha de forma estável: a mesma pergunta sempre mostra a mesma ordem
+  const idx = [...Array(n).keys()];
+  let s = hash(etapaId + ":" + qi);
+  for (let i = n - 1; i > 0; i--) { s = (Math.imul(s, 1103515245) + 12345) >>> 0; const j = s % (i + 1); [idx[i], idx[j]] = [idx[j], idx[i]]; }
+  return idx;
+}
+function xpDaEtapa(id) {
+  const e = progresso.etapas[id]; if (!e) return 0;
+  return e.resp.reduce((s, r) => s + (r && r.ok ? PONTOS[Math.min(r.t - 1, 2)] : 0), 0);
+}
+function xpTotal() { return Object.keys(progresso.etapas).reduce((s, id) => s + xpDaEtapa(id), 0); }
+function estrelas(id) {
+  const e = progresso.etapas[id]; if (!e || !e.fim) return 0;
+  const erros = e.resp.reduce((s, r) => s + (r ? r.t - 1 : 0), 0);
+  return erros === 0 ? 3 : erros <= 2 ? 2 : 1;
+}
+function liberada(m, i) {
+  return i === 0 || !!(progresso.etapas[m.etapas[i - 1].id] || {}).fim || !!(progresso.etapas[m.etapas[i].id] || {}).fim;
+}
+function proximaAberta(e, depois = -1) {
+  const st = estadoEtapa(e.id);
+  const i = e.perguntas.findIndex((_, k) => k > depois && !(st.resp[k] && st.resp[k].ok));
+  if (i !== -1) return i;
+  const j = e.perguntas.findIndex((_, k) => !(st.resp[k] && st.resp[k].ok));
+  return j === -1 ? e.perguntas.length - 1 : j;
+}
+function etapaAtualIndex(m) {
+  const i = m.etapas.findIndex(e => !(progresso.etapas[e.id] || {}).fim);
+  return i === -1 ? m.etapas.length - 1 : i;
+}
+
+/* =====================================================================
+   RENDERIZAÇÃO
+   ===================================================================== */
+function renderGuias() {
+  $("#guias").innerHTML = MODULOS.map((m, i) => `
+    <button class="guia" role="tab" type="button" data-modulo="${m.id}" aria-selected="${ui.modulo === m.id}">
+      <span class="num">${i + 1}</span> ${esc(m.titulo)} ${m.emBreve ? '<span class="em-breve">em breve</span>' : ""}
+    </button>`).join("");
+  $("#xp").textContent = xpTotal();
+}
+
+function svgEstrela(cheia) {
+  return `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"
+    fill="${cheia ? "var(--destaque)" : "none"}" stroke="${cheia ? "var(--destaque)" : "var(--linha)"}" stroke-width="1.6" stroke-linejoin="round"/></svg>`;
+}
+
+function renderMapa(m) {
+  const n = m.etapas.length, passo = 62, topo = 64;
+  const xs = m.etapas.map((_, i) => 34 + 18 * Math.sin(i * 0.95));
+  const ys = m.etapas.map((_, i) => topo + i * passo);
+  const altura = topo + (n - 1) * passo + 64;
+  // linha de campo: da carga + (topo) até a carga − (base), passando pelas etapas
+  const pts = [[34, 28], ...xs.map((x, i) => [x, ys[i]]), [34, altura - 28]];
+  let d = `M ${pts[0][0]} ${pts[0][1]}`;
+  for (let i = 1; i < pts.length; i++) {
+    const [x0, y0] = pts[i - 1], [x1, y1] = pts[i];
+    d += ` C ${x0} ${y0 + (y1 - y0) / 2}, ${x1} ${y1 - (y1 - y0) / 2}, ${x1} ${y1}`;
+  }
+  const feitas = m.etapas.filter(e => (progresso.etapas[e.id] || {}).fim).length;
+  const atual = etapaAtualIndex(m);
+  const setas = [];
+  for (let i = 0; i < pts.length - 1; i++) {
+    const mx = (pts[i][0] + pts[i + 1][0]) / 2, my = (pts[i][1] + pts[i + 1][1]) / 2;
+    const ok = i <= feitas;
+    setas.push(`<path d="M ${mx - 4} ${my - 3} L ${mx} ${my + 2} L ${mx + 4} ${my - 3}" fill="none"
+      stroke="${ok ? "var(--destaque)" : "var(--linha)"}" stroke-width="1.8" stroke-linecap="round"/>`);
+  }
+  const yProgresso = feitas === 0 ? 28 : feitas >= n ? altura : ys[feitas - 1];
+  const nos = m.etapas.map((e, i) => {
+    const st = progresso.etapas[e.id] || {};
+    const lib = liberada(m, i);
+    const cls = [st.fim ? "feito" : "", i === atual && !st.fim ? "atual" : "", ui.etapa === i ? "aberta" : ""].join(" ");
+    const est = st.fim ? "★".repeat(estrelas(e.id)) + "☆".repeat(3 - estrelas(e.id)) : "";
+    const rot = `Etapa ${i + 1}: ${e.titulo}${st.fim ? ", concluída" : lib ? "" : ", bloqueada"}`;
+    return `<button class="no ${cls}" type="button" data-etapa="${i}" ${lib ? "" : "disabled"} aria-label="${esc(rot)}"
+      style="left:${xs[i] - 16}px; top:${ys[i] - 16}px">
+      <span class="bola">${st.fim ? "✓" : i + 1}</span>
+      <span class="rotulo">${est ? `<small aria-hidden="true">${est}</small>` : ""}${esc(e.titulo)}</span>
+    </button>`;
+  }).join("");
+  return `
+    <aside class="mapa" aria-label="Mapa da trilha">
+      <div class="mapa-cab"><h2>${esc(m.titulo)}</h2><span>${feitas} de ${n}</span></div>
+      <div class="barra" aria-hidden="true"><i style="width:${(feitas / n) * 100}%"></i></div>
+      <div class="linha-campo" style="height:${altura}px">
+        <svg width="80" height="${altura}" viewBox="0 0 80 ${altura}" aria-hidden="true">
+          <defs><clipPath id="clipFeito"><rect x="0" y="0" width="80" height="${yProgresso}"/></clipPath></defs>
+          <path d="${d}" fill="none" stroke="var(--linha)" stroke-width="2.5"/>
+          <path d="${d}" fill="none" stroke="var(--destaque)" stroke-width="2.5" clip-path="url(#clipFeito)"/>
+          ${setas.join("")}
+          <circle cx="34" cy="14" r="13" fill="var(--carga-pos)"/>
+          <path d="M28 14h12M34 8v12" stroke="#fff" stroke-width="2.2"/>
+          <circle cx="34" cy="${altura - 14}" r="13" fill="var(--carga-neg)"/>
+          <path d="M28 ${altura - 14}h12" stroke="#fff" stroke-width="2.2"/>
+        </svg>
+        ${nos}
+      </div>
+      <button class="recomecar" type="button" data-acao="recomecar">Recomeçar esta trilha</button>
+    </aside>`;
+}
+
+function caminhoVideo(m, e) { return "videos/" + m.id + "/" + e.cena + ".mp4"; }
+function renderVideo(m, e) {
+  const caminho = caminhoVideo(m, e);
+  return `<div class="video" id="video">
+      <video controls preload="metadata" playsinline src="${esc(caminho)}"></video>
+      <div class="vazio" hidden><div>
+        <p><strong>O vídeo desta cena ainda não foi adicionado.</strong></p>
+        <p>Coloque o arquivo em <code>${esc(caminho)}</code></p>
+        <p>Você já pode responder às perguntas.</p>
+      </div></div>
+    </div>`;
+}
+function ligarVideo() {
+  const v = document.querySelector("#video video");
+  if (!v) return;
+  const falhou = () => { const vz = document.querySelector("#video .vazio"); if (vz) vz.hidden = false; v.remove(); };
+  if (v.error) falhou(); else v.addEventListener("error", falhou, { once: true });
+}
+
+function renderPergunta(m, e, ei) {
+  const st = estadoEtapa(e.id);
+  const total = e.perguntas.length;
+  if (st.fim && !ui.revisao) return renderConclusao(m, e, ei);
+  if (st.fim && ui.revisao) return renderRevisao(e);
+  const qAtual = ui.q ?? proximaAberta(e);
+  const p = e.perguntas[qAtual];
+  const r = st.resp[qAtual] || { t: 0, ok: false, erradas: [] };
+  const ordem = ordemOpcoes(e.id, qAtual, p.op.length);
+  const letras = "ABCDE";
+  const pontos = e.perguntas.map((_, i) => {
+    const ri = st.resp[i];
+    return `<i class="${ri && ri.ok ? "ok" : i === qAtual ? "agora" : ""}"></i>`;
+  }).join("");
+  const opcoes = ordem.map((oi, pos) => {
+    const [txt, certa] = p.op[oi];
+    let cls = "";
+    if (r.ok && certa) cls = "certa";
+    else if ((r.erradas || []).includes(oi)) cls = "errada";
+    else if (r.ok) cls = "apagada";
+    const desab = r.ok || (r.erradas || []).includes(oi);
+    return `<button class="opcao ${cls}" type="button" data-opcao="${oi}" ${desab ? "disabled" : ""}>
+      <span class="letra">${letras[pos]}</span><span>${esc(txt)}</span></button>`;
+  }).join("");
+  let fb = "";
+  if (r.ok) {
+    const certa = p.op.find(o => o[1]);
+    fb = `<div class="feedback acerto"><strong>Isso mesmo${r.t === 1 ? ", de primeira" : ""}! +${PONTOS[Math.min(r.t - 1, 2)]} XP</strong><p>${esc(certa[2])}</p></div>`;
+  } else if (ui.ultimaErrada != null && (r.erradas || []).includes(ui.ultimaErrada)) {
+    const o = p.op[ui.ultimaErrada];
+    fb = `<div class="feedback erro"><strong>Ainda não. Por que “${esc(o[0])}” está errada:</strong><p>${esc(o[2])}</p>
+      <p class="tente">Escolha outra alternativa.</p></div>`;
+  }
+  const ultima = qAtual === total - 1;
+  const proxima = r.ok ? `<div class="rodape-quiz"><button class="botao" type="button" data-acao="${ultima ? "concluir" : "proxima"}">
+      ${ultima ? "Concluir etapa" : "Próxima pergunta"}</button></div>` : "";
+  return `<section class="quiz" aria-labelledby="enunciado">
+      <div class="quiz-cab"><span>Pergunta ${qAtual + 1} de ${total}</span><span class="pontos" aria-hidden="true">${pontos}</span></div>
+      <h2 class="enunciado" id="enunciado">${esc(p.q)}</h2>
+      <div class="opcoes" role="group" aria-label="Alternativas">${opcoes}</div>
+      <div aria-live="polite">${fb}</div>
+      ${proxima}
+    </section>`;
+}
+
+function renderConclusao(m, e, ei) {
+  const n = estrelas(e.id), xp = xpDaEtapa(e.id);
+  const prox = m.etapas[ei + 1];
+  const frase = n === 3 ? "Todas as respostas certas de primeira." : n === 2 ? "Quase perfeito: poucos erros pelo caminho." : "Etapa vencida. Revise as explicações para fixar.";
+  const botaoProx = prox
+    ? `<button class="botao" type="button" data-acao="ir" data-alvo="${ei + 1}">Ir para a etapa ${ei + 2}: ${esc(prox.titulo)}</button>`
+    : "";
+  const fimModulo = !prox ? `<p><strong>Você concluiu a trilha da ${esc(m.titulo)}.</strong> A próxima guia é a Lei de Gauss.</p>` : "";
+  return `<section class="quiz conclusao" aria-live="polite">
+      <div class="estrelas" role="img" aria-label="${n} de 3 estrelas">${[0, 1, 2].map(i => svgEstrela(i < n)).join("")}</div>
+      <h2>Etapa concluída: +${xp} XP</h2>
+      <p>${frase}</p>
+      ${fimModulo}
+      <div class="acoes">${botaoProx}
+        <button class="botao sec" type="button" data-acao="revisar">Rever respostas</button>
+        <button class="botao sec" type="button" data-acao="refazer">Refazer a etapa</button>
+      </div>
+    </section>`;
+}
+
+function renderRevisao(e) {
+  const itens = e.perguntas.map((p, i) => {
+    const c = p.op.find(o => o[1]);
+    return `<article><h3>${i + 1}. ${esc(p.q)}</h3><p class="resp">${esc(c[0])}</p><p>${esc(c[2])}</p></article>`;
+  }).join("");
+  return `<section class="quiz"><div class="quiz-cab"><span>Revisão das respostas</span>
+      <button class="link" type="button" data-acao="fechar-revisao">Voltar ao resumo</button></div>
+      <div class="revisao">${itens}</div></section>`;
+}
+
+function renderEtapa(m) {
+  const ei = ui.etapa;
+  const e = m.etapas[ei];
+  return `<div class="etapa">
+      <p class="etapa-pos">Etapa ${ei + 1} de ${m.etapas.length}</p>
+      <h1>${esc(e.titulo)}</h1>
+      <p class="texto">${esc(e.texto)}</p>
+      ${renderVideo(m, e)}
+      <div id="quiz">${renderPergunta(m, e, ei)}</div>
+    </div>`;
+}
+
+function renderEmBreve(m) {
+  return `<div></div><div class="breve">
+      <p class="etapa-pos">Em preparação</p>
+      <h1>${esc(m.titulo)}</h1>
+      <p>${esc(m.descricao)}</p>
+      <p>Etapas previstas:</p>
+      <ol>${m.previstas.map(t => `<li>${esc(t)}</li>`).join("")}</ol>
+      <p class="aviso">Conclua a trilha da Lei de Coulomb enquanto esta guia é montada.</p>
+    </div>`;
+}
+
+function render() {
+  renderGuias();
+  const m = modulo(ui.modulo);
+  if (m.emBreve) { $("#palco").innerHTML = renderEmBreve(m); return; }
+  if (ui.etapa == null) ui.etapa = etapaAtualIndex(m);
+  $("#palco").innerHTML = renderMapa(m) + renderEtapa(m);
+  ligarVideo();
+}
+function renderQuiz() {
+  const m = modulo(ui.modulo), e = m.etapas[ui.etapa];
+  $("#quiz").innerHTML = renderPergunta(m, e, ui.etapa);
+  $("#xp").textContent = xpTotal();
+}
+
+/* =====================================================================
+   INTERAÇÃO
+   ===================================================================== */
+document.addEventListener("click", ev => {
+  const alvo = ev.target.closest("button");
+  if (!alvo) return;
+  const m = modulo(ui.modulo);
+
+  if (alvo.dataset.modulo) {
+    ui = { modulo: alvo.dataset.modulo, etapa: null, q: null, ultimaErrada: null, revisao: false };
+    render(); return;
+  }
+  if (alvo.dataset.etapa != null) {
+    ui.etapa = +alvo.dataset.etapa; ui.q = null; ui.ultimaErrada = null; ui.revisao = false;
+    render(); $(".etapa h1").scrollIntoView({ block: "start", behavior: "smooth" }); return;
+  }
+  if (alvo.dataset.opcao != null) { responder(m, +alvo.dataset.opcao); return; }
+
+  const acao = alvo.dataset.acao;
+  if (!acao) return;
+  const e = m.etapas ? m.etapas[ui.etapa] : null;
+  if (acao === "proxima") {
+    ui.q = proximaAberta(e, ui.q ?? -1);
+    ui.ultimaErrada = null;
+    renderQuiz(); $("#enunciado").focus({ preventScroll: true }); $("#quiz").scrollIntoView({ block: "nearest", behavior: "smooth" });
+  } else if (acao === "concluir") {
+    const st = estadoEtapa(e.id);
+    st.fim = e.perguntas.every((_, i) => st.resp[i] && st.resp[i].ok);
+    salvar(); ui.q = null; ui.ultimaErrada = null; render();
+    $("#quiz").scrollIntoView({ block: "nearest", behavior: "smooth" });
+  } else if (acao === "ir") {
+    ui.etapa = +alvo.dataset.alvo; ui.q = null; ui.ultimaErrada = null; ui.revisao = false;
+    render(); window.scrollTo({ top: 0, behavior: "smooth" });
+  } else if (acao === "revisar") { ui.revisao = true; renderQuiz(); }
+  else if (acao === "fechar-revisao") { ui.revisao = false; renderQuiz(); }
+  else if (acao === "refazer") {
+    progresso.etapas[e.id] = { resp: [], fim: false }; salvar();
+    ui.q = null; ui.ultimaErrada = null; ui.revisao = false; render();
+  } else if (acao === "recomecar") {
+    if (!alvo.dataset.confirmar) {
+      alvo.dataset.confirmar = "1";
+      alvo.textContent = "Clique de novo para apagar seu progresso nesta guia";
+      setTimeout(() => { if (alvo.isConnected) { delete alvo.dataset.confirmar; alvo.textContent = "Recomeçar esta trilha"; } }, 4000);
+      return;
+    }
+    m.etapas.forEach(x => delete progresso.etapas[x.id]); salvar();
+    ui.etapa = 0; ui.q = null; ui.ultimaErrada = null; ui.revisao = false; render();
+  }
+});
+
+function responder(m, oi) {
+  const e = m.etapas[ui.etapa];
+  const st = estadoEtapa(e.id);
+  const qAtual = ui.q ?? proximaAberta(e);
+  ui.q = qAtual;
+  const p = e.perguntas[qAtual];
+  const r = st.resp[qAtual] || (st.resp[qAtual] = { t: 0, ok: false, erradas: [] });
+  if (r.ok) return;
+  r.t += 1;
+  if (p.op[oi][1]) { r.ok = true; ui.ultimaErrada = null; }
+  else { r.erradas = [...new Set([...(r.erradas || []), oi])]; ui.ultimaErrada = oi; }
+  salvar();
+  renderQuiz();
+  if (r.ok) {
+    const b = $(".rodape-quiz .botao"); if (b) b.focus({ preventScroll: true });
+  } else {
+    const prox = document.querySelector(".opcao:not(:disabled)"); if (prox) prox.focus({ preventScroll: true });
+  }
+  // o mapa mostra o progresso ao concluir a etapa; o XP atualiza já
+}
+
+/* ---------- tema ---------- */
+(function () {
+  let salvo = null;
+  try { salvo = localStorage.getItem("trilha-tema"); } catch (e) { /* ignora */ }
+  if (salvo) document.documentElement.dataset.theme = salvo;
+  $("#tema").addEventListener("click", () => {
+    const escuroAgora = document.documentElement.dataset.theme
+      ? document.documentElement.dataset.theme === "dark"
+      : matchMedia("(prefers-color-scheme: dark)").matches;
+    const novo = escuroAgora ? "light" : "dark";
+    document.documentElement.dataset.theme = novo;
+    try { localStorage.setItem("trilha-tema", novo); } catch (e) { /* ignora */ }
+  });
+})();
+
+render();
+</script>
+</body>
+</html>
