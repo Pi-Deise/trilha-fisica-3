@@ -6,7 +6,7 @@ Trilha de aprendizagem de Física III (Eletromagnetismo) com videoaulas animadas
 
 Bem-vindo(a) à trilha de aprendizagem de **Física III**! Este repositório reúne uma trilha interativa para estudar Eletromagnetismo e todo o código usado para produzir os vídeos. Cada etapa da trilha tem um texto curto, um vídeo com uma única cena e perguntas que explicam por que cada alternativa errada está errada.
 
-🔗 **Acesse a trilha:** https://SEU-USUARIO.github.io/trilha-fisica-3/
+🔗 **Acesse a trilha:** https://Pi-Deise.github.io/trilha-fisica-3/
 
 ---
 
