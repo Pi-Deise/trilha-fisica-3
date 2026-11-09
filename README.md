@@ -23,13 +23,9 @@ Bem-vindo(a) à trilha de aprendizagem de **Física III**! Este repositório re�
 |---|---|:---:|:---:|:---:|
 | **01** | Carga Elétrica e Lei de Coulomb | 🎥 13 cenas | 📝 42 | ✅ Disponível |
 | **02** | Lei de Gauss: o campo de um fio de cargas | 🎥 | 📝 | 🛠️ Em preparação |
-| **03** | Efeito Fotoelétrico | 🎥 13 cenas | 📝 | 🛠️ Em preparação |
+| **03** | 🛠️ Em preparação |
 
-### 🗺️ Próximos módulos planejados
-- Potencial Elétrico e Capacitância
-- Corrente, Resistência e Circuitos DC
-- Campo Magnético e Força Magnética
-- Indução Eletromagnética e Lei de Faraday
+
 
 ### 🔬 Módulo 01, cena a cena
 
@@ -51,7 +47,7 @@ Bem-vindo(a) à trilha de aprendizagem de **Física III**! Este repositório re�
 
 ---
 
-## 🚀 Como Utilizar (estudantes)
+## 🚀 Como Utilizar 
 1. Abra a trilha pelo link acima e escolha a guia do módulo.
 2. Siga as etapas na ordem: cada uma é liberada quando a anterior é concluída.
 3. Leia o texto, assista ao vídeo da cena e responda às perguntas.
@@ -62,44 +58,11 @@ O progresso fica salvo no navegador do aparelho usado.
 
 ---
 
-## 🎬 Como gerar os vídeos (professores e colaboradores)
-Os vídeos são produzidos com [Manim Community](https://www.manim.community/) e narrados com [manim-voiceover](https://github.com/ManimCommunity/manim-voiceover) usando gTTS em português do Brasil.
-
-1. Abra o notebook do módulo, na pasta `notebooks/`, no Google Colab.
-2. Rode a célula de instalação (LaTeX, FFmpeg, Manim e manim-voiceover).
-3. Rode as células `%%writefile`, que gravam os módulos auxiliares.
-4. Rode as células das cenas. Cada uma gera um vídeo:
-   - `-pql --fps 15`: 480p, rápido, bom para testar;
-   - `-pqh`: 1080p, para a versão final.
-5. Copie cada vídeo para `videos/<módulo>/` com o nome da cena, por exemplo `videos/coulomb/CoulombAbertura.mp4`.
-
-> No GitHub, cada arquivo pode ter até 100 MB. Os vídeos em 480p têm poucos MB por cena.
-
----
-
-## 📁 Estrutura do Repositório
-```
-trilha-fisica-3/
-├── index.html                 # a trilha interativa (publicada pelo GitHub Pages)
-├── videos/
-│   ├── coulomb/               # CoulombAbertura.mp4, CoulombCondutores.mp4, ...
-│   ├── gauss/
-│   └── fotoeletrico/
-├── notebooks/
-│   ├── Lei_de_Coulomb_animacao.ipynb
-│   ├── Lei_de_gauss_fio_de_cargas.ipynb
-│   └── Efeito_Fotoeletrico_animacao.ipynb
-├── roteiros/                  # roteiros das animações (fala + ação por trecho)
-├── LICENSE
-└── README.md
-```
-
----
 
 ## 🛠️ Tecnologias
 - **Manim Community** e **manim-voiceover (gTTS)** para as animações narradas.
 - **Google Colab** para renderizar sem instalar nada no computador.
-- **HTML, CSS e JavaScript** puros na trilha, sem dependências.
+- **HTML, CSS e JavaScript** na trilha, sem dependências
 - **GitHub Pages** para hospedagem gratuita.
 
 ---
@@ -108,8 +71,6 @@ trilha-fisica-3/
 - HALLIDAY, D.; RESNICK, R.; WALKER, J. *Fundamentos de Física*, vol. 3: Eletromagnetismo, cap. 21 (Cargas Elétricas).
 - HALLIDAY, D.; RESNICK, R.; WALKER, J. *Fundamentos de Física*, vol. 4, cap. 38 (Fótons e Ondas de Matéria).
 - Notas de aula de Física III, seção 1.3: A lei de Coulomb (AUTOR/INSTITUIÇÃO).
-
-Os textos, roteiros e perguntas foram escritos para este projeto, com base nessas obras. Os livros e as notas de aula não estão incluídos no repositório.
 
 ---
 📌 *Contribuições, correções e sugestões de novas cenas ou perguntas são sempre bem-vindas via Issues e Pull Requests!*
