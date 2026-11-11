@@ -1416,7 +1416,7 @@ function estrelas(id) {
   return erros === 0 ? 3 : erros <= 2 ? 2 : 1;
 }
 function liberada(m, i) {
-  return i === 0 || !!(progresso.etapas[m.etapas[i - 1].id] || {}).fim || !!(progresso.etapas[m.etapas[i].id] || {}).fim;
+  return true;   // todas as etapas abertas: o aluno pode estudar em qualquer ordem
 }
 function proximaAberta(e, depois = -1) {
   const st = estadoEtapa(e.id);
