@@ -653,14 +653,705 @@ const MODULOS = [
     ]
   },
   {
-    id: "gauss", titulo: "Lei de Gauss", emBreve: true,
-    descricao: "A próxima guia usa os vídeos do notebook da Lei de Gauss para um fio de cargas: a linha de cargas, a superfície gaussiana cilíndrica, o fluxo pelas tampas e pela lateral e o campo E = λ/(2πε₀r).",
-    previstas: ["Do conjunto de cargas ao fio contínuo", "A superfície gaussiana", "Fluxo nas tampas e na lateral", "O campo de um fio infinito"]
+    id: "campo",
+    titulo: "Campo elétrico",
+    etapas: [
+      {
+        id: "e01", cena: "CampoAcaoDistancia", titulo: "Ação a distância",
+        texto: "Se duas cargas não se tocam, como uma sente a outra? A resposta do capítulo 22: cada carga cria um campo elétrico no espaço à sua volta, e é esse campo que age sobre a outra.",
+        perguntas: [
+          { q: "Segundo a ideia de campo, como a carga 2 afeta a carga 1 sem tocá-la?",
+            op: [
+              ["A carga 2 cria um campo elétrico no espaço, e esse campo age sobre a carga 1", true, "O campo existe em cada ponto em volta da carga 2; a carga 1 responde ao campo no ponto onde está."],
+              ["Por uma ligação material invisível entre as duas", false, "Não há ligação material: o espaço entre as cargas pode estar vazio. Quem transmite a interação é o campo."],
+              ["As cargas trocam elétrons pelo ar", false, "Não há troca de carga entre elas, e a força existe mesmo no vácuo."],
+              ["Pela atração gravitacional entre elas", false, "A gravidade entre partículas carregadas é desprezível perto da força elétrica e não depende das cargas."]
+            ] },
+          { q: "O campo elétrico de uma carga existe mesmo sem outra carga por perto?",
+            op: [
+              ["Sim: ele existe no espaço em volta, mesmo vazio, haja ou não alguém para medi-lo", true, "Uma segunda carga apenas revela o campo; ele já estava lá."],
+              ["Não: ele só aparece quando outra carga chega", false, "A outra carga só sente o campo que já existia naquele ponto."],
+              ["Só se houver ar em volta da carga", false, "O campo elétrico existe também no vácuo."],
+              ["Só enquanto a carga está em movimento", false, "Cargas em repouso também criam campo elétrico; esse é justamente o assunto da eletrostática."]
+            ] }
+        ]
+      },
+      {
+        id: "e02", cena: "CampoCargaProva", titulo: "A carga de prova e E = F/q₀",
+        texto: "O campo elétrico é um campo vetorial: em cada ponto há um vetor. Para medi-lo, colocamos ali uma pequena carga positiva q₀ e dividimos a força sobre ela pela própria carga.",
+        perguntas: [
+          { q: "Por que a temperatura de uma sala é um campo escalar e o campo elétrico é um campo vetorial?",
+            op: [
+              ["A temperatura tem só um valor em cada ponto; o campo elétrico tem módulo e orientação", true, "Um campo vetorial associa a cada ponto um vetor; um campo escalar, apenas um número."],
+              ["Porque a temperatura varia de ponto a ponto e o campo elétrico não", false, "Os dois podem variar de ponto a ponto. A diferença é ter ou não orientação."],
+              ["Porque o campo elétrico só existe perto de metais", false, "Ele existe em volta de qualquer objeto carregado, inclusive no vácuo."],
+              ["Porque a temperatura é medida em graus", false, "A unidade não define o tipo de campo; o que define é ter direção e sentido."]
+            ] },
+          { q: "Qual é a unidade do campo elétrico no SI?",
+            op: [
+              ["N/C", true, "De E = F/q₀: newton dividido por coulomb."],
+              ["C/N", false, "É o inverso: o campo é força dividida por carga."],
+              ["N", false, "Newton é unidade de força. O campo é força por unidade de carga."],
+              ["C/m²", false, "Essa é a unidade da densidade superficial de carga σ."]
+            ] },
+          { q: "Por que a carga de prova deve ser pequena?",
+            op: [
+              ["Para não perturbar a distribuição de cargas do objeto que cria o campo", true, "Uma carga grande deslocaria as cargas do objeto e mudaria o próprio campo que se quer medir."],
+              ["Para que a força medida seja zero", false, "A força não é zero; ela é dividida por q₀, e o resultado não depende do tamanho de q₀."],
+              ["Porque cargas grandes não sentem campo", false, "Cargas maiores sentem forças maiores. O problema é que elas perturbam o objeto."],
+              ["Porque a carga de prova precisa ser negativa", false, "Por convenção a carga de prova é positiva; por isso E tem o mesmo sentido de F."]
+            ] },
+          { q: "Sobre uma carga de prova de 2,0 × 10⁻⁹ C age uma força de 6,0 × 10⁻⁶ N. Qual é o módulo do campo nesse ponto?",
+            op: [
+              ["3,0 × 10³ N/C", true, "E = F/q₀ = 6,0 × 10⁻⁶ / 2,0 × 10⁻⁹ = 3,0 × 10³ N/C."],
+              ["1,2 × 10⁻¹⁴ N/C", false, "Esse é o produto F · q₀. O campo é a razão F/q₀."],
+              ["3,3 × 10⁻⁴ N/C", false, "Essa é a razão invertida, q₀/F."],
+              ["3,0 × 10⁻³ N/C", false, "Confira os expoentes: 10⁻⁶ / 10⁻⁹ = 10³."]
+            ] }
+        ]
+      },
+      {
+        id: "e03", cena: "CampoLinhas", titulo: "Linhas de campo",
+        texto: "Faraday imaginou linhas no espaço para visualizar o campo. Elas seguem duas regras: o campo é tangente a elas, e onde estão mais juntas o campo é mais intenso.",
+        perguntas: [
+          { q: "Como o vetor campo em um ponto se relaciona com a linha de campo que passa por ele?",
+            op: [
+              ["É tangente à linha e tem o mesmo sentido dela", true, "Essa é a primeira regra das linhas de campo, válida também para linhas curvas."],
+              ["É perpendicular à linha", false, "O vetor acompanha a linha; perpendicular a ela o campo não tem componente."],
+              ["Aponta sempre para a carga mais próxima", false, "Depende do sinal: perto de uma carga positiva, o campo aponta para longe dela."],
+              ["Não tem relação com a linha", false, "As linhas são desenhadas justamente para mostrar a direção do campo em cada ponto."]
+            ] },
+          { q: "O que indica uma região em que as linhas de campo estão bem próximas?",
+            op: [
+              ["Que o campo é mais intenso ali", true, "O número de linhas por unidade de área é proporcional ao módulo do campo."],
+              ["Que o campo é mais fraco ali", false, "É o contrário: linhas espaçadas indicam campo fraco."],
+              ["Que o campo é nulo ali", false, "Onde o campo é nulo não passam linhas."],
+              ["Que há carga negativa ali", false, "A densidade de linhas indica o módulo do campo, não o sinal das cargas."]
+            ] },
+          { q: "Onde começam e onde terminam as linhas de campo elétrico?",
+            op: [
+              ["Começam em cargas positivas e terminam em cargas negativas", true, "As linhas se afastam das cargas positivas e se aproximam das negativas."],
+              ["Começam em cargas negativas e terminam em positivas", false, "O sentido é o inverso: o campo aponta para longe das cargas positivas."],
+              ["Formam laços fechados em volta das cargas", false, "Linhas fechadas são típicas do campo magnético. As do campo eletrostático têm início e fim."],
+              ["Começam e terminam na mesma carga", false, "Uma linha sai de uma carga positiva e chega a uma negativa, que pode estar muito longe."]
+            ] },
+          { q: "Como é o campo perto de uma placa muito grande com carga positiva uniforme?",
+            op: [
+              ["Uniforme: perpendicular à placa, apontando para longe dela, com o mesmo módulo em todos os pontos", true, "Os componentes paralelos à placa se cancelam aos pares, e sobra só o perpendicular."],
+              ["Paralelo à placa", false, "Os componentes paralelos se cancelam por simetria."],
+              ["Mais forte longe da placa", false, "Para uma placa muito grande, o módulo do campo não depende da distância."],
+              ["Apontando para a placa", false, "A carga da placa é positiva, então o campo aponta para longe dela."]
+            ] }
+        ]
+      },
+      {
+        id: "e04", cena: "CampoCargaPontual", titulo: "O campo de uma carga pontual",
+        texto: "Pela lei de Coulomb, a força sobre a carga de prova é kqq₀/r². Dividindo por q₀, sobra o campo de uma carga pontual, que cai com o quadrado da distância.",
+        perguntas: [
+          { q: "Qual é o módulo do campo de uma carga pontual q a uma distância r?",
+            op: [
+              ["E = |q|/(4πε₀r²)", true, "Eq. 22-3: o valor absoluto de q dá o módulo; o sentido é decidido pelo sinal."],
+              ["E = |q|/(4πε₀r)", false, "Faltou o quadrado: o campo de uma carga pontual cai com 1/r²."],
+              ["E = |q q₀|/(4πε₀r²)", false, "Essa é a força sobre q₀. Dividindo por q₀, sobra o campo."],
+              ["E = |q|/(2πε₀r)", false, "Essa forma lembra o campo de um fio infinito, com λ no lugar de q."]
+            ] },
+          { q: "Se a distância até uma carga pontual dobra, o campo:",
+            op: [
+              ["Cai para um quarto", true, "E ∝ 1/r²: com r multiplicado por 2, E é dividido por 2² = 4."],
+              ["Cai pela metade", false, "Isso valeria para 1/r, como no fio infinito."],
+              ["Cai para um oitavo", false, "Isso valeria para 1/r³, como no dipolo."],
+              ["Não muda", false, "Só o campo de uma placa infinita não depende da distância."]
+            ] },
+          { q: "Perto de uma carga negativa, o campo elétrico aponta:",
+            op: [
+              ["Para a carga", true, "Uma carga de prova positiva seria atraída por ela; o campo tem o sentido dessa força."],
+              ["Para longe da carga", false, "Esse é o sentido para uma carga positiva."],
+              ["Perpendicular à reta que liga o ponto à carga", false, "O campo de uma carga pontual é sempre radial."],
+              ["Depende do sinal da carga de prova", false, "O campo não depende da carga de prova; o sinal de q₀ só mudaria o sentido da força sobre ela."]
+            ] },
+          { q: "Qual é o módulo do campo a 0,10 m de uma carga de 2,0 nC? Use k = 8,99 × 10⁹ N·m²/C².",
+            op: [
+              ["≈ 1,8 × 10³ N/C", true, "E = kq/r² = 8,99 × 10⁹ × 2,0 × 10⁻⁹ / (0,10)² ≈ 1,8 × 10³ N/C."],
+              ["≈ 1,8 × 10² N/C", false, "Esse valor sai de kq/r, sem elevar a distância ao quadrado."],
+              ["≈ 1,8 × 10⁵ N/C", false, "Esse valor usaria r = 0,010 m. Confira: 10 cm = 0,10 m."],
+              ["≈ 3,6 × 10³ N/C", false, "Esse é o dobro do valor certo. O fator 2 aparece no campo do fio, não no da carga pontual."]
+            ] }
+        ]
+      },
+      {
+        id: "e05", cena: "CampoSuperposicao", titulo: "Superposição: Exemplo 22.01",
+        texto: "Com várias cargas, o campo total é a soma vetorial dos campos de cada uma. No Exemplo 22.01, três cargas a uma distância d da origem produzem um campo resultante ao longo do eixo x.",
+        perguntas: [
+          { q: "Como se obtém o campo total produzido por várias cargas em um ponto?",
+            op: [
+              ["Somando vetorialmente os campos produzidos por cada carga", true, "É o princípio da superposição, Eq. 22-4: E = E₁ + E₂ + … + Eₙ."],
+              ["Somando os módulos dos campos", false, "Os campos têm direções diferentes; somar os módulos ignora os cancelamentos."],
+              ["Usando só a carga mais próxima", false, "Todas as cargas contribuem para o campo no ponto."],
+              ["Multiplicando os campos entre si", false, "Campos se somam como vetores; não se multiplicam."]
+            ] },
+          { q: "No Exemplo 22.01, por que os componentes y se cancelam na origem?",
+            op: [
+              ["Porque E₃ e a soma E₁ + E₂ têm o mesmo módulo e são simétricos em relação ao eixo x", true, "Os dois vetores fazem 30° com o eixo x, um acima e outro abaixo; os componentes y se anulam."],
+              ["Porque as três cargas têm o mesmo valor", false, "As cargas são +2Q, −2Q e −4Q, todas diferentes."],
+              ["Porque a origem está sobre o eixo y", false, "Estar sobre um eixo não anula componentes. O cancelamento vem da simetria dos vetores."],
+              ["Porque cargas negativas não produzem componente y", false, "Cargas negativas produzem campo em qualquer direção, apontando para elas."]
+            ] },
+          { q: "Qual é o campo total na origem no Exemplo 22.01?",
+            op: [
+              ["6,93Q/(4πε₀d²), no sentido positivo de x", true, "E = 2E₃ cos 30° = 2 · 4Q/(4πε₀d²) · 0,866 = 6,93Q/(4πε₀d²)."],
+              ["8Q/(4πε₀d²)", false, "Esse valor soma os módulos 2Q + 2Q + 4Q e ignora as direções dos vetores."],
+              ["Zero", false, "Só os componentes y se cancelam; os componentes x se somam."],
+              ["4Q/(4πε₀d²), no sentido positivo de x", false, "Esse é só o módulo de E₃, que é igual ao de E₁ + E₂. A resultante é 2E₃ cos 30°."]
+            ] },
+          { q: "Ao somar campos, onde deve ficar a origem de cada vetor?",
+            op: [
+              ["No ponto onde o campo está sendo calculado", true, "O Halliday recomenda isso: cada vetor representa o campo naquele ponto."],
+              ["Na carga que produz o campo", false, "Desenhar os vetores a partir das cargas costuma levar a erros na soma vetorial."],
+              ["No centro de massa das cargas", false, "O centro de massa não tem papel nessa soma; o que importa é o ponto de cálculo."],
+              ["Tanto faz", false, "Não faz diferença para o resultado, mas desenhar a partir das cargas induz a erros de direção."]
+            ] }
+        ]
+      },
+      {
+        id: "e06", cena: "CampoDipolo", titulo: "O dipolo elétrico",
+        texto: "Duas cargas iguais e opostas, separadas por uma distância d, formam um dipolo. Longe dele, as duas quase se cancelam, e o campo cai com 1/z³.",
+        perguntas: [
+          { q: "O momento dipolar elétrico p:",
+            op: [
+              ["Tem módulo qd e aponta da carga negativa para a positiva", true, "p = qd, com q o valor absoluto de cada carga."],
+              ["Tem módulo qd e aponta da carga positiva para a negativa", false, "Esse é o sentido das linhas de campo entre as cargas, não o de p."],
+              ["Tem módulo q/d", false, "O momento dipolar é o produto da carga pela distância: p = qd."],
+              ["Tem módulo 2qd", false, "q é o valor absoluto de uma das cargas, e p = qd, sem o fator 2."]
+            ] },
+          { q: "Longe do dipolo, num ponto do eixo, o campo é proporcional a:",
+            op: [
+              ["1/z³", true, "Eq. 22-9: E = p/(2πε₀z³)."],
+              ["1/z²", false, "Essa é a dependência de uma carga isolada."],
+              ["1/z", false, "Essa é a dependência do fio infinito."],
+              ["Não depende de z", false, "Só o campo de uma placa infinita não depende da distância."]
+            ] },
+          { q: "Longe do dipolo, se a distância dobra, o campo fica:",
+            op: [
+              ["8 vezes menor", true, "Com E ∝ 1/z³, dobrar z divide E por 2³ = 8."],
+              ["4 vezes menor", false, "Isso valeria para 1/z², o campo de uma carga isolada."],
+              ["2 vezes menor", false, "Isso valeria para 1/z, o campo de um fio."],
+              ["2 vezes maior", false, "Afastar-se do dipolo sempre diminui o campo."]
+            ] },
+          { q: "Por que o campo do dipolo cai mais depressa que o de uma carga isolada?",
+            op: [
+              ["De longe, os campos das duas cargas opostas quase se cancelam", true, "Sobra só a pequena diferença entre eles, que cai com 1/z³."],
+              ["Porque as cargas do dipolo são menores", false, "O tamanho das cargas não muda a forma como o campo cai com a distância."],
+              ["Porque a carga total do dipolo é zero, e por isso o campo é nulo", false, "A carga total é zero, mas o campo não é nulo: as contribuições quase se cancelam, sem se anular."],
+              ["Porque o eixo do dipolo bloqueia as linhas de campo", false, "Nada bloqueia as linhas; a queda rápida vem do quase cancelamento."]
+            ] }
+        ]
+      },
+      {
+        id: "e07", cena: "CampoSprites", titulo: "Sprites: Exemplo 22.02",
+        texto: "Depois de um relâmpago intenso, a nuvem e o solo podem ser modelados como um dipolo vertical. O campo desse dipolo, bem acima das nuvens, explica os clarões vermelhos chamados sprites.",
+        perguntas: [
+          { q: "No modelo do Exemplo 22.02, a nuvem e o solo formam:",
+            op: [
+              ["Um dipolo elétrico vertical, com −q na nuvem e +q a uma distância h abaixo do solo", true, "A distância entre as cargas é 2h, e o campo é calculado com a equação do dipolo."],
+              ["Duas cargas positivas", false, "O relâmpago transfere carga negativa para a nuvem; as cargas do modelo têm sinais opostos."],
+              ["Uma placa infinita", false, "O modelo usa duas cargas pontuais opostas, isto é, um dipolo."],
+              ["Uma carga pontual isolada", false, "Uma carga isolada não descreveria a carga positiva que fica abaixo do solo."]
+            ] },
+          { q: "O campo a 30 km de altitude é de cerca de 1,6 × 10³ N/C. Quanto vale a 60 km?",
+            op: [
+              ["≈ 2,0 × 10² N/C", true, "Dobrar a altitude divide o campo do dipolo por 2³ = 8."],
+              ["≈ 8,0 × 10² N/C", false, "Isso corresponderia a um campo que cai com 1/z."],
+              ["≈ 4,0 × 10² N/C", false, "Isso corresponderia a um campo que cai com 1/z², como o de uma carga isolada."],
+              ["≈ 1,6 × 10³ N/C", false, "O campo do dipolo diminui com a altitude."]
+            ] },
+          { q: "Por que os sprites aparecem a 60 km, se ali o campo é menor que a 30 km?",
+            op: [
+              ["Porque lá o ar é tão rarefeito que o campo crítico de ionização é ainda menor que o campo", true, "Quanto menor a densidade do ar, menor o campo crítico E_c. A 60 km, E supera E_c e os átomos emitem luz."],
+              ["Porque o campo é maior a 60 km", false, "A 60 km o campo é cerca de 8 vezes menor que a 30 km."],
+              ["Porque a 60 km não há ar", false, "Há ar, só que rarefeito. Sem ar não haveria átomos para emitir luz."],
+              ["Porque a nuvem fica a 60 km", false, "No exemplo, a carga da nuvem está a cerca de 6 km de altitude."]
+            ] }
+        ]
+      },
+      {
+        id: "e08", cena: "CampoAnel", titulo: "O anel carregado",
+        texto: "Um anel não é uma partícula. Dividimos o anel em elementos dq, tratamos cada um como partícula, usamos a simetria para cancelar componentes e somamos o resto por integração.",
+        perguntas: [
+          { q: "Por que não se pode usar E = kq/r² diretamente para o anel inteiro?",
+            op: [
+              ["Porque o anel não é uma partícula: a carga está distribuída e é preciso dividi-la em elementos dq", true, "A Eq. 22-3 vale para partículas; para objetos, aplicamos a cada elemento e somamos."],
+              ["Porque a carga total do anel é zero", false, "O anel tem carga positiva uniforme; o problema é a carga estar espalhada."],
+              ["Porque o anel é um condutor", false, "No exemplo o anel é de plástico, e as cargas ficam fixas."],
+              ["Porque a fórmula só vale para cargas negativas", false, "A fórmula vale para qualquer sinal de carga, mas só para partículas."]
+            ] },
+          { q: "No eixo do anel, quais componentes dos campos dE se cancelam?",
+            op: [
+              ["Os perpendiculares ao eixo, por causa do elemento diametralmente oposto", true, "Cada elemento tem um parceiro do outro lado do anel; os componentes perpendiculares se anulam aos pares."],
+              ["Os paralelos ao eixo", false, "Os paralelos apontam todos no mesmo sentido e se somam."],
+              ["Nenhum componente se cancela", false, "A simetria do anel cancela os componentes perpendiculares."],
+              ["Todos os componentes", false, "Os componentes paralelos ao eixo se somam; o campo só é nulo no centro."]
+            ] },
+          { q: "Qual é o campo no centro do anel (z = 0)?",
+            op: [
+              ["Zero", true, "Pela Eq. 22-16, E = 0 em z = 0: uma carga de prova no centro seria empurrada igualmente em todas as direções."],
+              ["Máximo", false, "O campo é máximo num ponto do eixo fora do anel; no centro ele é nulo."],
+              ["q/(4πε₀R²)", false, "Esse seria o campo de uma carga pontual a uma distância R. No centro, as contribuições se cancelam."],
+              ["Infinito", false, "Todas as cargas estão à distância R do centro, sem nenhuma singularidade ali."]
+            ] },
+          { q: "Muito longe do anel (z ≫ R), o campo no eixo:",
+            op: [
+              ["Fica igual ao de uma carga pontual q", true, "De longe, o anel parece uma partícula: E → q/(4πε₀z²), a Eq. 22-17."],
+              ["Cai com 1/z³", false, "Essa é a queda do dipolo. O anel tem carga total q, que domina de longe."],
+              ["Fica constante", false, "O campo diminui quando o ponto se afasta."],
+              ["É exatamente zero", false, "Ele diminui com a distância, mas não se anula."]
+            ] }
+        ]
+      },
+      {
+        id: "e09", cena: "CampoArco", titulo: "O arco de 120°: Exemplo 22.03",
+        texto: "Uma barra em arco de 120° tem carga −Q. No centro de curvatura, os componentes perpendiculares ao eixo de simetria se cancelam, e integramos o resto de −60° a 60°.",
+        perguntas: [
+          { q: "No Exemplo 22.03, com carga −Q no arco, para onde aponta o campo no centro P?",
+            op: [
+              ["Para a barra, ao longo do eixo de simetria", true, "A carga é negativa, então cada dE aponta para o seu elemento; a soma fica ao longo do eixo x, em direção ao arco."],
+              ["Para longe da barra", false, "Assim seria se a carga fosse positiva."],
+              ["Perpendicular ao eixo de simetria", false, "Os componentes perpendiculares ao eixo se cancelam aos pares."],
+              ["É nulo", false, "Os componentes ao longo do eixo se somam; o campo não é nulo."]
+            ] },
+          { q: "Por que podemos trocar ds por r dθ na integral?",
+            op: [
+              ["Porque um arco de raio r que subtende um ângulo dθ tem comprimento r dθ", true, "Como r é constante no arco centrado em P, a integral fica só em θ."],
+              ["Porque ds e dθ são iguais", false, "Um é comprimento, o outro é ângulo: ds = r dθ."],
+              ["Porque r varia ao longo do arco", false, "No arco centrado em P, r é constante, e isso simplifica a integral."],
+              ["Para eliminar λ da conta", false, "λ continua na expressão; a troca elimina a variável s."]
+            ] },
+          { q: "Qual é a densidade linear do arco de 120°, de raio r e carga Q?",
+            op: [
+              ["λ = Q/(2πr/3) ≈ 0,477Q/r", true, "O arco tem um terço do perímetro da circunferência: 2πr/3."],
+              ["λ = Q/(2πr)", false, "Essa seria a densidade de uma circunferência inteira."],
+              ["λ = Q/r", false, "O comprimento do arco é 2πr/3, não r."],
+              ["λ = 3Q/r", false, "Faltou o fator 2π do comprimento do arco."]
+            ] },
+          { q: "Qual é o primeiro passo do método geral para linhas de carga?",
+            op: [
+              ["Escolher um elemento de carga dq e tratá-lo como partícula", true, "Depois vêm dq = λ ds, o campo dE, a simetria e a integral."],
+              ["Integrar diretamente sobre o objeto, sem dividir", false, "Para integrar, primeiro é preciso expressar o campo de um elemento."],
+              ["Usar E = kQ/r² com a carga total", false, "Isso só vale se o objeto puder ser tratado como partícula."],
+              ["Ignorar a simetria do problema", false, "A simetria é o que permite cancelar componentes e simplificar a integral."]
+            ] }
+        ]
+      },
+      {
+        id: "e10", cena: "CampoDisco", titulo: "O disco e a placa infinita",
+        texto: "Um disco pode ser dividido em anéis finos. Somando os campos desses anéis, obtemos o campo no eixo do disco; quando o disco cresce sem limite, ele vira o campo de uma placa infinita.",
+        perguntas: [
+          { q: "Como o disco foi dividido para calcular o campo no eixo?",
+            op: [
+              ["Em anéis finos de raio r e largura dr", true, "O campo de um anel no eixo já é conhecido, então basta somar os anéis."],
+              ["Em quadradinhos de área dA", false, "Daria uma integral dupla; os anéis aproveitam o resultado do anel."],
+              ["Em cargas pontuais apenas na borda", false, "A carga está espalhada por toda a superfície, não só na borda."],
+              ["Em fios retos que passam pelo centro", false, "O caminho do Halliday usa anéis, cujo campo no eixo já foi calculado."]
+            ] },
+          { q: "Qual é a carga de um anel fino de raio r e largura dr no disco?",
+            op: [
+              ["dq = σ(2πr dr)", true, "A área do anel é o perímetro 2πr vezes a largura dr."],
+              ["dq = σπr²", false, "Essa é a carga de um disco inteiro de raio r, não de um anel fino."],
+              ["dq = λ ds", false, "Essa forma vale para linhas de carga. No disco usamos a densidade superficial σ."],
+              ["dq = σ dr", false, "σ é carga por área; é preciso multiplicar por uma área, 2πr dr."]
+            ] },
+          { q: "Qual é o campo de uma placa infinita isolante com densidade σ?",
+            op: [
+              ["E = σ/(2ε₀)", true, "Eq. 22-27: com R → ∞, o segundo termo da Eq. 22-26 se anula."],
+              ["E = σ/ε₀", false, "Esse é o campo junto à superfície de um condutor carregado, outro resultado."],
+              ["E = 0", false, "O campo não se anula; ele fica constante."],
+              ["E = σ/(4πε₀z²)", false, "Essa forma decai com a distância, mas o campo da placa infinita não depende de z."]
+            ] },
+          { q: "Muito perto de um disco finito (z → 0), o campo no eixo:",
+            op: [
+              ["Fica igual ao de uma placa infinita, σ/(2ε₀)", true, "Visto de muito perto, o disco parece infinito."],
+              ["Fica nulo", false, "Com z → 0, o termo z/√(z² + R²) vai a zero, e sobra σ/(2ε₀)."],
+              ["Fica infinito", false, "A carga está espalhada pela superfície, e o campo tende a um valor finito."],
+              ["Fica igual ao de uma carga pontual", false, "Isso valeria muito longe do disco, não muito perto."]
+            ] }
+        ]
+      },
+      {
+        id: "e11", cena: "CampoForcaCarga", titulo: "Uma carga em um campo e Millikan",
+        texto: "Um campo elétrico exerce sobre uma carga q a força F = qE. Millikan usou essa força para frear e erguer gotas de óleo e descobriu que a carga é sempre um múltiplo inteiro de e.",
+        perguntas: [
+          { q: "Uma carga negativa está num campo que aponta para a direita. A força sobre ela aponta:",
+            op: [
+              ["Para a esquerda", true, "F = qE com q negativo: a força tem o sentido oposto ao do campo."],
+              ["Para a direita", false, "Esse seria o sentido para uma carga positiva."],
+              ["Para lugar nenhum: a força é nula", false, "Qualquer carga num campo diferente de zero sofre força."],
+              ["Perpendicular ao campo", false, "A força elétrica tem a mesma direção do campo; só o sentido depende do sinal."]
+            ] },
+          { q: "O campo E na equação F = qE inclui o campo da própria partícula?",
+            op: [
+              ["Não: é o campo externo, produzido pelas outras cargas", true, "Uma partícula não é afetada pelo próprio campo elétrico."],
+              ["Sim, sempre", false, "O Halliday ressalta que o campo da equação é o externo."],
+              ["Só se a partícula for positiva", false, "O sinal da carga não muda isso: o próprio campo nunca entra."],
+              ["Só se a partícula estiver parada", false, "Parada ou não, a partícula não sente o próprio campo."]
+            ] },
+          { q: "No experimento de Millikan, o campo entre as placas aponta para baixo. O que acontece com uma gota de carga negativa?",
+            op: [
+              ["Sofre uma força para cima e pode ser freada ou subir", true, "F = qE com q negativo aponta contra o campo, ou seja, para cima."],
+              ["Sofre uma força para baixo e cai mais depressa", false, "Isso aconteceria com uma gota positiva."],
+              ["Não sente o campo", false, "Toda gota carregada sente a força elétrica; só gotas neutras não sentem."],
+              ["É empurrada para os lados", false, "O campo é vertical, então a força também é vertical."]
+            ] },
+          { q: "O que Millikan concluiu sobre as cargas das gotas?",
+            op: [
+              ["Que eram sempre múltiplos inteiros de e ≈ 1,60 × 10⁻¹⁹ C", true, "q = ne: a carga elétrica é quantizada."],
+              ["Que podiam ter qualquer valor", false, "Os valores medidos sempre caíam em múltiplos inteiros de e."],
+              ["Que as gotas eram sempre neutras", false, "Muitas gotas estavam carregadas, e era essa carga que ele media."],
+              ["Que e só valia para gotas de óleo", false, "e é a carga elementar, a mesma para qualquer objeto."]
+            ] }
+        ]
+      },
+      {
+        id: "e12", cena: "CampoJatoTinta", titulo: "Jato de tinta e ruptura dielétrica",
+        texto: "Em algumas impressoras, gotas de tinta carregadas são desviadas por um campo entre placas. No Exemplo 22.04 o desvio é de 0,64 mm. Já um campo forte demais no ar provoca centelhas.",
+        perguntas: [
+          { q: "O campo entre as placas aponta para baixo. Por que a gota negativa é desviada para cima?",
+            op: [
+              ["Porque F = qE com q negativo aponta contra o campo", true, "Para carga negativa, a força tem o sentido oposto ao do campo."],
+              ["Por causa da gravidade", false, "A gravidade puxaria para baixo, e no exemplo ela é desprezível."],
+              ["Porque as placas atraem a tinta", false, "Quem age sobre a gota é o campo elétrico, por meio de F = qE."],
+              ["Porque o campo aponta para cima", false, "O campo aponta para baixo; é a carga negativa que inverte o sentido da força."]
+            ] },
+          { q: "Entre as placas, como é o movimento da gota?",
+            op: [
+              ["Velocidade constante em x e aceleração constante em y: uma parábola", true, "A força elétrica é vertical e constante, como num lançamento horizontal."],
+              ["Circular", false, "Uma força constante em módulo e direção produz uma parábola, não um círculo."],
+              ["Retilíneo e uniforme", false, "Há uma força vertical, então a gota acelera em y."],
+              ["Acelerado em x", false, "Não há força horizontal; vₓ permanece 18 m/s."]
+            ] },
+          { q: "Qual é o desvio vertical da gota ao deixar as placas no Exemplo 22.04?",
+            op: [
+              ["≈ 0,64 mm", true, "y = QEL²/(2mvₓ²) = (1,5 × 10⁻¹³)(1,4 × 10⁶)(1,6 × 10⁻²)² / [2(1,3 × 10⁻¹⁰)(18)²] ≈ 6,4 × 10⁻⁴ m."],
+              ["≈ 1,28 mm", false, "Faltou o fator ½ de y = ½ a t²."],
+              ["≈ 6,4 mm", false, "Confira a conversão: 6,4 × 10⁻⁴ m são 0,64 mm."],
+              ["≈ 0,064 mm", false, "Confira a conversão: 6,4 × 10⁻⁴ m são 0,64 mm."]
+            ] },
+          { q: "O que é ruptura dielétrica do ar?",
+            op: [
+              ["Quando o campo excede um valor crítico, arranca elétrons dos átomos, o ar conduz e surgem centelhas", true, "Os elétrons arrancados colidem com outros átomos, que emitem luz."],
+              ["O derretimento de um fio por excesso de corrente", false, "Isso é aquecimento por efeito Joule, não ruptura do ar."],
+              ["O ar se tornar um isolante perfeito", false, "É o contrário: o ar passa a conduzir."],
+              ["A anulação do campo dentro de um condutor", false, "Isso é blindagem eletrostática."]
+            ] }
+        ]
+      },
+      {
+        id: "e13", cena: "CampoDipoloTorque", titulo: "O dipolo em um campo: Exemplo 22.05",
+        texto: "Num campo uniforme, as forças nas duas cargas de um dipolo se anulam, mas produzem um torque τ = p × E. A energia U = −p · E é mínima com o dipolo alinhado, como num pêndulo.",
+        perguntas: [
+          { q: "Qual é a força total sobre um dipolo num campo uniforme?",
+            op: [
+              ["Zero, embora haja um torque", true, "As forças nas cargas têm o mesmo módulo qE e sentidos opostos: a soma é zero, mas, aplicadas em pontos diferentes, elas giram o dipolo."],
+              ["qE", false, "Esse é o módulo da força em cada carga, mas as duas forças têm sentidos opostos."],
+              ["2qE", false, "As forças têm sentidos opostos e se cancelam, em vez de se somar."],
+              ["Depende do ângulo θ", false, "A força total é sempre nula num campo uniforme; o que depende de θ é o torque."]
+            ] },
+          { q: "Para qual ângulo entre p e E o torque é máximo?",
+            op: [
+              ["90°", true, "τ = pE sen θ é máximo quando sen θ = 1."],
+              ["0°", false, "Com p alinhado a E, sen θ = 0 e o torque é nulo."],
+              ["180°", false, "Invertido, sen θ = 0 e o torque também é nulo, num equilíbrio instável."],
+              ["45°", false, "sen 45° ≈ 0,71; o máximo é em 90°."]
+            ] },
+          { q: "Em que orientação a energia potencial do dipolo é mínima?",
+            op: [
+              ["Com p alinhado a E (θ = 0), em que U = −pE", true, "U = −pE cos θ é mínima com cos θ = 1."],
+              ["Com θ = 90°", false, "Em 90° a energia vale zero, que é só a referência escolhida."],
+              ["Com θ = 180°", false, "Invertido, U = +pE: é a energia máxima."],
+              ["É igual em qualquer orientação", false, "U depende de θ; por isso o campo tende a girar o dipolo."]
+            ] },
+          { q: "Que trabalho um agente externo realiza para girar a molécula de água de θ = 0 a 180°, com p = 6,2 × 10⁻³⁰ C·m e E = 1,5 × 10⁴ N/C?",
+            op: [
+              ["2pE ≈ 1,9 × 10⁻²⁵ J", true, "W_a = U(180°) − U(0) = pE − (−pE) = 2pE."],
+              ["pE ≈ 9,3 × 10⁻²⁶ J", false, "pE é o torque máximo em N·m. O trabalho para a volta de 180° é o dobro."],
+              ["Zero", false, "A energia passa de −pE a +pE; o agente externo precisa fornecer essa diferença."],
+              ["−2pE ≈ −1,9 × 10⁻²⁵ J", false, "Esse é o trabalho realizado pelo campo. O do agente externo tem o sinal oposto."]
+            ] }
+        ]
+      },
+      {
+        id: "e14", cena: "CampoFechamento", titulo: "Fechamento e ponte para a Lei de Gauss",
+        texto: "Recapitulando: o campo é força por unidade de carga, visualizado por linhas, calculado por superposição e integração. Com muita simetria há um atalho: a Lei de Gauss.",
+        perguntas: [
+          { q: "Como os campos de uma carga isolada e de um dipolo dependem da distância, longe deles?",
+            op: [
+              ["Carga: 1/r². Dipolo: 1/r³", true, "O dipolo cai mais depressa porque suas duas cargas quase se cancelam."],
+              ["Carga: 1/r³. Dipolo: 1/r²", false, "Está invertido: o dipolo é que cai mais depressa."],
+              ["Os dois caem com 1/r²", false, "O dipolo cai com 1/r³."],
+              ["Carga: 1/r. Dipolo: 1/r²", false, "1/r é a queda do fio infinito, não da carga pontual."]
+            ] },
+          { q: "Qual atalho permite calcular campos de distribuições muito simétricas?",
+            op: [
+              ["A Lei de Gauss, que relaciona o fluxo do campo através de uma superfície fechada com a carga envolvida", true, "É o assunto da próxima guia."],
+              ["A Lei de Ohm", false, "A Lei de Ohm relaciona corrente e tensão em condutores."],
+              ["A Lei de Faraday", false, "A Lei de Faraday trata da indução eletromagnética."],
+              ["A Lei de Coulomb", false, "A Lei de Coulomb dá a força entre cargas pontuais; o atalho para distribuições simétricas é a Lei de Gauss."]
+            ] }
+        ]
+      }
+    ]
   },
   {
-    id: "foto", titulo: "Efeito fotoelétrico", emBreve: true,
-    descricao: "Uma guia com as 13 cenas do vídeo do efeito fotoelétrico: de Hertz e da faísca ao gráfico de Millikan e à equação de Einstein.",
-    previstas: ["Hertz e a faísca", "As três surpresas", "A hipótese de Einstein", "O gráfico de Millikan"]
+    id: "gauss",
+    titulo: "Lei de Gauss",
+    etapas: [
+      {
+        id: "g01", cena: "GaussLinhaCargas", titulo: "Uma linha de cargas",
+        texto: "Antes da lei de Gauss, um objeto: uma longa linha de cargas positivas igualmente espaçadas. A grandeza que descreve essa distribuição é a densidade linear de carga, λ.",
+        perguntas: [
+          { q: "O que é a densidade linear de carga λ?",
+            op: [
+              ["A carga por unidade de comprimento do fio, λ = Q/L", true, "λ mede quanta carga há em cada metro de fio. Para um fio uniforme, é a carga total dividida pelo comprimento."],
+              ["A carga por unidade de área", false, "Carga por área é a densidade superficial σ, usada para placas e cascas. No fio, a carga se distribui ao longo de uma linha."],
+              ["A carga por unidade de volume", false, "Carga por volume é a densidade volumétrica ρ. O fio é tratado como uma linha, sem espessura."],
+              ["O número de cargas do fio", false, "λ não é uma contagem: é carga dividida por comprimento, medida em C/m."]
+            ] },
+          { q: "Qual é a unidade de λ no SI?",
+            op: [
+              ["C/m", true, "Carga, em coulomb, dividida por comprimento, em metro."],
+              ["C/m²", false, "Essa é a unidade da densidade superficial σ."],
+              ["C·m", false, "Carga vezes comprimento é a unidade de um momento de dipolo, não de uma densidade."],
+              ["N/C", false, "Essa é a unidade do campo elétrico."]
+            ] },
+          { q: "Um fio de 2,0 m tem carga de 6,0 μC distribuída uniformemente. Qual é a carga em um trecho de 50 cm?",
+            op: [
+              ["1,5 μC", true, "λ = 6,0 μC / 2,0 m = 3,0 μC/m. Em 0,50 m: 3,0 × 0,50 = 1,5 μC."],
+              ["3,0 μC", false, "3,0 μC/m é o valor de λ. Falta multiplicar pelo comprimento do trecho, 0,50 m."],
+              ["12 μC", false, "Multiplicar a carga total pelo comprimento não faz sentido aqui. Primeiro calcule λ = Q/L."],
+              ["6,0 μC", false, "Essa é a carga do fio inteiro. Um trecho de 50 cm é só um quarto do fio."]
+            ] }
+        ]
+      },
+      {
+        id: "g02", cena: "GaussCampoCargas", titulo: "O campo de cada carga e o efeito de borda",
+        texto: "Cada carga do fio gera o próprio campo. Num ponto acima do meio do fio, as contribuições se combinam par a par, e só uma direção sobrevive. Perto das pontas, a história muda.",
+        perguntas: [
+          { q: "Num ponto acima do meio do fio, por que o campo resultante é perpendicular ao fio?",
+            op: [
+              ["Para cada carga à esquerda há uma simétrica à direita, e os componentes paralelos ao fio se cancelam", true, "Os componentes ao longo do fio têm o mesmo módulo e sentidos opostos. Os componentes perpendiculares se somam."],
+              ["Porque só a carga logo abaixo do ponto produz campo ali", false, "Todas as cargas produzem campo no ponto. A direção resultante vem da soma de todas, organizadas em pares simétricos."],
+              ["Porque o campo de cada carga já é perpendicular ao fio", false, "O campo de cada carga aponta para fora dela, em direções inclinadas. Só a soma de cada par é perpendicular."],
+              ["Porque as cargas são positivas", false, "Com cargas negativas o campo apontaria para o fio, mas continuaria perpendicular. A direção vem da simetria, não do sinal."]
+            ] },
+          { q: "Como se chama a inclinação do campo perto das pontas de um fio finito?",
+            op: [
+              ["Efeito de borda", true, "Perto das pontas falta a carga parceira simétrica, e os componentes paralelos ao fio deixam de se cancelar."],
+              ["Blindagem eletrostática", false, "Blindagem é o anulamento do campo dentro de um condutor fechado. Aqui o assunto é a ponta do fio."],
+              ["Indução eletrostática", false, "Indução é a separação de cargas num condutor causada por outra carga próxima. Não é o que acontece nas pontas do fio."],
+              ["Efeito Joule", false, "O efeito Joule é o aquecimento de um condutor percorrido por corrente. Não tem relação com a direção do campo."]
+            ] },
+          { q: "Num ponto acima da ponta direita do fio, para onde o campo se inclina?",
+            op: [
+              ["Para a direita, afastando-se do resto do fio", true, "Quase todas as cargas estão à esquerda desse ponto. Como elas são positivas, a soma dos componentes paralelos ao fio aponta para a direita."],
+              ["Para a esquerda, em direção ao meio do fio", false, "Cargas positivas produzem campo apontando para longe delas. Como a maioria está à esquerda, a inclinação é para a direita."],
+              ["Não se inclina", false, "Sem a parceira simétrica, os componentes paralelos ao fio deixam de se cancelar e o campo se inclina."],
+              ["Aponta para o fio", false, "Para cargas positivas, o campo aponta para longe delas, nunca para o fio."]
+            ] }
+        ]
+      },
+      {
+        id: "g03", cena: "GaussFioInfinito", titulo: "Do conjunto de cargas ao fio infinito",
+        texto: "Com muitas cargas, as pontas ficam longe e o efeito de borda deixa de importar no meio do fio. As cargas viram um fio contínuo, e o campo fica radial.",
+        perguntas: [
+          { q: "Por que podemos tratar o fio como infinito perto do centro dele?",
+            op: [
+              ["Porque, longe das pontas, o efeito de borda é desprezível", true, "Quando a distância ao fio é muito menor que a distância às pontas, a falta de simetria nas pontas não altera o campo de forma perceptível."],
+              ["Porque fios reais são infinitos", false, "Nenhum fio real é infinito. É uma aproximação válida quando a distância ao fio é muito menor que o comprimento dele."],
+              ["Porque o campo de um fio não depende da distância", false, "Depende: o resultado final mostra que o campo cai com 1/r."],
+              ["Porque as cargas das pontas são neutras", false, "As cargas das pontas são iguais às outras. O que muda ali é a falta de parceiras simétricas."]
+            ] },
+          { q: "Para um fio infinito com carga positiva, o campo elétrico:",
+            op: [
+              ["Aponta radialmente para fora e tem o mesmo módulo em todos os pontos à mesma distância do fio", true, "Essa é a simetria cilíndrica: girar em torno do fio ou deslizar ao longo dele não muda nada."],
+              ["Tem o mesmo módulo em todos os pontos do espaço", false, "O módulo depende da distância ao fio. Só é igual entre pontos à mesma distância."],
+              ["É paralelo ao fio", false, "Os componentes paralelos ao fio se cancelam por simetria. O campo é perpendicular a ele."],
+              ["Circula em torno do fio", false, "Um campo que circula em volta de um fio é o campo magnético de uma corrente. O campo elétrico de cargas em repouso aponta para fora."]
+            ] }
+        ]
+      },
+      {
+        id: "g04", cena: "GaussSuperficie", titulo: "A superfície gaussiana",
+        texto: "A lei de Gauss exige uma superfície fechada. A escolha certa é a que tem a mesma simetria das cargas: para um fio, um cilindro com o fio no eixo.",
+        perguntas: [
+          { q: "Por que a superfície gaussiana escolhida é um cilindro com o fio no eixo?",
+            op: [
+              ["Porque tem a mesma simetria do fio: na lateral, o campo tem módulo constante e é perpendicular a ela", true, "Com essa forma, o produto escalar E · dA fica simples em cada parte da superfície."],
+              ["Porque o cilindro é a única superfície que funciona com a lei de Gauss", false, "A lei vale para qualquer superfície fechada. O cilindro é escolhido porque simplifica o cálculo."],
+              ["Porque o fio tem forma de cilindro", false, "A forma do fio não é o motivo; o que importa é a simetria do campo que ele produz."],
+              ["Porque o cilindro impede o campo de sair", false, "A superfície gaussiana é imaginária e não bloqueia nada. O campo a atravessa normalmente."]
+            ] },
+          { q: "Por que uma esfera centrada no fio não é uma boa superfície gaussiana para este problema?",
+            op: [
+              ["O campo cruzaria a esfera com ângulos diferentes em cada ponto", true, "Sem um ângulo fixo entre E e dA, nem um módulo constante, não dá para tirar E da integral."],
+              ["Porque a lei de Gauss não vale para esferas", false, "A lei de Gauss vale para qualquer superfície fechada, inclusive esferas. Só o cálculo ficaria difícil."],
+              ["Porque a esfera não envolve carga", false, "Uma esfera centrada no fio envolve o trecho de fio dentro dela. O problema é a geometria, não a carga."],
+              ["Porque o campo é nulo sobre a esfera", false, "O campo não é nulo ali. Ele só não tem módulo nem ângulo constantes sobre a esfera."]
+            ] },
+          { q: "Quantas partes tem a superfície gaussiana cilíndrica?",
+            op: [
+              ["Três: duas tampas e a lateral", true, "As tampas S1 e S3 e a lateral S2 formam juntas uma superfície fechada."],
+              ["Uma: só a lateral", false, "Sem as tampas o cilindro fica aberto, e a lei de Gauss exige superfície fechada."],
+              ["Duas: as tampas", false, "As tampas sozinhas não fecham nada; falta a lateral."],
+              ["Quatro", false, "Um cilindro tem duas tampas e uma lateral: três partes."]
+            ] }
+        ]
+      },
+      {
+        id: "g05", cena: "GaussSimetria", titulo: "A lei de Gauss e a simetria",
+        texto: "A lei de Gauss liga o fluxo do campo através de uma superfície fechada à carga envolvida: ∮ E · dA = q_env/ε₀. A simetria do fio decide como essa integral fica simples.",
+        perguntas: [
+          { q: "O que a lei de Gauss afirma?",
+            op: [
+              ["O fluxo do campo elétrico através de uma superfície fechada é igual à carga envolvida dividida por ε₀", true, "∮ E · dA = q_env/ε₀. Só a carga dentro da superfície entra na conta."],
+              ["O campo elétrico é igual à carga dividida por ε₀", false, "A lei fala do fluxo, uma integral sobre a superfície, e não do campo diretamente."],
+              ["O fluxo através de qualquer superfície fechada é sempre zero", false, "Só é zero se não houver carga dentro. Aqui o fio está dentro do cilindro."],
+              ["A força entre duas cargas cai com 1/r²", false, "Essa é a lei de Coulomb. A lei de Gauss trata do fluxo através de superfícies fechadas."]
+            ] },
+          { q: "Uma carga fica fora da superfície gaussiana. Ela contribui para o fluxo total?",
+            op: [
+              ["Não: o fluxo que entra é igual ao que sai", true, "As linhas de campo de uma carga externa entram na superfície e saem dela; a soma dá zero."],
+              ["Sim, se estiver perto da superfície", false, "Mesmo perto, o fluxo líquido de uma carga externa é zero. Ela muda o campo em cada ponto, mas não o fluxo total."],
+              ["Sim, com sinal oposto ao da carga", false, "Não há contribuição líquida, nem positiva nem negativa."],
+              ["Só se for negativa", false, "O sinal não muda nada: qualquer carga externa dá fluxo líquido zero."]
+            ] },
+          { q: "O que a simetria cilíndrica garante sobre o campo na lateral do cilindro?",
+            op: [
+              ["Módulo igual em todos os pontos e direção perpendicular à superfície", true, "Todos os pontos da lateral estão à mesma distância r do fio, e o campo é radial."],
+              ["Campo nulo na lateral", false, "O campo na lateral não é nulo: é ele que produz todo o fluxo."],
+              ["Campo paralelo à lateral", false, "O campo fica paralelo à superfície nas tampas. Na lateral ele é radial, perpendicular a ela."],
+              ["Campo mais forte perto das tampas", false, "Na lateral, todos os pontos estão à mesma distância r do fio; o módulo é o mesmo em toda ela."]
+            ] }
+        ]
+      },
+      {
+        id: "g06", cena: "GaussNormais", titulo: "Os vetores normais",
+        texto: "Em cada ponto da superfície, o vetor área dA é perpendicular a ela e aponta para fora. Comparar dA com o campo em cada parte divide a integral em três.",
+        perguntas: [
+          { q: "Na lateral do cilindro, o vetor área dA aponta:",
+            op: [
+              ["Radialmente para fora, paralelo ao campo", true, "dA é perpendicular à superfície e aponta para fora; na lateral, essa direção é radial, a mesma do campo."],
+              ["Ao longo do eixo do cilindro", false, "Essa é a direção do vetor área nas tampas."],
+              ["Para dentro do cilindro", false, "Por convenção, numa superfície fechada o vetor área aponta sempre para fora."],
+              ["Tangente à superfície", false, "O vetor área é sempre perpendicular à superfície, nunca tangente."]
+            ] },
+          { q: "Nas tampas, o vetor área dA aponta:",
+            op: [
+              ["Ao longo do eixo do cilindro, para fora", true, "As tampas são planas e perpendiculares ao eixo, então dA é paralelo ao eixo e aponta para fora do cilindro."],
+              ["Radialmente para fora do fio", false, "Essa é a direção do campo e também de dA na lateral. Na tampa, dA é perpendicular ao plano dela."],
+              ["Para o centro do cilindro", false, "Numa superfície fechada, dA aponta para fora."],
+              ["Não tem direção definida", false, "Em cada ponto de uma superfície lisa o vetor área tem direção bem definida: perpendicular a ela."]
+            ] },
+          { q: "Por que a integral fechada pode ser dividida em três?",
+            op: [
+              ["Porque a superfície é formada por três partes, e a integral sobre o todo é a soma das integrais sobre as partes", true, "∮ = ∫S1 + ∫S2 + ∫S3: integrais se somam sobre partes que não se sobrepõem."],
+              ["Porque há três cargas", false, "A divisão é sobre a superfície, não sobre as cargas."],
+              ["Porque o campo tem três componentes", false, "A divisão é geométrica, em três pedaços da superfície. Não se trata dos componentes x, y e z."],
+              ["Porque a lei de Gauss exige três superfícies", false, "Ela exige uma superfície fechada, de qualquer forma. Esta tem três partes."]
+            ] }
+        ]
+      },
+      {
+        id: "g07", cena: "GaussFluxoLateral", titulo: "Fluxo na lateral",
+        texto: "Na lateral S2, o campo e o vetor área são paralelos em todos os pontos. O produto escalar vira um produto de módulos, e a integral vira o campo vezes a área.",
+        perguntas: [
+          { q: "Qual é o ângulo entre E e dA na lateral do cilindro?",
+            op: [
+              ["0°", true, "Os dois apontam radialmente para fora, e cos 0° = 1."],
+              ["90°", false, "90° é o ângulo nas tampas. Na lateral os vetores são paralelos."],
+              ["180°", false, "180° seria com o campo entrando na superfície, como para um fio negativo. Aqui o fio é positivo e o campo sai."],
+              ["45°", false, "Não há inclinação: o campo é radial, exatamente na direção do vetor área."]
+            ] },
+          { q: "Por que E pode sair da integral sobre a lateral?",
+            op: [
+              ["Porque o módulo de E é o mesmo em todos os pontos da lateral", true, "Todos os pontos da lateral estão à mesma distância r do fio, então E é constante ali e sai como fator."],
+              ["Porque E é zero na lateral", false, "Se E fosse zero, o fluxo seria zero. O campo na lateral é justamente o que procuramos."],
+              ["Porque E é constante em todo o espaço", false, "E varia com a distância ao fio. Só é constante sobre a lateral, onde a distância é fixa."],
+              ["Porque sempre se pode tirar E de uma integral", false, "Só quando o módulo é constante sobre a superfície. Por isso a escolha da superfície é tão importante."]
+            ] },
+          { q: "Qual é a área da lateral de um cilindro de raio r e comprimento L?",
+            op: [
+              ["2πrL", true, "Desenrolada, a lateral vira um retângulo de lados 2πr, o perímetro do círculo, e L."],
+              ["πr²L", false, "Esse é o volume do cilindro, não a área da lateral."],
+              ["πr²", false, "Essa é a área de uma tampa."],
+              ["2πr² + 2πrL", false, "Essa é a área total, com as duas tampas. No fluxo, só a lateral contribui."]
+            ] }
+        ]
+      },
+      {
+        id: "g08", cena: "GaussFluxoTampas", titulo: "Fluxo nas tampas",
+        texto: "Nas tampas S1 e S3, o vetor área aponta ao longo do eixo, enquanto o campo aponta para fora do fio. O campo passa rente às tampas, sem atravessá-las.",
+        perguntas: [
+          { q: "Qual é o ângulo entre E e dA nas tampas?",
+            op: [
+              ["90°", true, "E é radial e fica no plano da tampa; dA é perpendicular a esse plano. cos 90° = 0."],
+              ["0°", false, "0° é o ângulo na lateral. Na tampa, E fica no plano da superfície."],
+              ["180°", false, "180° significaria o campo entrando pela tampa. Ele só passa rente a ela."],
+              ["Varia de ponto a ponto", false, "Em qualquer ponto da tampa, E está no plano dela e dA é perpendicular ao plano: sempre 90°."]
+            ] },
+          { q: "Quanto vale o fluxo elétrico através das duas tampas?",
+            op: [
+              ["Zero", true, "Com cos 90° = 0 em todos os pontos, as integrais em S1 e S3 se anulam."],
+              ["O mesmo que o fluxo na lateral", false, "Todo o fluxo atravessa a lateral. Nas tampas, o campo não atravessa a superfície."],
+              ["λL/ε₀", false, "Esse é o fluxo total da superfície fechada, que vem inteiro da lateral."],
+              ["Depende do raio das tampas", false, "Seja qual for o raio, E fica no plano da tampa e o fluxo é zero."]
+            ] },
+          { q: "O fluxo nas tampas é zero porque:",
+            op: [
+              ["O campo é paralelo à superfície da tampa", true, "O fluxo mede o quanto o campo atravessa a superfície. Um campo rente a ela não a atravessa."],
+              ["O campo é nulo nas tampas", false, "Na tampa o campo não é nulo; ele só não a atravessa."],
+              ["Não há carga perto das tampas", false, "O fio passa pelo centro das tampas. O motivo é a direção do campo, não a falta de carga."],
+              ["As tampas são muito pequenas", false, "O tamanho não importa: mesmo uma tampa enorme teria fluxo zero."]
+            ] }
+        ]
+      },
+      {
+        id: "g09", cena: "GaussResultado", titulo: "O campo de um fio infinito",
+        texto: "Juntando as peças: só a lateral contribui, a carga envolvida é λL e o comprimento L se cancela. O resultado é E = λ/(2πε₀r), apontando radialmente.",
+        perguntas: [
+          { q: "Qual é o módulo do campo de um fio infinito com densidade λ, a uma distância r?",
+            op: [
+              ["E = λ/(2πε₀r)", true, "De E · 2πrL = λL/ε₀, cancelando L: E = λ/(2πε₀r)."],
+              ["E = λ/(4πε₀r²)", false, "Essa forma lembra a da carga pontual. Para o fio, o campo cai com 1/r, não com 1/r²."],
+              ["E = λ/(2ε₀)", false, "Um campo que não depende da distância é o de um plano infinito, σ/(2ε₀)."],
+              ["E = λL/ε₀", false, "Isso é o fluxo total, não o campo. Falta dividir pela área 2πrL."]
+            ] },
+          { q: "Se a distância ao fio dobra, o campo:",
+            op: [
+              ["Cai pela metade", true, "E é proporcional a 1/r: com r dobrado, E fica dividido por 2."],
+              ["Cai para um quarto", false, "Isso valeria para uma carga pontual, com 1/r². O campo do fio cai mais devagar, com 1/r."],
+              ["Não muda", false, "Só o campo de um plano infinito não depende da distância."],
+              ["Dobra", false, "Afastar-se do fio diminui o campo."]
+            ] },
+          { q: "Por que o comprimento L do cilindro gaussiano não aparece no resultado?",
+            op: [
+              ["Porque a carga envolvida e a área lateral são ambas proporcionais a L", true, "Com o dobro de L há o dobro de carga, λL, e o dobro de área, 2πrL; a razão não muda."],
+              ["Porque L é infinito", false, "O fio é tratado como infinito, mas o cilindro gaussiano tem comprimento finito L. Ele se cancela na conta."],
+              ["Porque L é sempre 1 m", false, "L pode ter qualquer valor; justamente por isso ele se cancela."],
+              ["Porque as tampas eliminam L", false, "As tampas têm fluxo zero. O cancelamento de L vem da carga e da área lateral."]
+            ] },
+          { q: "Um fio longo tem λ = 2,0 μC/m. Qual é o módulo do campo a 10 cm dele?",
+            op: [
+              ["≈ 3,6 × 10⁵ N/C", true, "E = λ/(2πε₀r) = 2kλ/r = 2 × 8,99 × 10⁹ × 2,0 × 10⁻⁶ / 0,10 ≈ 3,6 × 10⁵ N/C."],
+              ["≈ 1,8 × 10⁵ N/C", false, "Faltou o fator 2: λ/(2πε₀r) é igual a 2kλ/r, não a kλ/r."],
+              ["≈ 3,6 × 10⁶ N/C", false, "Confira a distância: 10 cm = 0,10 m, não 0,010 m."],
+              ["≈ 1,8 × 10⁶ N/C", false, "Esse valor sai de kλ/r², a forma da carga pontual. Para o fio, E = 2kλ/r."]
+            ] }
+        ]
+      }
+    ]
+  },
+  {
+    id: "potencial", titulo: "Potencial elétrico", emBreve: true,
+    descricao: "Em breve.",
+    previstas: []
   }
 ];
 
@@ -881,7 +1572,8 @@ function renderConclusao(m, e, ei) {
   const botaoProx = prox
     ? `<button class="botao" type="button" data-acao="ir" data-alvo="${ei + 1}">Ir para a etapa ${ei + 2}: ${esc(prox.titulo)}</button>`
     : "";
-  const fimModulo = !prox ? `<p><strong>Você concluiu a trilha da ${esc(m.titulo)}.</strong> A próxima guia é a Lei de Gauss.</p>` : "";
+  const proxMod = MODULOS[MODULOS.indexOf(m) + 1];
+  const fimModulo = !prox ? `<p><strong>Você concluiu a trilha: ${esc(m.titulo)}.</strong>${proxMod ? ` A próxima guia é ${esc(proxMod.titulo)}.` : ""}</p>` : "";
   return `<section class="quiz conclusao" aria-live="polite">
       <div class="estrelas" role="img" aria-label="${n} de 3 estrelas">${[0, 1, 2].map(i => svgEstrela(i < n)).join("")}</div>
       <h2>Etapa concluída: +${xp} XP</h2>
@@ -921,9 +1613,9 @@ function renderEmBreve(m) {
       <p class="etapa-pos">Em preparação</p>
       <h1>${esc(m.titulo)}</h1>
       <p>${esc(m.descricao)}</p>
-      <p>Etapas previstas:</p>
-      <ol>${m.previstas.map(t => `<li>${esc(t)}</li>`).join("")}</ol>
-      <p class="aviso">Conclua a trilha da Lei de Coulomb enquanto esta guia é montada.</p>
+      ${m.previstas && m.previstas.length ? `<p>Etapas previstas:</p>
+      <ol>${m.previstas.map(t => `<li>${esc(t)}</li>`).join("")}</ol>` : ""}
+      <p class="aviso">Enquanto esta guia é montada, siga pelas guias anteriores.</p>
     </div>`;
 }
 
