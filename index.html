@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Trilha de Eletromagnetismo</title>
+<title>Trilha de Física III — Interativa</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -181,16 +181,25 @@ button { font: inherit; color: inherit; }
   background: var(--destaque); color: var(--destaque-tinta);
 }
 .botao.sec { background: var(--superficie-2); color: var(--tinta); border: 1px solid var(--linha); }
-.botao:disabled { opacity: .5; cursor: wait; }
+.botao:disabled { opacity: .45; cursor: not-allowed; }
 .link { background: none; border: 0; padding: 0; color: var(--azul); text-decoration: underline; cursor: pointer; font-size: 14px; }
 
 .quiz { background: var(--superficie); border: 1px solid var(--linha); border-radius: 14px; padding: 22px 24px 24px; box-shadow: var(--sombra); }
-.quiz-cab { display: flex; justify-content: space-between; align-items: center; color: var(--tinta-2); font-size: 15px; margin-bottom: 8px; }
-.pontos { display: flex; gap: 6px; }
-.pontos i { width: 10px; height: 10px; border-radius: 50%; background: var(--superficie-2); border: 1px solid var(--linha); }
-.pontos i.ok { background: var(--acerto); border-color: var(--acerto); }
-.pontos i.agora { background: var(--destaque); border-color: var(--destaque); }
-.enunciado { font-size: 21px; line-height: 1.35; margin: 0 0 16px; }
+.quiz-cab { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; color: var(--tinta-2); font-size: 15px; margin-bottom: 8px; }
+.quiz-cab-esq { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.tag-tipo { font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: var(--superficie-2); color: var(--tinta-2); border: 1px solid var(--linha); }
+.tag-tipo.sim { background: var(--destaque-fundo); color: var(--tinta); border-color: var(--destaque); }
+.pontos { display: flex; gap: 7px; align-items: center; flex-wrap: wrap; }
+.pontos .ponto {
+  width: 14px; height: 14px; border-radius: 50%; background: var(--superficie-2);
+  border: 1.5px solid var(--linha); padding: 0; cursor: pointer;
+  transition: transform .15s ease, border-color .15s ease, background-color .15s ease;
+}
+.pontos .ponto.sim { border-radius: 4px; }
+.pontos .ponto:hover { border-color: var(--destaque); transform: scale(1.2); }
+.pontos .ponto.ok { background: var(--acerto); border-color: var(--acerto); }
+.pontos .ponto.agora { background: var(--destaque); border-color: var(--destaque); transform: scale(1.18); }
+.enunciado { font-size: 21px; line-height: 1.35; margin: 0 0 16px; outline: none; }
 .opcoes { display: grid; gap: 10px; }
 .opcao {
   display: grid; grid-template-columns: 30px 1fr; gap: 12px; align-items: start; text-align: left;
@@ -214,7 +223,10 @@ button { font: inherit; color: inherit; }
 .feedback strong { display: block; margin-bottom: 4px; }
 .feedback p { margin: 0; }
 .feedback .tente { margin-top: 8px; color: var(--tinta-2); font-size: 15px; }
-.rodape-quiz { display: flex; justify-content: flex-end; margin-top: 16px; }
+.rodape-quiz {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
+  margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--linha);
+}
 
 .conclusao { text-align: left; }
 .estrelas { display: flex; gap: 8px; margin: 6px 0 10px; }
@@ -246,6 +258,62 @@ button { font: inherit; color: inherit; }
   .topo { padding: 10px 16px; gap: 10px; }
   .guias { order: 3; flex-basis: 100%; }
 }
+
+/* ---------- Laboratórios ---------- */
+.missao .enunciado { outline: none; }
+.sim { border: 1px solid var(--linha); border-radius: 12px; background: var(--superficie-2); padding: 10px 12px 12px; margin-top: 6px; }
+.sim-palco { overflow-x: auto; border-radius: 8px; border: 1px solid var(--linha); background: var(--superficie); }
+.sim-svg { display: block; width: 100%; height: auto; user-select: none; -webkit-user-select: none; }
+.sim-cel { display: none; margin: 8px 0 0; font-size: 14px; color: var(--tinta-2); }
+.sim-svg .pega { cursor: grab; touch-action: none; }
+.sim-svg .pega:active { cursor: grabbing; }
+.sim-svg .pega:focus { outline: none; }
+.sim-svg .pega:focus-visible circle, .sim-svg .pega:focus-visible rect, .sim-svg circle.pega:focus-visible { stroke: var(--destaque); stroke-width: 4; }
+.sim-svg .pega circle, .sim-svg .pega > rect { filter: drop-shadow(0 0 3px rgba(217, 154, 0, .9)); }
+.sim-svg circle.pega { filter: drop-shadow(0 0 3px rgba(217, 154, 0, .9)); }
+.sim-svg .pega-fundo { cursor: move; touch-action: pan-x pan-y; }
+.sim-txt { fill: var(--tinta-2); font-family: inherit; font-size: 14px; pointer-events: none; }
+.sim-txt.forte { fill: var(--tinta); font-weight: 700; font-size: 15px; }
+.sim-txt.escuro, .sim-sinal.escuro { fill: #1C1D1B; }
+.sim-sinal { fill: #fff; font-weight: 700; font-family: inherit; pointer-events: none; }
+.sim-ion { fill: var(--carga-pos); font-weight: 700; font-size: 18px; font-family: inherit; pointer-events: none; }
+.sim-grade { stroke: var(--linha); stroke-width: 1; opacity: .6; }
+.sim-trilho { fill: var(--superficie-2); stroke: var(--linha); }
+.sim-piso { fill: var(--linha); opacity: .35; }
+.sim-terra { fill: var(--superficie-2); stroke: var(--tinta-2); stroke-dasharray: 6 4; }
+.sim-corpo { fill: var(--superficie-2); stroke: var(--linha); stroke-width: 2; }
+.sim-controle { display: grid; grid-template-columns: minmax(110px, 170px) 1fr minmax(86px, auto); gap: 10px; align-items: center; margin-top: 10px; font-size: 15px; }
+.sim-controle input[type=range] { width: 100%; accent-color: var(--destaque); min-height: 30px; }
+.sim-controle output { font-variant-numeric: tabular-nums; text-align: right; font-weight: 700; }
+.sim-escolha { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 10px; font-size: 15px; }
+.sim-escolha .nome, .sim-controle .nome { color: var(--tinta-2); }
+.sim-escolha .nome { min-width: 110px; }
+.sim-escolha button { font: inherit; padding: 7px 12px; border-radius: 8px; border: 1.5px solid var(--linha); background: var(--superficie); color: var(--tinta); cursor: pointer; min-height: 40px; }
+.sim-escolha button:hover:not(:disabled) { border-color: var(--destaque); }
+.sim-escolha button[aria-pressed="true"] { background: var(--destaque-fundo); border-color: var(--destaque); color: var(--tinta); font-weight: 700; }
+.sim-escolha button:disabled { opacity: .5; cursor: default; }
+.sim-leitura { margin-top: 10px; padding: 8px 10px; border-radius: 8px; background: var(--superficie); border: 1px solid var(--linha); font-size: 15px; font-variant-numeric: tabular-nums; }
+.sim-leitura.conta { overflow-wrap: anywhere; }
+.sim-rapida { margin-top: 14px; padding: 12px 14px; border-radius: 10px; border: 1.5px solid var(--destaque); background: var(--destaque-fundo); color: var(--destaque-tinta); }
+.sim-rapida[hidden] { display: none; }
+.sim-rapida p { margin: 0 0 4px; font-weight: 700; }
+.sim-rapida .sim-escolha button { color: #1C1D1B; background: #fff; }
+.sim-acoes { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+.feedback.aviso { background: var(--superficie-2); border-color: var(--tinta-2); }
+@media (max-width: 860px) {
+  .palco { grid-template-columns: minmax(0, 1fr); }
+  .mapa, .etapa { min-width: 0; }
+}
+@media (max-width: 640px) {
+  .sim-svg { min-width: 560px; }
+  .sim-cel { display: block; }
+}
+@media (max-width: 560px) {
+  .sim { padding: 8px; }
+  .sim-escolha .nome { min-width: 100%; }
+  .sim-controle { grid-template-columns: 1fr auto; }
+  .sim-controle input[type=range] { grid-column: 1 / -1; grid-row: 2; }
+}
 </style>
 </head>
 <body>
@@ -255,7 +323,7 @@ button { font: inherit; color: inherit; }
       <circle cx="7" cy="14" r="6" fill="#CF5044"/><path d="M4.5 14h5M7 11.5v5" stroke="#fff" stroke-width="1.8"/>
       <circle cx="21" cy="14" r="6" fill="#29ABCA"/><path d="M18.5 14h5" stroke="#fff" stroke-width="1.8"/>
     </svg>
-    Trilha de Física III
+    Trilha de Física III · Interativa
   </div>
   <nav class="guias" role="tablist" aria-label="Módulos" id="guias"></nav>
   <div class="placar">
@@ -271,8 +339,7 @@ button { font: inherit; color: inherit; }
 
 <script>
 /* =====================================================================
-   CONTEÚDO DA TRILHA
-   Para adicionar um módulo novo, inclua um objeto em MODULOS com etapas.
+   CONTEÚDO DA TRILHA (JOGOS INTERATIVOS + PERGUNTAS POR CENA)
    ===================================================================== */
 const MODULOS = [
   {
@@ -283,6 +350,24 @@ const MODULOS = [
         id: "c01", cena: "CoulombAbertura", titulo: "Atração e repulsão",
         texto: "Há mais de dois mil anos, os gregos perceberam que o âmbar esfregado em lã atraía pedacinhos de palha. Nesta cena, o mesmo efeito aparece com bastões de vidro e de plástico, e a força elétrica mostra que pode atrair ou repelir.",
         perguntas: [
+          {
+            sim: "bastoes", cfg: { m: 0 },
+            q: "Eletrize os dois bastões de vidro com a seda e aproxime o da mão: faça o bastão pendurado se afastar.",
+            exp: "Dois bastões de vidro esfregados com seda ficam com carga de mesmo sinal. Cargas de mesmo sinal se repelem, e o bastão pendurado foge do outro.",
+            dica: "Arraste o pano de seda de um lado para o outro sobre cada bastão, ou use os botões de esfregar. Depois chegue a ponta de um bastão perto da ponta do outro."
+          },
+          {
+            sim: "bastoes", cfg: { m: 1 },
+            q: "Troque o bastão da mão por um de plástico, eletrize-o e faça o bastão pendurado ser atraído.",
+            exp: "Esfregado com seda, o plástico fica com carga de sinal oposto ao do vidro. Cargas de sinais diferentes se atraem.",
+            dica: "Escolha Plástico em \"Bastão da mão\", esfregue-o com a seda e aproxime-o do pendurado, que deve continuar de vidro e carregado."
+          },
+          {
+            sim: "bastoes", cfg: { m: 2 },
+            q: "Monte uma repulsão usando dois bastões de plástico.",
+            exp: "A regra não depende de qual é o sinal: positivos repelem positivos e negativos repelem negativos. Só sinais opostos se atraem.",
+            dica: "Os dois bastões precisam ser de plástico e estar eletrizados. Trocar o material zera a carga: esfregue de novo."
+          },
           { q: "Que fenômeno faz o âmbar atrair a palha depois de ser esfregado na lã?",
             op: [
               ["Eletrização por atrito", true, "Ao esfregar dois materiais, elétrons passam de um para o outro. O âmbar fica com excesso de carga e passa a atrair objetos leves."],
@@ -310,6 +395,24 @@ const MODULOS = [
         id: "c02", cena: "CoulombCondutores", titulo: "Condutores, isolantes e indução",
         texto: "Objetos comuns têm a mesma quantidade de carga positiva e negativa. O que diferencia os materiais é a liberdade dos elétrons para se mover. Observe o que acontece com uma barra de cobre neutra quando um plástico carregado se aproxima.",
         perguntas: [
+          {
+            sim: "inducao", cfg: { m: 0 },
+            q: "Com a barra de cobre, aproxime o bastão negativo da ponta esquerda até essa ponta ficar positiva.",
+            exp: "No cobre, os elétrons de condução são livres e fogem do bastão negativo. A ponta próxima fica com falta de elétrons, portanto positiva, e a barra é atraída mesmo sendo neutra.",
+            dica: "Arraste o bastão roxo até quase encostar na ponta esquerda da barra."
+          },
+          {
+            sim: "inducao", cfg: { m: 1 },
+            q: "Troque a barra para vidro, aproxime o bastão e observe os elétrons. Depois responda à pergunta.",
+            exp: "No vidro, um isolante, os elétrons ficam presos aos seus átomos e não percorrem a barra. É isso que distingue um isolante de um condutor.",
+            dica: "Escolha Vidro em \"Material da barra\" e chegue o bastão bem perto da ponta."
+          },
+          {
+            sim: "inducao", cfg: { m: 2 },
+            q: "Carregue a barra de cobre por indução: aproxime o bastão, ligue o fio terra, desligue o fio e só então afaste o bastão.",
+            exp: "Com o fio ligado, os elétrons repelidos pelo bastão escapam para a terra. Desligando o fio antes de afastar o bastão, eles não podem voltar: a barra fica com falta de elétrons, ou seja, positiva.",
+            dica: "A ordem importa: bastão perto, fio ligado, fio desligado, bastão longe."
+          },
           { q: "Como se chama a separação de cargas na barra de cobre causada pelo plástico, sem que eles se toquem?",
             op: [
               ["Indução eletrostática", true, "A carga do plástico empurra os elétrons livres do cobre para a ponta oposta, sem contato. A barra continua neutra no total, mas com as cargas separadas."],
@@ -344,6 +447,24 @@ const MODULOS = [
         id: "c03", cena: "CoulombBalanca", titulo: "A balança de torção",
         texto: "Em 1785, Coulomb transformou a força elétrica em número. Ele mediu o quanto um fio fino de metal torcia quando duas esferas carregadas se repeliam, e criou um jeito simples de dividir cargas ao meio.",
         perguntas: [
+          {
+            sim: "balanca", cfg: { m: 0 },
+            q: "Arraste a esfera B e aproxime as esferas até a força ficar 4 vezes maior que a inicial.",
+            exp: "A 2,0 cm, metade da distância inicial, a força é quatro vezes maior. Foi assim que Coulomb viu que a força varia com o inverso do quadrado da distância.",
+            dica: "Observe o valor de F/F₀ enquanto arrasta a esfera B."
+          },
+          {
+            sim: "balanca", cfg: { m: 1 },
+            q: "Deixe a esfera B em 4,0 cm e, mudando só as cargas, faça a força ficar 6 vezes maior.",
+            exp: "A força é proporcional ao produto das cargas: 2q × 3q dá um produto 6 vezes maior que q × q.",
+            dica: "Use as barras de carga. O que importa é o produto das duas cargas."
+          },
+          {
+            sim: "balanca", cfg: { m: 2 },
+            q: "Com as cargas iniciais, afaste as esferas até a força cair para um nono da inicial.",
+            exp: "A 12 cm, três vezes a distância inicial, a força cai para 1/3² = 1/9.",
+            dica: "Um nono é 0,111. Qual distância é o triplo de 4,0 cm?"
+          },
           { q: "O que Coulomb lia diretamente na balança de torção?",
             op: [
               ["O ângulo de torção do fio", true, "O torque do fio é proporcional ao ângulo, τ = K d⁴ φ / l. Lendo o ângulo e conhecendo o fio, ele obtinha a força."],
@@ -371,6 +492,24 @@ const MODULOS = [
         id: "c04", cena: "CoulombPropriedades", titulo: "As três propriedades",
         texto: "A força entre duas cargas pontuais cai com o quadrado da distância, aponta ao longo da reta que une as cargas e é proporcional ao produto delas. Fique atento à diferença entre “proporcional” e “crescente”.",
         perguntas: [
+          {
+            sim: "propriedades", cfg: { m: 0 },
+            q: "Arraste q₂ e use \"Medir a força\" para fazer 5 medidas em distâncias diferentes.",
+            exp: "Os pontos mostram que a força cai depressa quando a distância aumenta. Falta descobrir qual lei descreve essa queda.",
+            dica: "Depois de cada medida, arraste q₂ para outra distância e meça de novo."
+          },
+          {
+            sim: "propriedades", cfg: { m: 1 },
+            q: "Estas são as suas medidas. Teste as três curvas e escolha a que passa pelos pontos.",
+            exp: "Só a curva do inverso do quadrado, 1/r², passa por todos os pontos. A força entre cargas cai com o quadrado da distância.",
+            dica: "Clique em cada curva e compare a linha tracejada com os pontos, principalmente nas distâncias grandes."
+          },
+          {
+            sim: "propriedades", cfg: { m: 2 },
+            q: "Deixe q₂ negativa e meça a força de novo, na mesma distância.",
+            exp: "O novo ponto cai no mesmo lugar: o módulo da força é o mesmo. Muda só o sentido, de repulsão para atração, sempre na linha que une as cargas.",
+            dica: "Troque o sinal de q₂ e clique em \"Medir a força\"."
+          },
           { q: "Se a distância entre duas cargas triplica, a força entre elas fica:",
             op: [
               ["9 vezes menor", true, "F é proporcional a 1/r². Com r três vezes maior, F fica dividida por 3² = 9."],
@@ -405,6 +544,24 @@ const MODULOS = [
         id: "c05", cena: "CoulombFormula", titulo: "A fórmula e o sinal das cargas",
         texto: "As três propriedades viram uma equação: F = k q₁q₂ r̂ / r². O vetor unitário r̂ só indica direção, e o sinal do produto q₁q₂ decide se a força é de atração ou de repulsão.",
         perguntas: [
+          {
+            sim: "formula", cfg: { m: 0 },
+            q: "Usando as cargas e a distância, monte uma repulsão de 9,0 N.",
+            exp: "Há muitas soluções. Uma delas: 2,0 μC e 5,0 μC a 10 cm, pois 8,99 × 10⁹ × 2,0 × 10⁻⁶ × 5,0 × 10⁻⁶ / (0,10)² ≈ 9,0 N.",
+            dica: "Acompanhe a conta abaixo da simulação: ela mostra a força a cada mudança."
+          },
+          {
+            sim: "formula", cfg: { m: 1 },
+            q: "Com q₂ na marca de 10 cm, monte uma atração de 3,6 N.",
+            exp: "Com 2,0 μC e −2,0 μC a 10 cm: F = 8,99 × 10⁹ × 4,0 × 10⁻¹² / 0,010 ≈ 3,6 N. O sinal negativo do produto das cargas indica atração; o módulo usa os valores absolutos.",
+            dica: "Na atração, as cargas têm sinais opostos. A fórmula usa os módulos das cargas."
+          },
+          {
+            sim: "formula", cfg: { m: 2 },
+            q: "As cargas valem 4,0 μC cada, a 5 cm. Sem mexer nelas, leve a força a um quarto do valor inicial.",
+            exp: "Dobrar a distância, de 5 cm para 10 cm, divide a força por 2² = 4.",
+            dica: "Só a distância pode mudar. Como a força depende de r?"
+          },
           { q: "Se o produto q₁q₂ é negativo, a força sobre q₁:",
             op: [
               ["Aponta para q₂: é atração", true, "Com produto negativo, a força tem sentido oposto a r̂, que aponta de q₂ para q₁. Ou seja, q₁ é puxada em direção a q₂."],
@@ -439,6 +596,24 @@ const MODULOS = [
         id: "c06", cena: "CoulombVetorial", titulo: "A forma vetorial",
         texto: "Para não depender do desenho, a força pode ser escrita com vetores posição: F = k q₁q₂ (r₁ − r₂) / |r₁ − r₂|³. Repare no expoente 3 do denominador.",
         perguntas: [
+          {
+            sim: "vetorial", cfg: { m: 0 },
+            q: "Com as duas cargas positivas, arraste q₂ até a força sobre ela apontar a 45°, para cima e para a direita.",
+            exp: "Na repulsão, a força sobre q₂ aponta para longe de q₁, na direção do vetor unitário que vai de q₁ a q₂. Com q₂ na diagonal, a força fica a 45°.",
+            dica: "A seta amarela em q₂ segue a linha tracejada que vem de q₁."
+          },
+          {
+            sim: "vetorial", cfg: { m: 1 },
+            q: "Deixe q₂ negativa e posicione-a de modo que a força sobre ela aponte para baixo.",
+            exp: "Na atração, a força sobre q₂ aponta para q₁. Para apontar para baixo, q₂ precisa estar exatamente acima de q₁.",
+            dica: "Com sinais opostos, a seta em q₂ aponta para q₁."
+          },
+          {
+            sim: "vetorial", cfg: { m: 2 },
+            q: "Aumente q₁ até 4q e compare as setas amarelas nas duas cargas. Depois responda à pergunta.",
+            exp: "As forças formam um par de ação e reação: têm sempre o mesmo módulo e sentidos opostos, mesmo quando uma carga é maior que a outra.",
+            dica: "Arraste a barra \"Carga q₁\" até o máximo."
+          },
           { q: "O vetor r₁ − r₂ aponta:",
             op: [
               ["Da carga 2 para a carga 1", true, "Subtrair r₂ de r₁ dá o deslocamento que leva da posição da carga 2 até a posição da carga 1."],
@@ -466,6 +641,24 @@ const MODULOS = [
         id: "c07", cena: "CoulombNucleo", titulo: "Gravidade versus eletricidade",
         texto: "A lei de Coulomb tem a mesma forma da gravitação de Newton, mas a intensidade é muito diferente. A cena compara as duas forças entre dois prótons dentro de um núcleo de ferro.",
         perguntas: [
+          {
+            sim: "nucleo", cfg: { m: 0 },
+            q: "Arraste a barra de distância por toda a faixa, olhando o valor da razão Fe/Fg. Depois responda à pergunta.",
+            exp: "As duas forças caem com o quadrado da distância, então a razão entre elas é sempre a mesma. Para um elétron e um próton, a força elétrica é cerca de 10³⁹ vezes maior.",
+            dica: "Percorra uma faixa grande de distâncias para a pergunta aparecer."
+          },
+          {
+            sim: "nucleo", cfg: { m: 1 },
+            q: "Descubra qual par de partículas tem a MENOR razão Fe/Fg e deixe esse par selecionado.",
+            exp: "Os prótons têm a maior massa, então a gravidade entre eles é a maior. Mesmo assim, a força elétrica ainda vence por um fator de cerca de 10³⁶.",
+            dica: "Troque o par e compare os números da razão."
+          },
+          {
+            sim: "nucleo", cfg: { m: 2 },
+            q: "Dois prótons no núcleo de ferro: ajuste a distância até a repulsão elétrica entre eles valer 14 N.",
+            exp: "Isso acontece a cerca de 4 × 10⁻¹⁵ m, a distância entre prótons no núcleo de ferro. São 14 N numa única partícula; a gravidade, de cerca de 10⁻³⁵ N, não consegue segurar o núcleo. Quem segura é a força nuclear forte.",
+            dica: "A força elétrica aparece acima da barra amarela."
+          },
           { q: "Qual é a diferença essencial entre a força gravitacional e a força elétrica?",
             op: [
               ["A gravidade só atrai; a força elétrica atrai ou repele", true, "Existe só um tipo de massa, mas dois tipos de carga. Por isso a força elétrica pode ter os dois sentidos."],
@@ -493,6 +686,24 @@ const MODULOS = [
         id: "c08", cena: "CoulombSuperposicao", titulo: "Superposição",
         texto: "Com várias cargas, a força total é a soma vetorial das forças exercidas por cada uma: F₁,tot = F₁₂ + F₁₃ + … A cena resolve o Exemplo 21.01 do Halliday em três arranjos.",
         perguntas: [
+          {
+            sim: "superposicao", cfg: { m: 0 },
+            q: "As duas cargas fixas são iguais. Arraste q₃ até um ponto em que a força resultante sobre ela seja zero.",
+            exp: "No ponto médio, as duas forças têm o mesmo módulo e sentidos opostos, e a soma vetorial é zero.",
+            dica: "As setas azuis são as forças de cada carga; a amarela é a soma."
+          },
+          {
+            sim: "superposicao", cfg: { m: 1 },
+            q: "Agora as cargas fixas são +4q e +q. Encontre o novo ponto de força zero.",
+            exp: "A carga quatro vezes maior precisa estar duas vezes mais longe: 4/(2d)² = 1/d². O ponto fica a 2/3 do caminho, mais perto da carga menor.",
+            dica: "O ponto fica sobre a linha entre as cargas, mais perto da menor."
+          },
+          {
+            sim: "superposicao", cfg: { m: 2 },
+            q: "Com cargas opostas, +2q e −2q, coloque q₃ onde a força resultante aponte exatamente para a direita.",
+            exp: "Na mediatriz, os componentes verticais das duas forças se cancelam e os horizontais se somam: a resultante aponta da carga positiva para a negativa.",
+            dica: "Experimente pontos à mesma distância das duas cargas."
+          },
           { q: "Qual princípio permite calcular a força de cada carga separadamente e depois somar?",
             op: [
               ["Princípio da superposição", true, "A força que uma carga exerce não é alterada pela presença das outras. A força total é a soma vetorial das forças individuais."],
@@ -520,6 +731,24 @@ const MODULOS = [
         id: "c09", cena: "CoulombExemplo3D", titulo: "Um exemplo no espaço",
         texto: "Uma carga q = −1 μC fica em (a, a/2), atraída por q₁ = +1 μC em (a, 0) e por q₂ ≈ 11,18 μC na origem, com a = 1 cm. A força total passa de mil newtons.",
         perguntas: [
+          {
+            sim: "espaco3d", cfg: { m: 0 },
+            q: "Gire a cena para ver as forças de vários ângulos. Depois ajuste as cargas até F₁ e F₂ terem o mesmo módulo.",
+            exp: "As duas forças são perpendiculares. Com módulos iguais, a resultante fica a 45° entre os eixos x e z, e vale √2 vezes cada uma.",
+            dica: "As duas cargas estão à mesma distância de q."
+          },
+          {
+            sim: "espaco3d", cfg: { m: 1 },
+            q: "Ajuste as cargas para F₁ = 3,0 N e F₂ = 4,0 N e leia o módulo da resultante.",
+            exp: "As forças se somam componente a componente. Como são perpendiculares, o módulo vem de Pitágoras: √(3,0² + 4,0²) = 5,0 N, e não 7,0 N.",
+            dica: "A 10 cm, cada 1 μC produz cerca de 0,90 N."
+          },
+          {
+            sim: "espaco3d", cfg: { m: 2 },
+            q: "Sem mudar as cargas, leve q₂ para o dobro da distância e veja o que acontece com F₂.",
+            exp: "F₂ cai de 4,0 N para 1,0 N, um quarto. Só o componente z da resultante mudou; F₁, no eixo x, continuou igual.",
+            dica: "Use a barra \"Distância de q₂\"."
+          },
           { q: "|F₁| = 360 N e |F₂| = 805 N, mas |F₁ + F₂| ≈ 1018 N, e não 1165 N. Por quê?",
             op: [
               ["As forças têm direções diferentes, e o módulo de uma soma não é a soma dos módulos", true, "O módulo não é uma função linear. Para vetores em direções diferentes, |a + b| é menor que |a| + |b|."],
@@ -547,6 +776,24 @@ const MODULOS = [
         id: "c10", cena: "CoulombEquilibrio", titulo: "Equilíbrio de um próton",
         texto: "Duas cargas estão fixas: +8q na origem e −2q em x = L. Onde um próton pode ficar parado, sem força resultante? A cena resolve o Exemplo 21.02 do Halliday.",
         perguntas: [
+          {
+            sim: "equilibrio", cfg: { m: 0 },
+            q: "Arraste o próton pelo eixo e encontre o ponto em que a força resultante sobre ele é zero.",
+            exp: "Em x = 2L, a repulsão de +8q e a atração de −2q têm o mesmo módulo: 8/(2L)² = 2/L². Entre as cargas, as duas forças apontam para o mesmo lado e nunca se cancelam.",
+            dica: "O gráfico mostra a resultante em cada posição: procure onde a curva cruza o zero."
+          },
+          {
+            sim: "equilibrio", cfg: { m: 1 },
+            q: "O próton está em x = 2L. Arraste-o um pouquinho para o lado, clique em \"Soltar o próton\" e observe. Depois responda.",
+            exp: "Qualquer desvio faz a resultante empurrar o próton para ainda mais longe do ponto de equilíbrio. Ele nunca volta: o equilíbrio é instável.",
+            dica: "Desloque o próton um pouco para a direita ou para a esquerda antes de soltar."
+          },
+          {
+            sim: "equilibrio", cfg: { m: 2 },
+            q: "Novas cargas: +q na origem e +4q em x = L. Onde o próton fica em equilíbrio?",
+            exp: "Entre duas cargas de mesmo sinal, as forças são opostas. Elas se igualam em x = L/3: 1/x² = 4/(L − x)², ou seja, L − x = 2x. O ponto fica mais perto da carga menor.",
+            dica: "O ponto fica entre as cargas."
+          },
           { q: "Em que ponto do eixo x o próton fica em equilíbrio?",
             op: [
               ["Em x = 2L", true, "À direita de −2q as forças têm sentidos opostos. Igualando 8q/x² = 2q/(x − L)², obtém-se x = 2L."],
@@ -573,6 +820,24 @@ const MODULOS = [
         id: "c11", cena: "CoulombCascas", titulo: "Cascas e esferas condutoras",
         texto: "Uma casca esférica com carga uniforme se comporta de um jeito surpreendente, por fora e por dentro. Depois, duas esferas condutoras iguais dividem a carga, e uma delas é ligada à terra.",
         perguntas: [
+          {
+            sim: "esferas", cfg: { m: 0 },
+            q: "Arraste a carga de prova até um lugar onde a casca carregada não exerça nenhuma força sobre ela.",
+            exp: "Em qualquer ponto dentro de uma casca uniforme, as forças de todas as partes da casca se cancelam. Do lado de fora, a casca age como se toda a carga estivesse no centro.",
+            dica: "Observe a seta amarela enquanto move a carga, inclusive para dentro da casca."
+          },
+          {
+            sim: "esferas", cfg: { m: 1 },
+            q: "A esfera A tem carga Q; B e C estão neutras. Arraste A até encostar em B.",
+            exp: "Esferas condutoras iguais que se tocam dividem a carga total em partes iguais: cada uma fica com Q/2.",
+            dica: "Arraste a esfera A para cima da esfera B."
+          },
+          {
+            sim: "esferas", cfg: { m: 2 },
+            q: "Usando contatos entre as esferas, deixe a esfera C com carga Q/4.",
+            exp: "Dois contatos resolvem: A com B deixa Q/2 em cada; depois B (ou A) com C divide Q/2 em duas partes de Q/4. A soma das cargas continua Q: a carga se conserva.",
+            dica: "Cada contato divide igualmente a carga das duas esferas que se tocam."
+          },
           { q: "Uma partícula carregada está dentro de uma casca esférica com carga uniforme. Que força a casca exerce sobre ela?",
             op: [
               ["Nenhuma", true, "Segundo teorema das cascas: as forças de todas as partes da casca se cancelam em qualquer ponto interno."],
@@ -607,6 +872,24 @@ const MODULOS = [
         id: "c12", cena: "CoulombQuantizacao", titulo: "Carga quantizada e conservada",
         texto: "Toda carga é um múltiplo inteiro da carga elementar, e ≈ 1,602 × 10⁻¹⁹ C. E em qualquer processo, do decaimento radioativo à criação de partículas, a carga total se conserva.",
         perguntas: [
+          {
+            sim: "quantizacao", cfg: { m: 0 },
+            q: "Coloque ou retire elétrons até a esfera ficar com carga de −4,8 × 10⁻¹⁹ C.",
+            exp: "−4,8 × 10⁻¹⁹ C é −3e: três elétrons a mais que prótons. Toda carga é um número inteiro de vezes a carga elementar e ≈ 1,6 × 10⁻¹⁹ C.",
+            dica: "Carga negativa significa elétrons a mais."
+          },
+          {
+            sim: "quantizacao", cfg: { m: 1 },
+            q: "Tente deixar a esfera com carga de exatamente +3,57e. Mexa nos elétrons e depois responda à pergunta.",
+            exp: "A carga só muda em passos de e, um elétron por vez: +3e e +4e existem, +3,57e não. A carga elétrica é quantizada.",
+            dica: "Retire elétrons um a um e veja por quais valores a carga passa."
+          },
+          {
+            sim: "quantizacao", cfg: { m: 2 },
+            q: "O vidro e a seda estão neutros. Arraste 4 elétrons do bastão de vidro para o pano de seda e confira a soma das cargas.",
+            exp: "O vidro ficou com +4e e a seda com −4e. Esfregar não cria carga, só transfere elétrons: a soma continua zero. A carga se conserva.",
+            dica: "Arraste as bolinhas azuis para dentro do pano. No teclado, selecione um elétron e pressione Enter."
+          },
           { q: "Qual destas cargas um objeto pode ter?",
             op: [
               ["3,2 × 10⁻¹⁹ C", true, "3,2 × 10⁻¹⁹ C = 2e, um múltiplo inteiro da carga elementar."],
@@ -634,6 +917,24 @@ const MODULOS = [
         id: "c13", cena: "CoulombFechamento", titulo: "Revisão e ponte para Gauss",
         texto: "Uma revisão da lei de Coulomb e a pergunta que abre o próximo capítulo: o que fazer quando são milhões de cargas, como num fio?",
         perguntas: [
+          {
+            sim: "fio", cfg: { m: 0 },
+            q: "Arraste o ponto P até um lugar em que a força sobre uma carga de prova seja exatamente perpendicular ao fio.",
+            exp: "Acima do centro do fio, cada carga da esquerda tem uma parceira à direita. Os componentes paralelos ao fio se cancelam aos pares, e sobra só o perpendicular.",
+            dica: "Procure o ponto de maior simetria."
+          },
+          {
+            sim: "fio", cfg: { m: 1 },
+            q: "Leve P para perto de uma das pontas do fio até a força ficar inclinada mais de 20°.",
+            exp: "Perto da ponta, falta a carga parceira do outro lado, e os componentes paralelos não se cancelam mais. É o efeito de borda.",
+            dica: "Leve P para além da última carga e perto do fio."
+          },
+          {
+            sim: "fio", cfg: { m: 2 },
+            q: "O ponto P agora está fixo, fora do centro. Aumente o número de cargas até a inclinação ficar abaixo de 3°.",
+            exp: "Com o fio comprido, as pontas ficam longe de P e quase não contam: a força volta a ser praticamente perpendicular. É a ideia do fio infinito, que a Lei de Gauss resolve em poucas linhas.",
+            dica: "Use a barra \"Número de cargas\"."
+          },
           { q: "Qual afirmação resume a lei de Coulomb para cargas pontuais em repouso?",
             op: [
               ["A força é proporcional a q₁q₂, cai com 1/r² e aponta ao longo da reta entre as cargas", true, "Essas são as três propriedades vistas na trilha, reunidas em F = k q₁q₂ r̂ / r²."],
@@ -1349,20 +1650,22 @@ const MODULOS = [
     ]
   },
   {
-    id: "potencial", titulo: "Potencial elétrico", emBreve: true,
-    descricao: "Em breve.",
+    id: "potencial",
+    titulo: "Potencial elétrico",
+    emBreve: true,
+    descricao: "Os conteúdos e laboratórios desta guia estão em preparação.",
     previstas: []
   }
 ];
 
 /* =====================================================================
-   ESTADO, PERSISTÊNCIA E CAPACIDADES
+   ESTADO E PERSISTÊNCIA
    ===================================================================== */
-const CHAVE_LOCAL = "trilha-fisica3-progresso-v1";
+const CHAVE_LOCAL = "trilha-fisica3-completa-v1";
 const PONTOS = [10, 6, 3];          // XP por acertar na 1ª, 2ª e 3ª tentativa ou depois
 let progresso = carregarLocal();   // { etapas: { c01: { resp: [{t, ok}], fim: bool } }, atualizado }
-let refProgresso = null;           // na versão do GitHub o progresso fica no navegador
-let ui = { modulo: "coulomb", etapa: null, q: null, ultimaErrada: null, revisao: false };
+let refProgresso = null;
+let ui = { modulo: "coulomb", etapa: null, q: null, ultimaErrada: null, revisao: false, explorar: false };
 
 function carregarLocal() {
   try {
@@ -1392,14 +1695,12 @@ async function gravarDb() {
 const $ = (s, r = document) => r.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 function modulo(id) { return MODULOS.find(m => m.id === id); }
-function etapasDe(m) { return m.etapas || []; }
 function estadoEtapa(id) {
   if (!progresso.etapas[id]) progresso.etapas[id] = { resp: [], fim: false };
   return progresso.etapas[id];
 }
 function hash(s) { let h = 2166136261; for (const c of s) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return h >>> 0; }
 function ordemOpcoes(etapaId, qi, n) {
-  // embaralha de forma estável: a mesma pergunta sempre mostra a mesma ordem
   const idx = [...Array(n).keys()];
   let s = hash(etapaId + ":" + qi);
   for (let i = n - 1; i > 0; i--) { s = (Math.imul(s, 1103515245) + 12345) >>> 0; const j = s % (i + 1); [idx[i], idx[j]] = [idx[j], idx[i]]; }
@@ -1416,18 +1717,18 @@ function estrelas(id) {
   return erros === 0 ? 3 : erros <= 2 ? 2 : 1;
 }
 function liberada(m, i) {
-  return true;   // todas as etapas abertas: o aluno pode estudar em qualquer ordem
+  return true; // todas as etapas abertas para estudo livre
 }
 function proximaAberta(e, depois = -1) {
   const st = estadoEtapa(e.id);
   const i = e.perguntas.findIndex((_, k) => k > depois && !(st.resp[k] && st.resp[k].ok));
   if (i !== -1) return i;
   const j = e.perguntas.findIndex((_, k) => !(st.resp[k] && st.resp[k].ok));
-  return j === -1 ? e.perguntas.length - 1 : j;
+  return j === -1 ? 0 : j;
 }
 function etapaAtualIndex(m) {
   const i = m.etapas.findIndex(e => !(progresso.etapas[e.id] || {}).fim);
-  return i === -1 ? m.etapas.length - 1 : i;
+  return i === -1 ? 0 : i;
 }
 
 /* =====================================================================
@@ -1451,7 +1752,6 @@ function renderMapa(m) {
   const xs = m.etapas.map((_, i) => 34 + 18 * Math.sin(i * 0.95));
   const ys = m.etapas.map((_, i) => topo + i * passo);
   const altura = topo + (n - 1) * passo + 64;
-  // linha de campo: da carga + (topo) até a carga − (base), passando pelas etapas
   const pts = [[34, 28], ...xs.map((x, i) => [x, ys[i]]), [34, altura - 28]];
   let d = `M ${pts[0][0]} ${pts[0][1]}`;
   for (let i = 1; i < pts.length; i++) {
@@ -1473,7 +1773,7 @@ function renderMapa(m) {
     const lib = liberada(m, i);
     const cls = [st.fim ? "feito" : "", i === atual && !st.fim ? "atual" : "", ui.etapa === i ? "aberta" : ""].join(" ");
     const est = st.fim ? "★".repeat(estrelas(e.id)) + "☆".repeat(3 - estrelas(e.id)) : "";
-    const rot = `Etapa ${i + 1}: ${e.titulo}${st.fim ? ", concluída" : lib ? "" : ", bloqueada"}`;
+    const rot = `Etapa ${i + 1}: ${e.titulo}${st.fim ? ", concluída" : ""}`;
     return `<button class="no ${cls}" type="button" data-etapa="${i}" ${lib ? "" : "disabled"} aria-label="${esc(rot)}"
       style="left:${xs[i] - 16}px; top:${ys[i] - 16}px">
       <span class="bola">${st.fim ? "✓" : i + 1}</span>
@@ -1509,7 +1809,7 @@ function renderVideo(m, e) {
       <div class="vazio" hidden><div>
         <p><strong>O vídeo desta cena ainda não foi adicionado.</strong></p>
         <p>Coloque o arquivo em <code>${esc(caminho)}</code></p>
-        <p>Você já pode responder às perguntas.</p>
+        <p>Você já pode explorar as simulações e responder às perguntas.</p>
       </div></div>
     </div>`;
 }
@@ -1520,20 +1820,50 @@ function ligarVideo() {
   if (v.error) falhou(); else v.addEventListener("error", falhou, { once: true });
 }
 
+function renderPontos(e, qAtual, st) {
+  const total = e.perguntas.length;
+  return e.perguntas.map((item, i) => {
+    const ri = st.resp[i];
+    const tipo = item.sim ? "Jogo interativo" : "Pergunta";
+    const status = ri && ri.ok ? " (concluída)" : i === qAtual ? " (atual)" : "";
+    const cls = ["ponto", item.sim ? "sim" : "", ri && ri.ok ? "ok" : "", i === qAtual ? "agora" : ""].filter(Boolean).join(" ");
+    return `<button type="button" class="${cls}" data-ir-q="${i}" aria-label="${tipo} ${i + 1} de ${total}${status}" title="${tipo} ${i + 1} de ${total}${status}"></button>`;
+  }).join("");
+}
+
+function renderRodapeQuiz(e, qAtual, st) {
+  const total = e.perguntas.length;
+  const r = st.resp[qAtual] || {};
+  const todasOk = e.perguntas.every((_, i) => st.resp[i] && st.resp[i].ok);
+  const pendente = e.perguntas.findIndex((_, i) => !(st.resp[i] && st.resp[i].ok));
+  const prevBtn = `<button class="botao sec" type="button" data-acao="anterior" ${qAtual === 0 ? "disabled" : ""}>← Anterior</button>`;
+  let nextBtn = "";
+  if (qAtual < total - 1) {
+    const cls = r.ok ? "botao" : "botao sec";
+    nextBtn = `<button class="${cls}" type="button" data-acao="proxima">Próxima →</button>`;
+  } else if (st.fim && !ui.explorar) {
+    nextBtn = `<button class="botao" type="button" data-acao="fechar-revisao">Ver resumo</button>`;
+  } else if (todasOk) {
+    nextBtn = `<button class="botao" type="button" data-acao="concluir">Concluir etapa</button>`;
+  } else if (pendente !== -1) {
+    nextBtn = `<button class="botao sec" type="button" data-ir-q="${pendente}">Ir para pendente (${pendente + 1})</button>`;
+  }
+  return `<div class="rodape-quiz">${prevBtn}${nextBtn}</div>`;
+}
+
 function renderPergunta(m, e, ei) {
   const st = estadoEtapa(e.id);
   const total = e.perguntas.length;
-  if (st.fim && !ui.revisao) return renderConclusao(m, e, ei);
+  if (st.fim && !ui.revisao && !ui.explorar) return renderConclusao(m, e, ei);
   if (st.fim && ui.revisao) return renderRevisao(e);
   const qAtual = ui.q ?? proximaAberta(e);
+  ui.q = qAtual;
   const p = e.perguntas[qAtual];
+  if (p.sim) return renderMissao(e, qAtual, st);
   const r = st.resp[qAtual] || { t: 0, ok: false, erradas: [] };
   const ordem = ordemOpcoes(e.id, qAtual, p.op.length);
   const letras = "ABCDE";
-  const pontos = e.perguntas.map((_, i) => {
-    const ri = st.resp[i];
-    return `<i class="${ri && ri.ok ? "ok" : i === qAtual ? "agora" : ""}"></i>`;
-  }).join("");
+  const pontos = renderPontos(e, qAtual, st);
   const opcoes = ordem.map((oi, pos) => {
     const [txt, certa] = p.op[oi];
     let cls = "";
@@ -1553,22 +1883,23 @@ function renderPergunta(m, e, ei) {
     fb = `<div class="feedback erro"><strong>Ainda não. Por que “${esc(o[0])}” está errada:</strong><p>${esc(o[2])}</p>
       <p class="tente">Escolha outra alternativa.</p></div>`;
   }
-  const ultima = qAtual === total - 1;
-  const proxima = r.ok ? `<div class="rodape-quiz"><button class="botao" type="button" data-acao="${ultima ? "concluir" : "proxima"}">
-      ${ultima ? "Concluir etapa" : "Próxima pergunta"}</button></div>` : "";
+  const resumoLink = st.fim ? `<button class="link" type="button" data-acao="fechar-revisao">Voltar ao resumo</button>` : "";
   return `<section class="quiz" aria-labelledby="enunciado">
-      <div class="quiz-cab"><span>Pergunta ${qAtual + 1} de ${total}</span><span class="pontos" aria-hidden="true">${pontos}</span></div>
-      <h2 class="enunciado" id="enunciado">${esc(p.q)}</h2>
+      <div class="quiz-cab">
+        <div class="quiz-cab-esq"><span>Atividade ${qAtual + 1} de ${total}</span><span class="tag-tipo">Pergunta</span>${resumoLink}</div>
+        <div class="pontos" role="group" aria-label="Navegar entre atividades da cena">${pontos}</div>
+      </div>
+      <h2 class="enunciado" id="enunciado" tabindex="-1">${esc(p.q)}</h2>
       <div class="opcoes" role="group" aria-label="Alternativas">${opcoes}</div>
       <div aria-live="polite">${fb}</div>
-      ${proxima}
+      ${renderRodapeQuiz(e, qAtual, st)}
     </section>`;
 }
 
 function renderConclusao(m, e, ei) {
   const n = estrelas(e.id), xp = xpDaEtapa(e.id);
   const prox = m.etapas[ei + 1];
-  const frase = n === 3 ? "Todas as respostas certas de primeira." : n === 2 ? "Quase perfeito: poucos erros pelo caminho." : "Etapa vencida. Revise as explicações para fixar.";
+  const frase = n === 3 ? "Todas as atividades cumpridas de primeira." : n === 2 ? "Quase perfeito: poucos erros pelo caminho." : "Etapa vencida. Revise as explicações para fixar.";
   const botaoProx = prox
     ? `<button class="botao" type="button" data-acao="ir" data-alvo="${ei + 1}">Ir para a etapa ${ei + 2}: ${esc(prox.titulo)}</button>`
     : "";
@@ -1580,7 +1911,8 @@ function renderConclusao(m, e, ei) {
       <p>${frase}</p>
       ${fimModulo}
       <div class="acoes">${botaoProx}
-        <button class="botao sec" type="button" data-acao="revisar">Rever respostas</button>
+        <button class="botao sec" type="button" data-acao="explorar">Voltar às atividades</button>
+        <button class="botao sec" type="button" data-acao="revisar">Rever explicações</button>
         <button class="botao sec" type="button" data-acao="refazer">Refazer a etapa</button>
       </div>
     </section>`;
@@ -1588,10 +1920,11 @@ function renderConclusao(m, e, ei) {
 
 function renderRevisao(e) {
   const itens = e.perguntas.map((p, i) => {
+    if (p.sim) return `<article><h3>${i + 1}. [Jogo interativo] ${esc(p.q)}</h3><p>${esc(p.exp)}</p></article>`;
     const c = p.op.find(o => o[1]);
     return `<article><h3>${i + 1}. ${esc(p.q)}</h3><p class="resp">${esc(c[0])}</p><p>${esc(c[2])}</p></article>`;
   }).join("");
-  return `<section class="quiz"><div class="quiz-cab"><span>Revisão das respostas</span>
+  return `<section class="quiz"><div class="quiz-cab"><span>Revisão das atividades</span>
       <button class="link" type="button" data-acao="fechar-revisao">Voltar ao resumo</button></div>
       <div class="revisao">${itens}</div></section>`;
 }
@@ -1626,15 +1959,1116 @@ function render() {
   if (ui.etapa == null) ui.etapa = etapaAtualIndex(m);
   $("#palco").innerHTML = renderMapa(m) + renderEtapa(m);
   ligarVideo();
+  montarSim();
 }
 function renderQuiz() {
   const m = modulo(ui.modulo), e = m.etapas[ui.etapa];
   $("#quiz").innerHTML = renderPergunta(m, e, ui.etapa);
   $("#xp").textContent = xpTotal();
+  montarSim();
 }
 
 /* =====================================================================
-   INTERAÇÃO
+   LABORATÓRIOS INTERATIVOS — kit comum
+   ===================================================================== */
+const NS = "http://www.w3.org/2000/svg";
+const K_COULOMB = 8.99e9, CARGA_E = 1.602e-19;
+const COR = { pos: "#CF5044", neg: "#1F93B5", forca: "#D99A00", campo: "#2E86C1", cinza: "#8C948A" };
+const SIMS = {};
+const lim = (v, a, b) => Math.max(a, Math.min(b, v));
+
+function S(tag, at, pai) {
+  const el = document.createElementNS(NS, tag);
+  for (const k in (at || {})) el.setAttribute(k, at[k]);
+  if (pai) pai.appendChild(el);
+  return el;
+}
+function H(tag, cls, pai, txt) {
+  const el = document.createElement(tag);
+  if (cls) el.className = cls;
+  if (txt != null) el.textContent = txt;
+  if (pai) pai.appendChild(el);
+  return el;
+}
+function criarPalco(root, alt = 340) {
+  const svg = S("svg", { viewBox: `0 0 640 ${alt}`, class: "sim-svg", role: "group", "aria-label": "Simulação interativa" }, H("div", "sim-palco", root));
+  const defs = S("defs", {}, svg);
+  for (const id in COR) {
+    const mk = S("marker", { id: "p-" + id, viewBox: "0 0 10 10", refX: 7, refY: 5, markerWidth: 4.5, markerHeight: 4.5, orient: "auto-start-reverse" }, defs);
+    S("path", { d: "M0 0 L10 5 L0 10 z", fill: COR[id] }, mk);
+  }
+  return svg;
+}
+function pontoSvg(svg, ev) {
+  if (svg.createSVGPoint && svg.getScreenCTM && svg.getScreenCTM()) {
+    const p = svg.createSVGPoint(); p.x = ev.clientX; p.y = ev.clientY;
+    const q = p.matrixTransform(svg.getScreenCTM().inverse());
+    return { x: q.x, y: q.y };
+  }
+  const r = svg.getBoundingClientRect(), vb = svg.getAttribute("viewBox").split(" ").map(Number);
+  return { x: (ev.clientX - r.left) * vb[2] / (r.width || vb[2]), y: (ev.clientY - r.top) * vb[3] / (r.height || vb[3]) };
+}
+function arrastavel(el, svg, pos, mover, soltar) {
+  el.classList.add("pega");
+  el.setAttribute("tabindex", "0");
+  let ativo = false, dx = 0, dy = 0;
+  el.addEventListener("pointerdown", ev => {
+    ativo = true;
+    const p = pontoSvg(svg, ev), a = pos();
+    dx = a.x - p.x; dy = a.y - p.y;
+    try { el.setPointerCapture(ev.pointerId); } catch (_) { /* sem captura */ }
+    ev.preventDefault();
+  });
+  el.addEventListener("pointermove", ev => { if (ativo) { const p = pontoSvg(svg, ev); mover({ x: p.x + dx, y: p.y + dy }); } });
+  const fim = () => { if (ativo) { ativo = false; if (soltar) soltar(); } };
+  el.addEventListener("touchstart", ev => ev.preventDefault(), { passive: false });
+  el.addEventListener("touchmove", ev => ev.preventDefault(), { passive: false });
+  el.addEventListener("pointerup", fim);
+  el.addEventListener("pointercancel", fim);
+  el.addEventListener("keydown", ev => {
+    const d = { ArrowLeft: [-6, 0], ArrowRight: [6, 0], ArrowUp: [0, -6], ArrowDown: [0, 6] }[ev.key];
+    if (!d) return;
+    ev.preventDefault();
+    const a = pos();
+    mover({ x: a.x + d[0] * (ev.shiftKey ? 0.2 : 1), y: a.y + d[1] * (ev.shiftKey ? 0.2 : 1) });
+    if (soltar) soltar();
+  });
+}
+function criarSeta(pai, cor = "forca", larg = 4) {
+  const ln = S("line", { stroke: COR[cor], "stroke-width": larg, "stroke-linecap": "round", "marker-end": `url(#p-${cor})` }, pai);
+  return {
+    el: ln,
+    pos(x1, y1, x2, y2) {
+      ln.style.display = Math.hypot(x2 - x1, y2 - y1) < 3 ? "none" : "";
+      ln.setAttribute("x1", x1); ln.setAttribute("y1", y1); ln.setAttribute("x2", x2); ln.setAttribute("y2", y2);
+    }
+  };
+}
+function criarCarga(pai, r = 16, sinal = 1, rot = "") {
+  const g = S("g", {}, pai);
+  const c = S("circle", { r, stroke: "#fff", "stroke-width": 1.5 }, g);
+  const t = S("text", { "text-anchor": "middle", dy: "0.35em", class: "sim-sinal", "font-size": Math.round(r * 1.3) }, g);
+  const lb = S("text", { "text-anchor": "middle", y: -r - 7, class: "sim-txt" }, g);
+  lb.textContent = rot;
+  const o = {
+    g, x: 0, y: 0,
+    sinal(s) { c.setAttribute("fill", s > 0 ? COR.pos : s < 0 ? COR.neg : COR.cinza); t.textContent = s > 0 ? "+" : s < 0 ? "−" : ""; },
+    em(x, y) { o.x = x; o.y = y; g.setAttribute("transform", `translate(${x},${y})`); },
+    raio(v) { c.setAttribute("r", v); },
+    rotulo(s) { lb.textContent = s; }
+  };
+  o.sinal(sinal);
+  return o;
+}
+function texto(pai, x, y, s, cls = "sim-txt", anc = "start") {
+  const t = S("text", { x, y, class: cls, "text-anchor": anc }, pai);
+  t.textContent = s;
+  return t;
+}
+function controle(root, cfg) {
+  const linha = H("label", "sim-controle", root);
+  H("span", "nome", linha, cfg.rot);
+  const inp = H("input", "", linha);
+  inp.type = "range"; inp.min = cfg.min; inp.max = cfg.max; inp.step = cfg.passo; inp.value = cfg.valor;
+  const val = H("output", "", linha);
+  const fmt = cfg.fmt || (v => String(v));
+  const up = () => { val.textContent = fmt(+inp.value); };
+  inp.addEventListener("input", () => { up(); cfg.ao(+inp.value); });
+  up();
+  return { get v() { return +inp.value; }, set(v) { inp.value = v; up(); }, el: linha, inp };
+}
+function escolha(root, rot, ops, atual, ao) {
+  const linha = H("div", "sim-escolha", root);
+  if (rot) H("span", "nome", linha, rot);
+  const bs = {};
+  let cur = atual;
+  const def = id => { cur = id; for (const k in bs) bs[k].setAttribute("aria-pressed", k === String(id) ? "true" : "false"); };
+  for (const [id, txt] of ops) {
+    const b = H("button", "", linha, txt);
+    b.type = "button"; b.dataset.sim = "op";
+    bs[id] = b;
+    b.addEventListener("click", () => { def(id); ao(id); });
+  }
+  def(atual);
+  return { get v() { return cur; }, set: def, el: linha, botoes: bs };
+}
+function botaoSim(pai, txt, ao, cls = "botao sec") {
+  const b = H("button", cls, pai, txt);
+  b.type = "button"; b.dataset.sim = "acao";
+  b.addEventListener("click", ao);
+  return b;
+}
+function botaoVerificar(api, testar) {
+  const b = botaoSim(api.acoes, "Verificar", () => { const r = testar(); if (r === true) api.ok(); else api.errar(r); }, "botao");
+  b.dataset.sim = "verificar";
+  return b;
+}
+function perguntaRapida(api, pergunta, ops) {
+  const cx = H("div", "sim-rapida", api.extra);
+  cx.hidden = true;
+  H("p", "", cx, pergunta);
+  const linha = H("div", "sim-escolha", cx);
+  for (const [txt, certa, dica] of ops) {
+    const b = H("button", "", linha, txt);
+    b.type = "button"; b.dataset.sim = "rapida"; b._certa = !!certa;
+    b.addEventListener("click", () => { if (certa) api.ok(); else { b.disabled = true; api.errar(dica); } });
+  }
+  return { mostrar() { if (cx.hidden) { cx.hidden = false; } }, el: cx };
+}
+function fmtNum(v, n = 2) { return v.toLocaleString("pt-BR", { minimumFractionDigits: n, maximumFractionDigits: n }); }
+function sobrescrito(n) { return String(n).replace(/[-0-9]/g, c => "⁻⁰¹²³⁴⁵⁶⁷⁸⁹"["-0123456789".indexOf(c)]); }
+function fmtSci(v, n = 1) {
+  if (!v) return "0";
+  let e = Math.floor(Math.log10(Math.abs(v))), m = v / 10 ** e;
+  if (Math.abs(m) >= 9.95) { m /= 10; e += 1; }
+  return `${fmtNum(m, n)} × 10${sobrescrito(e)}`;
+}
+function animar(svg, quadro) {
+  let ultimo = null;
+  const passo = t => {
+    if (!svg.isConnected) return;
+    const dt = ultimo == null ? 0.016 : Math.min((t - ultimo) / 1000, 0.05);
+    ultimo = t;
+    quadro(dt);
+    requestAnimationFrame(passo);
+  };
+  requestAnimationFrame(passo);
+}
+
+/* =====================================================================
+   CENA 1 — Bastões e seda
+   ===================================================================== */
+SIMS.bastoes = function (root, api) {
+  const m = api.cfg.m;
+  const svg = criarPalco(root, 330);
+  const PX = 210, PY = 150, C = 55;
+  const st = { pend: "vidro", mao: "vidro", qp: 0, qm: 0, hx: 500, hy: 150, px: 0, cx: 330, cy: 285 };
+  const sinalDe = mat => (mat === "vidro" ? 1 : -1);
+  const corDe = mat => (mat === "vidro" ? "#BFE3EA" : "#DCC6EC");
+
+  S("line", { x1: 110, y1: 26, x2: 310, y2: 26, stroke: COR.cinza, "stroke-width": 6, "stroke-linecap": "round" }, svg);
+  const fio = S("line", { stroke: COR.cinza, "stroke-width": 2 }, svg);
+  function bastao() {
+    const g = S("g", {}, svg);
+    const r = S("rect", { x: -C, y: -9, width: 2 * C, height: 18, rx: 9, stroke: "#6B7A80", "stroke-width": 1 }, g);
+    const t = S("text", { "text-anchor": "middle", dy: "0.35em", class: "sim-sinal escuro", "font-size": 14 }, g);
+    return { g, r, t };
+  }
+  const bp = bastao(), bm = bastao();
+  const rotP = texto(svg, PX, 190, "", "sim-txt", "middle"), rotM = texto(svg, 0, 0, "", "sim-txt", "middle");
+  const pano = S("g", {}, svg);
+  S("rect", { x: -40, y: -22, width: 80, height: 44, rx: 8, fill: "#EDE6D2", stroke: "#B9AE8C", "stroke-width": 1.5 }, pano);
+  texto(pano, 0, 5, "seda", "sim-txt escuro", "middle");
+  const ler = H("div", "sim-leitura", root);
+
+  function alvo() {
+    const lado = st.hx >= PX ? 1 : -1;
+    const folga = Math.max(Math.abs(st.hx - PX) - 2 * C, 8);
+    const D = Math.hypot(folga, st.hy - PY) + 45;
+    const prod = st.qp * st.qm * sinalDe(st.pend) * sinalDe(st.mao);
+    return { lado, desvio: lim(-lado * 9e5 * prod / (D * D), -60, 60) };
+  }
+  function simbolos(mat, q) { return (sinalDe(mat) > 0 ? "+ " : "− ").repeat(Math.round(q * 6)).trim(); }
+  function desenhar() {
+    bp.g.setAttribute("transform", `translate(${PX + st.px},${PY})`);
+    fio.setAttribute("x1", PX); fio.setAttribute("y1", 26); fio.setAttribute("x2", PX + st.px); fio.setAttribute("y2", PY - 9);
+    bp.r.setAttribute("fill", corDe(st.pend)); bp.t.textContent = simbolos(st.pend, st.qp);
+    bm.g.setAttribute("transform", `translate(${st.hx},${st.hy})`);
+    bm.r.setAttribute("fill", corDe(st.mao)); bm.t.textContent = simbolos(st.mao, st.qm);
+    rotP.textContent = "pendurado: " + (st.pend === "vidro" ? "vidro" : "plástico");
+    rotM.setAttribute("x", st.hx); rotM.setAttribute("y", st.hy + 30); rotM.textContent = "na mão: " + (st.mao === "vidro" ? "vidro" : "plástico");
+    pano.setAttribute("transform", `translate(${st.cx},${st.cy})`);
+    const pc = q => Math.round(q * 100) + "%";
+    ler.textContent = `Carga do pendurado: ${st.qp ? (sinalDe(st.pend) > 0 ? "+" : "−") : ""}${pc(st.qp)} · Carga do bastão da mão: ${st.qm ? (sinalDe(st.mao) > 0 ? "+" : "−") : ""}${pc(st.qm)}`;
+  }
+  function checar() {
+    const { lado, desvio } = alvo();
+    const carregados = st.qp >= 0.6 && st.qm >= 0.6;
+    const afastou = desvio * lado <= -25, atraiu = desvio * lado >= 25;
+    if (m === 0 && st.pend === "vidro" && st.mao === "vidro" && carregados && afastou) api.ok();
+    if (m === 1 && st.pend === "vidro" && st.mao === "plastico" && carregados && atraiu) api.ok();
+    if (m === 2 && st.pend === "plastico" && st.mao === "plastico" && carregados && afastou) api.ok();
+  }
+  function esfregar(d) {
+    if (Math.abs(st.cx - st.hx) < C + 30 && Math.abs(st.cy - st.hy) < 28) st.qm = Math.min(1, st.qm + d / 350);
+    if (Math.abs(st.cx - (PX + st.px)) < C + 30 && Math.abs(st.cy - PY) < 28) st.qp = Math.min(1, st.qp + d / 350);
+  }
+  arrastavel(bm.g, svg, () => ({ x: st.hx, y: st.hy }), p => {
+    st.hx = lim(p.x, 60, 580); st.hy = lim(p.y, 60, 250);
+    if (Math.abs(st.hx - PX) < 2 * C + 14 && Math.abs(st.hy - PY) < 22) st.hx = PX + (st.hx >= PX ? 1 : -1) * (2 * C + 14);
+  });
+  arrastavel(pano, svg, () => ({ x: st.cx, y: st.cy }), p => {
+    const nx = lim(p.x, 40, 600), ny = lim(p.y, 40, 305);
+    const d = Math.hypot(nx - st.cx, ny - st.cy);
+    st.cx = nx; st.cy = ny;
+    esfregar(d);
+  });
+  const mats = [["vidro", "Vidro"], ["plastico", "Plástico"]];
+  const eP = escolha(root, "Bastão pendurado", mats, st.pend, v => { st.pend = v; st.qp = 0; });
+  const eM = escolha(root, "Bastão da mão", mats, st.mao, v => { st.mao = v; st.qm = 0; });
+  const linha = H("div", "sim-escolha", root);
+  H("span", "nome", linha, "Esfregar com a seda");
+  botaoSim(linha, "o pendurado", () => { st.qp = Math.min(1, st.qp + 0.25); }, "");
+  botaoSim(linha, "o da mão", () => { st.qm = Math.min(1, st.qm + 0.25); }, "");
+  animar(svg, () => { st.px += (alvo().desvio - st.px) * 0.18; desenhar(); checar(); });
+  desenhar();
+  root._t = { resolver() {
+    st.pend = m === 2 ? "plastico" : "vidro"; st.mao = m === 0 ? "vidro" : "plastico";
+    eP.set(st.pend); eM.set(st.mao); st.qp = st.qm = 1; st.hx = PX + 2 * C + 30; st.hy = PY; checar();
+  } };
+};
+
+/* =====================================================================
+   CENA 2 — Barra e bastão (condutores, isolantes e indução)
+   ===================================================================== */
+SIMS.inducao = function (root, api) {
+  const m = api.cfg.m;
+  const svg = criarPalco(root, 320);
+  const X0 = 230, X1 = 530, Y = 170, N = 12;
+  const st = { mat: "cobre", rx: 70, ry: 40, terra: false, n: N };
+  const barra = S("rect", { x: X0, y: Y - 26, width: X1 - X0, height: 52, rx: 8, stroke: "#6B7A80", "stroke-width": 1.5 }, svg);
+  S("rect", { x: 360, y: Y + 26, width: 40, height: 70, fill: "#C9CDC6", stroke: "#8C948A" }, svg);
+  texto(svg, 380, Y + 112, "suporte isolante", "sim-txt", "middle");
+  const fioT = S("path", { d: `M ${X1} ${Y} H 580 V 250`, fill: "none", stroke: COR.cinza, "stroke-width": 3 }, svg);
+  const terraG = S("g", { stroke: COR.cinza, "stroke-width": 3 }, svg);
+  [[564, 596, 250], [570, 590, 258], [576, 584, 266]].forEach(([a, b, y]) => S("line", { x1: a, x2: b, y1: y, y2: y }, terraG));
+  const ions = [], eletrons = [];
+  for (let i = 0; i < N; i++) {
+    const bx = X0 + 18 + i * ((X1 - X0 - 36) / (N - 1));
+    ions.push(bx);
+    const t = S("text", { x: bx, y: Y + 6, "text-anchor": "middle", class: "sim-ion" }, svg); t.textContent = "+";
+    eletrons.push(S("circle", { r: 5, fill: COR.neg, stroke: "#fff", "stroke-width": 1 }, svg));
+  }
+  const seta = criarSeta(svg, "forca", 5);
+  const gB = S("g", {}, svg);
+  S("rect", { x: -60, y: -9, width: 120, height: 18, rx: 9, fill: "#DCC6EC", stroke: "#6B7A80" }, gB);
+  const tb = S("text", { "text-anchor": "middle", dy: "0.35em", class: "sim-sinal escuro", "font-size": 14 }, gB); tb.textContent = "− − − − −";
+  const rotulo = texto(svg, 380, Y - 40, "", "sim-txt", "middle");
+  const ler = H("div", "sim-leitura", root);
+
+  function prox() { return lim(1 - (Math.hypot(st.rx + 60 - X0, st.ry - Y) - 20) / 140, 0, 1); }
+  function desenhar() {
+    const p = prox();
+    if (st.terra && st.mat === "cobre") st.n = N - Math.round(4 * p);
+    barra.setAttribute("fill", st.mat === "cobre" ? "#E2B48A" : "#BFE3EA");
+    gB.setAttribute("transform", `translate(${st.rx},${st.ry})`);
+    fioT.style.display = terraG.style.display = st.terra ? "" : "none";
+    const desloc = st.mat === "cobre" ? 0.55 * p : 0.02 * p;
+    eletrons.forEach((el, i) => {
+      const x = ions[i] + desloc * (X1 - 12 - ions[i]);
+      el.setAttribute("cx", x); el.setAttribute("cy", Y + (i % 2 ? 14 : -14));
+      el.style.display = i < st.n ? "" : "none";
+    });
+    const liquida = N - st.n;
+    rotulo.textContent = `barra de ${st.mat}`;
+    const atrai = st.mat === "cobre" ? p : p * 0.15;
+    seta.pos(X0 - 6, Y, X0 - 6 - 46 * atrai, Y);
+    ler.textContent = `Carga líquida da barra: ${liquida > 0 ? "+" + liquida + "e" : "0"} · Fio terra: ${st.terra ? "ligado" : "desligado"} · Elétrons deslocados: ${Math.round((st.mat === "cobre" ? p : 0) * 100)}%`;
+    if (m === 0 && st.mat === "cobre" && p >= 0.85) api.ok();
+    if (m === 1 && st.mat === "vidro" && p >= 0.85) rapida.mostrar();
+    if (m === 2 && st.n < N && !st.terra && p < 0.15) api.ok();
+  }
+  const rapida = perguntaRapida(api, "Os elétrons se deslocaram pela barra de vidro?", [
+    ["Sim", false, "Olhe as bolinhas azuis: no vidro elas continuam ao lado dos seus átomos."],
+    ["Não", true, ""]]);
+  arrastavel(gB, svg, () => ({ x: st.rx, y: st.ry }), p => { st.rx = lim(p.x, 60, 180); st.ry = lim(p.y, 40, 290); desenhar(); });
+  const eMat = escolha(root, "Material da barra", [["cobre", "Cobre"], ["vidro", "Vidro"]], st.mat, v => { st.mat = v; st.n = N; desenhar(); });
+  const eT = escolha(root, "Fio terra", [["off", "Desligado"], ["on", "Ligado"]], "off", v => { st.terra = v === "on"; desenhar(); });
+  if (m === 2) botaoVerificar(api, () => {
+    const p = prox();
+    if (st.n < N && !st.terra && p < 0.15) return true;
+    if (st.n === N && !st.terra) return "A barra está neutra. Chegue o bastão bem perto e ligue o fio terra para os elétrons escaparem.";
+    if (st.terra) return "Com o bastão ainda perto, desligue o fio terra. Só depois afaste o bastão.";
+    return "Falta afastar o bastão da barra.";
+  });
+  desenhar();
+  root._t = { resolver() {
+    if (m === 0) { st.rx = 170; st.ry = Y; desenhar(); }
+    if (m === 1) { st.mat = "vidro"; eMat.set("vidro"); st.rx = 170; st.ry = Y; desenhar(); }
+    if (m === 2) { st.rx = 170; st.ry = Y; st.terra = true; desenhar(); st.terra = false; eT.set("off"); st.rx = 60; st.ry = 40; desenhar(); }
+  } };
+};
+
+/* =====================================================================
+   CENA 3 — Balança de Coulomb
+   ===================================================================== */
+SIMS.balanca = function (root, api) {
+  const m = api.cfg.m;
+  const svg = criarPalco(root, 300);
+  const R0 = 4, XA = 250, ESC = 28, Y = 170;
+  const st = { q1: 1, q2: 1, r: R0 };
+  const razao = () => st.q1 * st.q2 * (R0 / st.r) ** 2;
+  S("circle", { cx: 110, cy: 150, r: 74, fill: "none", stroke: COR.cinza, "stroke-width": 2 }, svg);
+  for (let a = 0; a < 360; a += 30) {
+    const t = (a - 90) * Math.PI / 180;
+    S("line", { x1: 110 + 66 * Math.cos(t), y1: 150 + 66 * Math.sin(t), x2: 110 + 74 * Math.cos(t), y2: 150 + 74 * Math.sin(t), stroke: COR.cinza, "stroke-width": 2 }, svg);
+  }
+  const ponteiro = S("line", { x1: 110, y1: 150, stroke: COR.forca, "stroke-width": 4, "stroke-linecap": "round" }, svg);
+  S("circle", { cx: 110, cy: 150, r: 5, fill: COR.forca }, svg);
+  texto(svg, 110, 248, "torção do fio", "sim-txt", "middle");
+  S("line", { x1: XA, y1: Y + 46, x2: XA + 12 * ESC, y2: Y + 46, stroke: COR.cinza, "stroke-width": 2 }, svg);
+  for (let c = 0; c <= 12; c += 2) {
+    S("line", { x1: XA + c * ESC, y1: Y + 40, x2: XA + c * ESC, y2: Y + 52, stroke: COR.cinza, "stroke-width": 2 }, svg);
+    texto(svg, XA + c * ESC, Y + 68, c + " cm", "sim-txt", "middle");
+  }
+  S("line", { x1: 184, y1: Y, x2: XA, y2: Y, stroke: COR.cinza, "stroke-width": 3 }, svg);
+  const fa = criarSeta(svg), fb = criarSeta(svg);
+  const A = criarCarga(svg, 16, 1, "A"), B = criarCarga(svg, 16, 1, "B");
+  const ler = H("div", "sim-leitura", root);
+  function desenhar() {
+    const x = XA + st.r * ESC, f = razao();
+    A.em(XA, Y); B.em(x, Y);
+    A.raio(12 + 2 * st.q1); B.raio(12 + 2 * st.q2);
+    const L = lim(16 * Math.sqrt(f), 4, 80);
+    fa.pos(XA - 20, Y, XA - 20 - L, Y); fb.pos(x + 20, Y, x + 20 + L, Y);
+    const ang = lim(f * 20, 0, 330) * Math.PI / 180 - Math.PI / 2;
+    ponteiro.setAttribute("x2", 110 + 62 * Math.cos(ang)); ponteiro.setAttribute("y2", 150 + 62 * Math.sin(ang));
+    ler.textContent = `Distância: ${fmtNum(st.r, 1)} cm · Cargas: ${st.q1}q e ${st.q2}q · F/F₀ = ${f >= 1 ? fmtNum(f, 2) : fmtNum(f, 3)}`;
+  }
+  arrastavel(B.g, svg, () => ({ x: B.x, y: Y }), p => { st.r = Math.round(lim((p.x - XA) / ESC, 2, 12) * 10) / 10; desenhar(); });
+  const c1 = controle(root, { rot: "Carga de A", min: 1, max: 6, passo: 1, valor: 1, fmt: v => v + "q", ao: v => { st.q1 = v; desenhar(); } });
+  const c2 = controle(root, { rot: "Carga de B", min: 1, max: 6, passo: 1, valor: 1, fmt: v => v + "q", ao: v => { st.q2 = v; desenhar(); } });
+  botaoVerificar(api, () => {
+    const f = razao(), iniciais = st.q1 === 1 && st.q2 === 1;
+    if (m === 0) {
+      if (!iniciais) return "Deixe as duas cargas em 1q e mude só a distância.";
+      return Math.abs(f - 4) <= 0.2 ? true : `A força está ${fmtNum(f, 2)} vezes a inicial. ${f < 4 ? "Aproxime mais as esferas." : "Afaste um pouco as esferas."}`;
+    }
+    if (m === 1) {
+      if (Math.abs(st.r - R0) > 0.05) return "Volte a esfera B para 4,0 cm e mude só as cargas.";
+      return Math.abs(f - 6) <= 0.01 ? true : `O produto das cargas está em ${st.q1 * st.q2}. Ele precisa ser 6.`;
+    }
+    if (!iniciais) return "Deixe as duas cargas em 1q e mude só a distância.";
+    return Math.abs(f - 1 / 9) <= 0.006 ? true : `A força está em ${fmtNum(f, 3)} da inicial; um nono é 0,111. ${f > 1 / 9 ? "Afaste mais." : "Aproxime um pouco."}`;
+  });
+  desenhar();
+  root._t = { resolver() {
+    if (m === 0) st.r = 2;
+    if (m === 1) { st.q1 = 2; st.q2 = 3; c1.set(2); c2.set(3); }
+    if (m === 2) st.r = 12;
+    desenhar();
+  } };
+};
+
+/* =====================================================================
+   CENA 4 — Medir e descobrir a lei
+   ===================================================================== */
+SIMS.propriedades = function (root, api) {
+  const m = api.cfg.m;
+  const svg = criarPalco(root, 320);
+  const XQ = 60, ESC = 26, Y = 110;
+  const GX = 400, GY = 290, GW = 210, GH = 230;
+  const st = { r: 4, s2: 1, pontos: [], curva: null, novas: 0 };
+  const forca = r => 4 / (r * r);
+  const px = r => GX + r / 10 * GW, py = f => GY - Math.min(f, 2) / 2 * GH;
+  S("line", { x1: XQ, y1: Y + 50, x2: XQ + 10 * ESC, y2: Y + 50, stroke: COR.cinza, "stroke-width": 2 }, svg);
+  for (let c = 0; c <= 10; c += 2) texto(svg, XQ + c * ESC, Y + 70, c + " cm", "sim-txt", "middle");
+  S("path", { d: `M ${GX} ${GY - GH} V ${GY} H ${GX + GW}`, fill: "none", stroke: COR.cinza, "stroke-width": 2 }, svg);
+  texto(svg, GX + GW, GY + 20, "distância (cm)", "sim-txt", "end");
+  texto(svg, GX - 8, GY - GH - 8, "força", "sim-txt", "start");
+  const curva = S("path", { fill: "none", stroke: COR.campo, "stroke-width": 2.5, "stroke-dasharray": "6 5" }, svg);
+  const gPts = S("g", {}, svg);
+  const f1 = criarSeta(svg), f2 = criarSeta(svg);
+  const q1 = criarCarga(svg, 16, 1, "q₁"), q2 = criarCarga(svg, 16, 1, "q₂");
+  const ler = H("div", "sim-leitura", root);
+  function desenhar() {
+    const x = XQ + st.r * ESC, L = lim(34 * Math.sqrt(forca(st.r)), 8, 70);
+    q1.em(XQ, Y); q2.em(x, Y); q2.sinal(st.s2);
+    f1.pos(XQ - st.s2 * 20, Y, XQ - st.s2 * (20 + L), Y);
+    f2.pos(x + st.s2 * 20, Y, x + st.s2 * (20 + L), Y);
+    gPts.innerHTML = "";
+    st.pontos.forEach(p => S("circle", { cx: px(p.r), cy: py(p.f), r: 5, fill: p.s > 0 ? COR.forca : COR.neg, stroke: "#fff", "stroke-width": 1 }, gPts));
+    if (st.curva) {
+      const n = +st.curva;
+      let d = "";
+      for (let r = 1.2; r <= 10; r += 0.2) d += `${d ? "L" : "M"} ${px(r)} ${py(2 ** n / r ** n)} `;
+      curva.setAttribute("d", d);
+    } else curva.setAttribute("d", "");
+    ler.textContent = `Distância: ${fmtNum(st.r, 1)} cm · Força: ${fmtNum(forca(st.r), 2)} (${st.s2 > 0 ? "repulsão" : "atração"}) · Medidas: ${st.pontos.length}`;
+  }
+  function distintas() {
+    const rs = [];
+    st.pontos.forEach(p => { if (rs.every(r => Math.abs(r - p.r) >= 0.4)) rs.push(p.r); });
+    return rs.length;
+  }
+  arrastavel(q2.g, svg, () => ({ x: q2.x, y: Y }), p => { st.r = Math.round(lim((p.x - XQ) / ESC, 1.5, 10) * 10) / 10; desenhar(); });
+  function medir() {
+    if (st.pontos.length >= 12) st.pontos.shift();
+    st.pontos.push({ r: st.r, f: forca(st.r), s: st.s2 });
+    st.novas += 1;
+    desenhar();
+    if (m === 0 && distintas() >= 5) api.ok();
+    if (m === 2 && st.s2 < 0) api.ok();
+  }
+  const linha = H("div", "sim-escolha", root);
+  H("span", "nome", linha, "Medição");
+  botaoSim(linha, "Medir a força", medir, "");
+  const eS = escolha(root, "Sinal de q₂", [["1", "Positiva"], ["-1", "Negativa"]], "1", v => { st.s2 = +v; desenhar(); });
+  let eC = null;
+  if (m === 1) {
+    [1.5, 2, 3, 4, 6, 8].forEach(r => st.pontos.push({ r, f: forca(r), s: 1 }));
+    eC = escolha(root, "Curva candidata", [["1", "1/r"], ["2", "1/r²"], ["3", "1/r³"]], null, v => { st.curva = v; desenhar(); });
+    botaoVerificar(api, () => {
+      if (!st.curva) return "Escolha uma das três curvas para compará-la com os pontos.";
+      if (st.curva === "2") return true;
+      return st.curva === "1" ? "A curva 1/r passa acima dos pontos nas distâncias grandes: a força real cai mais depressa."
+        : "A curva 1/r³ passa abaixo dos pontos nas distâncias grandes: a força real cai mais devagar.";
+    });
+  }
+  if (m === 0) botaoVerificar(api, () => (distintas() >= 5 ? true : `Você tem ${distintas()} medidas em distâncias diferentes. Arraste q₂ e meça até completar 5.`));
+  if (m === 2) {
+    st.pontos.push({ r: 4, f: forca(4), s: 1 });
+    botaoVerificar(api, () => (st.s2 < 0 && st.novas > 0 ? true : st.s2 > 0 ? "Troque o sinal de q₂ para negativo." : "Agora clique em Medir a força, na mesma distância."));
+  }
+  desenhar();
+  root._t = { resolver() {
+    if (m === 0) [2, 3, 4, 6, 8].forEach(r => { st.r = r; medir(); });
+    if (m === 1) { st.curva = "2"; eC.set("2"); desenhar(); }
+    if (m === 2) { st.s2 = -1; eS.set("-1"); medir(); }
+  } };
+};
+
+/* =====================================================================
+   CENA 5 — Calculadora viva
+   ===================================================================== */
+SIMS.formula = function (root, api) {
+  const m = api.cfg.m;
+  const svg = criarPalco(root, 250);
+  const X0 = 60, ESC = 26, Y = 110;
+  const ini = m === 2 ? { q1: 4, q2: 4, r: 5 } : { q1: 1, q2: 1, r: 5 };
+  const st = { ...ini };
+  const forca = () => K_COULOMB * Math.abs(st.q1 * st.q2) * 1e-12 / (st.r / 100) ** 2;
+  const F0 = forca();
+  S("line", { x1: X0, y1: Y + 50, x2: X0 + 20 * ESC, y2: Y + 50, stroke: COR.cinza, "stroke-width": 2 }, svg);
+  for (let c = 0; c <= 20; c += 1) {
+    S("line", { x1: X0 + c * ESC, y1: Y + (c % 5 ? 46 : 42), x2: X0 + c * ESC, y2: Y + 54, stroke: COR.cinza, "stroke-width": 1.5 }, svg);
+    if (c % 5 === 0) texto(svg, X0 + c * ESC, Y + 72, c + " cm", "sim-txt", "middle");
+  }
+  const f1 = criarSeta(svg), f2 = criarSeta(svg);
+  const c1 = criarCarga(svg, 16, 1, "q₁"), c2 = criarCarga(svg, 16, 1, "q₂");
+  const tipo = texto(svg, 320, 34, "", "sim-txt forte", "middle");
+  const conta = H("div", "sim-leitura conta", root);
+  function desenhar() {
+    const x = X0 + st.r * ESC, F = forca(), s = Math.sign(st.q1 * st.q2);
+    c1.em(X0, Y); c2.em(x, Y); c1.sinal(st.q1); c2.sinal(st.q2);
+    const L = lim(13 * Math.sqrt(F), F ? 8 : 0, 110);
+    f1.pos(X0 - s * 20, Y, X0 - s * (20 + L), Y);
+    f2.pos(x + s * 20, Y, x + s * (20 + L), Y);
+    tipo.textContent = s > 0 ? "repulsão" : s < 0 ? "atração" : "sem força: uma das cargas é zero";
+    conta.textContent = `F = k·|q₁|·|q₂| / r² = 8,99 × 10⁹ × ${fmtNum(Math.abs(st.q1), 1)} × 10⁻⁶ × ${fmtNum(Math.abs(st.q2), 1)} × 10⁻⁶ / (${fmtNum(st.r / 100, 3)})² = ${fmtNum(F, 2)} N`;
+  }
+  arrastavel(c2.g, svg, () => ({ x: c2.x, y: Y }), p => { st.r = Math.round(lim((p.x - X0) / ESC, 2, 20) * 2) / 2; desenhar(); });
+  const fq = v => fmtNum(v, 1) + " μC";
+  const s1 = controle(root, { rot: "q₁", min: -10, max: 10, passo: 0.5, valor: st.q1, fmt: fq, ao: v => { st.q1 = v; desenhar(); } });
+  const s2 = controle(root, { rot: "q₂", min: -10, max: 10, passo: 0.5, valor: st.q2, fmt: fq, ao: v => { st.q2 = v; desenhar(); } });
+  botaoVerificar(api, () => {
+    const F = forca(), s = Math.sign(st.q1 * st.q2);
+    if (m === 0) {
+      if (s <= 0) return "Para haver repulsão, as duas cargas precisam ter o mesmo sinal.";
+      return F >= 8.7 && F <= 9.3 ? true : `A força está em ${fmtNum(F, 2)} N. ${F < 9 ? "Aumente as cargas ou aproxime-as." : "Diminua as cargas ou afaste-as."}`;
+    }
+    if (m === 1) {
+      if (s >= 0) return "Para haver atração, as cargas precisam ter sinais opostos.";
+      if (Math.abs(st.r - 10) > 0.01) return "Coloque q₂ exatamente na marca de 10 cm.";
+      return F >= 3.4 && F <= 3.8 ? true : `A força está em ${fmtNum(F, 2)} N. Com r = 0,10 m, o produto |q₁|·|q₂| precisa ser 4 (em μC²).`;
+    }
+    if (st.q1 !== ini.q1 || st.q2 !== ini.q2) return "Volte as cargas para 4,0 μC e mude só a distância.";
+    return Math.abs(F - F0 / 4) <= 0.03 * F0 / 4 ? true : `A força inicial era ${fmtNum(F0, 1)} N; um quarto é ${fmtNum(F0 / 4, 1)} N. Agora está em ${fmtNum(F, 1)} N.`;
+  });
+  desenhar();
+  root._t = { resolver() {
+    if (m === 0) { st.q1 = 2; st.q2 = 5; st.r = 10; }
+    if (m === 1) { st.q1 = 2; st.q2 = -2; st.r = 10; }
+    if (m === 2) st.r = 10;
+    s1.set(st.q1); s2.set(st.q2); desenhar();
+  } };
+};
+
+/* =====================================================================
+   CENA 6 — Vetores no plano
+   ===================================================================== */
+SIMS.vetorial = function (root, api) {
+  const m = api.cfg.m;
+  const svg = criarPalco(root, 340);
+  const CX = 320, CY = 170;
+  const st = { q1: 1, s2: 1, x: 450, y: 170 };
+  for (let x = 40; x <= 600; x += 40) S("line", { x1: x, y1: 10, x2: x, y2: 330, class: "sim-grade" }, svg);
+  for (let y = 10; y <= 330; y += 40) S("line", { x1: 40, y1: y, x2: 600, y2: y, class: "sim-grade" }, svg);
+  S("line", { x1: 40, y1: CY, x2: 600, y2: CY, stroke: COR.cinza, "stroke-width": 1.5 }, svg);
+  S("line", { x1: CX, y1: 10, x2: CX, y2: 330, stroke: COR.cinza, "stroke-width": 1.5 }, svg);
+  texto(svg, 596, CY - 6, "x", "sim-txt", "end"); texto(svg, CX + 8, 22, "y", "sim-txt");
+  const linha = S("line", { stroke: COR.cinza, "stroke-width": 1.5, "stroke-dasharray": "5 5" }, svg);
+  const fx = criarSeta(svg, "campo", 2.5), fy = criarSeta(svg, "campo", 2.5);
+  const F2 = criarSeta(svg, "forca", 5), F1 = criarSeta(svg, "forca", 5);
+  const c1 = criarCarga(svg, 16, 1, "q₁"), c2 = criarCarga(svg, 14, 1, "q₂");
+  const ler = H("div", "sim-leitura", root);
+  function vetor() {
+    const dx = st.x - CX, dy = st.y - CY, r = Math.max(Math.hypot(dx, dy), 30);
+    const L = lim(2.6e5 * st.q1 / (r * r), 14, 120), s = st.s2;
+    return { ux: s * dx / r, uy: s * dy / r, L, r };
+  }
+  const angulo = v => Math.atan2(-v.uy, v.ux) * 180 / Math.PI;
+  function desenhar() {
+    const v = vetor();
+    c1.em(CX, CY); c1.raio(12 + 3 * st.q1); c2.em(st.x, st.y); c2.sinal(st.s2);
+    linha.setAttribute("x1", CX); linha.setAttribute("y1", CY); linha.setAttribute("x2", st.x); linha.setAttribute("y2", st.y);
+    F2.pos(st.x, st.y, st.x + v.ux * v.L, st.y + v.uy * v.L);
+    F1.pos(CX, CY, CX - v.ux * v.L, CY - v.uy * v.L);
+    fx.pos(st.x, st.y, st.x + v.ux * v.L, st.y);
+    fy.pos(st.x + v.ux * v.L, st.y, st.x + v.ux * v.L, st.y + v.uy * v.L);
+    const z = (x, t) => (Math.abs(x) < t ? 0 : x);
+    ler.textContent = `Força sobre q₂: ângulo ${fmtNum(z(angulo(v), 0.5), 0)}° · Fx = ${fmtNum(z(v.ux * v.L / 10, 0.05), 1)} · Fy = ${fmtNum(z(-v.uy * v.L / 10, 0.05), 1)} (unidades) · ${st.s2 > 0 ? "repulsão" : "atração"}`;
+  }
+  arrastavel(c2.g, svg, () => ({ x: st.x, y: st.y }), p => { st.x = lim(p.x, 50, 590); st.y = lim(p.y, 20, 320); desenhar(); });
+  const eS = escolha(root, "Sinal de q₂", [["1", "Positiva"], ["-1", "Negativa"]], "1", v => { st.s2 = +v; desenhar(); });
+  const rapida = m === 2 ? perguntaRapida(api, "Com q₁ quatro vezes maior, as forças sobre q₁ e sobre q₂ têm o mesmo módulo?", [
+    ["Sim", true, ""], ["Não", false, "Compare o comprimento das duas setas amarelas: elas crescem juntas e são sempre iguais."]]) : null;
+  const sQ = controle(root, { rot: "Carga q₁", min: 1, max: 4, passo: 1, valor: 1, fmt: v => v + "q", ao: v => { st.q1 = v; desenhar(); if (rapida && v === 4) rapida.mostrar(); } });
+  if (m < 2) botaoVerificar(api, () => {
+    const a = angulo(vetor());
+    if (m === 0) {
+      if (st.s2 < 0) return "Nesta missão, deixe q₂ positiva.";
+      return Math.abs(a - 45) <= 4 ? true : `A força está a ${fmtNum(a, 0)}°. Na repulsão, ela aponta para longe de q₁: leve q₂ para cima e para a direita, na diagonal.`;
+    }
+    if (st.s2 > 0) return "Troque o sinal de q₂ para negativo.";
+    return Math.abs(a + 90) <= 4 ? true : `A força está a ${fmtNum(a, 0)}°. Na atração, ela aponta para q₁: onde q₂ precisa ficar para a força apontar para baixo?`;
+  });
+  desenhar();
+  root._t = { resolver() {
+    if (m === 0) { st.x = CX + 100; st.y = CY - 100; }
+    if (m === 1) { st.s2 = -1; eS.set("-1"); st.x = CX; st.y = CY - 110; }
+    if (m === 2) { st.q1 = 4; sQ.set(4); rapida.mostrar(); }
+    desenhar();
+  } };
+};
+
+/* =====================================================================
+   CENA 7 — Cabo de guerra: elétrica × gravitacional
+   ===================================================================== */
+SIMS.nucleo = function (root, api) {
+  const m = api.cfg.m;
+  const svg = criarPalco(root, 280);
+  const G = 6.674e-11, MP = 1.673e-27, ME = 9.109e-31;
+  const pares = { pp: ["próton", "próton", MP, MP, 1, 1], ep: ["elétron", "próton", ME, MP, -1, 1], ee: ["elétron", "elétron", ME, ME, -1, -1] };
+  const st = { par: m === 2 ? "pp" : "ep", ex: -10, min: -10, max: -10 };
+  const r = () => 10 ** st.ex;
+  const Fe = () => K_COULOMB * CARGA_E * CARGA_E / (r() * r());
+  const Fg = () => { const p = pares[st.par]; return G * p[2] * p[3] / (r() * r()); };
+  const a = criarCarga(svg, 15, 1, ""), b = criarCarga(svg, 15, 1, "");
+  const X0 = 150, W = 440, bx = f => lim((Math.log10(f) + 75) / 80, 0, 1) * W;
+  texto(svg, 20, 150, "Força elétrica", "sim-txt"); texto(svg, 20, 210, "Força gravitacional", "sim-txt");
+  S("rect", { x: X0, y: 134, width: W, height: 22, class: "sim-trilho" }, svg);
+  S("rect", { x: X0, y: 194, width: W, height: 22, class: "sim-trilho" }, svg);
+  const be = S("rect", { x: X0, y: 134, height: 22, fill: COR.forca }, svg), bg = S("rect", { x: X0, y: 194, height: 22, fill: COR.cinza }, svg);
+  const te = texto(svg, X0 + 6, 128, "", "sim-txt"), tg = texto(svg, X0 + 6, 188, "", "sim-txt");
+  const tr = texto(svg, 320, 262, "", "sim-txt forte", "middle");
+  const td = texto(svg, 320, 96, "", "sim-txt", "middle");
+  function desenhar() {
+    const p = pares[st.par], sep = 40 + (st.ex + 15) / 6 * 200;
+    a.em(320 - sep / 2, 50); b.em(320 + sep / 2, 50);
+    a.sinal(p[4]); b.sinal(p[5]); a.rotulo(p[0]); b.rotulo(p[1]);
+    a.raio(p[2] === MP ? 15 : 8); b.raio(p[3] === MP ? 15 : 8);
+    be.setAttribute("width", bx(Fe())); bg.setAttribute("width", bx(Fg()));
+    te.textContent = fmtSci(Fe()) + " N"; tg.textContent = fmtSci(Fg()) + " N";
+    td.textContent = `distância: ${fmtSci(r())} m`;
+    tr.textContent = `Fe / Fg ≈ ${fmtSci(Fe() / Fg())}`;
+  }
+  const ePar = escolha(root, "Par de partículas", [["pp", "Próton e próton"], ["ep", "Elétron e próton"], ["ee", "Elétron e elétron"]], st.par, v => { st.par = v; desenhar(); });
+  const rapida = m === 0 ? perguntaRapida(api, "Enquanto você mudava a distância, a razão Fe/Fg mudou?", [
+    ["Mudou", false, "Mova a barra de novo olhando só para o número da razão: ele fica parado."], ["Não mudou", true, ""]]) : null;
+  const sD = controle(root, { rot: "Distância", min: -15, max: -9, passo: 0.01, valor: st.ex, fmt: v => fmtSci(10 ** v) + " m", ao: v => {
+    st.ex = v; st.min = Math.min(st.min, v); st.max = Math.max(st.max, v); desenhar();
+    if (rapida && st.max - st.min >= 3) rapida.mostrar();
+  } });
+  if (m === 1) botaoVerificar(api, () => (st.par === "pp" ? true : "Compare o número da razão nos três pares. A gravidade cresce com a massa, e o próton é a partícula mais pesada."));
+  if (m === 2) botaoVerificar(api, () => {
+    if (st.par !== "pp") return "Escolha o par próton e próton.";
+    const f = Fe();
+    return f >= 13 && f <= 15 ? true : `A força elétrica está em ${fmtSci(f)} N. ${f < 14 ? "Aproxime os prótons." : "Afaste um pouco os prótons."}`;
+  });
+  desenhar();
+  root._t = { resolver() {
+    if (m === 0) { st.min = -15; st.max = -9; rapida.mostrar(); }
+    if (m === 1) { st.par = "pp"; ePar.set("pp"); }
+    if (m === 2) { st.ex = Math.log10(Math.sqrt(K_COULOMB * CARGA_E * CARGA_E / 14)); sD.set(st.ex); }
+    desenhar();
+  } };
+};
+
+/* =====================================================================
+   CENA 8 — Três cargas (superposição)
+   ===================================================================== */
+SIMS.superposicao = function (root, api) {
+  const m = api.cfg.m;
+  const svg = criarPalco(root, 340);
+  const A = { x: 200, y: 170, q: [2, 4, 2][m] }, B = { x: 440, y: 170, q: [2, 1, -2][m] };
+  const st = { x: 320, y: 70 };
+  for (let x = 40; x <= 600; x += 40) S("line", { x1: x, y1: 10, x2: x, y2: 330, class: "sim-grade" }, svg);
+  for (let y = 10; y <= 330; y += 40) S("line", { x1: 40, y1: y, x2: 600, y2: y, class: "sim-grade" }, svg);
+  const fA = criarSeta(svg, "campo", 3), fB = criarSeta(svg, "campo", 3), fR = criarSeta(svg, "forca", 6);
+  const rot = q => (q > 0 ? "+" : "−") + (Math.abs(q) === 1 ? "" : Math.abs(q)) + "q";
+  const cA = criarCarga(svg, 12 + 2 * Math.abs(A.q), A.q, rot(A.q)), cB = criarCarga(svg, 12 + 2 * Math.abs(B.q), B.q, rot(B.q));
+  const c3 = criarCarga(svg, 12, 1, "q₃");
+  cA.em(A.x, A.y); cB.em(B.x, B.y);
+  const ler = H("div", "sim-leitura", root);
+  function forcas() {
+    const f = o => {
+      const dx = st.x - o.x, dy = st.y - o.y, r = Math.max(Math.hypot(dx, dy), 26);
+      const k = 4e5 * o.q / (r * r * r);
+      return { x: k * dx, y: k * dy };
+    };
+    const a = f(A), b = f(B), R = { x: a.x + b.x, y: a.y + b.y };
+    return { a, b, R, soma: Math.hypot(a.x, a.y) + Math.hypot(b.x, b.y), mod: Math.hypot(R.x, R.y) };
+  }
+  const corta = (v, max) => { const n = Math.hypot(v.x, v.y); return n > max ? { x: v.x * max / n, y: v.y * max / n } : v; };
+  function desenhar() {
+    const f = forcas(), a = corta(f.a, 110), b = corta(f.b, 110), R = corta(f.R, 130);
+    c3.em(st.x, st.y);
+    fA.pos(st.x, st.y, st.x + a.x, st.y + a.y); fB.pos(st.x, st.y, st.x + b.x, st.y + b.y); fR.pos(st.x, st.y, st.x + R.x, st.y + R.y);
+    const ang = Math.atan2(-f.R.y, f.R.x) * 180 / Math.PI;
+    ler.textContent = `Resultante: ${fmtNum(f.mod / 10, 2)} (unidades) · ${f.mod / f.soma < 0.1 ? "quase zero" : "ângulo " + fmtNum(ang, 0) + "°"} · azul: força de cada carga; amarelo: soma`;
+  }
+  arrastavel(c3.g, svg, () => ({ x: st.x, y: st.y }), p => { st.x = lim(p.x, 50, 590); st.y = lim(p.y, 20, 320); desenhar(); });
+  botaoVerificar(api, () => {
+    const f = forcas();
+    if (m < 2) {
+      if (f.mod / f.soma < 0.1) return true;
+      return m === 0 ? "A resultante ainda não é zero. Procure o ponto em que as duas setas azuis ficam iguais e opostas."
+        : "Ainda não. As setas azuis precisam ser iguais e opostas: a carga maior tem de ficar mais longe de q₃.";
+    }
+    const ang = Math.atan2(-f.R.y, f.R.x) * 180 / Math.PI;
+    return Math.abs(ang) <= 4 && f.mod > 0 ? true : `A resultante está a ${fmtNum(ang, 0)}°. Procure um ponto em que os componentes verticais das duas forças se cancelem.`;
+  });
+  desenhar();
+  root._t = { resolver() {
+    if (m === 0) { st.x = 320; st.y = 170; }
+    if (m === 1) { st.x = 360; st.y = 170; }
+    if (m === 2) { st.x = 320; st.y = 90; }
+    desenhar();
+  } };
+};
+
+/* =====================================================================
+   CENA 9 — Forças em 3D
+   ===================================================================== */
+SIMS.espaco3d = function (root, api) {
+  const m = api.cfg.m;
+  const svg = criarPalco(root, 340);
+  const ini = [{ q1: 2, q2: 6, b: 10 }, { q1: 2, q2: 2, b: 10 }, { q1: 3.35, q2: 4.45, b: 10 }][m];
+  const st = { ...ini, yaw: -0.6, pitch: 0.45 };
+  const CX = 300, CY = 215, ESC = 105;
+  const F1 = () => 0.899 * st.q1, F2 = () => 0.899 * st.q2 / (st.b / 10) ** 2;
+  const fundo = S("rect", { x: 0, y: 0, width: 640, height: 340, fill: "transparent", class: "pega-fundo" }, svg);
+  const gAx = S("g", {}, svg);
+  const eixos = ["x", "y", "z"].map(n => ({ n, ln: S("line", { stroke: COR.cinza, "stroke-width": 1.5 }, gAx), t: texto(gAx, 0, 0, n, "sim-txt") }));
+  const piso = S("polygon", { class: "sim-piso" }, gAx);
+  const l1 = S("line", { stroke: COR.cinza, "stroke-width": 1.5, "stroke-dasharray": "5 5" }, svg), l2 = S("line", { stroke: COR.cinza, "stroke-width": 1.5, "stroke-dasharray": "5 5" }, svg);
+  const s1 = criarSeta(svg, "campo", 4), s2 = criarSeta(svg, "campo", 4), sR = criarSeta(svg, "forca", 6);
+  const c0 = criarCarga(svg, 13, -1, "q"), c1 = criarCarga(svg, 13, 1, "q₁"), c2 = criarCarga(svg, 13, 1, "q₂");
+  texto(svg, 14, 24, "Arraste o fundo para girar a cena", "sim-txt");
+  const ler = H("div", "sim-leitura", root);
+  function proj(x, y, z) {
+    const X = x * Math.cos(st.yaw) - y * Math.sin(st.yaw), Y = x * Math.sin(st.yaw) + y * Math.cos(st.yaw);
+    return [CX + ESC * X, CY - ESC * (z * Math.cos(st.pitch) + Y * Math.sin(st.pitch))];
+  }
+  const def = (ln, a, b) => { ln.setAttribute("x1", a[0]); ln.setAttribute("y1", a[1]); ln.setAttribute("x2", b[0]); ln.setAttribute("y2", b[1]); };
+  function desenhar() {
+    const O = proj(0, 0, 0), b = st.b / 10, f1 = F1(), f2 = F2(), E = 0.26;
+    [[1.9, 0, 0], [0, 1.6, 0], [0, 0, 2.3]].forEach((p, i) => { const q = proj(...p); def(eixos[i].ln, O, q); eixos[i].t.setAttribute("x", q[0] + 6); eixos[i].t.setAttribute("y", q[1]); });
+    piso.setAttribute("points", [[0, 0, 0], [1.6, 0, 0], [1.6, 1.4, 0], [0, 1.4, 0]].map(p => proj(...p).join(",")).join(" "));
+    const P1 = proj(1, 0, 0), P2 = proj(0, 0, b);
+    c0.em(O[0], O[1]); c1.em(P1[0], P1[1]); c2.em(P2[0], P2[1]);
+    def(l1, O, P1); def(l2, O, P2);
+    const A = proj(E * f1, 0, 0), B = proj(0, 0, E * f2), R = proj(E * f1, 0, E * f2);
+    s1.pos(O[0], O[1], A[0], A[1]); s2.pos(O[0], O[1], B[0], B[1]); sR.pos(O[0], O[1], R[0], R[1]);
+    const mod = Math.hypot(f1, f2), ang = Math.atan2(f2, f1) * 180 / Math.PI;
+    ler.textContent = `F₁ = ${fmtNum(f1, 2)} N (eixo x) · F₂ = ${fmtNum(f2, 2)} N (eixo z) · |F| = ${fmtNum(mod, 2)} N · ângulo com o eixo x: ${fmtNum(ang, 0)}°`;
+  }
+  let arr = null;
+  fundo.addEventListener("pointerdown", ev => { arr = { x: ev.clientX, y: ev.clientY, yaw: st.yaw, pitch: st.pitch }; try { fundo.setPointerCapture(ev.pointerId); } catch (_) { /* sem captura */ } });
+  fundo.addEventListener("pointermove", ev => {
+    if (!arr) return;
+    st.yaw = arr.yaw - (ev.clientX - arr.x) * 0.01; st.pitch = lim(arr.pitch + (ev.clientY - arr.y) * 0.008, 0.05, 1.4);
+    desenhar();
+  });
+  const solta = () => { arr = null; };
+  fundo.addEventListener("pointerup", solta); fundo.addEventListener("pointercancel", solta);
+  const fq = v => fmtNum(v, 2) + " μC";
+  const sq1 = controle(root, { rot: "q₁", min: 0.5, max: 10, passo: 0.05, valor: st.q1, fmt: fq, ao: v => { st.q1 = v; desenhar(); } });
+  const sq2 = controle(root, { rot: "q₂", min: 0.5, max: 10, passo: 0.05, valor: st.q2, fmt: fq, ao: v => { st.q2 = v; desenhar(); } });
+  const sb = controle(root, { rot: "Distância de q₂", min: 10, max: 20, passo: 0.5, valor: st.b, fmt: v => fmtNum(v, 1) + " cm", ao: v => { st.b = v; desenhar(); } });
+  controle(root, { rot: "Girar a cena", min: -3.14, max: 3.14, passo: 0.02, valor: st.yaw, fmt: v => Math.round(v * 180 / Math.PI) + "°", ao: v => { st.yaw = v; desenhar(); } });
+  botaoVerificar(api, () => {
+    const f1 = F1(), f2 = F2();
+    if (m === 0) return Math.abs(f1 - f2) / Math.max(f1, f2) < 0.02 ? true : `F₁ = ${fmtNum(f1, 2)} N e F₂ = ${fmtNum(f2, 2)} N. As distâncias são iguais: o que precisa valer para as cargas?`;
+    if (m === 1) {
+      if (st.b !== 10) return "Deixe q₂ a 10,0 cm nesta missão.";
+      return Math.abs(f1 - 3) <= 0.1 && Math.abs(f2 - 4) <= 0.1 ? true : `F₁ = ${fmtNum(f1, 2)} N e F₂ = ${fmtNum(f2, 2)} N. Cada 1 μC produz cerca de 0,90 N a 10 cm.`;
+    }
+    if (st.q1 !== ini.q1 || st.q2 !== ini.q2) return "Não mude as cargas nesta missão: só a distância de q₂.";
+    return st.b >= 19.75 ? true : `q₂ está a ${fmtNum(st.b, 1)} cm. O dobro de 10 cm é 20 cm.`;
+  });
+  desenhar();
+  root._t = { resolver() {
+    if (m === 0) { st.q1 = 4; st.q2 = 4; }
+    if (m === 1) { st.q1 = 3.35; st.q2 = 4.45; }
+    if (m === 2) st.b = 20;
+    sq1.set(st.q1); sq2.set(st.q2); sb.set(st.b); desenhar();
+  } };
+};
+
+/* =====================================================================
+   CENA 10 — Onde o próton para?
+   ===================================================================== */
+SIMS.equilibrio = function (root, api) {
+  const m = api.cfg.m;
+  const svg = criarPalco(root, 340);
+  const cfg = m === 2 ? { qa: 1, qb: 4, x0: 120, esc: 400, min: 0.1, max: 0.9, ini: 0.6, alvo: 1 / 3, tol: 0.03 }
+    : { qa: 8, qb: -2, x0: 90, esc: 130, min: -0.5, max: 3.9, ini: m === 1 ? 2 : 2.9, alvo: 2, tol: 0.05 };
+  const st = { x: cfg.ini, v: 0, solto: false, soltou: false };
+  const Y = 90, GY = 250, GH = 70, KG = m === 2 ? 0.08 : 1.5;
+  const px = x => cfg.x0 + x * cfg.esc;
+  const parte = (q, x, c) => q * Math.sign(x - c) / Math.max((x - c) ** 2, 0.004);
+  const res = x => parte(cfg.qa, x, 0) + parte(cfg.qb, x, 1);
+  const valida = x => { x = lim(x, cfg.min, cfg.max); if (Math.abs(x) < 0.12) x = x < 0 ? -0.12 : 0.12; if (Math.abs(x - 1) < 0.12) x = x < 1 ? 0.88 : 1.12; return x; };
+  S("line", { x1: 20, y1: Y, x2: 620, y2: Y, stroke: COR.cinza, "stroke-width": 2 }, svg);
+  const marcas = m === 2 ? [0, 1 / 3, 2 / 3, 1] : [0, 1, 2, 3];
+  marcas.forEach(v => {
+    S("line", { x1: px(v), y1: Y - 6, x2: px(v), y2: Y + 6, stroke: COR.cinza, "stroke-width": 2 }, svg);
+    const r = m === 2 ? ["0", "L/3", "2L/3", "L"][marcas.indexOf(v)] : (v === 0 ? "0" : v === 1 ? "L" : v + "L");
+    texto(svg, px(v), Y + 44, r, "sim-txt", "middle");
+  });
+  S("line", { x1: 20, y1: GY, x2: 620, y2: GY, stroke: COR.cinza, "stroke-width": 1.5 }, svg);
+  texto(svg, 22, GY - GH - 4, "força resultante sobre o próton (para cima = para a direita)", "sim-txt");
+  let d = "", aberto = false;
+  for (let X = 20; X <= 620; X += 2) {
+    const x = (X - cfg.x0) / cfg.esc;
+    if (Math.abs(x) < 0.1 || Math.abs(x - 1) < 0.1) { aberto = false; continue; }
+    const yv = GY - GH * Math.tanh(res(x) * KG);
+    d += `${aberto ? "L" : "M"} ${X} ${yv} `; aberto = true;
+  }
+  S("path", { d, fill: "none", stroke: COR.campo, "stroke-width": 2.5 }, svg);
+  const marcador = S("circle", { r: 6, fill: COR.forca, stroke: "#fff", "stroke-width": 1.5 }, svg);
+  const guia = S("line", { stroke: COR.forca, "stroke-width": 1, "stroke-dasharray": "4 4" }, svg);
+  const rot = q => (q > 0 ? "+" : "−") + (Math.abs(q) === 1 ? "" : Math.abs(q)) + "q";
+  const ca = criarCarga(svg, 12 + Math.abs(cfg.qa), cfg.qa, rot(cfg.qa)), cb = criarCarga(svg, 12 + Math.abs(cfg.qb), cfg.qb, rot(cfg.qb));
+  ca.em(px(0), Y); cb.em(px(1), Y);
+  const fa = criarSeta(svg, "campo", 3), fb = criarSeta(svg, "campo", 3), fr = criarSeta(svg, "forca", 6);
+  const p = criarCarga(svg, 10, 1, "");
+  texto(svg, 600, 30, "bolinha vermelha pequena: próton", "sim-txt", "end");
+  const ler = H("div", "sim-leitura", root);
+  function desenhar() {
+    const X = px(st.x), k = m === 2 ? 2.2 : 14;
+    const a = lim(parte(cfg.qa, st.x, 0) * k, -100, 100), b = lim(parte(cfg.qb, st.x, 1) * k, -100, 100), r = lim(res(st.x) * k, -110, 110);
+    p.em(X, Y);
+    fa.pos(X, Y - 24, X + a, Y - 24); fb.pos(X, Y - 36, X + b, Y - 36); fr.pos(X, Y + 22, X + r, Y + 22);
+    const yv = GY - GH * Math.tanh(res(st.x) * KG);
+    marcador.setAttribute("cx", X); marcador.setAttribute("cy", yv);
+    guia.setAttribute("x1", X); guia.setAttribute("x2", X); guia.setAttribute("y1", Y + 12); guia.setAttribute("y2", yv);
+    const R = res(st.x);
+    ler.textContent = `Posição do próton: x = ${fmtNum(st.x, 2)} L · Resultante: ${Math.abs(R) < 0.02 * (Math.abs(cfg.qa) + Math.abs(cfg.qb)) ? "praticamente zero" : R > 0 ? "para a direita" : "para a esquerda"}`;
+  }
+  arrastavel(p.g, svg, () => ({ x: px(st.x), y: Y }), q => { st.solto = false; st.v = 0; st.x = Math.round(valida((q.x - cfg.x0) / cfg.esc) * 100) / 100; desenhar(); });
+  const rapida = m === 1 ? perguntaRapida(api, "Depois de solto, o próton voltou ao ponto de equilíbrio? Esse equilíbrio é:", [
+    ["Estável", false, "Solte de novo e observe: o próton se afasta cada vez mais de x = 2L."], ["Instável", true, ""]]) : null;
+  if (m === 1) {
+    const linha = H("div", "sim-escolha", root);
+    H("span", "nome", linha, "Experimento");
+    botaoSim(linha, "Soltar o próton", () => {
+      if (Math.abs(st.x - 2) < 0.02) { api.aviso("O próton está exatamente no equilíbrio e não se move. Arraste-o um pouquinho para o lado e solte de novo."); return; }
+      st.solto = true; st.v = 0; st.soltou = true;
+      setTimeout(() => rapida.mostrar(), 900);
+    }, "");
+    botaoSim(linha, "Voltar para 2L", () => { st.solto = false; st.v = 0; st.x = 2; desenhar(); }, "");
+    animar(svg, dt => {
+      if (!st.solto) return;
+      st.v += res(st.x) * 5 * dt; st.x += st.v * dt;
+      if (st.x <= 1.13 || st.x >= cfg.max) { st.x = lim(st.x, 1.13, cfg.max); st.solto = false; }
+      desenhar();
+    });
+  } else {
+    botaoVerificar(api, () => {
+      if (Math.abs(st.x - cfg.alvo) <= cfg.tol) return true;
+      if (m === 0) return st.x < 1 ? "Entre as cargas ou à esquerda de +8q, as duas forças não conseguem se cancelar. Procure à direita da carga negativa."
+        : `Em x = ${fmtNum(st.x, 2)} L a resultante aponta ${res(st.x) > 0 ? "para a direita" : "para a esquerda"}. Siga o gráfico até a curva cruzar o zero.`;
+      return `Em x = ${fmtNum(st.x, 2)} L a resultante aponta ${res(st.x) > 0 ? "para a direita" : "para a esquerda"}. O equilíbrio fica mais perto da carga menor.`;
+    });
+  }
+  desenhar();
+  root._t = { resolver() {
+    if (m === 1) { st.x = 2.1; st.solto = true; st.soltou = true; rapida.mostrar(); }
+    else st.x = cfg.alvo;
+    desenhar();
+  } };
+};
+
+/* =====================================================================
+   CENA 11 — Casca e esferas condutoras
+   ===================================================================== */
+SIMS.esferas = function (root, api) {
+  const m = api.cfg.m;
+  const svg = criarPalco(root, 340);
+  const ler = H("div", "sim-leitura", root);
+  if (m === 0) {
+    const CX = 300, CY = 170, R = 105;
+    const st = { x: 540, y: 170 };
+    S("circle", { cx: CX, cy: CY, r: R, fill: "none", stroke: COR.pos, "stroke-width": 6 }, svg);
+    for (let i = 0; i < 16; i++) {
+      const a = i * Math.PI / 8;
+      const t = S("text", { x: CX + (R + 16) * Math.cos(a), y: CY + (R + 16) * Math.sin(a) + 5, "text-anchor": "middle", class: "sim-ion" }, svg); t.textContent = "+";
+    }
+    const centro = S("circle", { cx: CX, cy: CY, r: 3, fill: COR.cinza }, svg);
+    const f = criarSeta(svg, "forca", 6);
+    const c = criarCarga(svg, 11, 1, "carga de prova");
+    function desenhar() {
+      const dx = st.x - CX, dy = st.y - CY, dist = Math.hypot(dx, dy);
+      c.em(st.x, st.y);
+      const dentro = dist < R - 6;
+      const L = dentro ? 0 : lim(1.4e6 / (dist * dist), 14, 110);
+      f.pos(st.x, st.y, st.x + (dist ? dx / dist : 0) * L, st.y + (dist ? dy / dist : 0) * L);
+      centro.style.opacity = dentro ? 0.3 : 1;
+      ler.textContent = dentro ? "Dentro da casca: força = 0, em qualquer ponto." : `Fora da casca: a força aponta para longe do centro, como se toda a carga estivesse nele. Distância ao centro: ${fmtNum(dist / R, 2)} R`;
+      if (dist < R - 14) api.ok();
+    }
+    arrastavel(c.g, svg, () => ({ x: st.x, y: st.y }), p => { st.x = lim(p.x, 30, 610); st.y = lim(p.y, 20, 320); desenhar(); });
+    desenhar();
+    root._t = { resolver() { st.x = CX + 30; st.y = CY - 20; desenhar(); } };
+    return;
+  }
+  const R = 30;
+  const es = [{ n: "A", x: 150, y: 140, q: 8 }, { n: "B", x: 320, y: 140, q: 0 }, { n: "C", x: 490, y: 140, q: 0 }];
+  S("rect", { x: 250, y: 268, width: 140, height: 56, rx: 8, class: "sim-terra" }, svg);
+  texto(svg, 320, 300, "terra: descarrega", "sim-txt", "middle");
+  const fracao = v => {
+    if (Math.abs(v) < 1e-9) return "0";
+    let num = Math.round(v * 8), den = 64;
+    const g = (a, b) => (b ? g(b, a % b) : a), k = g(Math.abs(num), den);
+    num /= k; den /= k;
+    return den === 1 ? (num === 1 ? "Q" : num + "Q") : (num === 1 ? "Q/" + den : num + "Q/" + den);
+  };
+  es.forEach(e => {
+    e.g = S("g", {}, svg);
+    e.c = S("circle", { r: R, stroke: "#6B7A80", "stroke-width": 1.5 }, e.g);
+    e.t = S("text", { "text-anchor": "middle", dy: "0.35em", class: "sim-txt forte escuro" }, e.g);
+    e.l = S("text", { "text-anchor": "middle", y: -R - 8, class: "sim-txt" }, e.g); e.l.textContent = "esfera " + e.n;
+    arrastavel(e.g, svg, () => ({ x: e.x, y: e.y }), p => { e.x = lim(p.x, 40, 600); e.y = lim(p.y, 50, 300); contatos(e); desenhar(); });
+  });
+  function contatos(e) {
+    es.forEach(o => {
+      if (o === e || Math.hypot(o.x - e.x, o.y - e.y) > 2 * R + 3 || Math.abs(o.q - e.q) < 1e-9) return;
+      o.q = e.q = (o.q + e.q) / 2;
+    });
+    if (e.x > 250 && e.x < 390 && e.y > 262) e.q = 0;
+  }
+  function desenhar() {
+    es.forEach(e => {
+      e.g.setAttribute("transform", `translate(${e.x},${e.y})`);
+      e.c.setAttribute("fill", e.q > 0 ? `rgba(207,80,68,${0.25 + 0.09 * e.q})` : "#D5D9D2");
+      e.t.textContent = fracao(e.q);
+    });
+    const total = es.reduce((s, e) => s + e.q, 0);
+    ler.textContent = `A: ${fracao(es[0].q)} · B: ${fracao(es[1].q)} · C: ${fracao(es[2].q)} · Soma: ${fracao(total)}`;
+    if (m === 1 && es[0].q === 4 && es[1].q === 4) api.ok();
+  }
+  if (m === 2) botaoVerificar(api, () => (es[2].q === 2 ? true : `A esfera C está com ${fracao(es[2].q)}. Cada contato divide igualmente a carga das duas esferas que se tocam.`));
+  if (m === 1) botaoVerificar(api, () => (es[0].q === 4 && es[1].q === 4 ? true : "Arraste a esfera A até encostar na esfera B."));
+  desenhar();
+  root._t = { resolver() {
+    es[0].x = es[1].x - 2 * R; es[0].y = es[1].y; contatos(es[0]);
+    if (m === 2) { es[2].x = es[1].x + 2 * R; es[2].y = es[1].y; contatos(es[2]); }
+    desenhar();
+  } };
+};
+
+/* =====================================================================
+   CENA 12 — Contador de elétrons
+   ===================================================================== */
+SIMS.quantizacao = function (root, api) {
+  const m = api.cfg.m;
+  const svg = criarPalco(root, 300);
+  const ler = H("div", "sim-leitura", root);
+  const cargaTxt = n => (n === 0 ? "0" : `${n > 0 ? "+" : "−"}${Math.abs(n)}e = ${n > 0 ? "+" : "−"}${fmtSci(Math.abs(n) * CARGA_E, 1)} C`);
+  if (m < 2) {
+    const st = { extra: 0, cliques: 0 };
+    const CX = 320, CY = 150;
+    S("circle", { cx: CX, cy: CY, r: 100, class: "sim-corpo" }, svg);
+    const gI = S("g", {}, svg), gE = S("g", {}, svg);
+    for (let i = 0; i < 6; i++) {
+      const a = i * Math.PI / 3 + 0.3;
+      const t = S("text", { x: CX + 40 * Math.cos(a), y: CY + 40 * Math.sin(a) + 6, "text-anchor": "middle", class: "sim-ion" }, gI); t.textContent = "+";
+    }
+    const tq = texto(svg, CX, 280, "", "sim-txt forte", "middle");
+    function desenhar() {
+      gE.innerHTML = "";
+      const n = 6 + st.extra;
+      for (let i = 0; i < n; i++) {
+        const a = i * 2 * Math.PI / Math.max(n, 1) - 1.2;
+        S("circle", { cx: CX + 74 * Math.cos(a), cy: CY + 74 * Math.sin(a), r: 7, fill: COR.neg, stroke: "#fff", "stroke-width": 1 }, gE);
+      }
+      tq.textContent = "carga da esfera: " + cargaTxt(-st.extra);
+      ler.textContent = `Prótons: 6 · Elétrons: ${n} · Elétrons ${st.extra >= 0 ? "a mais" : "faltando"}: ${Math.abs(st.extra)}`;
+    }
+    const muda = d => { st.extra = lim(st.extra + d, -6, 6); st.cliques += 1; desenhar(); if (rapida && st.cliques >= 3) rapida.mostrar(); };
+    const rapida = m === 1 ? perguntaRapida(api, "Dá para deixar a esfera com exatamente +3,57e?", [
+      ["É possível", false, "Tente: a carga pula de +3e para +4e, sem nenhum valor no meio."], ["É impossível", true, ""]]) : null;
+    const linha = H("div", "sim-escolha", root);
+    H("span", "nome", linha, "Elétrons");
+    botaoSim(linha, "Colocar 1 elétron", () => muda(1), "");
+    botaoSim(linha, "Retirar 1 elétron", () => muda(-1), "");
+    if (m === 0) botaoVerificar(api, () => (st.extra === 3 ? true
+      : `A esfera está com ${cargaTxt(-st.extra)}. Divida 4,8 × 10⁻¹⁹ C por e = 1,6 × 10⁻¹⁹ C para saber quantos elétrons a mais são necessários.`));
+    desenhar();
+    root._t = { resolver() { if (m === 0) { st.extra = 3; desenhar(); } else { st.cliques = 3; rapida.mostrar(); } } };
+    return;
+  }
+  const VX = 170, SX = 470, Y = 150;
+  S("rect", { x: VX - 120, y: Y - 30, width: 240, height: 60, rx: 30, fill: "#BFE3EA", stroke: "#6B7A80" }, svg);
+  S("rect", { x: SX - 110, y: Y - 70, width: 220, height: 140, rx: 12, fill: "#EDE6D2", stroke: "#B9AE8C" }, svg);
+  texto(svg, VX, Y - 44, "bastão de vidro", "sim-txt", "middle"); texto(svg, SX, Y - 82, "pano de seda", "sim-txt", "middle");
+  const tv = texto(svg, VX, Y + 62, "", "sim-txt forte", "middle"), ts = texto(svg, SX, Y + 96, "", "sim-txt forte", "middle");
+  const tt = texto(svg, 320, 280, "", "sim-txt forte", "middle");
+  const els = [];
+  for (let i = 0; i < 8; i++) {
+    const e = { x: VX - 84 + i * 24, y: Y + (i % 2 ? 10 : -10), lado: "v" };
+    e.el = S("circle", { r: 10, fill: COR.neg, stroke: "#fff", "stroke-width": 1.5 }, svg);
+    arrastavel(e.el, svg, () => ({ x: e.x, y: e.y }), p => { e.x = lim(p.x, 20, 620); e.y = lim(p.y, 20, 280); desenhar(); }, () => soltar(e));
+    e.el.addEventListener("keydown", ev => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); mudarLado(e, e.lado === "v" ? "s" : "v"); } });
+    e.el.setAttribute("aria-label", "elétron: arraste para o pano de seda ou pressione Enter");
+    els.push(e);
+  }
+  function mudarLado(e, lado) {
+    e.lado = lado;
+    const i = els.filter(o => o.lado === lado && o !== e).length;
+    if (lado === "s") { e.x = SX - 70 + (i % 4) * 46; e.y = Y - 30 + Math.floor(i / 4) * 50; }
+    else { e.x = VX - 84 + (i % 8) * 24; e.y = Y + (i % 2 ? 10 : -10); }
+    desenhar();
+  }
+  function soltar(e) { mudarLado(e, Math.abs(e.x - SX) < 115 && Math.abs(e.y - Y) < 75 ? "s" : "v"); }
+  function desenhar() {
+    els.forEach(e => { e.el.setAttribute("cx", e.x); e.el.setAttribute("cy", e.y); });
+    const n = els.filter(e => e.lado === "s").length;
+    tv.textContent = "vidro: " + (n ? `+${n}e` : "0"); ts.textContent = "seda: " + (n ? `−${n}e` : "0");
+    tt.textContent = "soma das cargas: 0";
+    ler.textContent = `Elétrons transferidos: ${n} · Carga do vidro: ${cargaTxt(n)} · Carga da seda: ${cargaTxt(-n)}`;
+    if (n === 4) api.ok();
+  }
+  botaoVerificar(api, () => {
+    const n = els.filter(e => e.lado === "s").length;
+    return n === 4 ? true : `Há ${n} elétrons na seda. Arraste as bolinhas azuis do vidro para o pano até serem 4.`;
+  });
+  desenhar();
+  root._t = { resolver() { els.slice(0, 4).forEach(e => mudarLado(e, "s")); } };
+};
+
+/* =====================================================================
+   CENA 13 — O fio de cargas
+   ===================================================================== */
+SIMS.fio = function (root, api) {
+  const m = api.cfg.m;
+  const svg = criarPalco(root, 320);
+  const CX = 320, YF = 250, ESP = 14;
+  const st = { n: m === 2 ? 9 : 11, x: m === 2 ? CX + 60 : CX + 120, y: m === 2 ? YF - 60 : 150 };
+  const gC = S("g", {}, svg);
+  const ref = S("line", { stroke: COR.cinza, "stroke-width": 1.5, "stroke-dasharray": "5 5" }, svg);
+  const f = criarSeta(svg, "forca", 6);
+  const P = criarCarga(svg, 10, 1, "P");
+  const ler = H("div", "sim-leitura", root);
+  function campo() {
+    let fx = 0, fy = 0;
+    for (let i = 0; i < st.n; i++) {
+      const cx = CX + (i - (st.n - 1) / 2) * ESP, dx = st.x - cx, dy = st.y - YF, r3 = Math.hypot(dx, dy) ** 3;
+      fx += dx / r3; fy += dy / r3;
+    }
+    return { fx, fy, incl: Math.atan2(Math.abs(fx), -fy) * 180 / Math.PI };
+  }
+  function desenhar() {
+    gC.innerHTML = "";
+    for (let i = 0; i < st.n; i++) S("circle", { cx: CX + (i - (st.n - 1) / 2) * ESP, cy: YF, r: 6, fill: COR.pos, stroke: "#fff", "stroke-width": 1 }, gC);
+    const c = campo(), n = Math.hypot(c.fx, c.fy);
+    P.em(st.x, st.y);
+    ref.setAttribute("x1", st.x); ref.setAttribute("x2", st.x); ref.setAttribute("y1", st.y); ref.setAttribute("y2", st.y - 90);
+    f.pos(st.x, st.y, st.x + c.fx / n * 80, st.y + c.fy / n * 80);
+    ler.textContent = `Cargas no fio: ${st.n} · Inclinação da força em relação à perpendicular: ${fmtNum(c.incl, 1)}°`;
+  }
+  if (m < 2) arrastavel(P.g, svg, () => ({ x: st.x, y: st.y }), p => {
+    st.x = lim(p.x, 40, 600); st.y = lim(p.y, 40, YF - 30);
+    if (Math.abs(st.x - CX) < 6) st.x = CX;
+    desenhar();
+  });
+  const sN = controle(root, { rot: "Número de cargas", min: 3, max: 41, passo: 2, valor: st.n, fmt: v => String(v), ao: v => { st.n = v; desenhar(); } });
+  botaoVerificar(api, () => {
+    const c = campo();
+    if (m === 0) return c.incl < 2 ? true : `A força está inclinada ${fmtNum(c.incl, 1)}°. Procure o ponto em que cada carga da esquerda tem uma parceira à direita.`;
+    if (m === 1) return c.incl > 20 ? true : `A inclinação está em ${fmtNum(c.incl, 1)}°. Leve P para além de uma das pontas do fio e mais perto dele.`;
+    return c.incl < 3 ? true : `Com ${st.n} cargas, a inclinação em P é de ${fmtNum(c.incl, 1)}°. Aumente o fio para afastar as pontas.`;
+  });
+  desenhar();
+  root._t = { resolver() {
+    if (m === 0) { st.x = CX; st.y = 150; }
+    if (m === 1) { st.x = CX + 100; st.y = YF - 40; }
+    if (m === 2) { st.n = 41; sN.set(41); }
+    desenhar();
+  }, incl: () => campo().incl };
+};
+
+/* =====================================================================
+   MISSÕES INTERATIVAS
+   ===================================================================== */
+function renderMissao(e, qAtual, st) {
+  const total = e.perguntas.length, p = e.perguntas[qAtual];
+  const pontos = renderPontos(e, qAtual, st);
+  const resumoLink = st.fim ? `<button class="link" type="button" data-acao="fechar-revisao">Voltar ao resumo</button>` : "";
+  return `<section class="quiz missao" aria-labelledby="enunciado">
+      <div class="quiz-cab">
+        <div class="quiz-cab-esq"><span>Atividade ${qAtual + 1} de ${total}</span><span class="tag-tipo sim">Jogo interativo</span>${resumoLink}</div>
+        <div class="pontos" role="group" aria-label="Navegar entre atividades da cena">${pontos}</div>
+      </div>
+      <h2 class="enunciado" id="enunciado" tabindex="-1">${esc(p.q)}</h2>
+      <div class="sim" id="sim"></div>
+      <div id="sim-extra"></div>
+      <div class="sim-acoes" id="sim-acoes"></div>
+      <div aria-live="polite" id="sim-fb"></div>
+      <div id="sim-prox">${renderRodapeQuiz(e, qAtual, st)}</div>
+    </section>`;
+}
+function montarSim() {
+  const alvo = $("#sim");
+  if (!alvo) return;
+  const m = modulo(ui.modulo), e = m.etapas[ui.etapa], st = estadoEtapa(e.id);
+  const qAtual = ui.q ?? proximaAberta(e);
+  ui.q = qAtual;
+  const p = e.perguntas[qAtual];
+  const r = st.resp[qAtual] || (st.resp[qAtual] = { t: 0, ok: false });
+  alvo.innerHTML = ""; $("#sim-extra").innerHTML = ""; $("#sim-acoes").innerHTML = "";
+  const fb = $("#sim-fb");
+  function sucesso() {
+    fb.innerHTML = `<div class="feedback acerto"><strong>Missão cumprida${r.t === 1 ? ", de primeira" : ""}! +${PONTOS[Math.min(r.t - 1, 2)]} XP</strong><p>${esc(p.exp)}</p></div>`;
+    $("#sim-prox").innerHTML = renderRodapeQuiz(e, qAtual, st);
+    const bolinhas = document.querySelectorAll(".quiz-cab .pontos .ponto");
+    if (bolinhas[qAtual]) bolinhas[qAtual].classList.add("ok");
+    $("#xp").textContent = xpTotal();
+  }
+  const api = {
+    cfg: p.cfg || {}, acoes: $("#sim-acoes"), extra: $("#sim-extra"),
+    ok() { if (r.ok) return; r.t += 1; r.ok = true; salvar(); sucesso(); },
+    errar(d) {
+      if (r.ok) return;
+      r.t += 1; salvar();
+      fb.innerHTML = `<div class="feedback erro"><strong>Ainda não.</strong><p>${esc(d || p.dica || "Continue experimentando.")}</p></div>`;
+    },
+    aviso(d) { if (!r.ok) fb.innerHTML = `<div class="feedback aviso"><p>${esc(d)}</p></div>`; }
+  };
+  SIMS[p.sim](alvo, api);
+  const palco = alvo.querySelector(".sim-palco");
+  if (palco) palco.insertAdjacentHTML("afterend", '<p class="sim-cel">Deslize o fundo da cena para os lados para ver tudo, ou vire o aparelho na horizontal. Toque em um objeto com contorno amarelo para arrastá-lo.</p>');
+  const dica = botaoSim(api.acoes, "Ver dica", () => api.aviso(p.dica));
+  dica.dataset.sim = "dica";
+  botaoSim(api.acoes, "Reiniciar", () => { if (!r.ok) fb.innerHTML = ""; montarSim(); }).dataset.sim = "reiniciar";
+  if (r.ok) sucesso();
+}
+
+/* =====================================================================
+   INTERAÇÃO E NAVEGAÇÃO LIVRE
    ===================================================================== */
 document.addEventListener("click", ev => {
   const alvo = ev.target.closest("button");
@@ -1642,35 +3076,60 @@ document.addEventListener("click", ev => {
   const m = modulo(ui.modulo);
 
   if (alvo.dataset.modulo) {
-    ui = { modulo: alvo.dataset.modulo, etapa: null, q: null, ultimaErrada: null, revisao: false };
+    ui = { modulo: alvo.dataset.modulo, etapa: null, q: null, ultimaErrada: null, revisao: false, explorar: false };
     render(); return;
   }
   if (alvo.dataset.etapa != null) {
-    ui.etapa = +alvo.dataset.etapa; ui.q = null; ui.ultimaErrada = null; ui.revisao = false;
+    ui.etapa = +alvo.dataset.etapa; ui.q = 0; ui.ultimaErrada = null; ui.revisao = false; ui.explorar = false;
     render(); $(".etapa h1").scrollIntoView({ block: "start", behavior: "smooth" }); return;
+  }
+  if (alvo.dataset.irQ != null) {
+    ui.q = +alvo.dataset.irQ; ui.ultimaErrada = null; ui.revisao = false;
+    renderQuiz();
+    const en = $("#enunciado"); if (en) en.focus({ preventScroll: true });
+    $("#quiz").scrollIntoView({ block: "nearest", behavior: "smooth" });
+    return;
   }
   if (alvo.dataset.opcao != null) { responder(m, +alvo.dataset.opcao); return; }
 
   const acao = alvo.dataset.acao;
   if (!acao) return;
   const e = m.etapas ? m.etapas[ui.etapa] : null;
-  if (acao === "proxima") {
-    ui.q = proximaAberta(e, ui.q ?? -1);
-    ui.ultimaErrada = null;
-    renderQuiz(); $("#enunciado").focus({ preventScroll: true }); $("#quiz").scrollIntoView({ block: "nearest", behavior: "smooth" });
+  if (acao === "anterior") {
+    const qAtual = ui.q ?? 0;
+    if (qAtual > 0) {
+      ui.q = qAtual - 1;
+      ui.ultimaErrada = null;
+      renderQuiz();
+      const en = $("#enunciado"); if (en) en.focus({ preventScroll: true });
+      $("#quiz").scrollIntoView({ block: "nearest", behavior: "smooth" });
+    }
+  } else if (acao === "proxima") {
+    const qAtual = ui.q ?? 0;
+    if (e && qAtual < e.perguntas.length - 1) {
+      ui.q = qAtual + 1;
+      ui.ultimaErrada = null;
+      renderQuiz();
+      const en = $("#enunciado"); if (en) en.focus({ preventScroll: true });
+      $("#quiz").scrollIntoView({ block: "nearest", behavior: "smooth" });
+    }
   } else if (acao === "concluir") {
     const st = estadoEtapa(e.id);
     st.fim = e.perguntas.every((_, i) => st.resp[i] && st.resp[i].ok);
-    salvar(); ui.q = null; ui.ultimaErrada = null; render();
+    salvar(); ui.q = null; ui.ultimaErrada = null; ui.explorar = false; render();
     $("#quiz").scrollIntoView({ block: "nearest", behavior: "smooth" });
   } else if (acao === "ir") {
-    ui.etapa = +alvo.dataset.alvo; ui.q = null; ui.ultimaErrada = null; ui.revisao = false;
+    ui.etapa = +alvo.dataset.alvo; ui.q = 0; ui.ultimaErrada = null; ui.revisao = false; ui.explorar = false;
     render(); window.scrollTo({ top: 0, behavior: "smooth" });
-  } else if (acao === "revisar") { ui.revisao = true; renderQuiz(); }
-  else if (acao === "fechar-revisao") { ui.revisao = false; renderQuiz(); }
-  else if (acao === "refazer") {
+  } else if (acao === "explorar") {
+    ui.explorar = true; ui.revisao = false; ui.q = 0; renderQuiz();
+  } else if (acao === "revisar") {
+    ui.revisao = true; ui.explorar = false; renderQuiz();
+  } else if (acao === "fechar-revisao") {
+    ui.revisao = false; ui.explorar = false; renderQuiz();
+  } else if (acao === "refazer") {
     progresso.etapas[e.id] = { resp: [], fim: false }; salvar();
-    ui.q = null; ui.ultimaErrada = null; ui.revisao = false; render();
+    ui.q = 0; ui.ultimaErrada = null; ui.revisao = false; ui.explorar = false; render();
   } else if (acao === "recomecar") {
     if (!alvo.dataset.confirmar) {
       alvo.dataset.confirmar = "1";
@@ -1679,7 +3138,7 @@ document.addEventListener("click", ev => {
       return;
     }
     m.etapas.forEach(x => delete progresso.etapas[x.id]); salvar();
-    ui.etapa = 0; ui.q = null; ui.ultimaErrada = null; ui.revisao = false; render();
+    ui.etapa = 0; ui.q = 0; ui.ultimaErrada = null; ui.revisao = false; ui.explorar = false; render();
   }
 });
 
@@ -1697,11 +3156,12 @@ function responder(m, oi) {
   salvar();
   renderQuiz();
   if (r.ok) {
-    const b = $(".rodape-quiz .botao"); if (b) b.focus({ preventScroll: true });
+    const b = $('.rodape-quiz [data-acao="proxima"], .rodape-quiz [data-acao="concluir"]');
+    if (b) b.focus({ preventScroll: true });
   } else {
-    const prox = document.querySelector(".opcao:not(:disabled)"); if (prox) prox.focus({ preventScroll: true });
+    const prox = document.querySelector(".opcao:not(:disabled)");
+    if (prox) prox.focus({ preventScroll: true });
   }
-  // o mapa mostra o progresso ao concluir a etapa; o XP atualiza já
 }
 
 /* ---------- tema ---------- */
