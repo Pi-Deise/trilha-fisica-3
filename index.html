@@ -339,6 +339,10 @@ button { font: inherit; color: inherit; }
 
 <script>
 /* =====================================================================
+   CONTEÚDO DA TRILHA
+   Para adicionar um módulo novo, inclua um objeto em MODULOS com etapas.
+   ===================================================================== */
+/* =====================================================================
    CONTEÚDO DA TRILHA (JOGOS INTERATIVOS + PERGUNTAS POR CENA)
    ===================================================================== */
 const MODULOS = [
@@ -351,16 +355,10 @@ const MODULOS = [
         texto: "Há mais de dois mil anos, os gregos perceberam que o âmbar esfregado em lã atraía pedacinhos de palha. Nesta cena, o mesmo efeito aparece com bastões de vidro e de plástico, e a força elétrica mostra que pode atrair ou repelir.",
         perguntas: [
           {
-            sim: "bastoes", cfg: { m: 0 },
-            q: "Eletrize os dois bastões de vidro com a seda e aproxime o da mão: faça o bastão pendurado se afastar.",
-            exp: "Dois bastões de vidro esfregados com seda ficam com carga de mesmo sinal. Cargas de mesmo sinal se repelem, e o bastão pendurado foge do outro.",
-            dica: "Arraste o pano de seda de um lado para o outro sobre cada bastão, ou use os botões de esfregar. Depois chegue a ponta de um bastão perto da ponta do outro."
-          },
-          {
             sim: "bastoes", cfg: { m: 1 },
-            q: "Troque o bastão da mão por um de plástico, eletrize-o e faça o bastão pendurado ser atraído.",
+            q: "Troque o bastão da mão por um de plástico, eletrize os dois bastões com a seda e faça o bastão pendurado ser atraído.",
             exp: "Esfregado com seda, o plástico fica com carga de sinal oposto ao do vidro. Cargas de sinais diferentes se atraem.",
-            dica: "Escolha Plástico em \"Bastão da mão\", esfregue-o com a seda e aproxime-o do pendurado, que deve continuar de vidro e carregado."
+            dica: "Escolha Plástico em \"Bastão da mão\". Arraste o pano de seda de um lado para o outro sobre cada bastão, ou use os botões de esfregar, e depois chegue a ponta de um bastão perto da ponta do outro. O pendurado continua de vidro."
           },
           {
             sim: "bastoes", cfg: { m: 2 },
@@ -447,12 +445,6 @@ const MODULOS = [
         id: "c03", cena: "CoulombBalanca", titulo: "A balança de torção",
         texto: "Em 1785, Coulomb transformou a força elétrica em número. Ele mediu o quanto um fio fino de metal torcia quando duas esferas carregadas se repeliam, e criou um jeito simples de dividir cargas ao meio.",
         perguntas: [
-          {
-            sim: "balanca", cfg: { m: 0 },
-            q: "Arraste a esfera B e aproxime as esferas até a força ficar 4 vezes maior que a inicial.",
-            exp: "A 2,0 cm, metade da distância inicial, a força é quatro vezes maior. Foi assim que Coulomb viu que a força varia com o inverso do quadrado da distância.",
-            dica: "Observe o valor de F/F₀ enquanto arrasta a esfera B."
-          },
           {
             sim: "balanca", cfg: { m: 1 },
             q: "Deixe a esfera B em 4,0 cm e, mudando só as cargas, faça a força ficar 6 vezes maior.",
@@ -549,12 +541,6 @@ const MODULOS = [
             q: "Usando as cargas e a distância, monte uma repulsão de 9,0 N.",
             exp: "Há muitas soluções. Uma delas: 2,0 μC e 5,0 μC a 10 cm, pois 8,99 × 10⁹ × 2,0 × 10⁻⁶ × 5,0 × 10⁻⁶ / (0,10)² ≈ 9,0 N.",
             dica: "Acompanhe a conta abaixo da simulação: ela mostra a força a cada mudança."
-          },
-          {
-            sim: "formula", cfg: { m: 1 },
-            q: "Com q₂ na marca de 10 cm, monte uma atração de 3,6 N.",
-            exp: "Com 2,0 μC e −2,0 μC a 10 cm: F = 8,99 × 10⁹ × 4,0 × 10⁻¹² / 0,010 ≈ 3,6 N. O sinal negativo do produto das cargas indica atração; o módulo usa os valores absolutos.",
-            dica: "Na atração, as cargas têm sinais opostos. A fórmula usa os módulos das cargas."
           },
           {
             sim: "formula", cfg: { m: 2 },
@@ -743,12 +729,6 @@ const MODULOS = [
             exp: "As forças se somam componente a componente. Como são perpendiculares, o módulo vem de Pitágoras: √(3,0² + 4,0²) = 5,0 N, e não 7,0 N.",
             dica: "A 10 cm, cada 1 μC produz cerca de 0,90 N."
           },
-          {
-            sim: "espaco3d", cfg: { m: 2 },
-            q: "Sem mudar as cargas, leve q₂ para o dobro da distância e veja o que acontece com F₂.",
-            exp: "F₂ cai de 4,0 N para 1,0 N, um quarto. Só o componente z da resultante mudou; F₁, no eixo x, continuou igual.",
-            dica: "Use a barra \"Distância de q₂\"."
-          },
           { q: "|F₁| = 360 N e |F₂| = 805 N, mas |F₁ + F₂| ≈ 1018 N, e não 1165 N. Por quê?",
             op: [
               ["As forças têm direções diferentes, e o módulo de uma soma não é a soma dos módulos", true, "O módulo não é uma função linear. Para vetores em direções diferentes, |a + b| é menor que |a| + |b|."],
@@ -781,18 +761,6 @@ const MODULOS = [
             q: "Arraste o próton pelo eixo e encontre o ponto em que a força resultante sobre ele é zero.",
             exp: "Em x = 2L, a repulsão de +8q e a atração de −2q têm o mesmo módulo: 8/(2L)² = 2/L². Entre as cargas, as duas forças apontam para o mesmo lado e nunca se cancelam.",
             dica: "O gráfico mostra a resultante em cada posição: procure onde a curva cruza o zero."
-          },
-          {
-            sim: "equilibrio", cfg: { m: 1 },
-            q: "O próton está em x = 2L. Arraste-o um pouquinho para o lado, clique em \"Soltar o próton\" e observe. Depois responda.",
-            exp: "Qualquer desvio faz a resultante empurrar o próton para ainda mais longe do ponto de equilíbrio. Ele nunca volta: o equilíbrio é instável.",
-            dica: "Desloque o próton um pouco para a direita ou para a esquerda antes de soltar."
-          },
-          {
-            sim: "equilibrio", cfg: { m: 2 },
-            q: "Novas cargas: +q na origem e +4q em x = L. Onde o próton fica em equilíbrio?",
-            exp: "Entre duas cargas de mesmo sinal, as forças são opostas. Elas se igualam em x = L/3: 1/x² = 4/(L − x)², ou seja, L − x = 2x. O ponto fica mais perto da carga menor.",
-            dica: "O ponto fica entre as cargas."
           },
           { q: "Em que ponto do eixo x o próton fica em equilíbrio?",
             op: [
@@ -827,16 +795,10 @@ const MODULOS = [
             dica: "Observe a seta amarela enquanto move a carga, inclusive para dentro da casca."
           },
           {
-            sim: "esferas", cfg: { m: 1 },
-            q: "A esfera A tem carga Q; B e C estão neutras. Arraste A até encostar em B.",
-            exp: "Esferas condutoras iguais que se tocam dividem a carga total em partes iguais: cada uma fica com Q/2.",
-            dica: "Arraste a esfera A para cima da esfera B."
-          },
-          {
             sim: "esferas", cfg: { m: 2 },
             q: "Usando contatos entre as esferas, deixe a esfera C com carga Q/4.",
             exp: "Dois contatos resolvem: A com B deixa Q/2 em cada; depois B (ou A) com C divide Q/2 em duas partes de Q/4. A soma das cargas continua Q: a carga se conserva.",
-            dica: "Cada contato divide igualmente a carga das duas esferas que se tocam."
+            dica: "Arraste uma esfera até encostar na outra. Cada contato divide igualmente a carga das duas esferas que se tocam."
           },
           { q: "Uma partícula carregada está dentro de uma casca esférica com carga uniforme. Que força a casca exerce sobre ela?",
             op: [
@@ -877,12 +839,6 @@ const MODULOS = [
             q: "Coloque ou retire elétrons até a esfera ficar com carga de −4,8 × 10⁻¹⁹ C.",
             exp: "−4,8 × 10⁻¹⁹ C é −3e: três elétrons a mais que prótons. Toda carga é um número inteiro de vezes a carga elementar e ≈ 1,6 × 10⁻¹⁹ C.",
             dica: "Carga negativa significa elétrons a mais."
-          },
-          {
-            sim: "quantizacao", cfg: { m: 1 },
-            q: "Tente deixar a esfera com carga de exatamente +3,57e. Mexa nos elétrons e depois responda à pergunta.",
-            exp: "A carga só muda em passos de e, um elétron por vez: +3e e +4e existem, +3,57e não. A carga elétrica é quantizada.",
-            dica: "Retire elétrons um a um e veja por quais valores a carga passa."
           },
           {
             sim: "quantizacao", cfg: { m: 2 },
@@ -961,6 +917,18 @@ const MODULOS = [
         id: "e01", cena: "CampoAcaoDistancia", titulo: "Ação a distância",
         texto: "Se duas cargas não se tocam, como uma sente a outra? A resposta do capítulo 22: cada carga cria um campo elétrico no espaço à sua volta, e é esse campo que age sobre a outra.",
         perguntas: [
+          {
+            sim: "acaoDistancia", cfg: { m: 0 },
+            q: "Ligue as setas do campo de q₂ e arraste q₁ por várias regiões do plano, observando a força sobre ela.",
+            exp: "Em cada ponto, a força sobre q₁ (seta amarela) acompanha a seta azul do campo naquele lugar. q₁ não precisa tocar q₂: ela responde ao campo que existe onde ela está.",
+            dica: "Em \"Campo de q₂\", escolha Visível. Depois arraste q₁ pelo plano."
+          },
+          {
+            sim: "acaoDistancia", cfg: { m: 2 },
+            q: "Coloque q₁ num ponto em que a força sobre ela aponte para a esquerda.",
+            exp: "O campo de uma carga positiva aponta para longe dela. À esquerda de q₂, ele aponta para a esquerda, e a força sobre a carga positiva q₁ segue o campo.",
+            dica: "A força sobre q₁ aponta para longe de q₂."
+          },
           { q: "Segundo a ideia de campo, como a carga 2 afeta a carga 1 sem tocá-la?",
             op: [
               ["A carga 2 cria um campo elétrico no espaço, e esse campo age sobre a carga 1", true, "O campo existe em cada ponto em volta da carga 2; a carga 1 responde ao campo no ponto onde está."],
@@ -981,6 +949,24 @@ const MODULOS = [
         id: "e02", cena: "CampoCargaProva", titulo: "A carga de prova e E = F/q₀",
         texto: "O campo elétrico é um campo vetorial: em cada ponto há um vetor. Para medi-lo, colocamos ali uma pequena carga positiva q₀ e dividimos a força sobre ela pela própria carga.",
         perguntas: [
+          {
+            sim: "cargaProva", cfg: { m: 0 },
+            q: "Dobre a carga de prova para 2 nC, compare a força e o campo no painel e responda à pergunta.",
+            exp: "A força dobra junto com q₀, então a razão E = F/q₀ fica igual. O campo é uma propriedade do ponto, criada pela carga de 30 nC, e não depende da carga de prova.",
+            dica: "Use a barra \"Carga de prova q₀\" e observe os valores de F e de E."
+          },
+          {
+            sim: "cargaProva", cfg: { m: 1 },
+            q: "Arraste a carga de prova até um ponto em que o campo valha 3,0 × 10³ N/C.",
+            exp: "Isso acontece a cerca de 30 cm da carga de 30 nC, em qualquer direção: E = 8,99 × 10⁹ × 30 × 10⁻⁹ / (0,30)² ≈ 3,0 × 10³ N/C.",
+            dica: "O campo aumenta quando a carga de prova se aproxima da carga de 30 nC."
+          },
+          {
+            sim: "cargaProva", cfg: { m: 2 },
+            q: "Mapeie o campo: use \"Marcar o vetor aqui\" em 6 pontos diferentes.",
+            exp: "Ponto a ponto, a carga de prova revela o mapa de vetores do campo: maiores perto da carga, menores longe, sempre apontando para longe dela. O mapa continua lá depois que a carga de prova sai.",
+            dica: "Arraste q₀ para um ponto, marque, e repita em outros lugares."
+          },
           { q: "Por que a temperatura de uma sala é um campo escalar e o campo elétrico é um campo vetorial?",
             op: [
               ["A temperatura tem só um valor em cada ponto; o campo elétrico tem módulo e orientação", true, "Um campo vetorial associa a cada ponto um vetor; um campo escalar, apenas um número."],
@@ -1015,6 +1001,24 @@ const MODULOS = [
         id: "e03", cena: "CampoLinhas", titulo: "Linhas de campo",
         texto: "Faraday imaginou linhas no espaço para visualizar o campo. Elas seguem duas regras: o campo é tangente a elas, e onde estão mais juntas o campo é mais intenso.",
         perguntas: [
+          {
+            sim: "linhasCampo", cfg: { m: 0 },
+            q: "A carga do centro é negativa. Trace 4 linhas de campo a partir de pontos diferentes.",
+            exp: "Todas as linhas terminam na carga negativa. Perto dela as linhas ficam mais juntas: é onde o campo é mais intenso. E em cada ponto o vetor campo é tangente à linha.",
+            dica: "Arraste o ponto de prova e clique em \"Traçar linha por aqui\"."
+          },
+          {
+            sim: "linhasCampo", cfg: { m: 1 },
+            q: "Com duas cargas positivas iguais, encontre o ponto em que o campo é zero.",
+            exp: "No ponto médio, os campos das duas cargas têm o mesmo módulo e sentidos opostos. Nenhuma linha de campo passa por ali: as linhas das duas cargas se afastam umas das outras.",
+            dica: "Trace algumas linhas para ver de onde elas fogem."
+          },
+          {
+            sim: "linhasCampo", cfg: { m: 2 },
+            q: "Perto de uma placa grande com carga positiva, arraste o ponto de prova por toda a região e responda à pergunta.",
+            exp: "Perto de uma placa muito grande, o campo é uniforme: mesmo módulo e mesma direção em todos os pontos. As linhas são retas paralelas, igualmente espaçadas.",
+            dica: "Arraste o ponto de prova para longe e para perto da placa, para cima e para baixo."
+          },
           { q: "Como o vetor campo em um ponto se relaciona com a linha de campo que passa por ele?",
             op: [
               ["É tangente à linha e tem o mesmo sentido dela", true, "Essa é a primeira regra das linhas de campo, válida também para linhas curvas."],
@@ -1049,6 +1053,18 @@ const MODULOS = [
         id: "e04", cena: "CampoCargaPontual", titulo: "O campo de uma carga pontual",
         texto: "Pela lei de Coulomb, a força sobre a carga de prova é kqq₀/r². Dividindo por q₀, sobra o campo de uma carga pontual, que cai com o quadrado da distância.",
         perguntas: [
+          {
+            sim: "cargaPontual", cfg: { m: 1 },
+            q: "Deixe a carga negativa e posicione P de modo que o campo em P aponte para a direita.",
+            exp: "O campo aponta para a carga negativa. Para a seta apontar para a direita, P precisa ficar à esquerda da carga.",
+            dica: "Troque o sinal em \"Sinal da carga\". A seta azul em P aponta para a carga."
+          },
+          {
+            sim: "cargaPontual", cfg: { m: 2 },
+            q: "Monte um campo de 900 N/C apontando para cima, usando o sinal, o valor da carga e a posição de P.",
+            exp: "Há mais de uma solução. Por exemplo: +1,0 nC com P 10 cm acima da carga, pois 8,99 × 10⁹ × 1,0 × 10⁻⁹ / (0,10)² ≈ 900 N/C. Ou −1,0 nC com P 10 cm abaixo.",
+            dica: "Primeiro acerte a direção, depois ajuste o valor com a carga e a distância."
+          },
           { q: "Qual é o módulo do campo de uma carga pontual q a uma distância r?",
             op: [
               ["E = |q|/(4πε₀r²)", true, "Eq. 22-3: o valor absoluto de q dá o módulo; o sentido é decidido pelo sinal."],
@@ -1083,6 +1099,24 @@ const MODULOS = [
         id: "e05", cena: "CampoSuperposicao", titulo: "Superposição: Exemplo 22.01",
         texto: "Com várias cargas, o campo total é a soma vetorial dos campos de cada uma. No Exemplo 22.01, três cargas a uma distância d da origem produzem um campo resultante ao longo do eixo x.",
         perguntas: [
+          {
+            sim: "tresCampos", cfg: { m: 0 },
+            q: "Monte o Exemplo 22.01: q₁ = +2Q, q₂ = −2Q e q₃ = −4Q.",
+            exp: "E₁ e E₂ apontam na mesma direção e, somados, empatam com E₃. Os componentes y se cancelam e os x se somam: o campo total é 6,93 Q/(4πε₀d²), no sentido positivo de x.",
+            dica: "Use as três barras. Cada seta azul é o campo de uma carga; a amarela é a soma."
+          },
+          {
+            sim: "tresCampos", cfg: { m: 1 },
+            q: "Zere o campo na origem, sem zerar todas as cargas.",
+            exp: "q₁ e q₂ estão em lados opostos da origem: com cargas iguais, seus campos se cancelam. q₃ não tem uma carga oposta a ela, então precisa ser zero.",
+            dica: "Duas das cargas ficam frente a frente, com a origem no meio."
+          },
+          {
+            sim: "tresCampos", cfg: { m: 2 },
+            q: "Ajuste as cargas até o campo total apontar exatamente para cima.",
+            exp: "Uma solução: q₃ = −2Q, q₁ = 0 e q₂ = +2Q. Os campos de q₂ e q₃ têm componentes x opostos, que se cancelam, e componentes y para cima, que se somam.",
+            dica: "Procure duas setas azuis simétricas em relação ao eixo y."
+          },
           { q: "Como se obtém o campo total produzido por várias cargas em um ponto?",
             op: [
               ["Somando vetorialmente os campos produzidos por cada carga", true, "É o princípio da superposição, Eq. 22-4: E = E₁ + E₂ + … + Eₙ."],
@@ -1117,6 +1151,18 @@ const MODULOS = [
         id: "e06", cena: "CampoDipolo", titulo: "O dipolo elétrico",
         texto: "Duas cargas iguais e opostas, separadas por uma distância d, formam um dipolo. Longe dele, as duas quase se cancelam, e o campo cai com 1/z³.",
         perguntas: [
+          {
+            sim: "dipoloEixo", cfg: { m: 1 },
+            q: "Dobre a carga q e reduza a separação d à metade. Depois responda à pergunta.",
+            exp: "De longe, o campo só depende do produto p = qd, o momento dipolar, que ficou igual. Não dá para distinguir os dois dipolos medindo o campo distante.",
+            dica: "Leve q de 1 para 2 e d de 2,0 cm para 1,0 cm."
+          },
+          {
+            sim: "dipoloEixo", cfg: { m: 2 },
+            q: "Clique em \"Inverter o dipolo\" e compare o campo em P com o sentido de p. Depois responda.",
+            exp: "No eixo, longe do dipolo, o campo aponta sempre no sentido do momento dipolar p, que vai da carga negativa para a positiva.",
+            dica: "O sentido de p aparece ao lado do dipolo."
+          },
           { q: "O momento dipolar elétrico p:",
             op: [
               ["Tem módulo qd e aponta da carga negativa para a positiva", true, "p = qd, com q o valor absoluto de cada carga."],
@@ -1151,6 +1197,18 @@ const MODULOS = [
         id: "e07", cena: "CampoSprites", titulo: "Sprites: Exemplo 22.02",
         texto: "Depois de um relâmpago intenso, a nuvem e o solo podem ser modelados como um dipolo vertical. O campo desse dipolo, bem acima das nuvens, explica os clarões vermelhos chamados sprites.",
         perguntas: [
+          {
+            sim: "sprites", cfg: { m: 1 },
+            q: "Encontre uma altitude em que o sprite acenda.",
+            exp: "O campo do dipolo cai com a altitude, mas o campo crítico do ar cai ainda mais depressa, porque o ar fica rarefeito. Lá em cima, mesmo um campo fraco arranca elétrons dos átomos, que emitem luz.",
+            dica: "Compare as duas barras: o sprite acende quando a azul passa da vermelha."
+          },
+          {
+            sim: "sprites", cfg: { m: 2 },
+            q: "Um relâmpago mais fraco transferiu só 100 C. Com essa carga, encontre uma altitude em que o sprite acenda.",
+            exp: "Com metade da carga, o campo é metade em toda altitude. O sprite só acende mais alto, onde o campo crítico do ar é ainda menor.",
+            dica: "Mantenha q em 100 C e suba o medidor."
+          },
           { q: "No modelo do Exemplo 22.02, a nuvem e o solo formam:",
             op: [
               ["Um dipolo elétrico vertical, com −q na nuvem e +q a uma distância h abaixo do solo", true, "A distância entre as cargas é 2h, e o campo é calculado com a equação do dipolo."],
@@ -1178,6 +1236,18 @@ const MODULOS = [
         id: "e08", cena: "CampoAnel", titulo: "O anel carregado",
         texto: "Um anel não é uma partícula. Dividimos o anel em elementos dq, tratamos cada um como partícula, usamos a simetria para cancelar componentes e somamos o resto por integração.",
         perguntas: [
+          {
+            sim: "anelEixo", cfg: { m: 1 },
+            q: "Encontre a altura em que o campo no eixo é máximo.",
+            exp: "O campo é zero no centro, cresce, passa por um máximo em z = R/√2 ≈ 7,1 cm e depois diminui. Perto do centro os componentes ao longo do eixo são pequenos; longe, a distância enfraquece tudo.",
+            dica: "Arraste P pelo eixo, ou use a barra \"Altura de P\", e leve o marcador ao ponto mais alto da curva azul."
+          },
+          {
+            sim: "anelEixo", cfg: { m: 2 },
+            q: "Afaste P até o campo do anel ser pelo menos 94% do campo de uma carga pontual com a mesma carga.",
+            exp: "A cerca de 5 raios de distância, o anel já se comporta como uma partícula: E → kq/z². De longe, a forma do objeto deixa de importar.",
+            dica: "Acompanhe a razão \"anel / carga pontual\" no painel."
+          },
           { q: "Por que não se pode usar E = kq/r² diretamente para o anel inteiro?",
             op: [
               ["Porque o anel não é uma partícula: a carga está distribuída e é preciso dividi-la em elementos dq", true, "A Eq. 22-3 vale para partículas; para objetos, aplicamos a cada elemento e somamos."],
@@ -1212,6 +1282,18 @@ const MODULOS = [
         id: "e09", cena: "CampoArco", titulo: "O arco de 120°: Exemplo 22.03",
         texto: "Uma barra em arco de 120° tem carga −Q. No centro de curvatura, os componentes perpendiculares ao eixo de simetria se cancelam, e integramos o resto de −60° a 60°.",
         perguntas: [
+          {
+            sim: "arcoCentro", cfg: { m: 0 },
+            q: "Monte o arco do Exemplo 22.03: abertura de 120° e carga negativa.",
+            exp: "O campo no centro vale 0,83 Q/(4πε₀r²) e aponta para a barra, ao longo do eixo de simetria. Os componentes perpendiculares ao eixo se cancelam aos pares.",
+            dica: "Use a barra \"Abertura do arco\" e escolha o sinal da carga."
+          },
+          {
+            sim: "arcoCentro", cfg: { m: 1 },
+            q: "Abra o arco até ele virar um anel completo e veja o campo no centro.",
+            exp: "Com o anel fechado, cada elemento tem um oposto do outro lado, e o campo no centro é zero, como no centro do anel da cena anterior.",
+            dica: "Leve a abertura até 360°."
+          },
           { q: "No Exemplo 22.03, com carga −Q no arco, para onde aponta o campo no centro P?",
             op: [
               ["Para a barra, ao longo do eixo de simetria", true, "A carga é negativa, então cada dE aponta para o seu elemento; a soma fica ao longo do eixo x, em direção ao arco."],
@@ -1246,6 +1328,24 @@ const MODULOS = [
         id: "e10", cena: "CampoDisco", titulo: "O disco e a placa infinita",
         texto: "Um disco pode ser dividido em anéis finos. Somando os campos desses anéis, obtemos o campo no eixo do disco; quando o disco cresce sem limite, ele vira o campo de uma placa infinita.",
         perguntas: [
+          {
+            sim: "discoPlaca", cfg: { m: 0 },
+            q: "Com P a 4,0 cm do disco, aumente o raio até o campo chegar a 95% do campo de uma placa infinita.",
+            exp: "Com o raio cerca de 20 vezes a distância, o disco já se comporta como uma placa infinita: E ≈ σ/2ε₀.",
+            dica: "Acompanhe o medidor à direita enquanto aumenta o raio."
+          },
+          {
+            sim: "discoPlaca", cfg: { m: 1 },
+            q: "Com raio de 20 cm, aproxime P até o campo chegar a 90% do campo de uma placa infinita.",
+            exp: "A 2 cm de um disco de 20 cm de raio, ele parece infinito. Visto de muito perto, o campo depende só da densidade de carga σ.",
+            dica: "Diminua a altura de P."
+          },
+          {
+            sim: "discoPlaca", cfg: { m: 2 },
+            q: "Com raio de 5 cm, leve P a 50 cm de altura, compare os números do painel e responda à pergunta.",
+            exp: "A dez raios de distância, o campo do disco é 99% do de uma carga pontual com a mesma carga. De perto, placa infinita; de longe, partícula.",
+            dica: "Deixe R em 5 cm e z em 50 cm ou mais."
+          },
           { q: "Como o disco foi dividido para calcular o campo no eixo?",
             op: [
               ["Em anéis finos de raio r e largura dr", true, "O campo de um anel no eixo já é conhecido, então basta somar os anéis."],
@@ -1280,6 +1380,24 @@ const MODULOS = [
         id: "e11", cena: "CampoForcaCarga", titulo: "Uma carga em um campo e Millikan",
         texto: "Um campo elétrico exerce sobre uma carga q a força F = qE. Millikan usou essa força para frear e erguer gotas de óleo e descobriu que a carga é sempre um múltiplo inteiro de e.",
         perguntas: [
+          {
+            sim: "millikan", cfg: { m: 0 },
+            q: "Esta gota de óleo tem carga negativa. Ajuste o campo entre as placas até ela ficar parada.",
+            exp: "Com o campo apontando para baixo, a gota negativa sofre força para cima, pois F = qE com q negativo. No equilíbrio, a força elétrica iguala o peso: |q|E = mg.",
+            dica: "Para a gota negativa subir, o campo precisa apontar para baixo."
+          },
+          {
+            sim: "millikan", cfg: { m: 1 },
+            q: "Outra gota negativa. Equilibre-a e use o campo de equilíbrio para descobrir a carga dela.",
+            exp: "q = mg/E = 4,8 × 10⁻¹⁴ / 6,0 × 10⁴ = 8,0 × 10⁻¹⁹ C, ou seja, 5 elétrons. Foi assim que Millikan viu que a carga é sempre um múltiplo inteiro de e.",
+            dica: "Primeiro deixe a gota parada; a pergunta aparece em seguida."
+          },
+          {
+            sim: "millikan", cfg: { m: 2 },
+            q: "Agora a gota tem carga positiva. Ajuste o campo até ela ficar parada.",
+            exp: "Para segurar uma carga positiva, o campo precisa apontar para cima: a força sobre uma carga positiva tem o mesmo sentido do campo.",
+            dica: "Arraste a barra do campo para o outro lado."
+          },
           { q: "Uma carga negativa está num campo que aponta para a direita. A força sobre ela aponta:",
             op: [
               ["Para a esquerda", true, "F = qE com q negativo: a força tem o sentido oposto ao do campo."],
@@ -1314,6 +1432,24 @@ const MODULOS = [
         id: "e12", cena: "CampoJatoTinta", titulo: "Jato de tinta e ruptura dielétrica",
         texto: "Em algumas impressoras, gotas de tinta carregadas são desviadas por um campo entre placas. No Exemplo 22.04 o desvio é de 0,64 mm. Já um campo forte demais no ar provoca centelhas.",
         perguntas: [
+          {
+            sim: "jatoTinta", cfg: { m: 0 },
+            q: "Monte o Exemplo 22.04: E = 1,4 × 10⁶ N/C, Q = 1,5 × 10⁻¹³ C e vₓ = 18 m/s.",
+            exp: "O desvio ao sair das placas é de 0,64 mm, como no livro: y = QEL²/(2mvₓ²), com L = 1,6 cm e m = 1,3 × 10⁻¹⁰ kg.",
+            dica: "Ajuste as três barras e observe a trajetória."
+          },
+          {
+            sim: "jatoTinta", cfg: { m: 1 },
+            q: "Mudando só a carga da gota, dobre o desvio para 1,28 mm.",
+            exp: "O desvio é proporcional à carga: com Q = 3,0 × 10⁻¹³ C, o dobro, o desvio dobra. É assim que a impressora decide onde cada gota cai no papel.",
+            dica: "Mantenha E e vₓ nos valores do exemplo."
+          },
+          {
+            sim: "jatoTinta", cfg: { m: 2 },
+            q: "Mudando só a velocidade, reduza o desvio a um quarto, 0,16 mm.",
+            exp: "Com o dobro da velocidade, 36 m/s, a gota passa metade do tempo entre as placas. Como o desvio depende do tempo ao quadrado, ele cai para um quarto.",
+            dica: "Mantenha E e Q nos valores do exemplo."
+          },
           { q: "O campo entre as placas aponta para baixo. Por que a gota negativa é desviada para cima?",
             op: [
               ["Porque F = qE com q negativo aponta contra o campo", true, "Para carga negativa, a força tem o sentido oposto ao do campo."],
@@ -1348,6 +1484,18 @@ const MODULOS = [
         id: "e13", cena: "CampoDipoloTorque", titulo: "O dipolo em um campo: Exemplo 22.05",
         texto: "Num campo uniforme, as forças nas duas cargas de um dipolo se anulam, mas produzem um torque τ = p × E. A energia U = −p · E é mínima com o dipolo alinhado, como num pêndulo.",
         perguntas: [
+          {
+            sim: "dipoloCampo", cfg: { m: 1 },
+            q: "Coloque o dipolo na posição de energia potencial máxima.",
+            exp: "Com p oposto ao campo, U = +pE, o máximo. Ali o torque é nulo, mas o equilíbrio é instável: qualquer desvio faz o dipolo girar para longe.",
+            dica: "Arraste a carga positiva para girar o dipolo e leve o marcador ao ponto mais alto da curva de energia."
+          },
+          {
+            sim: "dipoloCampo", cfg: { m: 2 },
+            q: "Gire o dipolo para longe do campo, clique em \"Soltar o dipolo\" e espere ele parar.",
+            exp: "O torque gira o dipolo até p ficar alinhado com o campo, em θ = 0, onde a energia é mínima, U = −pE. É o que acontece com as moléculas de água num forno de micro-ondas, a cada inversão do campo.",
+            dica: "O dipolo precisa estar a pelo menos 30° do campo antes de ser solto."
+          },
           { q: "Qual é a força total sobre um dipolo num campo uniforme?",
             op: [
               ["Zero, embora haja um torque", true, "As forças nas cargas têm o mesmo módulo qE e sentidos opostos: a soma é zero, mas, aplicadas em pontos diferentes, elas giram o dipolo."],
@@ -1382,6 +1530,24 @@ const MODULOS = [
         id: "e14", cena: "CampoFechamento", titulo: "Fechamento e ponte para a Lei de Gauss",
         texto: "Recapitulando: o campo é força por unidade de carga, visualizado por linhas, calculado por superposição e integração. Com muita simetria há um atalho: a Lei de Gauss.",
         perguntas: [
+          {
+            sim: "fluxoLinhas", cfg: { m: 0 },
+            q: "Arraste a carga para dentro da superfície fechada e dobre o valor dela, de +q para +2q.",
+            exp: "O saldo de linhas que atravessam a superfície dobrou junto com a carga: ele é proporcional à carga que está dentro.",
+            dica: "Use a barra \"Carga\" e acompanhe o saldo no painel."
+          },
+          {
+            sim: "fluxoLinhas", cfg: { m: 1 },
+            q: "Leve a carga para fora da superfície e veja o saldo de linhas.",
+            exp: "Toda linha que entra na superfície também sai dela: o saldo é zero. Cargas de fora não contribuem para o saldo.",
+            dica: "Arraste a carga para além do círculo tracejado."
+          },
+          {
+            sim: "fluxoLinhas", cfg: { m: 2 },
+            q: "Com a carga dentro, mude bastante o raio da superfície e responda à pergunta.",
+            exp: "As mesmas linhas atravessam a superfície, seja ela grande ou pequena. O saldo só depende da carga envolvida. Essa contagem é o fluxo elétrico, e a regra é a Lei de Gauss.",
+            dica: "Use a barra \"Raio da superfície\", do mínimo ao máximo."
+          },
           { q: "Como os campos de uma carga isolada e de um dipolo dependem da distância, longe deles?",
             op: [
               ["Carga: 1/r². Dipolo: 1/r³", true, "O dipolo cai mais depressa porque suas duas cargas quase se cancelam."],
@@ -1408,6 +1574,18 @@ const MODULOS = [
         id: "g01", cena: "GaussLinhaCargas", titulo: "Uma linha de cargas",
         texto: "Antes da lei de Gauss, um objeto: uma longa linha de cargas positivas igualmente espaçadas. A grandeza que descreve essa distribuição é a densidade linear de carga, λ.",
         perguntas: [
+          {
+            sim: "gaussLinha", cfg: { m: 0 },
+            q: "Com o fio de 1,5 m, ajuste a carga total até a densidade linear ficar em λ = 4,0 μC/m.",
+            exp: "λ = Q/L. Com L = 1,5 m, λ = 4,0 μC/m pede Q = λL = 4,0 × 1,5 = 6,0 μC. A densidade é a carga em cada metro de fio, então ela depende da carga e do comprimento ao mesmo tempo.",
+            dica: "Use a barra \"Carga total do fio\". Lembre que λ = Q/L, então Q = λ·L."
+          },
+          {
+            sim: "gaussLinha", cfg: { m: 1 },
+            q: "O fio A tem λ = 2,0 μC/m. Ajuste o fio B para ter a mesma densidade, mas com comprimento diferente de 3,0 m.",
+            exp: "Dois fios de comprimentos diferentes têm a mesma λ quando a carga cresce junto com o comprimento: Q = λL. Um fio de 2,0 m com 4,0 μC, um de 1,0 m com 2,0 μC e um de 3,0 m com 6,0 μC dão todos 2,0 μC/m.",
+            dica: "Mude o comprimento do fio B e depois acerte a carga total dele, até λ = Q/L voltar a 2,0 μC/m."
+          },
           { q: "O que é a densidade linear de carga λ?",
             op: [
               ["A carga por unidade de comprimento do fio, λ = Q/L", true, "λ mede quanta carga há em cada metro de fio. Para um fio uniforme, é a carga total dividida pelo comprimento."],
@@ -1435,6 +1613,18 @@ const MODULOS = [
         id: "g02", cena: "GaussCampoCargas", titulo: "O campo de cada carga e o efeito de borda",
         texto: "Cada carga do fio gera o próprio campo. Num ponto acima do meio do fio, as contribuições se combinam par a par, e só uma direção sobrevive. Perto das pontas, a história muda.",
         perguntas: [
+          {
+            sim: "gaussPares", cfg: { m: 0 },
+            q: "Clique nas cargas do fio para tirá-las: remova pelo menos duas e deixe o campo no ponto P exatamente na vertical.",
+            exp: "Cada carga tem uma parceira simétrica do outro lado de P. Os componentes paralelos ao fio de um par se cancelam, então tirar o par inteiro mantém o campo vertical. Tirar uma carga sozinha desfaz o cancelamento, e o campo inclina.",
+            dica: "Tire uma carga e veja o campo inclinar. Depois procure a carga que faz par com ela, do outro lado do ponto P."
+          },
+          {
+            sim: "gaussPares", cfg: { m: 1 },
+            q: "P está acima da ponta direita do fio. Acrescente cargas à direita da ponta até o campo em P ficar na vertical.",
+            exp: "Perto da ponta, falta a parceira simétrica das cargas da esquerda, e o campo inclina: é o efeito de borda. Acrescentando à direita tantas cargas quantas existem à esquerda de P, cada carga ganha a sua parceira, e os componentes paralelos ao fio voltam a se cancelar.",
+            dica: "Use a barra \"Cargas acrescentadas à direita\". Conte quantas cargas há à esquerda de P."
+          },
           { q: "Num ponto acima do meio do fio, por que o campo resultante é perpendicular ao fio?",
             op: [
               ["Para cada carga à esquerda há uma simétrica à direita, e os componentes paralelos ao fio se cancelam", true, "Os componentes ao longo do fio têm o mesmo módulo e sentidos opostos. Os componentes perpendiculares se somam."],
@@ -1462,6 +1652,18 @@ const MODULOS = [
         id: "g03", cena: "GaussFioInfinito", titulo: "Do conjunto de cargas ao fio infinito",
         texto: "Com muitas cargas, as pontas ficam longe e o efeito de borda deixa de importar no meio do fio. As cargas viram um fio contínuo, e o campo fica radial.",
         perguntas: [
+          {
+            sim: "gaussContinuo", cfg: { m: 0 },
+            q: "Com P a 3,0 espaçamentos do fio, aumente o número de cargas até o campo somado carga a carga ficar a menos de 2% do campo de um fio infinito.",
+            exp: "Com muitas cargas, as pontas ficam longe, o efeito de borda perde importância no centro e o campo se aproxima do de um fio infinito. Com P a 3,0 espaçamentos, isso acontece a partir de cerca de 31 cargas.",
+            dica: "Use a barra \"Número de cargas\" e acompanhe a razão no painel: ela precisa ficar entre 0,98 e 1,02."
+          },
+          {
+            sim: "gaussContinuo", cfg: { m: 1 },
+            q: "Com 17 cargas, aproxime P do fio até o campo ficar a menos de 2% do campo de um fio infinito.",
+            exp: "Perto do fio, as pontas ficam longe em comparação com a distância até P, e o fio parece infinito mesmo com poucas cargas. Aproximar P e aumentar o número de cargas têm o mesmo efeito.",
+            dica: "Reduza a distância de P ao fio com a barra e acompanhe a razão no painel."
+          },
           { q: "Por que podemos tratar o fio como infinito perto do centro dele?",
             op: [
               ["Porque, longe das pontas, o efeito de borda é desprezível", true, "Quando a distância ao fio é muito menor que a distância às pontas, a falta de simetria nas pontas não altera o campo de forma perceptível."],
@@ -1482,6 +1684,18 @@ const MODULOS = [
         id: "g04", cena: "GaussSuperficie", titulo: "A superfície gaussiana",
         texto: "A lei de Gauss exige uma superfície fechada. A escolha certa é a que tem a mesma simetria das cargas: para um fio, um cilindro com o fio no eixo.",
         perguntas: [
+          {
+            sim: "gaussSuperficie", cfg: { m: 0 },
+            q: "Monte o cilindro gaussiano: a lateral deve passar por P e o cilindro deve envolver exatamente 3 cargas do fio.",
+            exp: "O raio r leva a lateral até P, e o comprimento L decide quantas cargas ficam dentro. O fluxo depende só da carga envolvida, então contar as cargas dentro do cilindro é contar q_env.",
+            dica: "Acerte primeiro o raio r, para a lateral passar por P. Depois mude L até haver 3 cargas dentro, sem nenhuma sobre as tampas."
+          },
+          {
+            sim: "gaussSuperficie", cfg: { m: 1 },
+            q: "Arraste o ponto de teste pela esfera até achar um lugar em que o ângulo entre E e a normal à superfície seja de 60°.",
+            exp: "Na esfera, o ângulo entre o campo e a normal muda de ponto para ponto: é 0° no topo e chega perto de 90° ao se aproximar do eixo do fio. Sem um ângulo fixo, E não sai da integral. Na lateral do cilindro, o ângulo é 0° em todos os pontos.",
+            dica: "O ângulo vale 60° quando o ponto está a 30° do eixo do fio. Arraste-o pela esfera e acompanhe o painel."
+          },
           { q: "Por que a superfície gaussiana escolhida é um cilindro com o fio no eixo?",
             op: [
               ["Porque tem a mesma simetria do fio: na lateral, o campo tem módulo constante e é perpendicular a ela", true, "Com essa forma, o produto escalar E · dA fica simples em cada parte da superfície."],
@@ -1509,6 +1723,18 @@ const MODULOS = [
         id: "g05", cena: "GaussSimetria", titulo: "A lei de Gauss e a simetria",
         texto: "A lei de Gauss liga o fluxo do campo através de uma superfície fechada à carga envolvida: ∮ E · dA = q_env/ε₀. A simetria do fio decide como essa integral fica simples.",
         perguntas: [
+          {
+            sim: "gaussFluxo", cfg: { m: 0 },
+            q: "Mude r e L até o fluxo total ficar 3 vezes maior que o inicial.",
+            exp: "O fluxo é q_env/ε₀, e q_env = λL. Só o comprimento L muda a carga envolvida: triplicando L, o fluxo triplica. O raio r não altera o fluxo.",
+            dica: "Teste as duas barras e observe qual delas muda o fluxo no painel."
+          },
+          {
+            sim: "gaussFluxo", cfg: { m: 1 },
+            q: "Ajuste λ e L para o fluxo total valer 3,4 × 10⁵ N·m²/C.",
+            exp: "Φ = λL/ε₀. Para 3,4 × 10⁵ N·m²/C, λL precisa valer cerca de 3,0 μC, como 2,0 μC/m × 1,5 m ou 3,0 μC/m × 1,0 m.",
+            dica: "Use Φ = λL/ε₀, com ε₀ = 8,85 × 10⁻¹². Acompanhe o painel enquanto ajusta."
+          },
           { q: "O que a lei de Gauss afirma?",
             op: [
               ["O fluxo do campo elétrico através de uma superfície fechada é igual à carga envolvida dividida por ε₀", true, "∮ E · dA = q_env/ε₀. Só a carga dentro da superfície entra na conta."],
@@ -1536,6 +1762,12 @@ const MODULOS = [
         id: "g06", cena: "GaussNormais", titulo: "Os vetores normais",
         texto: "Em cada ponto da superfície, o vetor área dA é perpendicular a ela e aponta para fora. Comparar dA com o campo em cada parte divide a integral em três.",
         perguntas: [
+          {
+            sim: "gaussNormais", cfg: { m: 0 },
+            q: "Aponte o vetor área dA nos três pontos marcados, a tampa esquerda S1, a lateral S2 e a tampa direita S3, para a normal que sai da superfície.",
+            exp: "O vetor área é perpendicular à superfície e aponta para fora. Na lateral ele é radial, paralelo ao campo; nas tampas ele aponta ao longo do eixo, para fora do cilindro: para a esquerda em S1 e para a direita em S3.",
+            dica: "Escolha o ponto, gire dA com a barra e compare com a seta azul, que é o campo. O vetor área sai da superfície, perpendicular a ela."
+          },
           { q: "Na lateral do cilindro, o vetor área dA aponta:",
             op: [
               ["Radialmente para fora, paralelo ao campo", true, "dA é perpendicular à superfície e aponta para fora; na lateral, essa direção é radial, a mesma do campo."],
@@ -1563,6 +1795,12 @@ const MODULOS = [
         id: "g07", cena: "GaussFluxoLateral", titulo: "Fluxo na lateral",
         texto: "Na lateral S2, o campo e o vetor área são paralelos em todos os pontos. O produto escalar vira um produto de módulos, e a integral vira o campo vezes a área.",
         perguntas: [
+          {
+            sim: "gaussLateral", cfg: { m: 0 },
+            q: "Dobre o raio de 10 para 20 cm e compare o campo, a área da lateral e o fluxo. Depois responda à pergunta.",
+            exp: "Com o dobro do raio, E cai pela metade (E ∝ 1/r) e a área da lateral dobra (A = 2πrL): o produto, que é o fluxo, não muda. Ele depende só da carga envolvida, λL.",
+            dica: "Leve a barra do raio de 10 para 20 cm e observe os três números no painel."
+          },
           { q: "Qual é o ângulo entre E e dA na lateral do cilindro?",
             op: [
               ["0°", true, "Os dois apontam radialmente para fora, e cos 0° = 1."],
@@ -1590,6 +1828,12 @@ const MODULOS = [
         id: "g08", cena: "GaussFluxoTampas", titulo: "Fluxo nas tampas",
         texto: "Nas tampas S1 e S3, o vetor área aponta ao longo do eixo, enquanto o campo aponta para fora do fio. O campo passa rente às tampas, sem atravessá-las.",
         perguntas: [
+          {
+            sim: "gaussTampas", cfg: { m: 0 },
+            q: "Arraste o ponto de teste por uma tampa e pela lateral do cilindro e compare o ângulo entre E e dA em cada parte.",
+            exp: "Na lateral, E e dA são paralelos (0°) e cada pedacinho contribui para o fluxo. Nas tampas, E fica no plano da superfície e dA é perpendicular a ele (90°): cos 90° = 0, e nada contribui.",
+            dica: "Arraste o ponto pelo contorno do cilindro. Leve-o até a lateral e também até uma das tampas."
+          },
           { q: "Qual é o ângulo entre E e dA nas tampas?",
             op: [
               ["90°", true, "E é radial e fica no plano da tampa; dA é perpendicular a esse plano. cos 90° = 0."],
@@ -1617,6 +1861,18 @@ const MODULOS = [
         id: "g09", cena: "GaussResultado", titulo: "O campo de um fio infinito",
         texto: "Juntando as peças: só a lateral contribui, a carga envolvida é λL e o comprimento L se cancela. O resultado é E = λ/(2πε₀r), apontando radialmente.",
         perguntas: [
+          {
+            sim: "gaussResultado", cfg: { m: 0 },
+            q: "Com λ = 2,0 μC/m, leve P até o campo valer 1,8 × 10⁵ N/C.",
+            exp: "E = λ/(2πε₀r) = 2kλ/r. Com λ = 2,0 μC/m, E = 1,8 × 10⁵ N/C pede r = 2 × 8,99 × 10⁹ × 2,0 × 10⁻⁶ ÷ 1,8 × 10⁵ ≈ 0,20 m: o dobro da distância em que E vale 3,6 × 10⁵ N/C.",
+            dica: "O campo cai com 1/r. Se a 10 cm ele vale 3,6 × 10⁵ N/C, a que distância ele vale a metade disso?"
+          },
+          {
+            sim: "gaussResultado", cfg: { m: 1 },
+            q: "Dobre λ para 4,0 μC/m e reposicione P para o campo continuar igual ao que era a 10 cm, com λ = 2,0 μC/m.",
+            exp: "E ∝ λ/r: dobrando λ, o campo dobra; para voltar ao valor de antes, r também precisa dobrar, de 10 para 20 cm.",
+            dica: "Com λ maior, o campo aumenta. Afaste P até ele voltar a 3,6 × 10⁵ N/C."
+          },
           { q: "Qual é o módulo do campo de um fio infinito com densidade λ, a uma distância r?",
             op: [
               ["E = λ/(2πε₀r)", true, "De E · 2πrL = λL/ε₀, cancelando L: E = λ/(2πε₀r)."],
@@ -1663,8 +1919,47 @@ const MODULOS = [
    ===================================================================== */
 const CHAVE_LOCAL = "trilha-fisica3-completa-v1";
 const PONTOS = [10, 6, 3];          // XP por acertar na 1ª, 2ª e 3ª tentativa ou depois
-let progresso = carregarLocal();   // { etapas: { c01: { resp: [{t, ok}], fim: bool } }, atualizado }
-let refProgresso = null;
+let progresso = carregarLocal();
+// Missões removidas da trilha (repetiam uma pergunta da mesma etapa ou outra missão). As respostas salvas são
+// guardadas pela POSIÇÃO da atividade na etapa; por isso as posições removidas saem do progresso antigo, uma única vez
+// (migRemocoes). Posições a partir de 0, no layout anterior: jogos primeiro, depois as perguntas.
+const POSICOES_REMOVIDAS = { c01: [0], c03: [0], c05: [1], c09: [2], c10: [1, 2], c11: [1], c12: [1],
+  e01: [1], e04: [0], e06: [0], e07: [0], e08: [0], e09: [2], e13: [0] };
+(function () {
+  if (progresso.migRemocoes) return;
+  const campoJaMigrado = !!progresso.migCampo;   // se ainda não migrou, a migração do Campo (abaixo) já usa o layout novo
+  for (const id in POSICOES_REMOVIDAS) {
+    if (id[0] === "e" && !campoJaMigrado) continue;
+    const st = progresso.etapas[id];
+    if (st && Array.isArray(st.resp)) POSICOES_REMOVIDAS[id].slice().sort((a, b) => b - a).forEach(i => st.resp.splice(i, 1));
+  }
+  progresso.migRemocoes = 1;
+})();
+// As etapas do Campo elétrico ganharam 3 jogos antes das perguntas: desloca, uma única vez, as respostas já salvas.
+(function () {
+  if (progresso.migCampo) return;
+  const campo = MODULOS.find(m => m.id === "campo");
+  if (campo && campo.etapas) campo.etapas.forEach(e => {
+    const st = progresso.etapas[e.id];
+    if (!st || !st.resp || !st.resp.length) return;
+    st.resp = Array(e.perguntas.filter(p => p.sim).length).fill(null).concat(st.resp);
+    st.fim = false;
+  });
+  progresso.migCampo = 1;
+})();
+// A guia Lei de Gauss ganhou jogos antes das perguntas: desloca, uma única vez, as respostas já salvas.
+(function () {
+  if (progresso.migGauss) return;
+  const gauss = MODULOS.find(m => m.id === "gauss");
+  if (gauss && gauss.etapas) gauss.etapas.forEach(e => {
+    const st = progresso.etapas[e.id];
+    if (!st || !st.resp || !st.resp.length) return;
+    st.resp = Array(e.perguntas.filter(p => p.sim).length).fill(null).concat(st.resp);
+    st.fim = false;
+  });
+  progresso.migGauss = 1;
+})();   // { etapas: { c01: { resp: [{t, ok}], fim: bool } }, atualizado }
+let refProgresso = null;           // na versão do GitHub o progresso fica no navegador
 let ui = { modulo: "coulomb", etapa: null, q: null, ultimaErrada: null, revisao: false, explorar: false };
 
 function carregarLocal() {
@@ -1695,12 +1990,14 @@ async function gravarDb() {
 const $ = (s, r = document) => r.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 function modulo(id) { return MODULOS.find(m => m.id === id); }
+function etapasDe(m) { return m.etapas || []; }
 function estadoEtapa(id) {
   if (!progresso.etapas[id]) progresso.etapas[id] = { resp: [], fim: false };
   return progresso.etapas[id];
 }
 function hash(s) { let h = 2166136261; for (const c of s) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return h >>> 0; }
 function ordemOpcoes(etapaId, qi, n) {
+  // embaralha de forma estável: a mesma pergunta sempre mostra a mesma ordem
   const idx = [...Array(n).keys()];
   let s = hash(etapaId + ":" + qi);
   for (let i = n - 1; i > 0; i--) { s = (Math.imul(s, 1103515245) + 12345) >>> 0; const j = s % (i + 1); [idx[i], idx[j]] = [idx[j], idx[i]]; }
@@ -1717,18 +2014,18 @@ function estrelas(id) {
   return erros === 0 ? 3 : erros <= 2 ? 2 : 1;
 }
 function liberada(m, i) {
-  return true; // todas as etapas abertas para estudo livre
+  return true;   // todas as etapas abertas: o aluno pode estudar em qualquer ordem
 }
 function proximaAberta(e, depois = -1) {
   const st = estadoEtapa(e.id);
   const i = e.perguntas.findIndex((_, k) => k > depois && !(st.resp[k] && st.resp[k].ok));
   if (i !== -1) return i;
   const j = e.perguntas.findIndex((_, k) => !(st.resp[k] && st.resp[k].ok));
-  return j === -1 ? 0 : j;
+  return j === -1 ? e.perguntas.length - 1 : j;
 }
 function etapaAtualIndex(m) {
   const i = m.etapas.findIndex(e => !(progresso.etapas[e.id] || {}).fim);
-  return i === -1 ? 0 : i;
+  return i === -1 ? m.etapas.length - 1 : i;
 }
 
 /* =====================================================================
@@ -1752,6 +2049,7 @@ function renderMapa(m) {
   const xs = m.etapas.map((_, i) => 34 + 18 * Math.sin(i * 0.95));
   const ys = m.etapas.map((_, i) => topo + i * passo);
   const altura = topo + (n - 1) * passo + 64;
+  // linha de campo: da carga + (topo) até a carga − (base), passando pelas etapas
   const pts = [[34, 28], ...xs.map((x, i) => [x, ys[i]]), [34, altura - 28]];
   let d = `M ${pts[0][0]} ${pts[0][1]}`;
   for (let i = 1; i < pts.length; i++) {
@@ -1773,7 +2071,7 @@ function renderMapa(m) {
     const lib = liberada(m, i);
     const cls = [st.fim ? "feito" : "", i === atual && !st.fim ? "atual" : "", ui.etapa === i ? "aberta" : ""].join(" ");
     const est = st.fim ? "★".repeat(estrelas(e.id)) + "☆".repeat(3 - estrelas(e.id)) : "";
-    const rot = `Etapa ${i + 1}: ${e.titulo}${st.fim ? ", concluída" : ""}`;
+    const rot = `Etapa ${i + 1}: ${e.titulo}${st.fim ? ", concluída" : lib ? "" : ", bloqueada"}`;
     return `<button class="no ${cls}" type="button" data-etapa="${i}" ${lib ? "" : "disabled"} aria-label="${esc(rot)}"
       style="left:${xs[i] - 16}px; top:${ys[i] - 16}px">
       <span class="bola">${st.fim ? "✓" : i + 1}</span>
@@ -1969,7 +2267,7 @@ function renderQuiz() {
 }
 
 /* =====================================================================
-   LABORATÓRIOS INTERATIVOS — kit comum
+   LABORATÓRIOS — kit comum
    ===================================================================== */
 const NS = "http://www.w3.org/2000/svg";
 const K_COULOMB = 8.99e9, CARGA_E = 1.602e-19;
@@ -2008,6 +2306,7 @@ function pontoSvg(svg, ev) {
   const r = svg.getBoundingClientRect(), vb = svg.getAttribute("viewBox").split(" ").map(Number);
   return { x: (ev.clientX - r.left) * vb[2] / (r.width || vb[2]), y: (ev.clientY - r.top) * vb[3] / (r.height || vb[3]) };
 }
+/* Torna um elemento arrastável (mouse, toque e setas do teclado). pos() devolve a posição atual. */
 function arrastavel(el, svg, pos, mover, soltar) {
   el.classList.add("pega");
   el.setAttribute("tabindex", "0");
@@ -2021,6 +2320,7 @@ function arrastavel(el, svg, pos, mover, soltar) {
   });
   el.addEventListener("pointermove", ev => { if (ativo) { const p = pontoSvg(svg, ev); mover({ x: p.x + dx, y: p.y + dy }); } });
   const fim = () => { if (ativo) { ativo = false; if (soltar) soltar(); } };
+  // no toque, impede que o navegador transforme o arrasto em rolagem da página
   el.addEventListener("touchstart", ev => ev.preventDefault(), { passive: false });
   el.addEventListener("touchmove", ev => ev.preventDefault(), { passive: false });
   el.addEventListener("pointerup", fim);
@@ -2098,11 +2398,17 @@ function botaoSim(pai, txt, ao, cls = "botao sec") {
   b.addEventListener("click", ao);
   return b;
 }
-function botaoVerificar(api, testar) {
+/* Botão Verificar: testar() devolve true ou o texto da dica.
+   Com auto = true (padrão), o acerto também é reconhecido sozinho, assim que o aluno
+   deixa a simulação no estado pedido, sem precisar clicar em Verificar. Use auto = false
+   só nas missões de escolher uma alternativa, onde o aluno precisa confirmar a resposta. */
+function botaoVerificar(api, testar, auto = true) {
   const b = botaoSim(api.acoes, "Verificar", () => { const r = testar(); if (r === true) api.ok(); else api.errar(r); }, "botao");
   b.dataset.sim = "verificar";
+  if (auto && api.auto) api.auto(testar);
   return b;
 }
+/* Pergunta rápida de botões, mostrada depois do experimento. ops: [[texto, certa, dica]] */
 function perguntaRapida(api, pergunta, ops) {
   const cx = H("div", "sim-rapida", api.extra);
   cx.hidden = true;
@@ -2266,7 +2572,7 @@ SIMS.inducao = function (root, api) {
     ler.textContent = `Carga líquida da barra: ${liquida > 0 ? "+" + liquida + "e" : "0"} · Fio terra: ${st.terra ? "ligado" : "desligado"} · Elétrons deslocados: ${Math.round((st.mat === "cobre" ? p : 0) * 100)}%`;
     if (m === 0 && st.mat === "cobre" && p >= 0.85) api.ok();
     if (m === 1 && st.mat === "vidro" && p >= 0.85) rapida.mostrar();
-    if (m === 2 && st.n < N && !st.terra && p < 0.15) api.ok();
+    if (m === 2 && st.n <= N - 2 && !st.terra && p < 0.15) api.ok();
   }
   const rapida = perguntaRapida(api, "Os elétrons se deslocaram pela barra de vidro?", [
     ["Sim", false, "Olhe as bolinhas azuis: no vidro elas continuam ao lado dos seus átomos."],
@@ -2276,9 +2582,10 @@ SIMS.inducao = function (root, api) {
   const eT = escolha(root, "Fio terra", [["off", "Desligado"], ["on", "Ligado"]], "off", v => { st.terra = v === "on"; desenhar(); });
   if (m === 2) botaoVerificar(api, () => {
     const p = prox();
-    if (st.n < N && !st.terra && p < 0.15) return true;
+    if (st.n <= N - 2 && !st.terra && p < 0.15) return true;
     if (st.n === N && !st.terra) return "A barra está neutra. Chegue o bastão bem perto e ligue o fio terra para os elétrons escaparem.";
     if (st.terra) return "Com o bastão ainda perto, desligue o fio terra. Só depois afaste o bastão.";
+    if (p < 0.15) return "A barra quase não perdeu elétrons. Chegue o bastão bem perto, ligue o fio terra, desligue o fio e só então afaste o bastão.";
     return "Falta afastar o bastão da barra.";
   });
   desenhar();
@@ -2298,6 +2605,7 @@ SIMS.balanca = function (root, api) {
   const R0 = 4, XA = 250, ESC = 28, Y = 170;
   const st = { q1: 1, q2: 1, r: R0 };
   const razao = () => st.q1 * st.q2 * (R0 / st.r) ** 2;
+  // mostrador de torção
   S("circle", { cx: 110, cy: 150, r: 74, fill: "none", stroke: COR.cinza, "stroke-width": 2 }, svg);
   for (let a = 0; a < 360; a += 30) {
     const t = (a - 90) * Math.PI / 180;
@@ -2306,6 +2614,7 @@ SIMS.balanca = function (root, api) {
   const ponteiro = S("line", { x1: 110, y1: 150, stroke: COR.forca, "stroke-width": 4, "stroke-linecap": "round" }, svg);
   S("circle", { cx: 110, cy: 150, r: 5, fill: COR.forca }, svg);
   texto(svg, 110, 248, "torção do fio", "sim-txt", "middle");
+  // régua
   S("line", { x1: XA, y1: Y + 46, x2: XA + 12 * ESC, y2: Y + 46, stroke: COR.cinza, "stroke-width": 2 }, svg);
   for (let c = 0; c <= 12; c += 2) {
     S("line", { x1: XA + c * ESC, y1: Y + 40, x2: XA + c * ESC, y2: Y + 52, stroke: COR.cinza, "stroke-width": 2 }, svg);
@@ -2356,10 +2665,10 @@ SIMS.balanca = function (root, api) {
 SIMS.propriedades = function (root, api) {
   const m = api.cfg.m;
   const svg = criarPalco(root, 320);
-  const XQ = 60, ESC = 26, Y = 110;
-  const GX = 400, GY = 290, GW = 210, GH = 230;
+  const XQ = 60, ESC = 26, Y = 110;                 // régua: r (cm) = (x - XQ) / ESC
+  const GX = 400, GY = 290, GW = 210, GH = 230;       // gráfico
   const st = { r: 4, s2: 1, pontos: [], curva: null, novas: 0 };
-  const forca = r => 4 / (r * r);
+  const forca = r => 4 / (r * r);                     // unidades: F(2 cm) = 1
   const px = r => GX + r / 10 * GW, py = f => GY - Math.min(f, 2) / 2 * GH;
   S("line", { x1: XQ, y1: Y + 50, x2: XQ + 10 * ESC, y2: Y + 50, stroke: COR.cinza, "stroke-width": 2 }, svg);
   for (let c = 0; c <= 10; c += 2) texto(svg, XQ + c * ESC, Y + 70, c + " cm", "sim-txt", "middle");
@@ -2398,7 +2707,7 @@ SIMS.propriedades = function (root, api) {
     st.novas += 1;
     desenhar();
     if (m === 0 && distintas() >= 5) api.ok();
-    if (m === 2 && st.s2 < 0) api.ok();
+    if (m === 2 && st.s2 < 0 && Math.abs(st.r - 4) < 0.05) api.ok();
   }
   const linha = H("div", "sim-escolha", root);
   H("span", "nome", linha, "Medição");
@@ -2413,12 +2722,17 @@ SIMS.propriedades = function (root, api) {
       if (st.curva === "2") return true;
       return st.curva === "1" ? "A curva 1/r passa acima dos pontos nas distâncias grandes: a força real cai mais depressa."
         : "A curva 1/r³ passa abaixo dos pontos nas distâncias grandes: a força real cai mais devagar.";
-    });
+    }, false);
   }
   if (m === 0) botaoVerificar(api, () => (distintas() >= 5 ? true : `Você tem ${distintas()} medidas em distâncias diferentes. Arraste q₂ e meça até completar 5.`));
   if (m === 2) {
     st.pontos.push({ r: 4, f: forca(4), s: 1 });
-    botaoVerificar(api, () => (st.s2 < 0 && st.novas > 0 ? true : st.s2 > 0 ? "Troque o sinal de q₂ para negativo." : "Agora clique em Medir a força, na mesma distância."));
+    botaoVerificar(api, () => {
+      if (st.pontos.some(q => q.s < 0 && Math.abs(q.r - 4) < 0.05)) return true;
+      if (st.s2 > 0) return "Troque o sinal de q₂ para negativo.";
+      if (Math.abs(st.r - 4) >= 0.05) return "Volte q₂ para 4,0 cm, a mesma distância da primeira medida, e meça de novo.";
+      return "Agora clique em Medir a força, com q₂ negativa e na mesma distância.";
+    });
   }
   desenhar();
   root._t = { resolver() {
@@ -2580,7 +2894,7 @@ SIMS.nucleo = function (root, api) {
     st.ex = v; st.min = Math.min(st.min, v); st.max = Math.max(st.max, v); desenhar();
     if (rapida && st.max - st.min >= 3) rapida.mostrar();
   } });
-  if (m === 1) botaoVerificar(api, () => (st.par === "pp" ? true : "Compare o número da razão nos três pares. A gravidade cresce com a massa, e o próton é a partícula mais pesada."));
+  if (m === 1) botaoVerificar(api, () => (st.par === "pp" ? true : "Compare o número da razão nos três pares. A gravidade cresce com a massa, e o próton é a partícula mais pesada."), false);
   if (m === 2) botaoVerificar(api, () => {
     if (st.par !== "pp") return "Escolha o par próton e próton.";
     const f = Fe();
@@ -2602,7 +2916,7 @@ SIMS.superposicao = function (root, api) {
   const m = api.cfg.m;
   const svg = criarPalco(root, 340);
   const A = { x: 200, y: 170, q: [2, 4, 2][m] }, B = { x: 440, y: 170, q: [2, 1, -2][m] };
-  const st = { x: 320, y: 70 };
+  const st = { x: m === 2 ? 400 : 320, y: 70 };   // na missão 3, (320, 70) já tinha resultante para a direita
   for (let x = 40; x <= 600; x += 40) S("line", { x1: x, y1: 10, x2: x, y2: 330, class: "sim-grade" }, svg);
   for (let y = 10; y <= 330; y += 40) S("line", { x1: 40, y1: y, x2: 600, y2: y, class: "sim-grade" }, svg);
   const fA = criarSeta(svg, "campo", 3), fB = criarSeta(svg, "campo", 3), fR = criarSeta(svg, "forca", 6);
@@ -2724,7 +3038,7 @@ SIMS.equilibrio = function (root, api) {
   const m = api.cfg.m;
   const svg = criarPalco(root, 340);
   const cfg = m === 2 ? { qa: 1, qb: 4, x0: 120, esc: 400, min: 0.1, max: 0.9, ini: 0.6, alvo: 1 / 3, tol: 0.03 }
-    : { qa: 8, qb: -2, x0: 90, esc: 130, min: -0.5, max: 3.9, ini: m === 1 ? 2 : 2.9, alvo: 2, tol: 0.05 };
+    : { qa: 8, qb: -2, x0: 90, esc: 130, min: m === 1 ? 1.2 : -0.5, max: 3.9, ini: m === 1 ? 2 : 2.9, alvo: 2, tol: 0.05 };
   const st = { x: cfg.ini, v: 0, solto: false, soltou: false };
   const Y = 90, GY = 250, GH = 70, KG = m === 2 ? 0.08 : 1.5;
   const px = x => cfg.x0 + x * cfg.esc;
@@ -2738,6 +3052,7 @@ SIMS.equilibrio = function (root, api) {
     const r = m === 2 ? ["0", "L/3", "2L/3", "L"][marcas.indexOf(v)] : (v === 0 ? "0" : v === 1 ? "L" : v + "L");
     texto(svg, px(v), Y + 44, r, "sim-txt", "middle");
   });
+  // gráfico da resultante
   S("line", { x1: 20, y1: GY, x2: 620, y2: GY, stroke: COR.cinza, "stroke-width": 1.5 }, svg);
   texto(svg, 22, GY - GH - 4, "força resultante sobre o próton (para cima = para a direita)", "sim-txt");
   let d = "", aberto = false;
@@ -2841,7 +3156,7 @@ SIMS.esferas = function (root, api) {
   texto(svg, 320, 300, "terra: descarrega", "sim-txt", "middle");
   const fracao = v => {
     if (Math.abs(v) < 1e-9) return "0";
-    let num = Math.round(v * 8), den = 64;
+    let num = Math.round(v * 8), den = 64;                // v em oitavos de Q, guardado com precisão de 1/64
     const g = (a, b) => (b ? g(b, a % b) : a), k = g(Math.abs(num), den);
     num /= k; den /= k;
     return den === 1 ? (num === 1 ? "Q" : num + "Q") : (num === 1 ? "Q/" + den : num + "Q/" + den);
@@ -2889,7 +3204,7 @@ SIMS.quantizacao = function (root, api) {
   const ler = H("div", "sim-leitura", root);
   const cargaTxt = n => (n === 0 ? "0" : `${n > 0 ? "+" : "−"}${Math.abs(n)}e = ${n > 0 ? "+" : "−"}${fmtSci(Math.abs(n) * CARGA_E, 1)} C`);
   if (m < 2) {
-    const st = { extra: 0, cliques: 0 };
+    const st = { extra: 0, cliques: 0 };                  // elétrons a mais (negativo = faltando)
     const CX = 320, CY = 150;
     S("circle", { cx: CX, cy: CY, r: 100, class: "sim-corpo" }, svg);
     const gI = S("g", {}, svg), gE = S("g", {}, svg);
@@ -2921,6 +3236,7 @@ SIMS.quantizacao = function (root, api) {
     root._t = { resolver() { if (m === 0) { st.extra = 3; desenhar(); } else { st.cliques = 3; rapida.mostrar(); } } };
     return;
   }
+  // missão 3: conservação da carga entre o vidro e a seda
   const VX = 170, SX = 470, Y = 150;
   S("rect", { x: VX - 120, y: Y - 30, width: 240, height: 60, rx: 30, fill: "#BFE3EA", stroke: "#6B7A80" }, svg);
   S("rect", { x: SX - 110, y: Y - 70, width: 220, height: 140, rx: 12, fill: "#EDE6D2", stroke: "#B9AE8C" }, svg);
@@ -2967,7 +3283,8 @@ SIMS.fio = function (root, api) {
   const m = api.cfg.m;
   const svg = criarPalco(root, 320);
   const CX = 320, YF = 250, ESP = 14;
-  const st = { n: m === 2 ? 9 : 11, x: m === 2 ? CX + 60 : CX + 120, y: m === 2 ? YF - 60 : 150 };
+  // na missão 2, P começa no centro (inclinação 0°); antes começava a 43°, já acima dos 20° pedidos
+  const st = { n: m === 2 ? 9 : 11, x: m === 2 ? CX + 60 : m === 1 ? CX : CX + 120, y: m === 2 ? YF - 60 : 150 };
   const gC = S("g", {}, svg);
   const ref = S("line", { stroke: COR.cinza, "stroke-width": 1.5, "stroke-dasharray": "5 5" }, svg);
   const f = criarSeta(svg, "forca", 6);
@@ -3012,6 +3329,1267 @@ SIMS.fio = function (root, api) {
 };
 
 /* =====================================================================
+   CAMPO ELÉTRICO — apoio comum
+   ===================================================================== */
+const COR_P = "#2A9D8F";
+function campoDe(cargas, x, y) {
+  let ex = 0, ey = 0;
+  for (const c of cargas) {
+    const dx = x - c.x, dy = y - c.y, r2 = Math.max(dx * dx + dy * dy, 144), r = Math.sqrt(r2);
+    ex += c.q * dx / (r2 * r); ey += c.q * dy / (r2 * r);
+  }
+  return { x: ex, y: ey, mod: Math.hypot(ex, ey) };
+}
+const angTela = (vx, vy) => { const a = Math.atan2(-vy, vx) * 180 / Math.PI; return Math.abs(a) < 0.5 ? 0 : a; };
+function gradeFundo(svg, alt) {
+  for (let x = 40; x <= 600; x += 40) S("line", { x1: x, y1: 10, x2: x, y2: alt - 10, class: "sim-grade" }, svg);
+  for (let y = 10; y <= alt - 10; y += 40) S("line", { x1: 40, y1: y, x2: 600, y2: y, class: "sim-grade" }, svg);
+}
+/* Linha de campo que passa por (x0, y0), integrada nos dois sentidos. */
+function linhaCampo(campo, x0, y0, alt, parar) {
+  const meia = dir => {
+    const pts = [];
+    let x = x0, y = y0;
+    for (let i = 0; i < 400; i++) {
+      const e = campo(x, y);
+      if (!e.mod) break;
+      x += dir * 5 * e.x / e.mod; y += dir * 5 * e.y / e.mod;
+      if (x < 0 || x > 640 || y < 0 || y > alt || parar(x, y)) break;
+      pts.push([x, y]);
+    }
+    return pts;
+  };
+  return [...meia(-1).reverse(), [x0, y0], ...meia(1)];
+}
+const proximoDe = (lista, x, y, d) => lista.some(p => Math.hypot(p.x - x, p.y - y) < d);
+
+/* =====================================================================
+   CAMPO 1 — O campo que já estava lá
+   ===================================================================== */
+SIMS.acaoDistancia = function (root, api) {
+  const m = api.cfg.m;
+  const svg = criarPalco(root, 340);
+  const Q2 = { x: 400, y: 170, q: 1 };
+  const st = { x: 200, y: 250, campo: m > 0, fora: false, dist: 0 };
+  const gCampo = S("g", {}, svg);
+  for (let x = 40; x <= 600; x += 56) for (let y = 30; y <= 310; y += 56) {
+    if (Math.hypot(x - Q2.x, y - Q2.y) < 40) continue;
+    const e = campoDe([Q2], x, y), L = lim(2.2e5 * e.mod, 9, 26), ux = e.x / e.mod, uy = e.y / e.mod;
+    criarSeta(gCampo, "campo", 2).pos(x - ux * L / 2, y - uy * L / 2, x + ux * L / 2, y + uy * L / 2);
+  }
+  const f = criarSeta(svg, "forca", 5);
+  const c2 = criarCarga(svg, 17, 1, "q₂"), c1 = criarCarga(svg, 12, 1, "q₁");
+  c2.em(Q2.x, Q2.y);
+  const ler = H("div", "sim-leitura", root);
+  const angulo = () => { const e = campoDe([Q2], st.x, st.y); return angTela(e.x, e.y); };
+  function desenhar() {
+    gCampo.style.display = st.campo ? "" : "none";
+    c1.g.style.display = st.fora ? "none" : "";
+    c1.em(st.x, st.y);
+    const e = campoDe([Q2], st.x, st.y), L = lim(4e5 * e.mod, 16, 110);
+    if (st.fora) f.pos(0, 0, 0, 0); else f.pos(st.x, st.y, st.x + e.x / e.mod * L, st.y + e.y / e.mod * L);
+    ler.textContent = st.fora ? "q₁ foi retirada. As setas azuis mostram o campo de q₂ em cada ponto do espaço."
+      : `Força sobre q₁: ângulo ${fmtNum(angulo(), 0)}° · Setas do campo de q₂: ${st.campo ? "visíveis" : "ocultas"}`;
+    if (m === 0 && st.campo && st.dist >= 400) api.ok();
+  }
+  arrastavel(c1.g, svg, () => ({ x: st.x, y: st.y }), p => {
+    const nx = lim(p.x, 30, 610), ny = lim(p.y, 20, 320);
+    st.dist += Math.hypot(nx - st.x, ny - st.y); st.x = nx; st.y = ny; desenhar();
+  });
+  const eC = escolha(root, "Campo de q₂", [["off", "Oculto"], ["on", "Visível"]], st.campo ? "on" : "off", v => { st.campo = v === "on"; desenhar(); });
+  const rapida = m === 1 ? perguntaRapida(api, "Com q₁ fora da cena, o campo de q₂ continua existindo no espaço?", [
+    ["Sim", true, ""], ["Não", false, "Olhe as setas azuis: elas continuam no lugar mesmo sem q₁ por perto."]]) : null;
+  const eQ = escolha(root, "Carga q₁", [["in", "Na cena"], ["out", "Retirada"]], "in", v => { st.fora = v === "out"; desenhar(); if (rapida && st.fora) rapida.mostrar(); });
+  if (m === 0) botaoVerificar(api, () => (st.campo && st.dist >= 400 ? true : !st.campo ? "Ligue as setas em \"Campo de q₂\"." : "Arraste q₁ por mais regiões do plano, observando a seta amarela."));
+  if (m === 2) botaoVerificar(api, () => {
+    if (st.fora) return "Recoloque q₁ na cena.";
+    const a = angulo();
+    return Math.abs(Math.abs(a) - 180) <= 8 ? true : `A força está a ${fmtNum(a, 0)}°. O campo de q₂ aponta para longe dela: de que lado q₁ precisa ficar?`;
+  });
+  desenhar();
+  root._t = { resolver() {
+    if (m === 0) { st.campo = true; eC.set("on"); st.dist = 500; }
+    if (m === 1) { st.fora = true; eQ.set("out"); rapida.mostrar(); }
+    if (m === 2) { st.x = 200; st.y = 170; }
+    desenhar();
+  } };
+};
+
+/* =====================================================================
+   CAMPO 2 — Medidor de campo (E = F/q0)
+   ===================================================================== */
+SIMS.cargaProva = function (root, api) {
+  const m = api.cfg.m;
+  const svg = criarPalco(root, 340);
+  const QX = 140, QY = 170, ESC = 6;                                   // 6 px = 1 cm
+  const st = { x: m === 1 ? 440 : 320, y: m === 1 ? 250 : 170, q0: 1, marcas: [] };
+  const dist = () => Math.hypot(st.x - QX, st.y - QY);
+  const campo = () => K_COULOMB * 30e-9 / (dist() / ESC / 100) ** 2;    // N/C
+  gradeFundo(svg, 340);
+  const gM = S("g", {}, svg);
+  const sE = criarSeta(svg, "campo", 5), sF = criarSeta(svg, "forca", 5);
+  const cQ = criarCarga(svg, 18, 1, "30 nC"), c0 = criarCarga(svg, 10, 1, "q₀");
+  cQ.em(QX, QY);
+  const ler = H("div", "sim-leitura", root);
+  const distintas = () => { const v = []; st.marcas.forEach(p => { if (!proximoDe(v, p.x, p.y, 40)) v.push(p); }); return v.length; };
+  function desenhar() {
+    const d = dist(), ux = (st.x - QX) / d, uy = (st.y - QY) / d, E = campo(), F = st.q0 * 1e-9 * E;
+    c0.em(st.x, st.y); c0.raio(8 + st.q0);
+    const LE = lim(E / 40, 12, 120), LF = lim(F * 1e6 * 18, 10, 150);
+    sE.pos(st.x - uy * 9, st.y + ux * 9, st.x - uy * 9 + ux * LE, st.y + ux * 9 + uy * LE);
+    sF.pos(st.x + uy * 9, st.y - ux * 9, st.x + uy * 9 + ux * LF, st.y - ux * 9 + uy * LF);
+    ler.textContent = `q₀ = ${st.q0} nC · F = ${fmtNum(F * 1e6, 2)} μN (amarelo) · E = F/q₀ = ${fmtSci(E, 2)} N/C (azul) · distância: ${fmtNum(d / ESC, 1)} cm`;
+  }
+  arrastavel(c0.g, svg, () => ({ x: st.x, y: st.y }), p => {
+    st.x = lim(p.x, 40, 610); st.y = lim(p.y, 20, 320);
+    if (dist() < 42) { const d = dist() || 1; st.x = QX + (st.x - QX) / d * 42; st.y = QY + (st.y - QY) / d * 42; }
+    desenhar();
+  });
+  function marcar() {
+    const d = dist(), ux = (st.x - QX) / d, uy = (st.y - QY) / d, L = lim(campo() / 40, 12, 120);
+    criarSeta(gM, "campo", 3).pos(st.x, st.y, st.x + ux * L, st.y + uy * L);
+    S("circle", { cx: st.x, cy: st.y, r: 3, fill: COR.pos }, gM);
+    st.marcas.push({ x: st.x, y: st.y });
+    if (m === 2 && distintas() >= 6) api.ok();
+  }
+  const rapida = m === 0 ? perguntaRapida(api, "Ao dobrar a carga de prova, o campo E = F/q₀ nesse ponto:", [
+    ["Dobrou", false, "A força dobrou, mas o campo é a força dividida por q₀. Compare o valor de E no painel antes e depois."],
+    ["Não mudou", true, ""],
+    ["Caiu pela metade", false, "q₀ dobrou, mas a força dobrou junto: a razão F/q₀ ficou igual."]]) : null;
+  const sq = controle(root, { rot: "Carga de prova q₀", min: 1, max: 5, passo: 1, valor: 1, fmt: v => v + " nC", ao: v => { st.q0 = v; desenhar(); if (rapida && v === 2) rapida.mostrar(); } });
+  const linha = H("div", "sim-escolha", root);
+  H("span", "nome", linha, "Mapa do campo");
+  botaoSim(linha, "Marcar o vetor aqui", marcar, "");
+  if (m === 1) botaoVerificar(api, () => {
+    const E = campo();
+    return E >= 2850 && E <= 3150 ? true : `O campo aqui é ${fmtSci(E, 2)} N/C. ${E < 3000 ? "Aproxime a carga de prova da carga de 30 nC." : "Afaste a carga de prova."}`;
+  });
+  if (m === 2) botaoVerificar(api, () => (distintas() >= 6 ? true : `Você marcou ${distintas()} pontos diferentes. Arraste q₀ para outro lugar e marque de novo, até 6.`));
+  desenhar();
+  root._t = { resolver() {
+    if (m === 0) { st.q0 = 2; sq.set(2); rapida.mostrar(); }
+    if (m === 1) { st.x = QX + 180; st.y = QY; }
+    if (m === 2) [[260, 80], [380, 100], [500, 170], [420, 260], [280, 280], [560, 60]].forEach(([x, y]) => { st.x = x; st.y = y; marcar(); });
+    desenhar();
+  } };
+};
+
+/* =====================================================================
+   CAMPO 3 — Trace as linhas
+   ===================================================================== */
+SIMS.linhasCampo = function (root, api) {
+  const m = api.cfg.m;
+  const svg = criarPalco(root, 340);
+  const cargas = m === 0 ? [{ x: 320, y: 170, q: -1 }] : m === 1 ? [{ x: 210, y: 170, q: 1 }, { x: 430, y: 170, q: 1 }] : [];
+  const campo = (x, y) => (m === 2 ? { x: 1, y: 0, mod: 1 } : campoDe(cargas, x, y));
+  const parar = (x, y) => (m === 2 ? x < 94 : proximoDe(cargas, x, y, 15));
+  const st = { x: m === 1 ? 320 : 480, y: m === 1 ? 70 : 90, inicios: [], dist: 0 };
+  gradeFundo(svg, 340);
+  const gL = S("g", {}, svg);
+  if (m === 2) {
+    S("rect", { x: 70, y: 14, width: 22, height: 312, rx: 4, fill: "#E6B8B2", stroke: COR.pos }, svg);
+    for (let y = 34; y <= 310; y += 34) { const t = S("text", { x: 81, y: y + 6, "text-anchor": "middle", class: "sim-ion" }, svg); t.textContent = "+"; }
+  }
+  const sE = criarSeta(svg, "campo", 5);
+  cargas.forEach(c => criarCarga(svg, 16, c.q, "").em(c.x, c.y));
+  const P = criarCarga(svg, 9, 1, "P");
+  const ler = H("div", "sim-leitura", root);
+  const partes = () => cargas.reduce((s, c) => s + campoDe([c], st.x, st.y).mod, 0);
+  function desenhar() {
+    const e = campo(st.x, st.y), L = m === 2 ? 60 : lim(4e5 * e.mod, 0, 110);
+    P.em(st.x, st.y);
+    if (e.mod) sE.pos(st.x, st.y, st.x + e.x / e.mod * L, st.y + e.y / e.mod * L); else sE.pos(0, 0, 0, 0);
+    const nulo = m === 1 && e.mod / partes() < 0.1;
+    ler.textContent = `Linhas traçadas: ${st.inicios.length} · Campo no ponto de prova: ${nulo ? "praticamente zero" : "ângulo " + fmtNum(angTela(e.x, e.y), 0) + "°"}`;
+  }
+  function tracar() {
+    const pts = linhaCampo(campo, st.x, st.y, 340, parar);
+    if (pts.length < 3) return;
+    S("path", { d: pts.map((p, i) => `${i ? "L" : "M"} ${p[0].toFixed(1)} ${p[1].toFixed(1)}`).join(" "), fill: "none", stroke: COR.campo, "stroke-width": 2 }, gL);
+    const k = Math.floor(pts.length / 2), a = pts[Math.max(k - 1, 0)], b = pts[Math.min(k + 1, pts.length - 1)];
+    criarSeta(gL, "campo", 2).pos(a[0], a[1], b[0], b[1]);
+    if (!proximoDe(st.inicios, st.x, st.y, 30)) st.inicios.push({ x: st.x, y: st.y });
+    desenhar();
+    if (m === 0 && st.inicios.length >= 4) api.ok();
+  }
+  const rapida = m === 2 ? perguntaRapida(api, "Enquanto você arrastava o ponto de prova, o vetor campo mudou de tamanho ou de direção?", [
+    ["Mudou", false, "Arraste de novo olhando só para a seta azul: ela fica igual em todos os pontos."], ["Não mudou", true, ""]]) : null;
+  arrastavel(P.g, svg, () => ({ x: st.x, y: st.y }), p => {
+    const nx = lim(p.x, m === 2 ? 110 : 30, 610), ny = lim(p.y, 20, 320);
+    st.dist += Math.hypot(nx - st.x, ny - st.y); st.x = nx; st.y = ny; desenhar();
+    if (rapida && st.dist >= 300) rapida.mostrar();
+  });
+  const linha = H("div", "sim-escolha", root);
+  H("span", "nome", linha, "Linha de campo");
+  botaoSim(linha, "Traçar linha por aqui", tracar, "");
+  if (m === 0) botaoVerificar(api, () => (st.inicios.length >= 4 ? true : `Você traçou linhas a partir de ${st.inicios.length} pontos diferentes. Arraste o ponto de prova e trace até 4.`));
+  if (m === 1) botaoVerificar(api, () => (campo(st.x, st.y).mod / partes() < 0.1 ? true : "O campo aqui ainda não é zero. Procure o ponto em que os campos das duas cargas são iguais e opostos."));
+  desenhar();
+  root._t = { resolver() {
+    if (m === 0) [[480, 90], [160, 90], [160, 260], [480, 260]].forEach(([x, y]) => { st.x = x; st.y = y; tracar(); });
+    if (m === 1) { st.x = 320; st.y = 170; }
+    if (m === 2) { st.dist = 400; rapida.mostrar(); }
+    desenhar();
+  } };
+};
+
+/* =====================================================================
+   CAMPO 4 — Campo sob medida (carga pontual)
+   ===================================================================== */
+SIMS.cargaPontual = function (root, api) {
+  const m = api.cfg.m;
+  const svg = criarPalco(root, 340);
+  const CX = 320, CY = 170, ESC = 8;                                    // 8 px = 1 cm
+  const st = { q: m === 2 ? 3 : 2, s: 1, x: m === 0 ? CX + 80 : CX + 120, y: m === 0 ? CY : CY + 60 };
+  [10, 20, 30].forEach(c => {
+    S("circle", { cx: CX, cy: CY, r: c * ESC, fill: "none", stroke: COR.cinza, "stroke-width": 1, "stroke-dasharray": "4 5" }, svg);
+    texto(svg, CX + c * ESC * 0.7071 + 4, CY - c * ESC * 0.7071 - 4, c + " cm", "sim-txt");
+  });
+  const sE = criarSeta(svg, "campo", 5);
+  const cQ = criarCarga(svg, 16, 1, ""), P = criarCarga(svg, 8, 0, "P");
+  cQ.em(CX, CY);
+  const ler = H("div", "sim-leitura", root);
+  function estado() {
+    const d = Math.hypot(st.x - CX, st.y - CY), E = 8.99 * st.q / (d / ESC / 100) ** 2;
+    const ux = st.s * (st.x - CX) / d, uy = st.s * (st.y - CY) / d;
+    return { d, E, ux, uy, ang: angTela(ux, uy) };
+  }
+  function desenhar() {
+    const e = estado(), L = lim(e.E / 12, 12, 130);
+    cQ.sinal(st.s); cQ.rotulo(`${st.s > 0 ? "+" : "−"}${fmtNum(st.q, 1)} nC`);
+    P.em(st.x, st.y);
+    sE.pos(st.x, st.y, st.x + e.ux * L, st.y + e.uy * L);
+    ler.textContent = `Distância: ${fmtNum(e.d / ESC, 1)} cm · Campo em P: ${fmtNum(e.E, 0)} N/C · ângulo ${fmtNum(e.ang, 0)}°`;
+  }
+  arrastavel(P.g, svg, () => ({ x: st.x, y: st.y }), p => {
+    st.x = CX + Math.round((lim(p.x, 30, 610) - CX) / 4) * 4; st.y = CY + Math.round((lim(p.y, 20, 320) - CY) / 4) * 4;
+    if (Math.hypot(st.x - CX, st.y - CY) < 32) st.x = CX + (st.x >= CX ? 32 : -32);
+    desenhar();
+  });
+  const eS = escolha(root, "Sinal da carga", [["1", "Positiva"], ["-1", "Negativa"]], "1", v => { st.s = +v; desenhar(); });
+  const sQ = controle(root, { rot: "Valor da carga", min: 0.5, max: 5, passo: 0.5, valor: st.q, fmt: v => fmtNum(v, 1) + " nC", ao: v => { st.q = v; desenhar(); } });
+  botaoVerificar(api, () => {
+    const e = estado();
+    if (m === 0) {
+      if (st.q !== 2 || st.s < 0) return "Mantenha a carga em +2,0 nC e mude só a posição de P.";
+      return Math.abs(e.E - 449.5) <= 18 ? true : `O campo está em ${fmtNum(e.E, 0)} N/C; um quarto de 1798 é cerca de 450. ${e.E > 450 ? "Afaste P." : "Aproxime P."}`;
+    }
+    if (m === 1) {
+      if (st.s > 0) return "Troque o sinal da carga para negativo.";
+      return Math.abs(e.ang) <= 6 ? true : `O campo está a ${fmtNum(e.ang, 0)}°. Ele aponta para a carga negativa: onde P precisa ficar para a seta apontar para a direita?`;
+    }
+    if (Math.abs(e.ang - 90) > 6) return `O campo está a ${fmtNum(e.ang, 0)}°. Para apontar para cima, P precisa ficar acima de uma carga positiva ou abaixo de uma negativa.`;
+    return Math.abs(e.E - 900) <= 27 ? true : `A direção está certa, mas o campo vale ${fmtNum(e.E, 0)} N/C. Ajuste o valor da carga ou a distância.`;
+  });
+  desenhar();
+  root._t = { resolver() {
+    if (m === 0) { st.x = CX + 160; st.y = CY; }
+    if (m === 1) { st.s = -1; eS.set("-1"); st.x = CX - 120; st.y = CY; }
+    if (m === 2) { st.q = 1; sQ.set(1); st.x = CX; st.y = CY - 80; }
+    desenhar();
+  } };
+};
+
+/* =====================================================================
+   CAMPO 5 — Três cargas, um ponto (Exemplo 22.01)
+   ===================================================================== */
+SIMS.tresCampos = function (root, api) {
+  const m = api.cfg.m;
+  const svg = criarPalco(root, 340);
+  const OX = 290, OY = 180, D = 125, U = 27, ANG = [150, -30, 30];
+  const st = { q: m === 0 ? [1, 1, 1] : m === 1 ? [2, 1, -1] : [1, -1, 1] };
+  const un = a => [Math.cos(a * Math.PI / 180), Math.sin(a * Math.PI / 180)];
+  S("line", { x1: 60, y1: OY, x2: 600, y2: OY, stroke: COR.cinza, "stroke-width": 1.5 }, svg);
+  S("line", { x1: OX, y1: 14, x2: OX, y2: 326, stroke: COR.cinza, "stroke-width": 1.5 }, svg);
+  texto(svg, 596, OY - 6, "x", "sim-txt", "end"); texto(svg, OX + 8, 26, "y", "sim-txt");
+  const cs = ANG.map(a => {
+    const [ux, uy] = un(a), x = OX + D * ux, y = OY - D * uy;
+    S("line", { x1: OX, y1: OY, x2: x, y2: y, stroke: COR.cinza, "stroke-width": 1.2, "stroke-dasharray": "5 5" }, svg);
+    const c = criarCarga(svg, 15, 1, ""); c.em(x, y);
+    return c;
+  });
+  texto(svg, OX - 64, OY - 44, "d", "sim-txt");
+  const vs = [0, 1, 2].map(() => criarSeta(svg, "campo", 4)), vR = criarSeta(svg, "forca", 6);
+  S("circle", { cx: OX, cy: OY, r: 4, fill: COR.cinza }, svg);
+  const ler = H("div", "sim-leitura", root);
+  function total() {
+    let ex = 0, ey = 0;
+    const partes = ANG.map((a, i) => { const [ux, uy] = un(a); const p = [-st.q[i] * ux, -st.q[i] * uy]; ex += p[0]; ey += p[1]; return p; });
+    const mod = Math.hypot(ex, ey);
+    return { partes, ex, ey, mod, ang: mod < 0.01 ? 0 : angTela(ex, -ey) };
+  }
+  const rot = v => (v > 0 ? "+" : v < 0 ? "−" : "") + (Math.abs(v) === 1 ? "" : Math.abs(v)) + (v ? "Q" : "");
+  function desenhar() {
+    const t = total();
+    cs.forEach((c, i) => { c.sinal(st.q[i]); c.rotulo(`q${"₁₂₃"[i]} = ${rot(st.q[i])}`); });
+    t.partes.forEach((p, i) => vs[i].pos(OX, OY, OX + p[0] * U, OY - p[1] * U));
+    vR.pos(OX, OY, OX + t.ex * U, OY - t.ey * U);
+    ler.textContent = `Campo na origem: ${fmtNum(t.mod, 2)} × Q/(4πε₀d²)${t.mod < 0.01 ? "" : " · ângulo " + fmtNum(t.ang, 0) + "°"} · azul: campo de cada carga; amarelo: soma`;
+  }
+  const fq = v => rot(v) || "0";
+  const sl = [0, 1, 2].map(i => controle(root, { rot: "Carga q" + "₁₂₃"[i], min: -4, max: 4, passo: 1, valor: st.q[i], fmt: fq, ao: v => { st.q[i] = v; desenhar(); } }));
+  botaoVerificar(api, () => {
+    const t = total();
+    if (m === 0) return st.q[0] === 2 && st.q[1] === -2 && st.q[2] === -4 ? true : "Use as barras para deixar q₁ = +2Q, q₂ = −2Q e q₃ = −4Q.";
+    if (m === 1) {
+      if (st.q.every(v => v === 0)) return "Sem carga nenhuma não vale: deixe ao menos uma carga diferente de zero.";
+      return t.mod < 0.01 ? true : "O campo ainda não é zero. q₁ e q₂ estão em lados opostos da origem: quando os campos delas se cancelam? E q₃, tem alguma carga oposta a ela?";
+    }
+    return t.mod > 0.1 && Math.abs(t.ang - 90) <= 5 ? true : `A soma está a ${fmtNum(t.ang, 0)}°. Para apontar para cima, os componentes x precisam se cancelar.`;
+  });
+  desenhar();
+  root._t = { resolver() {
+    st.q = m === 0 ? [2, -2, -4] : m === 1 ? [3, 3, 0] : [0, 2, -2];
+    sl.forEach((s, i) => s.set(st.q[i])); desenhar();
+  } };
+};
+
+/* =====================================================================
+   CAMPO 6 — Dipolo no eixo
+   ===================================================================== */
+SIMS.dipoloEixo = function (root, api) {
+  const m = api.cfg.m;
+  const svg = criarPalco(root, 340);
+  const AX = 200, CYD = 292, ESC = 8;                                   // 8 px = 1 cm, z para cima
+  const ini = { q: 1, d: 2, z: m === 0 ? 10 : 20 };
+  const st = { ...ini, inv: false };
+  const Ez = (q, d, z) => q * (1 / (z - d / 2) ** 2 - 1 / (z + d / 2) ** 2);
+  const E0 = Ez(ini.q, ini.d, ini.z);
+  S("line", { x1: AX, y1: 20, x2: AX, y2: 330, stroke: COR.cinza, "stroke-width": 1.5, "stroke-dasharray": "5 5" }, svg);
+  for (let c = 10; c <= 30; c += 10) {
+    S("line", { x1: AX - 8, y1: CYD - c * ESC, x2: AX + 8, y2: CYD - c * ESC, stroke: COR.cinza, "stroke-width": 1.5 }, svg);
+    texto(svg, AX - 14, CYD - c * ESC + 5, c + " cm", "sim-txt", "end");
+  }
+  const sp = S("line", { stroke: COR_P, "stroke-width": 5, "stroke-linecap": "round" }, svg);
+  const tp = texto(svg, 0, 0, "p", "sim-txt forte");
+  const sM = criarSeta(svg, "campo", 4), sN = criarSeta(svg, "campo", 4), sR = criarSeta(svg, "forca", 6);
+  const cA = criarCarga(svg, 11, 1, ""), cB = criarCarga(svg, 11, -1, ""), P = criarCarga(svg, 8, 0, "P");
+  texto(svg, 330, 40, "azul: campo de cada carga", "sim-txt"); texto(svg, 330, 62, "amarelo: campo total (ampliado)", "sim-txt");
+  const tE = texto(svg, 330, 110, "", "sim-txt forte"), tQ = texto(svg, 330, 134, "", "sim-txt");
+  const ler = H("div", "sim-leitura", root);
+  const razao = () => Ez(st.q, st.d, st.z) / E0;
+  function desenhar() {
+    const s = st.inv ? -1 : 1, yP = CYD - st.z * ESC, h = st.d / 2 * ESC;
+    cA.em(AX, CYD - s * h); cB.em(AX, CYD + s * h);
+    cA.raio(6 + st.q); cB.raio(6 + st.q);
+    P.em(AX, yP);
+    const a = lim(3000 * st.q / (st.z - st.d / 2) ** 2, 4, 90), b = lim(3000 * st.q / (st.z + st.d / 2) ** 2, 4, 90);
+    sM.pos(AX - 12, yP, AX - 12, yP - s * a); sN.pos(AX + 12, yP, AX + 12, yP + s * b);
+    sR.pos(AX + 34, yP, AX + 34, yP - s * lim((a - b) * 3, 6, 100));
+    sp.setAttribute("x1", AX + 40); sp.setAttribute("x2", AX + 40); sp.setAttribute("y1", CYD + s * (h + 10)); sp.setAttribute("y2", CYD - s * (h + 10));
+    tp.setAttribute("x", AX + 50); tp.setAttribute("y", CYD - s * (h + 6));
+    tp.textContent = s > 0 ? "p ↑" : "p ↓";
+    tE.textContent = `E / E₀ = ${fmtNum(razao(), 3)}`;
+    tQ.textContent = `produto q·d = ${fmtNum(st.q * st.d, 1)} (unidades)`;
+    ler.textContent = `Distância de P ao centro: z = ${fmtNum(st.z, 1)} cm · q = ${st.q} · d = ${fmtNum(st.d, 1)} cm · campo total em P aponta para ${s > 0 ? "cima" : "baixo"}`;
+  }
+  if (m !== 1) arrastavel(P.g, svg, () => ({ x: AX, y: CYD - st.z * ESC }), p => { st.z = Math.round(lim((CYD - p.y) / ESC, st.d / 2 + 2, 32) * 2) / 2; desenhar(); });
+  const r1 = m === 1 ? perguntaRapida(api, "Com q dobrado e d pela metade, o campo em P (longe do dipolo):", [
+    ["Dobrou", false, "q dobrou, mas d caiu pela metade. Veja o valor de E/E₀ no painel."],
+    ["Quase não mudou", true, ""],
+    ["Caiu pela metade", false, "d caiu pela metade, mas q dobrou. Veja o valor de E/E₀ no painel."]]) : null;
+  const r2 = m === 2 ? perguntaRapida(api, "Depois de inverter o dipolo, o campo em P aponta no mesmo sentido do momento dipolar p?", [
+    ["Sim", true, ""], ["Não", false, "Compare a seta amarela em P com o sentido de p ao lado do dipolo."]]) : null;
+  const checar = () => { if (r1 && st.q === 2 && st.d === 1) r1.mostrar(); };
+  const sq = controle(root, { rot: "Carga q", min: 1, max: 4, passo: 1, valor: st.q, fmt: v => v + " (unid.)", ao: v => { st.q = v; desenhar(); checar(); } });
+  const sd = controle(root, { rot: "Separação d", min: 1, max: 4, passo: 0.5, valor: st.d, fmt: v => fmtNum(v, 1) + " cm", ao: v => { st.d = v; st.z = Math.max(st.z, v / 2 + 2); desenhar(); checar(); } });
+  const linha = H("div", "sim-escolha", root);
+  H("span", "nome", linha, "Orientação");
+  botaoSim(linha, "Inverter o dipolo", () => { st.inv = !st.inv; desenhar(); if (r2) r2.mostrar(); }, "");
+  if (m === 0) botaoVerificar(api, () => {
+    if (st.q !== ini.q || st.d !== ini.d) return "Volte q para 1 e d para 2,0 cm e mude só a posição de P.";
+    const r = razao();
+    return r >= 0.115 && r <= 0.135 ? true : `O campo está em ${fmtNum(r, 3)} do inicial; um oitavo é 0,125. ${r > 0.125 ? "Afaste P." : "Aproxime P."}`;
+  });
+  desenhar();
+  root._t = { resolver() {
+    if (m === 0) st.z = 20;
+    if (m === 1) { st.q = 2; st.d = 1; sq.set(2); sd.set(1); r1.mostrar(); }
+    if (m === 2) { st.inv = true; r2.mostrar(); }
+    desenhar();
+  } };
+};
+
+/* =====================================================================
+   CAMPO 7 — Acenda o sprite (Exemplo 22.02)
+   ===================================================================== */
+SIMS.sprites = function (root, api) {
+  const m = api.cfg.m;
+  const svg = criarPalco(root, 340);
+  const Y0 = 312, EK = 3.6, XM = 250;                                   // 3,6 px por km
+  const st = { z: 30, q: m === 2 ? 100 : 200, h: 6 };
+  const E = () => 2 * K_COULOMB * st.q * 2 * st.h * 1e3 / (st.z * 1e3) ** 3;
+  const Ec = () => 3e6 * Math.exp(-st.z / 6);
+  S("line", { x1: 20, y1: Y0, x2: 380, y2: Y0, stroke: COR.cinza, "stroke-width": 3 }, svg);
+  texto(svg, 24, Y0 + 20, "solo", "sim-txt");
+  for (let k = 10; k <= 80; k += 10) {
+    S("line", { x1: 52, y1: Y0 - k * EK, x2: 62, y2: Y0 - k * EK, stroke: COR.cinza, "stroke-width": 1.5 }, svg);
+    texto(svg, 48, Y0 - k * EK + 5, k + " km", "sim-txt", "end");
+  }
+  S("line", { x1: 57, y1: Y0, x2: 57, y2: Y0 - 82 * EK, stroke: COR.cinza, "stroke-width": 1.5 }, svg);
+  const nuvem = S("g", {}, svg);
+  [[-22, 0, 20], [0, -8, 24], [24, 0, 19], [4, 6, 22]].forEach(([dx, dy, r]) => S("ellipse", { cx: 150 + dx, cy: dy, rx: r, ry: r * 0.55, fill: COR.cinza, opacity: 0.75 }, nuvem));
+  const cN = criarCarga(svg, 9, -1, ""), cPo = criarCarga(svg, 9, 1, "");
+  const gS = S("g", {}, svg);
+  for (let i = 0; i < 7; i++) S("path", { d: `M ${XM - 36 + i * 12} -16 q ${i % 2 ? 6 : -6} 14 0 28 q ${i % 2 ? -5 : 5} 10 0 20`, fill: "none", stroke: "#E0384F", "stroke-width": 3, "stroke-linecap": "round" }, gS);
+  S("ellipse", { cx: XM, cy: -18, rx: 44, ry: 9, fill: "#E0384F", opacity: 0.45 }, gS);
+  const med = S("g", {}, svg);
+  S("circle", { r: 11, fill: COR.forca, stroke: "#fff", "stroke-width": 1.5 }, med);
+  texto(med, 18, 5, "medidor", "sim-txt");
+  // barras: campo do dipolo e campo crítico, em escala logarítmica (1 a 10^5 N/C)
+  const BX = 410, BW = 210, bx = v => lim(Math.log10(Math.max(v, 1)) / 5, 0, 1) * BW;
+  texto(svg, BX, 60, "Campo do dipolo", "sim-txt"); texto(svg, BX, 150, "Campo crítico do ar (ilustrativo)", "sim-txt");
+  S("rect", { x: BX, y: 70, width: BW, height: 22, class: "sim-trilho" }, svg); S("rect", { x: BX, y: 160, width: BW, height: 22, class: "sim-trilho" }, svg);
+  const b1 = S("rect", { x: BX, y: 70, height: 22, fill: COR.campo }, svg), b2 = S("rect", { x: BX, y: 160, height: 22, fill: COR.pos }, svg);
+  const t1 = texto(svg, BX, 112, "", "sim-txt forte"), t2 = texto(svg, BX, 202, "", "sim-txt forte");
+  const tS = texto(svg, BX, 250, "", "sim-txt forte");
+  const ler = H("div", "sim-leitura", root);
+  const aceso = () => E() > Ec();
+  function desenhar() {
+    const y = Y0 - st.z * EK;
+    nuvem.setAttribute("transform", `translate(0,${Y0 - st.h * EK})`);
+    cN.em(150, Y0 - st.h * EK); cPo.em(150, Math.min(Y0 + st.h * EK, 334));
+    med.setAttribute("transform", `translate(${XM - 120},${y})`);
+    gS.setAttribute("transform", `translate(0,${y})`);
+    gS.style.display = aceso() ? "" : "none";
+    b1.setAttribute("width", bx(E())); b2.setAttribute("width", bx(Ec()));
+    t1.textContent = fmtSci(E(), 1) + " N/C"; t2.textContent = fmtSci(Ec(), 1) + " N/C";
+    tS.textContent = aceso() ? "Sprite aceso: E > E crítico" : "Sem sprite: E < E crítico";
+    ler.textContent = `Altitude do medidor: ${fmtNum(st.z, 1)} km · q = ${st.q} C · h = ${fmtNum(st.h, 1)} km`;
+    if (m === 1 && aceso()) api.ok();
+  }
+  arrastavel(med, svg, () => ({ x: XM - 120, y: Y0 - st.z * EK }), p => { st.z = Math.round(lim((Y0 - p.y) / EK, 10, 80) * 2) / 2; desenhar(); });
+  const sq = controle(root, { rot: "Carga do relâmpago q", min: 50, max: 300, passo: 10, valor: st.q, fmt: v => v + " C", ao: v => { st.q = v; desenhar(); } });
+  controle(root, { rot: "Altura da nuvem h", min: 3, max: 9, passo: 0.5, valor: st.h, fmt: v => fmtNum(v, 1) + " km", ao: v => { st.h = v; desenhar(); } });
+  const sz = controle(root, { rot: "Altitude do medidor", min: 10, max: 80, passo: 0.5, valor: st.z, fmt: v => fmtNum(v, 1) + " km", ao: v => { st.z = v; desenhar(); } });
+  botaoVerificar(api, () => {
+    if (m === 0) {
+      if (st.q !== 200 || st.h !== 6) return "Use os valores do exemplo: q = 200 C e h = 6,0 km.";
+      return Math.abs(E() - 200) <= 10 ? true : `O campo aqui é ${fmtSci(E(), 1)} N/C. ${E() > 200 ? "Suba o medidor." : "Desça o medidor."}`;
+    }
+    if (m === 2 && st.q !== 100) return "Nesta missão, deixe a carga do relâmpago em 100 C.";
+    return aceso() ? true : "O campo ainda é menor que o campo crítico. O campo crítico cai depressa com a altitude: suba o medidor.";
+  });
+  desenhar();
+  root._t = { resolver() { st.z = m === 0 ? 60 : m === 1 ? 62 : 70; sz.set(st.z); if (m === 2) { st.q = 100; sq.set(100); } desenhar(); } };
+};
+
+/* =====================================================================
+   CAMPO 8 — No eixo do anel
+   ===================================================================== */
+SIMS.anelEixo = function (root, api) {
+  const m = api.cfg.m;
+  const svg = criarPalco(root, 340);
+  const AX = 150, AY = 302, ESC = 4.4, R = 10, Q = 10e-9;               // 4,4 px = 1 cm
+  const st = { z: m === 2 ? 15 : 20, phi: 30 };
+  const E = z => K_COULOMB * Q * (z / 100) / ((z / 100) ** 2 + (R / 100) ** 2) ** 1.5;
+  const Ept = z => K_COULOMB * Q / (z / 100) ** 2;
+  S("line", { x1: AX, y1: 20, x2: AX, y2: 330, stroke: COR.cinza, "stroke-width": 1.5, "stroke-dasharray": "5 5" }, svg);
+  for (let c = 20; c <= 60; c += 20) texto(svg, AX - 12, AY - c * ESC + 5, c + " cm", "sim-txt", "end");
+  S("ellipse", { cx: AX, cy: AY, rx: R * ESC, ry: 12, fill: "none", stroke: COR.pos, "stroke-width": 5 }, svg);
+  const l1 = S("line", { stroke: COR.cinza, "stroke-width": 1.2, "stroke-dasharray": "4 4" }, svg), l2 = S("line", { stroke: COR.cinza, "stroke-width": 1.2, "stroke-dasharray": "4 4" }, svg);
+  const e1 = S("circle", { r: 5, fill: COR.forca }, svg), e2 = S("circle", { r: 5, fill: COR.forca }, svg);
+  const d1 = criarSeta(svg, "campo", 3), d2 = criarSeta(svg, "campo", 3), sE = criarSeta(svg, "forca", 6);
+  const P = criarCarga(svg, 8, 0, "P");
+  // gráfico E(z)
+  const GX = 340, GY = 300, GW = 270, GH = 230, gx = z => GX + z / 60 * GW, gy = e => GY - Math.min(e, 3800) / 3800 * GH;
+  S("path", { d: `M ${GX} ${GY - GH} V ${GY} H ${GX + GW}`, fill: "none", stroke: COR.cinza, "stroke-width": 2 }, svg);
+  texto(svg, GX + GW, GY + 20, "z (cm)", "sim-txt", "end"); texto(svg, GX + 6, GY - GH + 4, "E (N/C)", "sim-txt");
+  let dA = "", dP = "";
+  for (let z = 0; z <= 60; z += 0.5) dA += `${z ? "L" : "M"} ${gx(z)} ${gy(E(z))} `;
+  for (let z = 15.5; z <= 60; z += 0.5) dP += `${dP ? "L" : "M"} ${gx(z)} ${gy(Ept(z))} `;
+  S("path", { d: dP, fill: "none", stroke: COR.cinza, "stroke-width": 2, "stroke-dasharray": "6 5" }, svg);
+  S("path", { d: dA, fill: "none", stroke: COR.campo, "stroke-width": 2.5 }, svg);
+  texto(svg, GX + 96, GY - GH + 30, "tracejado: carga pontual", "sim-txt");
+  const mk = S("circle", { r: 6, fill: COR.forca, stroke: "#fff", "stroke-width": 1.5 }, svg);
+  const ler = H("div", "sim-leitura", root);
+  function desenhar() {
+    const yP = AY - st.z * ESC, a = st.phi * Math.PI / 180;
+    const pts = [[AX + R * ESC * Math.cos(a), AY + 12 * Math.sin(a)], [AX - R * ESC * Math.cos(a), AY - 12 * Math.sin(a)]];
+    P.em(AX, yP);
+    [[l1, e1, d1], [l2, e2, d2]].forEach(([l, e, d], i) => {
+      const [x, y] = pts[i], n = Math.hypot(AX - x, yP - y) || 1;
+      l.setAttribute("x1", x); l.setAttribute("y1", y); l.setAttribute("x2", AX); l.setAttribute("y2", yP);
+      e.setAttribute("cx", x); e.setAttribute("cy", y);
+      d.pos(AX, yP, AX + (AX - x) / n * 40, yP + (yP - y) / n * 40);
+    });
+    sE.pos(AX, yP, AX, yP - E(st.z) / 60);
+    mk.setAttribute("cx", gx(st.z)); mk.setAttribute("cy", gy(E(st.z)));
+    ler.textContent = `z = ${fmtNum(st.z, 1)} cm · Campo no eixo: ${fmtNum(E(st.z), 0)} N/C${st.z > 0 ? " · anel / carga pontual = " + fmtNum(E(st.z) / Ept(st.z), 2) : ""}`;
+  }
+  arrastavel(P.g, svg, () => ({ x: AX, y: AY - st.z * ESC }), p => { st.z = Math.round(lim((AY - p.y) / ESC, 0, 60) * 10) / 10; sz.set(st.z); desenhar(); });
+  const sz = controle(root, { rot: "Altura de P", min: 0, max: 60, passo: 0.1, valor: st.z, fmt: v => fmtNum(v, 1) + " cm", ao: v => { st.z = v; desenhar(); } });
+  controle(root, { rot: "Par de elementos", min: 0, max: 180, passo: 5, valor: st.phi, fmt: v => v + "°", ao: v => { st.phi = v; desenhar(); } });
+  botaoVerificar(api, () => {
+    if (m === 0) return st.z <= 0.3 ? true : `Em z = ${fmtNum(st.z, 1)} cm o campo vale ${fmtNum(E(st.z), 0)} N/C. Onde os empurrões de todos os elementos se equilibram?`;
+    if (m === 1) return Math.abs(st.z - 7.07) <= 0.6 ? true : `Em z = ${fmtNum(st.z, 1)} cm o campo vale ${fmtNum(E(st.z), 0)} N/C. Siga a curva azul até o ponto mais alto.`;
+    const r = st.z > 0 ? E(st.z) / Ept(st.z) : 0;
+    return r >= 0.94 ? true : `A razão entre o campo do anel e o da carga pontual é ${fmtNum(r, 2)}. Afaste P até ela chegar a 0,94.`;
+  });
+  desenhar();
+  root._t = { resolver() { st.z = m === 0 ? 0 : m === 1 ? 7.1 : 52; sz.set(st.z); desenhar(); } };
+};
+
+/* =====================================================================
+   CAMPO 9 — Abra e feche o arco (Exemplo 22.03)
+   ===================================================================== */
+SIMS.arcoCentro = function (root, api) {
+  const m = api.cfg.m;
+  const svg = criarPalco(root, 340);
+  const PX = 250, PY = 170, R = 125;
+  const st = { ab: m === 0 ? 80 : 120, s: m === 1 ? -1 : 1, th: 30 };   // ab = abertura total, em graus
+  const arco = S("path", { fill: "none", "stroke-width": 12, "stroke-linecap": "round" }, svg);
+  S("line", { x1: PX - 150, y1: PY, x2: PX + 170, y2: PY, stroke: COR.cinza, "stroke-width": 1.2, "stroke-dasharray": "5 5" }, svg);
+  const e1 = S("circle", { r: 6, fill: COR.forca, stroke: "#fff" }, svg), e2 = S("circle", { r: 6, fill: COR.forca, stroke: "#fff" }, svg);
+  const d1 = criarSeta(svg, "campo", 3), d2 = criarSeta(svg, "campo", 3), sE = criarSeta(svg, "forca", 6);
+  S("circle", { cx: PX, cy: PY, r: 5, fill: COR.cinza }, svg);
+  texto(svg, PX - 8, PY + 22, "P", "sim-txt forte", "end");
+  texto(svg, 16, 306, "azul: campo de um par de elementos", "sim-txt"); texto(svg, 16, 326, "amarelo: campo total", "sim-txt");
+  const ler = H("div", "sim-leitura", root);
+  const fator = () => { const a = st.ab / 2 * Math.PI / 180; return Math.abs(Math.sin(a)) < 1e-9 ? 0 : Math.sin(a) / a; };
+  const pt = t => [PX + R * Math.cos(t * Math.PI / 180), PY - R * Math.sin(t * Math.PI / 180)];
+  function desenhar() {
+    let d = "";
+    for (let t = -st.ab / 2; t <= st.ab / 2 + 0.01; t += 2) { const [x, y] = pt(t); d += `${d ? "L" : "M"} ${x.toFixed(1)} ${y.toFixed(1)} `; }
+    arco.setAttribute("d", d); arco.setAttribute("stroke", st.s > 0 ? COR.pos : COR.neg);
+    const th = Math.min(st.th, st.ab / 2), f = fator();
+    [[e1, d1, th], [e2, d2, -th]].forEach(([e, s, t]) => {
+      const [x, y] = pt(t), ux = (x - PX) / R, uy = (y - PY) / R;
+      e.setAttribute("cx", x); e.setAttribute("cy", y);
+      s.pos(PX, PY, PX - st.s * ux * 46, PY - st.s * uy * 46);
+    });
+    sE.pos(PX, PY, PX - st.s * 130 * f, PY);
+    ler.textContent = `Abertura do arco: ${st.ab}° · Campo em P: ${fmtNum(f, 2)} × Q/(4πε₀r²)${f < 0.005 ? "" : st.s < 0 ? ", apontando para a barra" : ", apontando para longe da barra"}`;
+  }
+  const rapida = m === 2 ? perguntaRapida(api, "Com carga negativa na barra, para onde aponta o campo no centro P?", [
+    ["Para a barra", true, ""], ["Para longe da barra", false, "Olhe a seta amarela: cada elemento negativo puxa o campo na sua direção."]]) : null;
+  const sA = controle(root, { rot: "Abertura do arco", min: 20, max: 360, passo: 10, valor: st.ab, fmt: v => v + "°", ao: v => { st.ab = v; desenhar(); } });
+  const eS = escolha(root, "Carga da barra", [["1", "Positiva"], ["-1", "Negativa"]], String(st.s), v => { st.s = +v; desenhar(); if (rapida && st.s < 0) rapida.mostrar(); });
+  controle(root, { rot: "Par de elementos", min: 0, max: 180, passo: 5, valor: st.th, fmt: v => "±" + v + "°", ao: v => { st.th = v; desenhar(); } });
+  if (m < 2) botaoVerificar(api, () => {
+    if (m === 0) {
+      if (st.ab !== 120) return `O arco está com ${st.ab}°. O do exemplo tem 120°.`;
+      return st.s < 0 ? true : "A barra do exemplo tem carga negativa, −Q.";
+    }
+    return st.ab === 360 ? true : `O arco está com ${st.ab}°. Abra até fechar a volta inteira.`;
+  });
+  desenhar();
+  root._t = { resolver() {
+    if (m === 0) { st.ab = 120; sA.set(120); st.s = -1; eS.set("-1"); }
+    if (m === 1) { st.ab = 360; sA.set(360); }
+    if (m === 2) { st.s = -1; eS.set("-1"); rapida.mostrar(); }
+    desenhar();
+  } };
+};
+
+/* =====================================================================
+   CAMPO 10 — Do disco à placa
+   ===================================================================== */
+SIMS.discoPlaca = function (root, api) {
+  const m = api.cfg.m;
+  const svg = criarPalco(root, 300);
+  const CX = 250, DY = 250, ESC = 2.2;                                  // 2,2 px = 1 cm
+  const st = m === 0 ? { R: 10, z: 4 } : m === 1 ? { R: 20, z: 20 } : { R: 5, z: 10 };
+  const fr = () => 1 - st.z / Math.hypot(st.z, st.R);
+  const pontual = () => fr() * 2 * st.z * st.z / (st.R * st.R);          // disco / carga pontual de mesma carga
+  S("line", { x1: CX, y1: 20, x2: CX, y2: DY, stroke: COR.cinza, "stroke-width": 1.2, "stroke-dasharray": "5 5" }, svg);
+  const disco = S("rect", { y: DY, height: 10, rx: 4, fill: COR.pos }, svg);
+  const tR = texto(svg, CX, DY + 30, "", "sim-txt", "middle");
+  const sE = criarSeta(svg, "forca", 6);
+  const P = criarCarga(svg, 8, 0, "P");
+  // medidor: fração do campo da placa infinita
+  const MX = 540, MY = 250, MH = 200;
+  S("rect", { x: MX, y: MY - MH, width: 34, height: MH, class: "sim-trilho" }, svg);
+  const mf = S("rect", { x: MX, width: 34, fill: COR.forca }, svg);
+  [[1, "placa infinita", "end"], [0.95, "95%", "start"], [0.9, "90%", "end"]].forEach(([v, r, lado]) => {
+    S("line", { x1: MX - 6, y1: MY - v * MH, x2: MX + 40, y2: MY - v * MH, stroke: COR.cinza, "stroke-width": 1.5 }, svg);
+    texto(svg, lado === "end" ? MX - 10 : MX + 44, MY - v * MH + 5, r, "sim-txt", lado);
+  });
+  texto(svg, MX + 17, MY + 22, "E / (σ/2ε₀)", "sim-txt", "middle");
+  const ler = H("div", "sim-leitura", root);
+  function desenhar() {
+    const w = st.R * ESC, yP = DY - st.z * ESC, f = fr();
+    disco.setAttribute("x", CX - w); disco.setAttribute("width", 2 * w);
+    tR.textContent = `disco de raio ${st.R} cm`;
+    P.em(CX, yP);
+    sE.pos(CX, yP, CX, yP - 14 - 70 * f);
+    mf.setAttribute("y", MY - f * MH); mf.setAttribute("height", f * MH);
+    ler.textContent = `R = ${st.R} cm · z = ${fmtNum(st.z, 1)} cm · Campo: ${fmtNum(f * 100, 1)}% do de uma placa infinita · disco / carga pontual = ${fmtNum(pontual(), 2)}`;
+  }
+  const rapida = m === 2 ? perguntaRapida(api, "A dez raios de distância, o campo do disco se parece com o de:", [
+    ["Uma carga pontual", true, ""],
+    ["Uma placa infinita", false, "Veja o medidor: o campo é só uma pequena fração do campo da placa infinita."],
+    ["Um dipolo", false, "O disco tem carga total diferente de zero; de longe, é essa carga que conta."]]) : null;
+  const checar = () => { if (rapida && st.R === 5 && st.z >= 50) rapida.mostrar(); };
+  const sR = controle(root, { rot: "Raio do disco R", min: 5, max: 100, passo: 5, valor: st.R, fmt: v => v + " cm", ao: v => { st.R = v; desenhar(); checar(); } });
+  const sZ = controle(root, { rot: "Altura de P (z)", min: 1, max: 60, passo: 0.5, valor: st.z, fmt: v => fmtNum(v, 1) + " cm", ao: v => { st.z = v; desenhar(); checar(); } });
+  if (m < 2) botaoVerificar(api, () => {
+    if (m === 0) {
+      if (st.z !== 4) return "Deixe P a 4,0 cm do disco e mude só o raio.";
+      return fr() >= 0.95 ? true : `O campo está em ${fmtNum(fr() * 100, 1)}% do da placa infinita. Aumente o raio do disco.`;
+    }
+    if (st.R !== 20) return "Deixe o raio em 20 cm e mude só a altura de P.";
+    return fr() >= 0.9 ? true : `O campo está em ${fmtNum(fr() * 100, 1)}% do da placa infinita. Aproxime P do disco.`;
+  });
+  desenhar();
+  root._t = { resolver() {
+    if (m === 0) { st.R = 90; sR.set(90); }
+    if (m === 1) { st.z = 2; sZ.set(2); }
+    if (m === 2) { st.z = 50; sZ.set(50); rapida.mostrar(); }
+    desenhar();
+  } };
+};
+
+/* =====================================================================
+   CAMPO 11 — A gota de Millikan
+   ===================================================================== */
+SIMS.millikan = function (root, api) {
+  const m = api.cfg.m;
+  const svg = criarPalco(root, 340);
+  const YT = 60, YB = 280, XA = 150, XB = 490, MG = 4.8e-14;
+  const gota = [{ s: -1, n: 3 }, { s: -1, n: 5 }, { s: 1, n: 2 }][m];
+  const st = { E: 0, y: 170 };                                          // E em 10^5 N/C; positivo = para baixo
+  const eletrica = () => -gota.s * gota.n * CARGA_E * st.E * 1e5;       // força elétrica para cima (N)
+  const liquida = () => eletrica() - MG;
+  const parada = () => Math.abs(liquida()) / MG < 0.03;
+  S("line", { x1: XA, y1: YT, x2: XB, y2: YT, stroke: COR.cinza, "stroke-width": 8, "stroke-linecap": "round" }, svg);
+  S("line", { x1: XA, y1: YB, x2: XB, y2: YB, stroke: COR.cinza, "stroke-width": 8, "stroke-linecap": "round" }, svg);
+  const tT = texto(svg, XB + 14, YT + 6, "", "sim-txt forte"), tB = texto(svg, XB + 14, YB + 6, "", "sim-txt forte");
+  const setas = [200, 260, 380, 440].map(() => criarSeta(svg, "campo", 3));
+  const sP = criarSeta(svg, "cinza", 4), sF = criarSeta(svg, "forca", 5);
+  const g = S("g", {}, svg);
+  S("circle", { r: 10, fill: "#C9A227", stroke: "#fff", "stroke-width": 1.5 }, g);
+  const tg = S("text", { "text-anchor": "middle", dy: "0.35em", class: "sim-sinal", "font-size": 14 }, g); tg.textContent = gota.s < 0 ? "−" : "+";
+  texto(svg, 20, 30, "amarelo: força elétrica · cinza: peso", "sim-txt");
+  const ler = H("div", "sim-leitura", root);
+  function desenhar() {
+    const L = Math.abs(st.E) * 60, dir = st.E >= 0 ? 1 : -1;
+    setas.forEach((s, i) => { const x = [200, 260, 380, 440][i]; if (L < 3) s.pos(0, 0, 0, 0); else s.pos(x, 170 - dir * L / 2, x, 170 + dir * L / 2); });
+    tT.textContent = st.E > 0 ? "+ + +" : st.E < 0 ? "− − −" : ""; tB.textContent = st.E > 0 ? "− − −" : st.E < 0 ? "+ + +" : "";
+    g.setAttribute("transform", `translate(320,${st.y})`);
+    sP.pos(332, st.y, 332, st.y + 40);
+    const fe = eletrica() / MG * 40;
+    sF.pos(308, st.y, 308, st.y - fe);
+    const mov = parada() ? "parada" : liquida() > 0 ? "subindo" : "descendo";
+    ler.textContent = `Campo: ${fmtNum(Math.abs(st.E), 2)} × 10⁵ N/C ${st.E > 0 ? "para baixo" : st.E < 0 ? "para cima" : "(desligado)"} · Peso da gota: 4,8 × 10⁻¹⁴ N · Gota: ${mov}`;
+    if (rapida && parada()) rapida.mostrar();
+  }
+  const rapida = m === 1 ? perguntaRapida(api, "No equilíbrio, qE = mg. Com o peso e o campo do painel, quantos elétrons a mais esta gota tem?", [
+    ["2", false, "Calcule q = mg/E com o campo do painel e divida por e = 1,6 × 10⁻¹⁹ C."],
+    ["3", false, "Essa era a gota anterior. Esta se equilibra com um campo menor, então tem mais carga."],
+    ["5", true, ""],
+    ["8", false, "Calcule q = mg/E com o campo do painel e divida por e = 1,6 × 10⁻¹⁹ C."]]) : null;
+  const sE = controle(root, { rot: "Campo entre as placas", min: -2, max: 2, passo: 0.05, valor: 0,
+    fmt: v => (v === 0 ? "desligado" : `${fmtNum(Math.abs(v), 2)} × 10⁵ N/C ${v > 0 ? "↓" : "↑"}`), ao: v => { st.E = v; desenhar(); } });
+  const linha = H("div", "sim-escolha", root);
+  H("span", "nome", linha, "Gota");
+  botaoSim(linha, "Recolocar no centro", () => { st.y = 170; desenhar(); }, "");
+  if (m !== 1) botaoVerificar(api, () => {
+    if (parada()) return true;
+    if (st.E === 0) return "Ligue o campo: sem ele, só o peso age e a gota cai.";
+    if (eletrica() < 0) return `A força elétrica também aponta para baixo. Esta gota é ${gota.s < 0 ? "negativa" : "positiva"}: para que lado o campo precisa apontar?`;
+    return liquida() > 0 ? "A gota está subindo: a força elétrica ficou maior que o peso. Diminua o campo." : "A gota ainda desce: a força elétrica é menor que o peso. Aumente o campo.";
+  });
+  animar(svg, dt => {
+    if (parada()) return;
+    st.y = lim(st.y - liquida() / MG * 70 * dt, YT + 16, YB - 16);
+    desenhar();
+  });
+  desenhar();
+  root._t = { resolver() { st.E = m === 0 ? 1 : m === 1 ? 0.6 : -1.5; sE.set(st.E); desenhar(); } };
+};
+
+/* =====================================================================
+   CAMPO 12 — Acerte o papel (Exemplo 22.04)
+   ===================================================================== */
+SIMS.jatoTinta = function (root, api) {
+  const m = api.cfg.m;
+  const svg = criarPalco(root, 320);
+  const XA = 200, XB = 440, XP = 600, YC = 210, PXMM = 40, MASSA = 1.3e-10, COMP = 0.016;
+  const st = m === 0 ? { E: 1.0, Q: 1.0, v: 25 } : { E: 1.4, Q: 1.5, v: 18 };
+  const desvio = () => st.Q * 1e-13 * st.E * 1e6 * COMP * COMP / (2 * MASSA * st.v * st.v) * 1e3;   // mm
+  const igual = (a, b) => Math.abs(a - b) < 1e-6;
+  const yEm = x => {
+    const d = desvio() * PXMM, u = (x - XA) / (XB - XA);
+    const y = x <= XA ? YC : x <= XB ? YC - d * u * u : YC - d * (1 + 2 * (x - XB) / (XB - XA));
+    return Math.max(y, 14);
+  };
+  S("rect", { x: 96, y: YC - 22, width: 44, height: 44, rx: 6, fill: COR.cinza }, svg);
+  texto(svg, 118, YC + 44, "gerador", "sim-txt", "middle");
+  S("line", { x1: XA, y1: YC - 78, x2: XB, y2: YC - 78, stroke: COR.cinza, "stroke-width": 7, "stroke-linecap": "round" }, svg);
+  S("line", { x1: XA, y1: YC + 60, x2: XB, y2: YC + 60, stroke: COR.cinza, "stroke-width": 7, "stroke-linecap": "round" }, svg);
+  S("line", { x1: XP, y1: 14, x2: XP, y2: 306, stroke: COR.cinza, "stroke-width": 5 }, svg);
+  texto(svg, XP - 8, 300, "papel", "sim-txt", "end");
+  S("line", { x1: 140, y1: YC, x2: XP, y2: YC, stroke: COR.cinza, "stroke-width": 1, "stroke-dasharray": "4 5" }, svg);
+  [250, 320, 390].forEach(x => criarSeta(svg, "campo", 3).pos(x, YC - 60, x, YC - 22));
+  texto(svg, 262, YC - 44, "E", "sim-txt forte");
+  const traj = S("path", { fill: "none", stroke: COR.forca, "stroke-width": 2.5, "stroke-dasharray": "7 5" }, svg);
+  const cota = S("line", { stroke: COR.pos, "stroke-width": 3 }, svg), tc = texto(svg, XB + 10, YC - 6, "", "sim-txt forte");
+  const g = S("circle", { r: 7, fill: "#3F9E6B", stroke: "#fff", "stroke-width": 1.5 }, svg);
+  const ler = H("div", "sim-leitura", root);
+  let xg = 140;
+  function desenhar() {
+    let d = "";
+    for (let x = 140; x <= XP; x += 6) d += `${d ? "L" : "M"} ${x} ${yEm(x).toFixed(1)} `;
+    traj.setAttribute("d", d);
+    cota.setAttribute("x1", XB); cota.setAttribute("x2", XB); cota.setAttribute("y1", YC); cota.setAttribute("y2", yEm(XB));
+    tc.textContent = fmtNum(desvio(), 2) + " mm";
+    ler.textContent = `Desvio na saída das placas: ${fmtNum(desvio(), 2)} mm · E = ${fmtNum(st.E, 1)} × 10⁶ N/C · Q = ${fmtNum(st.Q, 1)} × 10⁻¹³ C · vₓ = ${st.v} m/s`;
+  }
+  const sE = controle(root, { rot: "Campo E", min: 0.5, max: 2, passo: 0.1, valor: st.E, fmt: v => fmtNum(v, 1) + " × 10⁶ N/C", ao: v => { st.E = v; desenhar(); } });
+  const sQ = controle(root, { rot: "Carga da gota Q", min: 0.5, max: 3, passo: 0.1, valor: st.Q, fmt: v => fmtNum(v, 1) + " × 10⁻¹³ C", ao: v => { st.Q = v; desenhar(); } });
+  const sV = controle(root, { rot: "Velocidade vₓ", min: 10, max: 40, passo: 1, valor: st.v, fmt: v => v + " m/s", ao: v => { st.v = v; desenhar(); } });
+  botaoVerificar(api, () => {
+    const d = desvio();
+    if (m === 0) return igual(st.E, 1.4) && igual(st.Q, 1.5) && igual(st.v, 18) ? true : "Ajuste as três barras para os valores do exemplo: E = 1,4 × 10⁶ N/C, Q = 1,5 × 10⁻¹³ C e vₓ = 18 m/s.";
+    if (m === 1) {
+      if (!igual(st.E, 1.4) || !igual(st.v, 18)) return "Mantenha o campo em 1,4 × 10⁶ N/C e a velocidade em 18 m/s. Mude só a carga.";
+      return Math.abs(d - 1.28) <= 0.03 ? true : `O desvio está em ${fmtNum(d, 2)} mm. O desvio é proporcional à carga: para dobrar o desvio, o que fazer com Q?`;
+    }
+    if (!igual(st.E, 1.4) || !igual(st.Q, 1.5)) return "Mantenha o campo em 1,4 × 10⁶ N/C e a carga em 1,5 × 10⁻¹³ C. Mude só a velocidade.";
+    return Math.abs(d - 0.16) <= 0.01 ? true : `O desvio está em ${fmtNum(d, 2)} mm; um quarto de 0,64 é 0,16. A velocidade aparece ao quadrado no denominador.`;
+  });
+  animar(svg, dt => { xg += 240 * dt; if (xg > XP) xg = 140; g.setAttribute("cx", xg); g.setAttribute("cy", yEm(xg)); });
+  desenhar();
+  root._t = { resolver() {
+    if (m === 0) { st.E = 1.4; st.Q = 1.5; st.v = 18; }
+    if (m === 1) st.Q = 3;
+    if (m === 2) st.v = 36;
+    sE.set(st.E); sQ.set(st.Q); sV.set(st.v); desenhar();
+  } };
+};
+
+/* =====================================================================
+   CAMPO 13 — Gire o dipolo (Exemplo 22.05)
+   ===================================================================== */
+SIMS.dipoloCampo = function (root, api) {
+  const m = api.cfg.m;
+  const svg = criarPalco(root, 340);
+  const CX = 190, CY = 170, A = 64;
+  const st = { th: m === 2 ? 120 : 30, om: 0, solto: false, partiu: false };   // graus, a partir do campo
+  for (let y = 50; y <= 290; y += 60) criarSeta(svg, "campo", 2).pos(40, y, 340, y);
+  texto(svg, 44, 30, "campo uniforme E →", "sim-txt");
+  const haste = S("line", { stroke: COR.cinza, "stroke-width": 5, "stroke-linecap": "round" }, svg);
+  const sp = S("line", { stroke: COR_P, "stroke-width": 5, "stroke-linecap": "round" }, svg);
+  const f1 = criarSeta(svg, "forca", 5), f2 = criarSeta(svg, "forca", 5);
+  const cN = criarCarga(svg, 13, -1, ""), cP = criarCarga(svg, 13, 1, "");
+  // gráfico U(θ)
+  const GX = 380, GW = 230, GYC = 190, GA = 70, gx = t => GX + (t + 180) / 360 * GW;
+  S("line", { x1: GX, y1: GYC, x2: GX + GW, y2: GYC, stroke: COR.cinza, "stroke-width": 1.5 }, svg);
+  let d = "";
+  for (let t = -180; t <= 180; t += 4) d += `${d ? "L" : "M"} ${gx(t)} ${GYC + GA * Math.cos(t * Math.PI / 180)} `;
+  S("path", { d, fill: "none", stroke: COR.campo, "stroke-width": 2.5 }, svg);
+  texto(svg, GX, GYC - GA - 14, "energia U = −pE cos θ", "sim-txt");
+  [[-180, "−180°"], [0, "0°"], [180, "180°"]].forEach(([t, r]) => texto(svg, gx(t), GYC + GA + 24, r, "sim-txt", "middle"));
+  const mk = S("circle", { r: 7, fill: COR.forca, stroke: "#fff", "stroke-width": 1.5 }, svg);
+  const ler = H("div", "sim-leitura", root);
+  const norm = t => ((t + 180) % 360 + 360) % 360 - 180;
+  function desenhar() {
+    const a = st.th * Math.PI / 180, ux = Math.cos(a), uy = -Math.sin(a);
+    const px = CX + A * ux, py = CY + A * uy, nx = CX - A * ux, ny = CY - A * uy;
+    haste.setAttribute("x1", nx); haste.setAttribute("y1", ny); haste.setAttribute("x2", px); haste.setAttribute("y2", py);
+    sp.setAttribute("x1", CX - 18 * ux); sp.setAttribute("y1", CY - 18 * uy); sp.setAttribute("x2", CX + 30 * ux); sp.setAttribute("y2", CY + 30 * uy);
+    cP.em(px, py); cN.em(nx, ny);
+    f1.pos(px, py, px + 48, py); f2.pos(nx, ny, nx - 48, ny);
+    mk.setAttribute("cx", gx(st.th)); mk.setAttribute("cy", GYC + GA * Math.cos(a));
+    ler.textContent = `θ = ${fmtNum(st.th, 0)}° · Torque: ${fmtNum(Math.abs(Math.sin(a)), 2)} pE · Energia: ${fmtNum(-Math.cos(a) + 0, 2)} pE`;
+  }
+  arrastavel(cP.g, svg, () => ({ x: cP.x, y: cP.y }), p => {
+    st.solto = false; st.om = 0;
+    st.th = Math.round(Math.atan2(-(p.y - CY), p.x - CX) * 180 / Math.PI);
+    desenhar();
+  });
+  const linha = H("div", "sim-escolha", root);
+  H("span", "nome", linha, "Experimento");
+  botaoSim(linha, "Soltar o dipolo", () => { st.partiu = Math.abs(st.th) >= 30; st.solto = true; st.om = 0; }, "");
+  botaoVerificar(api, () => {
+    const t = Math.abs(st.th);
+    if (m === 0) return Math.abs(t - 90) <= 4 ? true : `Em θ = ${fmtNum(st.th, 0)}° o torque vale ${fmtNum(Math.abs(Math.sin(st.th * Math.PI / 180)), 2)} pE. Para qual ângulo o seno é máximo?`;
+    if (m === 1) return t >= 176 ? true : `Em θ = ${fmtNum(st.th, 0)}° a energia vale ${fmtNum(-Math.cos(st.th * Math.PI / 180), 2)} pE. Siga o marcador até o ponto mais alto da curva.`;
+    if (st.partiu && !st.solto && t < 3) return true;
+    return st.solto ? "Espere o dipolo parar de oscilar." : "Gire o dipolo pelo menos 30° para longe do campo e clique em \"Soltar o dipolo\".";
+  });
+  animar(svg, dt => {
+    if (!st.solto) return;
+    st.om += (-700 * Math.sin(st.th * Math.PI / 180) - 2.2 * st.om) * dt;
+    st.th = norm(st.th + st.om * dt);
+    if (Math.abs(st.th) < 1.5 && Math.abs(st.om) < 5) {
+      st.solto = false; st.th = 0; st.om = 0;
+      if (m === 2 && st.partiu) api.ok();
+    }
+    desenhar();
+  });
+  desenhar();
+  root._t = { resolver() {
+    if (m === 0) st.th = 90;
+    if (m === 1) st.th = 180;
+    if (m === 2) { st.partiu = true; st.solto = false; st.th = 0; }
+    desenhar();
+  } };
+};
+
+/* =====================================================================
+   CAMPO 14 — Conte as linhas (ponte para Gauss)
+   ===================================================================== */
+SIMS.fluxoLinhas = function (root, api) {
+  const m = api.cfg.m;
+  const svg = criarPalco(root, 340);
+  const CX = 320, CY = 170;
+  const st = m === 0 ? { x: 560, y: 170, q: 1, R: 100 } : m === 1 ? { x: 300, y: 150, q: 2, R: 100 } : { x: 340, y: 180, q: 1, R: 100 };
+  st.rmin = st.rmax = st.R;
+  const sup = S("circle", { cx: CX, cy: CY, fill: "rgba(138,106,0,0.07)", stroke: COR.forca, "stroke-width": 3, "stroke-dasharray": "8 6" }, svg);
+  const tS = texto(svg, CX, 0, "superfície fechada", "sim-txt", "middle");
+  const gL = S("g", {}, svg);
+  const c = criarCarga(svg, 14, 1, "");
+  const ler = H("div", "sim-leitura", root);
+  const dentro = () => Math.hypot(st.x - CX, st.y - CY) < st.R - 8;
+  const fora = () => Math.hypot(st.x - CX, st.y - CY) > st.R + 8;
+  function contar(desenha) {
+    const N = 8 * Math.abs(st.q), s = Math.sign(st.q);
+    let sai = 0, entra = 0;
+    if (desenha) gL.innerHTML = "";
+    for (let k = 0; k < N; k++) {
+      const a = 2 * Math.PI * k / N + 0.2, ux = Math.cos(a), uy = Math.sin(a);
+      const dx = st.x - CX, dy = st.y - CY, b = dx * ux + dy * uy, cc = dx * dx + dy * dy - st.R * st.R, disc = b * b - cc;
+      const ts = [];
+      if (disc > 0) { const r = Math.sqrt(disc); [-b - r, -b + r].forEach(t => { if (t > 0) ts.push(t); }); }
+      // ao longo do raio (afastando-se da carga): 1 cruzamento = saindo da superfície; 2 = primeiro entra, depois sai
+      const tipos = ts.length === 1 ? ["sai"] : ts.length === 2 ? ["entra", "sai"] : [];
+      tipos.forEach((tp, i) => {
+        const real = s > 0 ? tp : (tp === "sai" ? "entra" : "sai");   // carga negativa: as linhas apontam para a carga
+        if (real === "sai") sai++; else entra++;
+        if (desenha) S("circle", { cx: st.x + ts[i] * ux, cy: st.y + ts[i] * uy, r: 4, fill: real === "sai" ? COR.forca : COR.neg, stroke: "#fff", "stroke-width": 1 }, gL);
+      });
+      if (desenha) {
+        S("line", { x1: st.x + 16 * ux, y1: st.y + 16 * uy, x2: st.x + 700 * ux, y2: st.y + 700 * uy, stroke: COR.campo, "stroke-width": 1.6 }, gL);
+        const t0 = 46, t1 = 60;
+        criarSeta(gL, "campo", 1.6).pos(st.x + (s > 0 ? t0 : t1) * ux, st.y + (s > 0 ? t0 : t1) * uy, st.x + (s > 0 ? t1 : t0) * ux, st.y + (s > 0 ? t1 : t0) * uy);
+      }
+    }
+    return { sai, entra, saldo: sai - entra };
+  }
+  function desenhar() {
+    sup.setAttribute("r", st.R); tS.setAttribute("y", CY - st.R - 8);
+    c.em(st.x, st.y); c.sinal(st.q); c.rotulo(st.q ? `${st.q > 0 ? "+" : "−"}${Math.abs(st.q) === 1 ? "" : Math.abs(st.q)}q` : "sem carga");
+    const n = contar(true);
+    ler.textContent = `Linhas que saem da superfície: ${n.sai} · que entram: ${n.entra} · saldo: ${n.saldo > 0 ? "+" : ""}${n.saldo} · carga ${dentro() ? "dentro" : fora() ? "fora" : "na borda"}`;
+    if (m === 1 && fora() && st.q !== 0) api.ok();
+  }
+  arrastavel(c.g, svg, () => ({ x: st.x, y: st.y }), p => { st.x = lim(p.x, 30, 610); st.y = lim(p.y, 20, 320); desenhar(); });
+  const rapida = m === 2 ? perguntaRapida(api, "Ao mudar o tamanho da superfície, com a carga dentro, o saldo de linhas:", [
+    ["Aumentou", false, "Mude o raio de novo olhando o saldo no painel: as mesmas linhas atravessam a superfície, seja ela grande ou pequena."],
+    ["Não mudou", true, ""],
+    ["Diminuiu", false, "Mude o raio de novo olhando o saldo no painel: as mesmas linhas atravessam a superfície, seja ela grande ou pequena."]]) : null;
+  const sQ = controle(root, { rot: "Carga", min: -3, max: 3, passo: 1, valor: st.q, fmt: v => (v ? `${v > 0 ? "+" : "−"}${Math.abs(v)}q` : "0"), ao: v => { st.q = v; desenhar(); } });
+  const sR = controle(root, { rot: "Raio da superfície", min: 60, max: 140, passo: 5, valor: st.R, fmt: v => v + " (unid.)", ao: v => {
+    st.R = v; st.rmin = Math.min(st.rmin, v); st.rmax = Math.max(st.rmax, v); desenhar();
+    if (rapida && st.rmax - st.rmin >= 40 && dentro()) rapida.mostrar();
+  } });
+  if (m < 2) botaoVerificar(api, () => {
+    if (m === 0) {
+      if (!dentro()) return "Arraste a carga para dentro da superfície tracejada.";
+      return st.q === 2 ? true : `A carga está em ${st.q > 0 ? "+" : ""}${st.q}q. Dobre o valor inicial, +q.`;
+    }
+    if (st.q === 0) return "Deixe a carga diferente de zero.";
+    return fora() ? true : "Arraste a carga para fora da superfície tracejada.";
+  });
+  desenhar();
+  root._t = { resolver() {
+    if (m === 0) { st.x = 330; st.y = 160; st.q = 2; sQ.set(2); }
+    if (m === 1) { st.x = 560; st.y = 80; }
+    if (m === 2) { st.rmin = 60; st.rmax = 140; rapida.mostrar(); }
+    desenhar();
+  }, contar: () => contar(false) };
+};
+
+/* =====================================================================
+   LEI DE GAUSS — jogos
+   ===================================================================== */
+const EPS0 = 8.854e-12;
+const dif180 = (a, b) => Math.abs(((a - b + 540) % 360) - 180);       // diferença entre dois ângulos, em graus
+
+/* GAUSS 1 — a densidade linear de carga */
+SIMS.gaussLinha = function (root, api) {
+  const m = api.cfg.m;
+  const svg = criarPalco(root, 300);
+  const X0 = 50, ESCL = 135, N = 17;                                  // 135 px = 1 m
+  const st = m === 0 ? { L: 1.5, Q: 2 } : { L: 2, Q: 2 };
+  const A = { L: 3, Q: 6 };                                           // fio A da missão 2: λ = 2,0 μC/m
+  function fio(y, nome) {
+    texto(svg, X0, y - 38, nome, "sim-txt forte");
+    S("line", { x1: X0, y1: y, x2: X0 + 4 * ESCL, y2: y, stroke: COR.cinza, "stroke-width": 1, "stroke-dasharray": "3 5" }, svg);
+    const cs = Array.from({ length: N }, () => S("circle", { r: 5.5, cy: y, fill: COR.pos, stroke: "#fff", "stroke-width": 1 }, svg));
+    const barra = S("line", { y1: y + 20, y2: y + 20, stroke: COR.forca, "stroke-width": 4, "stroke-linecap": "round" }, svg);
+    const t = texto(svg, X0, y + 48, "", "sim-txt");
+    return (L, Q) => {
+      cs.forEach((c, i) => c.setAttribute("cx", X0 + i * L * ESCL / (N - 1)));
+      barra.setAttribute("x1", X0); barra.setAttribute("x2", X0 + L * ESCL);
+      t.textContent = `L = ${fmtNum(L, 1)} m · Q = ${fmtNum(Q, 1)} μC · λ = Q/L = ${fmtNum(Q / L, 2)} μC/m`;
+    };
+  }
+  const dA = m === 1 ? fio(78, "Fio A") : null;
+  const dB = fio(m === 1 ? 210 : 140, m === 1 ? "Fio B" : "Fio");
+  function desenhar() { if (dA) dA(A.L, A.Q); dB(st.L, st.Q); }
+  const suf = m === 1 ? " do fio B" : " do fio";
+  const sL = controle(root, { rot: "Comprimento" + suf, min: 0.5, max: 4, passo: 0.1, valor: st.L, fmt: v => fmtNum(v, 1) + " m", ao: v => { st.L = v; desenhar(); } });
+  const sQ = controle(root, { rot: "Carga total" + suf, min: 1, max: 12, passo: 0.5, valor: st.Q, fmt: v => fmtNum(v, 1) + " μC", ao: v => { st.Q = v; desenhar(); } });
+  botaoVerificar(api, () => {
+    const lam = st.Q / st.L;
+    if (m === 0) {
+      if (Math.abs(st.L - 1.5) > 1e-6) return "Deixe o fio em 1,5 m e mude só a carga total.";
+      return Math.abs(lam - 4) <= 0.1 ? true : `Com L = 1,5 m, a densidade está em ${fmtNum(lam, 2)} μC/m. Como λ = Q/L, que carga total dá 4,0 μC/m?`;
+    }
+    if (Math.abs(st.L - 3) < 0.05) return "O fio B precisa ter comprimento diferente de 3,0 m.";
+    return Math.abs(lam - 2) <= 0.05 ? true : `A densidade do fio B está em ${fmtNum(lam, 2)} μC/m, e a do fio A é 2,0 μC/m. Quando o comprimento muda, o que a carga precisa fazer?`;
+  });
+  desenhar();
+  root._t = { resolver() {
+    if (m === 0) { st.L = 1.5; st.Q = 6; } else { st.L = 1; st.Q = 2; }
+    sL.set(st.L); sQ.set(st.Q); desenhar();
+  } };
+};
+
+/* GAUSS 2 — pares simétricos e efeito de borda */
+SIMS.gaussPares = function (root, api) {
+  const m = api.cfg.m;
+  const svg = criarPalco(root, 340);
+  const WY = 275;
+  const ESP = m === 0 ? 44 : 26, N0 = m === 0 ? 11 : 9, X00 = m === 0 ? 100 : 70, NT = m === 0 ? N0 : N0 + 12;
+  const P = m === 0 ? { x: X00 + (N0 - 1) / 2 * ESP, y: 150 } : { x: X00 + (N0 - 1) * ESP, y: 190 };
+  const st = { ativa: Array(N0).fill(true), extra: 0 };
+  S("line", { x1: 30, y1: WY, x2: 610, y2: WY, stroke: COR.cinza, "stroke-width": 1, "stroke-dasharray": "4 5" }, svg);
+  S("line", { x1: P.x, y1: P.y, x2: P.x, y2: P.y - 110, stroke: COR.cinza, "stroke-width": 1.2, "stroke-dasharray": "3 4" }, svg);
+  const vs = Array.from({ length: NT }, () => criarSeta(svg, "campo", 2));
+  const vTot = criarSeta(svg, "forca", 6);
+  const cs = Array.from({ length: NT }, (_, i) => { const c = criarCarga(svg, 8, 1, ""); c.em(X00 + i * ESP, WY); return c; });
+  const pP = criarCarga(svg, 7, 0, "P"); pP.em(P.x, P.y);
+  texto(svg, 30, 24, "azul: campo de cada carga · amarelo: campo total em P", "sim-txt");
+  if (m === 0) texto(svg, 30, 326, "clique numa carga para tirá-la ou recolocá-la", "sim-txt");
+  const ler = H("div", "sim-leitura", root);
+  const noFio = i => (m === 0 ? st.ativa[i] : i < N0 + st.extra);
+  const lista = () => cs.map((c, i) => ({ x: c.x, y: WY, q: 1, i })).filter(c => noFio(c.i));
+  const incl = () => { const e = campoDe(lista(), P.x, P.y); return e.mod ? Math.atan2(e.x, -e.y) * 180 / Math.PI : 0; };
+  function desenhar() {
+    const L = lista(), e = campoDe(L, P.x, P.y);
+    cs.forEach((c, i) => c.g.setAttribute("opacity", noFio(i) ? 1 : m === 1 ? 0.15 : 0.2));
+    vs.forEach(s => s.pos(0, 0, 0, 0));
+    L.forEach(c => { const dx = P.x - c.x, dy = P.y - c.y, d = Math.hypot(dx, dy); vs[c.i].pos(P.x, P.y, P.x + dx / d * 38, P.y + dy / d * 38); });
+    if (e.mod) vTot.pos(P.x, P.y, P.x + e.x / e.mod * 100, P.y + e.y / e.mod * 100); else vTot.pos(0, 0, 0, 0);
+    ler.textContent = `Inclinação do campo em P: ${fmtNum(incl(), 1)}° (positiva = para a direita) · cargas no fio: ${L.length}`;
+  }
+  if (m === 0) cs.forEach((c, i) => {
+    c.g.style.cursor = "pointer";
+    c.g.setAttribute("tabindex", "0"); c.g.setAttribute("role", "button"); c.g.dataset.i = i;
+    c.g.setAttribute("aria-label", `Carga ${i + 1}: clique para tirar ou recolocar`);
+    const alterna = () => { st.ativa[i] = !st.ativa[i]; desenhar(); };
+    c.g.addEventListener("click", alterna);
+    c.g.addEventListener("keydown", ev => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); alterna(); } });
+  });
+  const sE = m === 1 ? controle(root, { rot: "Cargas acrescentadas à direita", min: 0, max: 12, passo: 1, valor: 0, fmt: v => String(v), ao: v => { st.extra = v; desenhar(); } }) : null;
+  botaoVerificar(api, () => {
+    const a = incl();
+    if (m === 0) {
+      const tiradas = st.ativa.filter(x => !x).length;
+      if (tiradas === N0) return "Deixe pelo menos uma carga no fio.";
+      if (tiradas < 2) return "Tire pelo menos duas cargas do fio, clicando nelas.";
+      return Math.abs(a) <= 0.1 ? true : `O campo em P está inclinado ${fmtNum(a, 1)}°. Cada carga tirada precisa ter a parceira simétrica, do outro lado de P, também tirada.`;
+    }
+    return Math.abs(a) <= 0.5 ? true : `O campo em P está inclinado ${fmtNum(a, 1)}°. Faltam as parceiras simétricas das cargas que estão à esquerda de P: continue acrescentando à direita.`;
+  });
+  desenhar();
+  root._t = { resolver() {
+    if (m === 0) { st.ativa[4] = false; st.ativa[6] = false; } else { st.extra = 8; sE.set(8); }
+    desenhar();
+  } };
+};
+
+/* GAUSS 3 — do conjunto de cargas ao fio infinito */
+SIMS.gaussContinuo = function (root, api) {
+  const m = api.cfg.m;
+  const svg = criarPalco(root, 320);
+  const WY = 262, CX = 320, NMAX = 81;
+  const st = { N: 17, h: 3 };
+  // campo das cargas ÷ campo do fio infinito, em P (acima do meio); h em espaçamentos entre cargas
+  const razao = () => { let s = 0; for (let i = 0; i < st.N; i++) { const x = i - (st.N - 1) / 2; s += 1 / (st.h * st.h + x * x) ** 1.5; } return st.h * st.h * s / 2; };
+  S("line", { x1: 30, y1: WY, x2: 610, y2: WY, stroke: COR.cinza, "stroke-width": 1, "stroke-dasharray": "4 5" }, svg);
+  const cs = Array.from({ length: NMAX }, () => S("circle", { cy: WY, fill: COR.pos, stroke: "#fff", "stroke-width": 0.8 }, svg));
+  const sInf = criarSeta(svg, "campo", 4), sSoma = criarSeta(svg, "forca", 5);
+  const pP = criarCarga(svg, 8, 0, "P");
+  texto(svg, 30, 24, "azul: campo de um fio infinito · amarelo: soma das cargas (esquema fora de escala)", "sim-txt");
+  const ler = H("div", "sim-leitura", root);
+  function desenhar() {
+    const pxd = Math.min(16, 540 / (st.N - 1)), py = WY - 40 - 18 * st.h, r = razao();
+    cs.forEach((c, i) => {
+      c.style.display = i < st.N ? "" : "none";
+      c.setAttribute("cx", CX + (i - (st.N - 1) / 2) * pxd);
+      c.setAttribute("r", Math.min(5, Math.max(2, pxd * 0.32)));
+    });
+    pP.em(CX, py);
+    sInf.pos(CX - 14, py, CX - 14, py - 80);
+    sSoma.pos(CX + 14, py, CX + 14, py - 80 * r);
+    ler.textContent = `${st.N} cargas · P a ${fmtNum(st.h, 1)} espaçamentos do fio · campo das cargas ÷ campo do fio infinito = ${fmtNum(r, 3)}`;
+  }
+  const sN = controle(root, { rot: "Número de cargas", min: 5, max: 81, passo: 2, valor: st.N, fmt: v => String(v), ao: v => { st.N = v; desenhar(); } });
+  const sH = controle(root, { rot: "Distância de P ao fio", min: 0.5, max: 5, passo: 0.5, valor: st.h, fmt: v => fmtNum(v, 1) + " espaçamentos", ao: v => { st.h = v; desenhar(); } });
+  botaoVerificar(api, () => {
+    if (m === 0 && st.h !== 3) return "Deixe P a 3,0 espaçamentos do fio e mude só o número de cargas.";
+    if (m === 1 && st.N !== 17) return "Mantenha as 17 cargas e mude só a distância de P ao fio.";
+    const r = razao();
+    return Math.abs(r - 1) <= 0.02 ? true : `A razão está em ${fmtNum(r, 3)}; ela precisa ficar entre 0,98 e 1,02. ${m === 0 ? "Com mais cargas, as pontas ficam mais longe." : "Perto do fio, as pontas parecem estar longe."}`;
+  });
+  desenhar();
+  root._t = { resolver() { if (m === 0) { st.N = 41; sN.set(41); } else { st.h = 1.5; sH.set(1.5); } desenhar(); } };
+};
+
+/* GAUSS 4 — a superfície gaussiana */
+SIMS.gaussSuperficie = function (root, api) {
+  const m = api.cfg.m;
+  const svg = criarPalco(root, 340);
+  const CX = 320, CY = m === 0 ? 175 : 185;
+  const ler = H("div", "sim-leitura", root);
+  if (m === 0) {
+    const U = 34, RP = 1.8, XP = 0.75;                                // 1 u = 34 px; P a 1,8 u do fio
+    const st = { r: 1, L: 1.5 };
+    S("line", { x1: 40, y1: CY, x2: 600, y2: CY, stroke: COR.cinza, "stroke-width": 2 }, svg);
+    const cil = S("rect", { fill: "rgba(138,106,0,0.08)", stroke: COR.forca, "stroke-width": 3, "stroke-dasharray": "8 6", rx: 2 }, svg);
+    for (let k = -8; k <= 8; k++) criarCarga(svg, 6, 1, "").em(CX + k * U, CY);
+    const alvo = S("circle", { cx: CX + XP * U, cy: CY - RP * U, r: 7, fill: "none", stroke: COR.forca, "stroke-width": 2.5 }, svg);
+    texto(svg, CX + XP * U + 12, CY - RP * U - 9, "P", "sim-txt forte");
+    const t1 = texto(svg, 0, 0, "S1", "sim-txt forte", "end"), t2 = texto(svg, 0, 0, "S2", "sim-txt forte", "middle"), t3 = texto(svg, 0, 0, "S3", "sim-txt forte", "start");
+    const dentro = () => {
+      let n = 0, borda = false;
+      for (let k = -8; k <= 8; k++) { const d = Math.abs(k) - st.L / 2; if (Math.abs(d) <= 0.05) borda = true; else if (d < 0) n++; }
+      return { n, borda };
+    };
+    function desenhar() {
+      const w = st.L * U, h = st.r * U, d = dentro();
+      cil.setAttribute("x", CX - w / 2); cil.setAttribute("y", CY - h); cil.setAttribute("width", w); cil.setAttribute("height", 2 * h);
+      t1.setAttribute("x", CX - w / 2 - 8); t1.setAttribute("y", CY - h - 8);
+      t2.setAttribute("x", CX); t2.setAttribute("y", CY + h + 22);
+      t3.setAttribute("x", CX + w / 2 + 8); t3.setAttribute("y", CY - h - 8);
+      alvo.setAttribute("stroke", Math.abs(st.r - RP) <= 0.05 ? "#3F9E6B" : COR.forca);
+      ler.textContent = `Cargas dentro do cilindro: ${d.n}${d.borda ? " (há uma carga sobre uma tampa)" : ""} · raio ${fmtNum(st.r, 1)} u · comprimento ${fmtNum(st.L, 1)} u`;
+    }
+    const sr = controle(root, { rot: "Raio r", min: 0.5, max: 3, passo: 0.1, valor: st.r, fmt: v => fmtNum(v, 1) + " u", ao: v => { st.r = v; desenhar(); } });
+    const sL = controle(root, { rot: "Comprimento L", min: 1, max: 8, passo: 0.5, valor: st.L, fmt: v => fmtNum(v, 1) + " u", ao: v => { st.L = v; desenhar(); } });
+    botaoVerificar(api, () => {
+      const d = dentro();
+      if (Math.abs(st.r - RP) > 0.05) return `A lateral passa a ${fmtNum(st.r, 1)} u do fio, e P está a 1,8 u. Ajuste o raio r.`;
+      if (d.borda) return "Uma carga está exatamente sobre uma tampa. Mude L para ela ficar dentro ou fora do cilindro.";
+      return d.n === 3 ? true : `O cilindro envolve ${d.n} carga${d.n === 1 ? "" : "s"}. Ajuste o comprimento L para envolver exatamente 3.`;
+    });
+    desenhar();
+    root._t = { resolver() { st.r = 1.8; st.L = 3; sr.set(1.8); sL.set(3); desenhar(); } };
+  } else {
+    const R = 95, st = { a: 90 };                                    // a: ângulo do ponto de teste, a partir do eixo do fio
+    S("line", { x1: 40, y1: CY, x2: 600, y2: CY, stroke: COR.cinza, "stroke-width": 3 }, svg);
+    texto(svg, 46, CY - 10, "fio", "sim-txt");
+    S("circle", { cx: CX, cy: CY, r: R, fill: "rgba(138,106,0,0.07)", stroke: COR.forca, "stroke-width": 3, "stroke-dasharray": "8 6" }, svg);
+    texto(svg, 30, 24, "azul: campo E · amarelo: normal à superfície", "sim-txt");
+    const sE = criarSeta(svg, "campo", 5), sN = criarSeta(svg, "forca", 5);
+    const T = criarCarga(svg, 8, 0, "T");
+    const rad = () => st.a * Math.PI / 180;
+    const pos = () => ({ x: CX + R * Math.cos(rad()), y: CY - R * Math.sin(rad()) });
+    const theta = () => Math.acos(Math.min(1, Math.abs(Math.sin(rad())))) * 180 / Math.PI;
+    function desenhar() {
+      const p = pos(), cima = Math.sin(rad()) >= 0 ? -1 : 1;
+      T.em(p.x, p.y);
+      sE.pos(p.x, p.y, p.x, p.y + cima * 45);
+      sN.pos(p.x, p.y, p.x + Math.cos(rad()) * 45, p.y - Math.sin(rad()) * 45);
+      ler.textContent = `Ângulo entre E (azul) e a normal à superfície (amarelo): ${fmtNum(theta(), 0)}°`;
+    }
+    arrastavel(T.g, svg, pos, p => { st.a = Math.atan2(-(p.y - CY), p.x - CX) * 180 / Math.PI; desenhar(); });
+    botaoVerificar(api, () => (Math.abs(theta() - 60) <= 3 ? true : `O ângulo aqui é ${fmtNum(theta(), 0)}°. Arraste o ponto pela esfera até chegar a 60°.`));
+    desenhar();
+    root._t = { resolver() { st.a = 30; desenhar(); } };
+  }
+};
+
+/* GAUSS 5 — a lei de Gauss: o fluxo só depende da carga envolvida */
+SIMS.gaussFluxo = function (root, api) {
+  const m = api.cfg.m;
+  const svg = criarPalco(root, 300);
+  const CX = 320, CY = 150, UL = 60;                                  // 60 px por metro de comprimento
+  const st = { lam: 2, L: 1, r: 2 };                                  // λ em μC/m, L em m, r em cm
+  const fluxo = () => st.lam * st.L * 1e-6 / EPS0;
+  const PHI0 = 2 * 1 * 1e-6 / EPS0;
+  S("line", { x1: 40, y1: CY, x2: 600, y2: CY, stroke: COR.pos, "stroke-width": 6, "stroke-linecap": "round" }, svg);
+  const cil = S("rect", { fill: "rgba(138,106,0,0.08)", stroke: COR.forca, "stroke-width": 2.5, "stroke-dasharray": "8 6" }, svg);
+  const capE = S("line", { stroke: COR.forca, "stroke-width": 5, "stroke-linecap": "round" }, svg), capD = S("line", { stroke: COR.forca, "stroke-width": 5, "stroke-linecap": "round" }, svg);
+  const setas = Array.from({ length: 6 }, () => criarSeta(svg, "campo", 3));
+  texto(svg, 30, 24, "azul: campo atravessando a lateral · amarelo: tampas", "sim-txt");
+  const ler = H("div", "sim-leitura", root);
+  function desenhar() {
+    const w = st.L * UL, h = 24 + 14 * st.r, x0 = CX - w / 2;
+    cil.setAttribute("x", x0); cil.setAttribute("y", CY - h); cil.setAttribute("width", w); cil.setAttribute("height", 2 * h);
+    [[capE, x0], [capD, x0 + w]].forEach(([c, x]) => { c.setAttribute("x1", x); c.setAttribute("x2", x); c.setAttribute("y1", CY - h); c.setAttribute("y2", CY + h); });
+    [0.2, 0.5, 0.8].forEach((f, i) => { const x = x0 + f * w; setas[i].pos(x, CY - h, x, CY - h - 34); setas[i + 3].pos(x, CY + h, x, CY + h + 34); });
+    ler.textContent = `q_env = λ·L = ${fmtNum(st.lam * st.L, 1)} μC · fluxo total Φ = q_env/ε₀ = ${fmtSci(fluxo(), 2)} N·m²/C`;
+  }
+  const sLam = controle(root, { rot: "Densidade λ", min: 1, max: 5, passo: 0.5, valor: st.lam, fmt: v => fmtNum(v, 1) + " μC/m", ao: v => { st.lam = v; desenhar(); } });
+  const sL = controle(root, { rot: "Comprimento L", min: 0.5, max: 4, passo: 0.5, valor: st.L, fmt: v => fmtNum(v, 1) + " m", ao: v => { st.L = v; desenhar(); } });
+  const sr = controle(root, { rot: "Raio r", min: 1, max: 5, passo: 0.5, valor: st.r, fmt: v => fmtNum(v, 1) + " cm", ao: v => { st.r = v; desenhar(); } });
+  botaoVerificar(api, () => {
+    if (m === 0) {
+      if (st.lam !== 2) return "Mantenha λ em 2,0 μC/m e mude só o raio e o comprimento.";
+      const q = fluxo() / PHI0;
+      return Math.abs(q - 3) <= 0.03 ? true : `O fluxo está ${fmtNum(q, 2)} vezes o inicial. Qual das duas barras, r ou L, muda o fluxo total?`;
+    }
+    return Math.abs(fluxo() - 3.4e5) / 3.4e5 <= 0.03 ? true : `O fluxo está em ${fmtSci(fluxo(), 2)} N·m²/C. Lembre que Φ = λL/ε₀, então λL precisa valer cerca de 3,0 μC.`;
+  });
+  desenhar();
+  root._t = { resolver() { st.L = m === 0 ? 3 : 1.5; sL.set(st.L); desenhar(); } };
+};
+
+/* GAUSS 6 — os vetores normais */
+SIMS.gaussNormais = function (root, api) {
+  const svg = criarPalco(root, 300);
+  const CX = 320, CY = 160, HL = 140, HR = 75;
+  const PTS = [{ x: CX - HL, y: CY - 42, nome: "S1" }, { x: CX, y: CY - HR, nome: "S2" }, { x: CX + HL, y: CY - 42, nome: "S3" }];
+  const ALVO = [180, 90, 0];                                          // normal externa em S1, S2 e S3 (0° = direita, 90° = cima)
+  const st = { ang: [270, 270, 270], sel: 0 };
+  S("line", { x1: 60, y1: CY, x2: 580, y2: CY, stroke: COR.pos, "stroke-width": 5, "stroke-linecap": "round" }, svg);
+  S("rect", { x: CX - HL, y: CY - HR, width: 2 * HL, height: 2 * HR, fill: "rgba(138,106,0,0.07)", stroke: COR.forca, "stroke-width": 3, "stroke-dasharray": "8 6" }, svg);
+  PTS.forEach((p, i) => { const sE = criarSeta(svg, "campo", 4); sE.pos(p.x, p.y, p.x, p.y - 46); });
+  const dAs = PTS.map(() => criarSeta(svg, "forca", 5));
+  PTS.forEach(p => { criarCarga(svg, 6, 0, "").em(p.x, p.y); texto(svg, p.x - 12, p.y - 6, p.nome, "sim-txt forte", "end"); });
+  texto(svg, 30, 24, "azul: campo E · amarelo: vetor área dA (você ajusta)", "sim-txt");
+  const ler = H("div", "sim-leitura", root);
+  const certo = i => dif180(st.ang[i], ALVO[i]) <= 5;
+  function desenhar() {
+    PTS.forEach((p, i) => {
+      const a = st.ang[i] * Math.PI / 180;
+      dAs[i].el.setAttribute("stroke-width", i === st.sel ? 6 : 3);
+      dAs[i].pos(p.x, p.y, p.x + Math.cos(a) * 52, p.y - Math.sin(a) * 52);
+    });
+    ler.textContent = `S1 ${certo(0) ? "✓" : "✗"} · S2 ${certo(1) ? "✓" : "✗"} · S3 ${certo(2) ? "✓" : "✗"} · no ponto selecionado, o ângulo entre E e dA é ${fmtNum(dif180(st.ang[st.sel], 90), 0)}°`;
+  }
+  escolha(root, "Ponto", [["0", "S1 (tampa esquerda)"], ["1", "S2 (lateral)"], ["2", "S3 (tampa direita)"]], "0", v => { st.sel = +v; sA.set(st.ang[st.sel]); desenhar(); });
+  const sA = controle(root, { rot: "Direção de dA", min: 0, max: 355, passo: 5, valor: st.ang[0], fmt: v => v + "°", ao: v => { st.ang[st.sel] = v; desenhar(); } });
+  botaoVerificar(api, () => {
+    const erros = PTS.filter((_, i) => !certo(i)).map(p => p.nome);
+    return erros.length === 0 ? true : `Ainda falta acertar ${erros.join(", ")}. O vetor área é perpendicular à superfície e aponta para fora dela.`;
+  });
+  desenhar();
+  root._t = { resolver() { st.ang = ALVO.slice(); sA.set(st.ang[st.sel]); desenhar(); } };
+};
+
+/* GAUSS 7 — fluxo na lateral */
+SIMS.gaussLateral = function (root, api) {
+  const svg = criarPalco(root, 300);
+  const CX = 320, CY = 150, K2 = 2 * K_COULOMB * 2e-6;                // λ = 2,0 μC/m
+  const st = { r: 10, L: 1 };                                         // r em cm, L em m
+  const campo = () => K2 / (st.r / 100);
+  const area = () => 2 * Math.PI * (st.r / 100) * st.L;
+  const fluxo = () => campo() * area();
+  S("line", { x1: 30, y1: CY, x2: 610, y2: CY, stroke: COR.pos, "stroke-width": 6, "stroke-linecap": "round" }, svg);
+  const cil = S("rect", { fill: "rgba(138,106,0,0.08)", stroke: COR.forca, "stroke-width": 3, "stroke-dasharray": "8 6" }, svg);
+  const setas = Array.from({ length: 8 }, () => criarSeta(svg, "campo", 3));
+  texto(svg, 30, 24, "λ = 2,0 μC/m · azul: campo na lateral (paralelo a dA)", "sim-txt");
+  const ler = H("div", "sim-leitura", root);
+  function desenhar() {
+    const w = 100 * st.L, h = 20 + 3.2 * st.r, x0 = CX - w / 2, len = lim(300 / st.r, 6, 60);
+    cil.setAttribute("x", x0); cil.setAttribute("y", CY - h); cil.setAttribute("width", w); cil.setAttribute("height", 2 * h);
+    [0.15, 0.38, 0.62, 0.85].forEach((f, i) => { const x = x0 + f * w; setas[i].pos(x, CY - h, x, CY - h - len); setas[i + 4].pos(x, CY + h, x, CY + h + len); });
+    ler.textContent = `E = ${fmtSci(campo(), 2)} N/C · área da lateral A = 2πrL = ${fmtNum(area(), 3)} m² · fluxo na lateral Φ = E·A = ${fmtSci(fluxo(), 2)} N·m²/C`;
+  }
+  const rapida = perguntaRapida(api, "Ao dobrar o raio, com λ e L iguais, o fluxo na lateral:", [
+    ["Dobrou", false, "O campo caiu pela metade e a área dobrou ao mesmo tempo. Compare os três números do painel antes e depois."],
+    ["Não mudou", true, ""],
+    ["Caiu pela metade", false, "A área da lateral também dobrou, compensando a queda do campo. Veja o valor de Φ no painel."]]);
+  const checar = () => { if (st.r === 20 && st.L === 1) rapida.mostrar(); };
+  const sr = controle(root, { rot: "Raio r", min: 5, max: 40, passo: 5, valor: st.r, fmt: v => v + " cm", ao: v => { st.r = v; desenhar(); checar(); } });
+  controle(root, { rot: "Comprimento L", min: 0.5, max: 3, passo: 0.5, valor: st.L, fmt: v => fmtNum(v, 1) + " m", ao: v => { st.L = v; desenhar(); checar(); } });
+  desenhar();
+  root._t = { resolver() { st.r = 20; sr.set(20); desenhar(); rapida.mostrar(); } };
+};
+
+/* GAUSS 8 — fluxo nas tampas */
+SIMS.gaussTampas = function (root, api) {
+  const svg = criarPalco(root, 340);
+  const CX = 320, CY = 175, HL = 150, HR = 75;
+  const st = { x: CX, y: CY - HR, parte: "lateral", n: [0, -1], lat: false, tampa: false };
+  S("line", { x1: 60, y1: CY, x2: 580, y2: CY, stroke: COR.pos, "stroke-width": 5, "stroke-linecap": "round" }, svg);
+  S("rect", { x: CX - HL, y: CY - HR, width: 2 * HL, height: 2 * HR, fill: "rgba(138,106,0,0.07)", stroke: COR.forca, "stroke-width": 3, "stroke-dasharray": "8 6" }, svg);
+  texto(svg, CX - HL - 8, CY - HR - 8, "S1", "sim-txt forte", "end"); texto(svg, CX, CY + HR + 22, "S2", "sim-txt forte", "middle"); texto(svg, CX + HL + 8, CY - HR - 8, "S3", "sim-txt forte", "start");
+  for (const x of [CX - 100, CX - 40, CX + 40, CX + 100]) for (const s of [-1, 1]) criarSeta(svg, "campo", 2).pos(x, CY + s * 22, x, CY + s * 56);
+  texto(svg, 30, 24, "azul: campo E · amarelo: vetor área dA no ponto de teste", "sim-txt");
+  const sE = criarSeta(svg, "campo", 5), sN = criarSeta(svg, "forca", 5);
+  const T = criarCarga(svg, 8, 0, "T");
+  const ler = H("div", "sim-leitura", root);
+  const afasta = y => (Math.abs(y - CY) < 14 ? (y <= CY ? CY - 14 : CY + 14) : y);
+  function projeta(p) {
+    const x = lim(p.x, CX - HL, CX + HL), y = lim(p.y, CY - HR, CY + HR);
+    const d = [x - (CX - HL), CX + HL - x, y - (CY - HR), CY + HR - y], k = d.indexOf(Math.min(...d));
+    if (k === 0) return { x: CX - HL, y: afasta(y), parte: "tampa", n: [-1, 0] };
+    if (k === 1) return { x: CX + HL, y: afasta(y), parte: "tampa", n: [1, 0] };
+    if (k === 2) return { x, y: CY - HR, parte: "lateral", n: [0, -1] };
+    return { x, y: CY + HR, parte: "lateral", n: [0, 1] };
+  }
+  function desenhar(marca) {
+    if (marca) { if (st.parte === "lateral") st.lat = true; else st.tampa = true; }
+    const sy = st.y < CY ? -1 : 1, len = lim(3600 / Math.abs(st.y - CY), 18, 80), cos = sy * st.n[1];
+    T.em(st.x, st.y);
+    sE.pos(st.x - 7, st.y, st.x - 7, st.y + sy * len);
+    sN.pos(st.x, st.y, st.x + st.n[0] * 60, st.y + st.n[1] * 60);
+    ler.textContent = `Ponto na ${st.parte === "lateral" ? "lateral (S2)" : "tampa (S1 ou S3)"} · ângulo entre E e dA: ${cos ? "0°" : "90°"} · cos θ = ${cos} · contribuição E·dA·cos θ: ${cos ? "diferente de zero" : "zero"}`;
+  }
+  arrastavel(T.g, svg, () => ({ x: st.x, y: st.y }), p => { Object.assign(st, projeta(p)); desenhar(true); });
+  botaoVerificar(api, () => (st.lat && st.tampa ? true : `Falta levar o ponto de teste ${!st.lat && !st.tampa ? "até a lateral e até uma tampa" : !st.lat ? "até a lateral" : "até uma tampa"}.`));
+  desenhar(false);
+  root._t = { resolver() {
+    Object.assign(st, projeta({ x: CX - HL, y: CY - 40 })); desenhar(true);
+    Object.assign(st, projeta({ x: CX, y: CY - HR })); desenhar(true);
+  } };
+};
+
+/* GAUSS 9 — o resultado: E = λ/(2πε₀r) */
+SIMS.gaussResultado = function (root, api) {
+  const m = api.cfg.m;
+  const svg = criarPalco(root, 300);
+  const WX = 60, CY = 150, PXCM = 4.4;
+  const GX = 390, GY = 270, GW = 220, GH = 210, EMAX = 2e6;
+  const st = { lam: 2, r: 10 };
+  const E = (lam = st.lam, r = st.r) => 2 * K_COULOMB * lam * 1e-6 / (r / 100);
+  const E0 = E(2, 10);
+  S("line", { x1: WX, y1: 30, x2: WX, y2: 270, stroke: COR.pos, "stroke-width": 7, "stroke-linecap": "round" }, svg);
+  texto(svg, WX + 10, 40, "fio", "sim-txt");
+  S("line", { x1: WX, y1: CY + 30, x2: WX + 50 * PXCM, y2: CY + 30, stroke: COR.cinza, "stroke-width": 1.5 }, svg);
+  [10, 20, 30, 40].forEach(c => { S("line", { x1: WX + c * PXCM, y1: CY + 26, x2: WX + c * PXCM, y2: CY + 36, stroke: COR.cinza, "stroke-width": 1.5 }, svg); texto(svg, WX + c * PXCM, CY + 54, String(c), "sim-txt", "middle"); });
+  texto(svg, WX + 50 * PXCM + 8, CY + 34, "cm", "sim-txt");
+  const sE = criarSeta(svg, "forca", 6), P = criarCarga(svg, 8, 0, "P");
+  S("path", { d: `M ${GX} ${GY - GH} V ${GY} H ${GX + GW}`, fill: "none", stroke: COR.cinza, "stroke-width": 2 }, svg);
+  texto(svg, GX + GW, GY + 20, "r (cm)", "sim-txt", "end"); texto(svg, GX + 6, GY - GH + 4, "E (N/C)", "sim-txt");
+  const curva = S("path", { fill: "none", stroke: COR.campo, "stroke-width": 2.5 }, svg);
+  const mk = S("circle", { r: 6, fill: COR.forca, stroke: "#fff", "stroke-width": 1.5 }, svg);
+  const gx = r => GX + (r - 5) / 45 * GW, gy = e => GY - Math.min(e, EMAX) / EMAX * GH;
+  const ler = H("div", "sim-leitura", root);
+  function desenhar() {
+    const x = WX + st.r * PXCM;
+    P.em(x, CY);
+    sE.pos(x, CY, x + lim(E() / 8000, 14, 130), CY);
+    let d = "";
+    for (let r = 5; r <= 50; r += 1) d += `${r > 5 ? "L" : "M"} ${gx(r).toFixed(1)} ${gy(E(st.lam, r)).toFixed(1)} `;
+    curva.setAttribute("d", d);
+    mk.setAttribute("cx", gx(st.r)); mk.setAttribute("cy", gy(E()));
+    ler.textContent = `λ = ${fmtNum(st.lam, 1)} μC/m · r = ${st.r} cm · E = λ/(2πε₀r) = ${fmtSci(E(), 2)} N/C`;
+  }
+  arrastavel(P.g, svg, () => ({ x: WX + st.r * PXCM, y: CY }), p => { st.r = Math.round(lim((p.x - WX) / PXCM, 5, 50)); sR.set(st.r); desenhar(); });
+  const sLam = controle(root, { rot: "Densidade λ", min: 1, max: 5, passo: 0.5, valor: st.lam, fmt: v => fmtNum(v, 1) + " μC/m", ao: v => { st.lam = v; desenhar(); } });
+  const sR = controle(root, { rot: "Distância r de P ao fio", min: 5, max: 50, passo: 1, valor: st.r, fmt: v => v + " cm", ao: v => { st.r = v; desenhar(); } });
+  botaoVerificar(api, () => {
+    if (m === 0) {
+      if (st.lam !== 2) return "Nesta missão, deixe λ em 2,0 μC/m e mude só a distância de P ao fio.";
+      return Math.abs(E() - 1.8e5) / 1.8e5 <= 0.06 ? true : `O campo está em ${fmtSci(E(), 2)} N/C. Ele cai com 1/r: ${E() > 1.8e5 ? "afaste" : "aproxime"} P.`;
+    }
+    if (st.lam !== 4) return "Dobre λ: de 2,0 para 4,0 μC/m.";
+    return Math.abs(E() - E0) / E0 <= 0.06 ? true : `O campo está em ${fmtSci(E(), 2)} N/C, e o valor de antes era ${fmtSci(E0, 2)} N/C. Com λ maior, o que fazer com r?`;
+  });
+  desenhar();
+  root._t = { resolver() { if (m === 1) { st.lam = 4; sLam.set(4); } st.r = 20; sR.set(20); desenhar(); } };
+};
+
+/* =====================================================================
    MISSÕES INTERATIVAS
    ===================================================================== */
 function renderMissao(e, qAtual, st) {
@@ -3048,8 +4626,10 @@ function montarSim() {
     if (bolinhas[qAtual]) bolinhas[qAtual].classList.add("ok");
     $("#xp").textContent = xpTotal();
   }
+  const testesAuto = [];
   const api = {
     cfg: p.cfg || {}, acoes: $("#sim-acoes"), extra: $("#sim-extra"),
+    auto(t) { testesAuto.push(t); },
     ok() { if (r.ok) return; r.t += 1; r.ok = true; salvar(); sucesso(); },
     errar(d) {
       if (r.ok) return;
@@ -3059,6 +4639,11 @@ function montarSim() {
     aviso(d) { if (!r.ok) fb.innerHTML = `<div class="feedback aviso"><p>${esc(d)}</p></div>`; }
   };
   SIMS[p.sim](alvo, api);
+  // reconhecimento automático: depois de cada interação, confere se o estado pedido foi atingido
+  if (alvo._ctrl) alvo._ctrl.abort();
+  const ctrl = new AbortController(); alvo._ctrl = ctrl;
+  const conferir = () => { if (!r.ok && testesAuto.some(t => t() === true)) api.ok(); };
+  ["pointermove", "pointerup", "input", "click", "keyup"].forEach(tp => alvo.addEventListener(tp, conferir, { signal: ctrl.signal }));
   const palco = alvo.querySelector(".sim-palco");
   if (palco) palco.insertAdjacentHTML("afterend", '<p class="sim-cel">Deslize o fundo da cena para os lados para ver tudo, ou vire o aparelho na horizontal. Toque em um objeto com contorno amarelo para arrastá-lo.</p>');
   const dica = botaoSim(api.acoes, "Ver dica", () => api.aviso(p.dica));
