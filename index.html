@@ -357,7 +357,7 @@ const MODULOS = [
           {
             sim: "bastoes", cfg: { m: 1 },
             q: "Troque o bastão da mão por um de plástico, eletrize os dois bastões com a seda e faça o bastão pendurado ser atraído.",
-            exp: "Esfregado com seda, o plástico fica com carga de sinal oposto ao do vidro. Cargas de sinais diferentes se atraem.",
+            exp: "Esfregado com a seda, o plástico fica negativo, como o bastão de plástico esfregado com lã no vídeo; o vidro fica positivo. Cargas de sinais diferentes se atraem.",
             dica: "Escolha Plástico em \"Bastão da mão\". Arraste o pano de seda de um lado para o outro sobre cada bastão, ou use os botões de esfregar, e depois chegue a ponta de um bastão perto da ponta do outro. O pendurado continua de vidro."
           },
           {
@@ -372,13 +372,6 @@ const MODULOS = [
               ["Magnetismo", false, "O âmbar não é um ímã. Forças magnéticas aparecem com ímãs ou correntes elétricas e atrairiam objetos de ferro, não palha."],
               ["Atração gravitacional", false, "A gravidade entre objetos tão pequenos é desprezível e não muda quando o âmbar é esfregado. O efeito só aparece depois do atrito."],
               ["Indução eletromagnética", false, "Indução eletromagnética exige um campo magnético variando no tempo. Aqui não há ímã nem corrente: há carga transferida por atrito."]
-            ] },
-          { q: "Dois bastões de vidro foram esfregados com seda. O que acontece quando o segundo se aproxima do bastão pendurado?",
-            op: [
-              ["O bastão pendurado se afasta: eles se repelem", true, "Os dois bastões ficam positivos. Cargas de mesmo sinal se repelem, então o bastão pendurado gira para longe."],
-              ["Os bastões se atraem", false, "Atração acontece entre cargas de sinais opostos. Os dois bastões foram esfregados do mesmo jeito e têm carga de mesmo sinal."],
-              ["Nada acontece, porque o vidro é isolante", false, "Ser isolante impede que a carga se espalhe ou escape, mas não impede que o bastão carregado exerça força. É justamente por isso que ele guarda a carga."],
-              ["Um bastão descarrega no outro e os dois ficam neutros", false, "Para descarregar, a carga teria de passar de um bastão para o outro, o que exigiria contato e um material condutor. Os bastões nem se tocam, e o vidro não conduz."]
             ] },
           { q: "Ao esfregar o vidro com seda, o que de fato muda de lugar?",
             op: [
@@ -405,12 +398,6 @@ const MODULOS = [
             exp: "No vidro, um isolante, os elétrons ficam presos aos seus átomos e não percorrem a barra. É isso que distingue um isolante de um condutor.",
             dica: "Escolha Vidro em \"Material da barra\" e chegue o bastão bem perto da ponta."
           },
-          {
-            sim: "inducao", cfg: { m: 2 },
-            q: "Carregue a barra de cobre por indução: aproxime o bastão, ligue o fio terra, desligue o fio e só então afaste o bastão.",
-            exp: "Com o fio ligado, os elétrons repelidos pelo bastão escapam para a terra. Desligando o fio antes de afastar o bastão, eles não podem voltar: a barra fica com falta de elétrons, ou seja, positiva.",
-            dica: "A ordem importa: bastão perto, fio ligado, fio desligado, bastão longe."
-          },
           { q: "Como se chama a separação de cargas na barra de cobre causada pelo plástico, sem que eles se toquem?",
             op: [
               ["Indução eletrostática", true, "A carga do plástico empurra os elétrons livres do cobre para a ponta oposta, sem contato. A barra continua neutra no total, mas com as cargas separadas."],
@@ -424,20 +411,6 @@ const MODULOS = [
               ["A barra ficou com carga negativa", false, "Nenhum elétron entrou ou saiu da barra; eles só mudaram de lugar dentro dela. A carga total continua zero."],
               ["O plástico passou sua carga para a barra", false, "Não houve contato, então não houve transferência. O plástico continua negativo e a barra, neutra."],
               ["A gravidade do plástico puxa a barra", false, "A atração gravitacional entre esses objetos é bilhões de vezes menor que a força elétrica envolvida. Ela não explicaria o giro visível."]
-            ] },
-          { q: "No cobre, quais partículas se deslocam quando o plástico se aproxima?",
-            op: [
-              ["Elétrons de condução", true, "Nos metais, alguns elétrons não ficam presos a um átomo e se movem livremente. São eles que se redistribuem."],
-              ["Íons positivos", false, "Os íons positivos formam a rede do metal e ficam no lugar. Para uma região ficar positiva, basta que os elétrons saiam dela."],
-              ["Prótons", false, "Prótons estão presos nos núcleos, dentro dos íons. Eles não se deslocam pelo metal."],
-              ["Nêutrons", false, "Nêutrons não têm carga, então não sentem a força elétrica do plástico."]
-            ] },
-          { q: "Qual destes materiais é um isolante?",
-            op: [
-              ["Vidro", true, "No vidro as cargas ficam presas no lugar. É por isso que o bastão de vidro consegue guardar a carga do atrito."],
-              ["Cobre", false, "O cobre é o exemplo clássico de condutor: tem muitos elétrons livres. Por isso é usado em fios elétricos."],
-              ["Corpo humano", false, "O corpo humano conduz eletricidade por causa da água e dos sais dissolvidos. É por isso que levamos choque."],
-              ["Água da torneira", false, "A água da torneira tem sais dissolvidos e conduz. Só a água destilada é isolante."]
             ] }
         ]
       },
@@ -451,32 +424,12 @@ const MODULOS = [
             exp: "A força é proporcional ao produto das cargas: 2q × 3q dá um produto 6 vezes maior que q × q.",
             dica: "Use as barras de carga. O que importa é o produto das duas cargas."
           },
-          {
-            sim: "balanca", cfg: { m: 2 },
-            q: "Com as cargas iniciais, afaste as esferas até a força cair para um nono da inicial.",
-            exp: "A 12 cm, três vezes a distância inicial, a força cai para 1/3² = 1/9.",
-            dica: "Um nono é 0,111. Qual distância é o triplo de 4,0 cm?"
-          },
           { q: "O que Coulomb lia diretamente na balança de torção?",
             op: [
               ["O ângulo de torção do fio", true, "O torque do fio é proporcional ao ângulo, τ = K d⁴ φ / l. Lendo o ângulo e conhecendo o fio, ele obtinha a força."],
               ["A carga de cada esfera", false, "Não havia como medir carga diretamente. Coulomb comparava cargas pela força que exerciam e as dividia por contato."],
               ["A força, num dinamômetro de mola", false, "As forças eram pequenas demais para uma mola comum. O instrumento sensível era a torção de um fio fino."],
               ["A massa das esferas", false, "A massa não muda com a carga e não entra no cálculo da força elétrica."]
-            ] },
-          { q: "Uma esfera com carga q₀ toca uma esfera idêntica neutra. Depois, essa segunda esfera toca outra esfera idêntica neutra. Com quanto fica a última?",
-            op: [
-              ["q₀/4", true, "Cada contato entre esferas idênticas divide a carga ao meio: q₀ vira q₀/2 e, no segundo contato, q₀/2 vira q₀/4."],
-              ["q₀/2", false, "Essa é a carga depois do primeiro contato. No segundo, a carga q₀/2 é dividida de novo entre duas esferas iguais."],
-              ["q₀/3", false, "Seria o caso se as três esferas se tocassem ao mesmo tempo. Aqui os contatos acontecem um de cada vez, sempre entre duas esferas."],
-              ["q₀", false, "A carga se divide entre as esferas em contato. Se nada passasse de uma para a outra, a esfera neutra continuaria neutra."]
-            ] },
-          { q: "Se o diâmetro do fio de torção dobrar, mantendo o comprimento, o torque necessário para o mesmo ângulo fica:",
-            op: [
-              ["16 vezes maior", true, "O torque depende de d⁴. Dobrar d multiplica o torque por 2⁴ = 16."],
-              ["2 vezes maior", false, "Isso valeria se o torque fosse proporcional a d. A dependência é com a quarta potência do diâmetro."],
-              ["4 vezes maior", false, "Isso corresponderia a d². A relação medida por Coulomb tem d⁴."],
-              ["16 vezes menor", false, "Um fio mais grosso resiste mais à torção, não menos. O d⁴ está no numerador."]
             ] }
         ]
       },
@@ -492,30 +445,10 @@ const MODULOS = [
           },
           {
             sim: "propriedades", cfg: { m: 1 },
-            q: "Estas são as suas medidas. Teste as três curvas e escolha a que passa pelos pontos.",
+            q: "Os pontos do gráfico são medidas da força em seis distâncias. Teste as três curvas e escolha a que passa por eles.",
             exp: "Só a curva do inverso do quadrado, 1/r², passa por todos os pontos. A força entre cargas cai com o quadrado da distância.",
             dica: "Clique em cada curva e compare a linha tracejada com os pontos, principalmente nas distâncias grandes."
           },
-          {
-            sim: "propriedades", cfg: { m: 2 },
-            q: "Deixe q₂ negativa e meça a força de novo, na mesma distância.",
-            exp: "O novo ponto cai no mesmo lugar: o módulo da força é o mesmo. Muda só o sentido, de repulsão para atração, sempre na linha que une as cargas.",
-            dica: "Troque o sinal de q₂ e clique em \"Medir a força\"."
-          },
-          { q: "Se a distância entre duas cargas triplica, a força entre elas fica:",
-            op: [
-              ["9 vezes menor", true, "F é proporcional a 1/r². Com r três vezes maior, F fica dividida por 3² = 9."],
-              ["3 vezes menor", false, "Isso seria uma queda com 1/r. A lei de Coulomb tem o quadrado da distância."],
-              ["6 vezes menor", false, "O expoente não multiplica a razão por 2: 3² = 9, não 3 × 2."],
-              ["3 vezes maior", false, "Afastar as cargas diminui a força, não aumenta."]
-            ] },
-          { q: "Uma das cargas dobra e a distância entre elas também dobra. A força:",
-            op: [
-              ["Cai pela metade", true, "A carga dobrada multiplica F por 2; a distância dobrada divide F por 4. O resultado é 2/4 = 1/2."],
-              ["Não muda", false, "Esse resultado esquece o quadrado: a distância dobrada divide a força por 4, não por 2."],
-              ["Fica 4 vezes maior", false, "Afastar as cargas reduz a força. Só a carga aumentou."],
-              ["Fica 4 vezes menor", false, "Isso considera só a distância. A carga dobrada multiplica a força por 2."]
-            ] },
           { q: "Por que a força entre duas cargas pontuais aponta ao longo da reta que as une?",
             op: [
               ["Porque essa é a única direção definida pelas duas cargas", true, "No espaço vazio nenhuma direção é especial. Duas cargas pontuais só definem a reta entre elas, então a força só pode apontar ao longo dela. Uma força assim é chamada de central."],
@@ -537,12 +470,6 @@ const MODULOS = [
         texto: "As três propriedades viram uma equação: F = k q₁q₂ r̂ / r². O vetor unitário r̂ só indica direção, e o sinal do produto q₁q₂ decide se a força é de atração ou de repulsão.",
         perguntas: [
           {
-            sim: "formula", cfg: { m: 0 },
-            q: "Usando as cargas e a distância, monte uma repulsão de 9,0 N.",
-            exp: "Há muitas soluções. Uma delas: 2,0 μC e 5,0 μC a 10 cm, pois 8,99 × 10⁹ × 2,0 × 10⁻⁶ × 5,0 × 10⁻⁶ / (0,10)² ≈ 9,0 N.",
-            dica: "Acompanhe a conta abaixo da simulação: ela mostra a força a cada mudança."
-          },
-          {
             sim: "formula", cfg: { m: 2 },
             q: "As cargas valem 4,0 μC cada, a 5 cm. Sem mexer nelas, leve a força a um quarto do valor inicial.",
             exp: "Dobrar a distância, de 5 cm para 10 cm, divide a força por 2² = 4.",
@@ -554,27 +481,6 @@ const MODULOS = [
               ["Aponta para longe de q₂: é repulsão", false, "Repulsão acontece com produto positivo, quando as cargas têm o mesmo sinal."],
               ["É nula", false, "Força nula exigiria uma das cargas igual a zero. O produto negativo só muda o sentido da força."],
               ["É perpendicular à reta entre as cargas", false, "A força de Coulomb é sempre central, ao longo da reta entre as cargas, qualquer que seja o sinal."]
-            ] },
-          { q: "Qual é o valor aproximado da constante k?",
-            op: [
-              ["8,99 × 10⁹ N·m²/C²", true, "k = 1/(4πε₀) ≈ 8,99 × 10⁹ N·m²/C². Para estimativas, 9 × 10⁹ basta."],
-              ["8,85 × 10⁻¹² C²/(N·m²)", false, "Esse é ε₀, a constante elétrica. A constante k vale 1/(4πε₀)."],
-              ["6,67 × 10⁻¹¹ N·m²/kg²", false, "Essa é a constante gravitacional G, da lei de Newton."],
-              ["1,60 × 10⁻¹⁹ C", false, "Essa é a carga elementar e: uma carga, não a constante da força."]
-            ] },
-          { q: "Duas cargas de 1 μC estão a 1 m uma da outra. Qual é o módulo da força entre elas?",
-            op: [
-              ["9 × 10⁻³ N", true, "F = 9 × 10⁹ × (10⁻⁶)² / 1² = 9 × 10⁻³ N."],
-              ["9 × 10³ N", false, "Faltou converter o micro: 1 μC = 10⁻⁶ C. O produto das cargas é 10⁻¹² C², não 1."],
-              ["9 × 10⁻⁶ N", false, "Esse resultado usa só uma das cargas em coulombs. O produto q₁q₂ é 10⁻⁶ × 10⁻⁶ = 10⁻¹² C²."],
-              ["9 N", false, "Confira as potências de dez: 9 × 10⁹ × 10⁻¹² = 9 × 10⁻³."]
-            ] },
-          { q: "A unidade coulomb equivale a:",
-            op: [
-              ["1 ampère × 1 segundo", true, "Como a corrente é i = dq/dt, carga é corrente vezes tempo: 1 C = 1 A·s."],
-              ["1 ampère por segundo", false, "A/s mediria a rapidez com que a corrente muda, não uma quantidade de carga."],
-              ["1 newton × 1 metro", false, "N·m é unidade de energia (joule) ou de torque."],
-              ["1 volt × 1 ampère", false, "V·A é unidade de potência (watt)."]
             ] }
         ]
       },
@@ -587,12 +493,6 @@ const MODULOS = [
             q: "Com as duas cargas positivas, arraste q₂ até a força sobre ela apontar a 45°, para cima e para a direita.",
             exp: "Na repulsão, a força sobre q₂ aponta para longe de q₁, na direção do vetor unitário que vai de q₁ a q₂. Com q₂ na diagonal, a força fica a 45°.",
             dica: "A seta amarela em q₂ segue a linha tracejada que vem de q₁."
-          },
-          {
-            sim: "vetorial", cfg: { m: 1 },
-            q: "Deixe q₂ negativa e posicione-a de modo que a força sobre ela aponte para baixo.",
-            exp: "Na atração, a força sobre q₂ aponta para q₁. Para apontar para baixo, q₂ precisa estar exatamente acima de q₁.",
-            dica: "Com sinais opostos, a seta em q₂ aponta para q₁."
           },
           {
             sim: "vetorial", cfg: { m: 2 },
@@ -639,25 +539,12 @@ const MODULOS = [
             exp: "Os prótons têm a maior massa, então a gravidade entre eles é a maior. Mesmo assim, a força elétrica ainda vence por um fator de cerca de 10³⁶.",
             dica: "Troque o par e compare os números da razão."
           },
-          {
-            sim: "nucleo", cfg: { m: 2 },
-            q: "Dois prótons no núcleo de ferro: ajuste a distância até a repulsão elétrica entre eles valer 14 N.",
-            exp: "Isso acontece a cerca de 4 × 10⁻¹⁵ m, a distância entre prótons no núcleo de ferro. São 14 N numa única partícula; a gravidade, de cerca de 10⁻³⁵ N, não consegue segurar o núcleo. Quem segura é a força nuclear forte.",
-            dica: "A força elétrica aparece acima da barra amarela."
-          },
           { q: "Qual é a diferença essencial entre a força gravitacional e a força elétrica?",
             op: [
               ["A gravidade só atrai; a força elétrica atrai ou repele", true, "Existe só um tipo de massa, mas dois tipos de carga. Por isso a força elétrica pode ter os dois sentidos."],
               ["A gravidade não cai com 1/r²", false, "As duas caem com o inverso do quadrado da distância. É justamente o que elas têm em comum."],
               ["A força elétrica não depende da distância", false, "Depende, e da mesma forma que a gravidade: com 1/r²."],
               ["A gravidade é sempre mais forte", false, "Entre partículas é o contrário: a força elétrica entre dois prótons é cerca de 10³⁶ vezes maior."]
-            ] },
-          { q: "Dois prótons a 4,0 × 10⁻¹⁵ m se repelem com cerca de 14 N e se atraem gravitacionalmente com 1,2 × 10⁻³⁵ N. A razão entre as forças é da ordem de:",
-            op: [
-              ["10³⁶", true, "14 / (1,2 × 10⁻³⁵) ≈ 1,2 × 10³⁶."],
-              ["10³⁵", false, "Faltou dividir 14 por 1,2: o resultado é cerca de 12 × 10³⁵, ou seja, 1,2 × 10³⁶."],
-              ["10¹²", false, "Compare os expoentes: 14 N é da ordem de 10¹ e a força gravitacional é da ordem de 10⁻³⁵. A diferença é de 36 ordens de grandeza."],
-              ["1", false, "As forças não são comparáveis: a elétrica é imensamente maior."]
             ] },
           { q: "Se os prótons se repelem com tanta força, o que mantém o núcleo unido?",
             op: [
@@ -673,14 +560,8 @@ const MODULOS = [
         texto: "Com várias cargas, a força total é a soma vetorial das forças exercidas por cada uma: F₁,tot = F₁₂ + F₁₃ + … A cena resolve o Exemplo 21.01 do Halliday em três arranjos.",
         perguntas: [
           {
-            sim: "superposicao", cfg: { m: 0 },
-            q: "As duas cargas fixas são iguais. Arraste q₃ até um ponto em que a força resultante sobre ela seja zero.",
-            exp: "No ponto médio, as duas forças têm o mesmo módulo e sentidos opostos, e a soma vetorial é zero.",
-            dica: "As setas azuis são as forças de cada carga; a amarela é a soma."
-          },
-          {
             sim: "superposicao", cfg: { m: 1 },
-            q: "Agora as cargas fixas são +4q e +q. Encontre o novo ponto de força zero.",
+            q: "As cargas fixas são +4q e +q. Arraste q₃ até um ponto em que a força resultante sobre ela seja zero.",
             exp: "A carga quatro vezes maior precisa estar duas vezes mais longe: 4/(2d)² = 1/d². O ponto fica a 2/3 do caminho, mais perto da carga menor.",
             dica: "O ponto fica sobre a linha entre as cargas, mais perto da menor."
           },
@@ -696,20 +577,6 @@ const MODULOS = [
               ["Conservação da carga", false, "Esse princípio diz que a carga total de um sistema isolado não muda. Ele não trata de somar forças."],
               ["Terceira lei de Newton", false, "Ela relaciona a força que 1 faz em 2 com a que 2 faz em 1. Não diz como combinar forças de várias cargas."],
               ["Teorema das cascas", false, "Esse teorema trata de distribuições esféricas de carga, não da soma de forças de cargas pontuais."]
-            ] },
-          { q: "No segundo arranjo, F₁₂ = 1,15 × 10⁻²⁴ N aponta para −x e F₁₃ = 2,05 × 10⁻²⁴ N aponta para +x. A força total sobre a partícula 1 é:",
-            op: [
-              ["9,0 × 10⁻²⁵ N, para +x", true, "Forças na mesma direção e com sentidos opostos: subtraia os módulos e fique com o sentido da maior. 2,05 − 1,15 = 0,90 × 10⁻²⁴ N."],
-              ["3,20 × 10⁻²⁴ N, para +x", false, "Somar os módulos só vale para forças no mesmo sentido. Aqui elas apontam em sentidos opostos."],
-              ["9,0 × 10⁻²⁵ N, para −x", false, "O módulo está certo, mas a força maior, F₁₃, aponta para +x."],
-              ["Zero", false, "As forças só se cancelariam se tivessem o mesmo módulo, e 2,05 é diferente de 1,15."]
-            ] },
-          { q: "No terceiro arranjo, a calculadora dá θ = arctan(F_y/F_x) = −86°, mas a resposta é 94°. Por quê?",
-            op: [
-              ["O arctan só devolve ângulos entre −90° e 90°; como F_x é negativo, é preciso somar 180°", true, "F_x negativo e F_y positivo põem o vetor no segundo quadrante. A calculadora não sabe disso; o desenho sabe."],
-              ["A calculadora estava em radianos", false, "Em radianos o resultado nem seria −86. O problema é o intervalo de valores do arctan, não a unidade."],
-              ["Porque a força resultante sempre aponta para cima", false, "Não existe regra assim. O ângulo vem das componentes, e aqui F_x é negativo."],
-              ["Porque sempre se deve somar 180° ao arctan", false, "Somar 180° só é necessário quando F_x é negativo. Com F_x positivo, o arctan já dá o ângulo certo."]
             ] }
         ]
       },
@@ -722,12 +589,6 @@ const MODULOS = [
             q: "Gire a cena para ver as forças de vários ângulos. Depois ajuste as cargas até F₁ e F₂ terem o mesmo módulo.",
             exp: "As duas forças são perpendiculares. Com módulos iguais, a resultante fica a 45° entre os eixos x e z, e vale √2 vezes cada uma.",
             dica: "As duas cargas estão à mesma distância de q."
-          },
-          {
-            sim: "espaco3d", cfg: { m: 1 },
-            q: "Ajuste as cargas para F₁ = 3,0 N e F₂ = 4,0 N e leia o módulo da resultante.",
-            exp: "As forças se somam componente a componente. Como são perpendiculares, o módulo vem de Pitágoras: √(3,0² + 4,0²) = 5,0 N, e não 7,0 N.",
-            dica: "A 10 cm, cada 1 μC produz cerca de 0,90 N."
           },
           { q: "|F₁| = 360 N e |F₂| = 805 N, mas |F₁ + F₂| ≈ 1018 N, e não 1165 N. Por quê?",
             op: [
@@ -742,13 +603,6 @@ const MODULOS = [
               ["Quando as forças são perpendiculares", false, "Forças perpendiculares dão |F₁ + F₂| = √(F₁² + F₂²), que é menor que a soma dos módulos."],
               ["Sempre", false, "Este exemplo mostra que não: 1018 N é diferente de 1165 N."],
               ["Quando as forças têm sentidos opostos", false, "Com sentidos opostos, os módulos se subtraem."]
-            ] },
-          { q: "Uma força de 1018 N equivale aproximadamente ao peso de:",
-            op: [
-              ["Uma pessoa de cerca de 104 kg", true, "m = P/g = 1018 / 9,8 ≈ 104 kg. Para cargas de microcoulombs a 1 cm, é uma força enorme."],
-              ["Uma maçã de 100 g", false, "Uma maçã de 100 g pesa cerca de 1 N. 1018 N é mil vezes mais."],
-              ["Um carro de uma tonelada", false, "Um carro de 1000 kg pesa cerca de 9800 N, quase dez vezes mais."],
-              ["Uma formiga", false, "Uma formiga pesa milésimos de newton, bilhões de vezes menos."]
             ] }
         ]
       },
@@ -762,25 +616,11 @@ const MODULOS = [
             exp: "Em x = 2L, a repulsão de +8q e a atração de −2q têm o mesmo módulo: 8/(2L)² = 2/L². Entre as cargas, as duas forças apontam para o mesmo lado e nunca se cancelam.",
             dica: "O gráfico mostra a resultante em cada posição: procure onde a curva cruza o zero."
           },
-          { q: "Em que ponto do eixo x o próton fica em equilíbrio?",
-            op: [
-              ["Em x = 2L", true, "À direita de −2q as forças têm sentidos opostos. Igualando 8q/x² = 2q/(x − L)², obtém-se x = 2L."],
-              ["Entre as duas cargas", false, "Ali o próton é repelido por +8q e atraído por −2q: as duas forças apontam para +x e se somam."],
-              ["À esquerda de +8q", false, "Ali as forças têm sentidos opostos, mas a de +8q é sempre maior: a carga é maior e está mais perto."],
-              ["Em x = L/2", false, "Esse ponto fica entre as cargas, onde as duas forças apontam no mesmo sentido."]
-            ] },
           { q: "Esse equilíbrio é estável ou instável?",
             op: [
               ["Instável", true, "Deslocado para a esquerda, a força de −2q cresce mais e o próton vai até ela. Deslocado para a direita, essa força cai mais e o próton se afasta indefinidamente."],
               ["Estável", false, "Num equilíbrio estável, um pequeno deslocamento gera uma força que traz o próton de volta. Aqui a força o afasta ainda mais."],
               ["Indiferente", false, "No equilíbrio indiferente a força seria nula também nos pontos vizinhos. Aqui a força resultante muda ao redor de x = 2L."]
-            ] },
-          { q: "Por que só os módulos das cargas entram na equação 8q/x² = 2q/(x − L)²?",
-            op: [
-              ["Porque os sentidos das forças já foram decididos pelo desenho", true, "Primeiro se identifica, pelo desenho, a região onde as forças são opostas. Depois basta igualar os módulos."],
-              ["Porque os sinais não importam na lei de Coulomb", false, "Os sinais importam: definem atração ou repulsão. Eles só foram usados antes, na análise dos sentidos."],
-              ["Porque o próton é neutro", false, "O próton tem carga +e. Ela aparece nos dois lados da equação e se cancela."],
-              ["Porque as duas cargas fixas são iguais", false, "As cargas são 8q e 2q, diferentes. É essa diferença que leva o equilíbrio para fora do segmento entre elas."]
             ] }
         ]
       },
@@ -800,26 +640,12 @@ const MODULOS = [
             exp: "Dois contatos resolvem: A com B deixa Q/2 em cada; depois B (ou A) com C divide Q/2 em duas partes de Q/4. A soma das cargas continua Q: a carga se conserva.",
             dica: "Arraste uma esfera até encostar na outra. Cada contato divide igualmente a carga das duas esferas que se tocam."
           },
-          { q: "Uma partícula carregada está dentro de uma casca esférica com carga uniforme. Que força a casca exerce sobre ela?",
-            op: [
-              ["Nenhuma", true, "Segundo teorema das cascas: as forças de todas as partes da casca se cancelam em qualquer ponto interno."],
-              ["A mesma de uma carga pontual no centro", false, "Isso vale para pontos fora da casca, pelo primeiro teorema. Dentro, a força é nula."],
-              ["Uma força apontando para a parede mais próxima", false, "A parede mais próxima age com mais intensidade, mas há mais carga do lado oposto. Os efeitos se compensam exatamente."],
-              ["Depende da posição dentro da casca", false, "O cancelamento acontece em qualquer ponto interno, não só no centro."]
-            ] },
           { q: "Para um ponto fora da casca, ela age como:",
             op: [
               ["Uma carga pontual no centro, com toda a carga da casca", true, "É o primeiro teorema das cascas, análogo ao da gravitação."],
               ["Uma carga nula", false, "Isso é o que acontece dentro da casca. Fora, ela exerce força como se toda a carga estivesse no centro."],
               ["Uma carga no ponto da superfície mais próximo", false, "A carga está espalhada por toda a superfície; o efeito combinado equivale a toda ela no centro."],
               ["Um dipolo elétrico", false, "Uma casca uniformemente carregada não tem separação entre cargas positivas e negativas."]
-            ] },
-          { q: "As esferas iguais A (+Q) e B (neutra) são ligadas por um fio condutor. Com quanto cada uma fica?",
-            op: [
-              ["+Q/2", true, "Elétrons de B fluem para A até as esferas, idênticas, ficarem com cargas iguais. A carga total +Q se conserva."],
-              ["A continua com +Q e B com zero", false, "Com o fio, as cargas podem se mover. Elétrons de B vão para A até as duas ficarem iguais."],
-              ["+Q cada uma", false, "Isso criaria carga do nada. A carga total continua sendo +Q."],
-              ["As duas ficam neutras", false, "A carga +Q não desaparece ao ligar as esferas: ela é redistribuída."]
             ] },
           { q: "A esfera A, com +Q/2, é ligada à terra. O que acontece?",
             op: [
@@ -835,10 +661,10 @@ const MODULOS = [
         texto: "Toda carga é um múltiplo inteiro da carga elementar, e ≈ 1,602 × 10⁻¹⁹ C. E em qualquer processo, do decaimento radioativo à criação de partículas, a carga total se conserva.",
         perguntas: [
           {
-            sim: "quantizacao", cfg: { m: 0 },
-            q: "Coloque ou retire elétrons até a esfera ficar com carga de −4,8 × 10⁻¹⁹ C.",
-            exp: "−4,8 × 10⁻¹⁹ C é −3e: três elétrons a mais que prótons. Toda carga é um número inteiro de vezes a carga elementar e ≈ 1,6 × 10⁻¹⁹ C.",
-            dica: "Carga negativa significa elétrons a mais."
+            sim: "quantizacao", cfg: { m: 1 },
+            q: "Coloque e retire elétrons algumas vezes, observando a carga da esfera. Depois responda à pergunta.",
+            exp: "A carga muda aos saltos de e ≈ 1,6 × 10⁻¹⁹ C: de +3e ela passa direto para +4e, sem nenhum valor no meio. Toda carga é um múltiplo inteiro da carga elementar, então +3,57e é impossível.",
+            dica: "Use os botões de colocar e retirar elétrons e acompanhe a carga escrita abaixo da esfera. A pergunta aparece depois de três cliques."
           },
           {
             sim: "quantizacao", cfg: { m: 2 },
@@ -846,26 +672,12 @@ const MODULOS = [
             exp: "O vidro ficou com +4e e a seda com −4e. Esfregar não cria carga, só transfere elétrons: a soma continua zero. A carga se conserva.",
             dica: "Arraste as bolinhas azuis para dentro do pano. No teclado, selecione um elétron e pressione Enter."
           },
-          { q: "Qual destas cargas um objeto pode ter?",
-            op: [
-              ["3,2 × 10⁻¹⁹ C", true, "3,2 × 10⁻¹⁹ C = 2e, um múltiplo inteiro da carga elementar."],
-              ["1,0 × 10⁻¹⁹ C", false, "Isso daria cerca de 0,62e. Nenhum objeto tem uma fração da carga elementar."],
-              ["2,4 × 10⁻¹⁹ C", false, "Isso é 1,5e. A carga precisa ser um múltiplo inteiro de e."],
-              ["4,0 × 10⁻¹⁹ C", false, "Isso é 2,5e, que não é um número inteiro de cargas elementares."]
-            ] },
           { q: "No decaimento ²³⁸U → ²³⁴Th + ⁴He, o que acontece com a carga?",
             op: [
               ["+92e antes e +90e + 2e = +92e depois", true, "O tório tem 90 prótons e a partícula alfa tem 2. A carga total se conserva."],
               ["Diminui, porque o urânio perdeu prótons", false, "Os prótons não sumiram: dois saíram na partícula alfa. Somando tudo, a carga é a mesma."],
               ["Aumenta, porque surgiu uma nova partícula", false, "A partícula alfa leva carga que já estava no urânio. Nada foi criado."],
               ["Não se conserva em processos nucleares", false, "A conservação da carga vale em todos os processos já observados, inclusive os nucleares."]
-            ] },
-          { q: "Como se chama o processo em que um raio gama se transforma em um elétron e um pósitron?",
-            op: [
-              ["Produção de par", true, "Um fóton, sem carga, gera duas partículas de cargas opostas. A carga total continua zero."],
-              ["Aniquilação", false, "A aniquilação é o processo inverso: elétron e pósitron desaparecem e viram raios gama."],
-              ["Decaimento alfa", false, "No decaimento alfa um núcleo emite um núcleo de hélio. Não há raio gama virando par de partículas."],
-              ["Efeito fotoelétrico", false, "No efeito fotoelétrico a luz arranca elétrons que já existiam no metal. Aqui o par de partículas é criado."]
             ] }
         ]
       },
@@ -878,18 +690,6 @@ const MODULOS = [
             q: "Arraste o ponto P até um lugar em que a força sobre uma carga de prova seja exatamente perpendicular ao fio.",
             exp: "Acima do centro do fio, cada carga da esquerda tem uma parceira à direita. Os componentes paralelos ao fio se cancelam aos pares, e sobra só o perpendicular.",
             dica: "Procure o ponto de maior simetria."
-          },
-          {
-            sim: "fio", cfg: { m: 1 },
-            q: "Leve P para perto de uma das pontas do fio até a força ficar inclinada mais de 20°.",
-            exp: "Perto da ponta, falta a carga parceira do outro lado, e os componentes paralelos não se cancelam mais. É o efeito de borda.",
-            dica: "Leve P para além da última carga e perto do fio."
-          },
-          {
-            sim: "fio", cfg: { m: 2 },
-            q: "O ponto P agora está fixo, fora do centro. Aumente o número de cargas até a inclinação ficar abaixo de 3°.",
-            exp: "Com o fio comprido, as pontas ficam longe de P e quase não contam: a força volta a ser praticamente perpendicular. É a ideia do fio infinito, que a Lei de Gauss resolve em poucas linhas.",
-            dica: "Use a barra \"Número de cargas\"."
           },
           { q: "Qual afirmação resume a lei de Coulomb para cargas pontuais em repouso?",
             op: [
@@ -917,12 +717,6 @@ const MODULOS = [
         id: "e01", cena: "CampoAcaoDistancia", titulo: "Ação a distância",
         texto: "Se duas cargas não se tocam, como uma sente a outra? A resposta do capítulo 22: cada carga cria um campo elétrico no espaço à sua volta, e é esse campo que age sobre a outra.",
         perguntas: [
-          {
-            sim: "acaoDistancia", cfg: { m: 0 },
-            q: "Ligue as setas do campo de q₂ e arraste q₁ por várias regiões do plano, observando a força sobre ela.",
-            exp: "Em cada ponto, a força sobre q₁ (seta amarela) acompanha a seta azul do campo naquele lugar. q₁ não precisa tocar q₂: ela responde ao campo que existe onde ela está.",
-            dica: "Em \"Campo de q₂\", escolha Visível. Depois arraste q₁ pelo plano."
-          },
           {
             sim: "acaoDistancia", cfg: { m: 2 },
             q: "Coloque q₁ num ponto em que a força sobre ela aponte para a esquerda.",
@@ -956,12 +750,6 @@ const MODULOS = [
             dica: "Use a barra \"Carga de prova q₀\" e observe os valores de F e de E."
           },
           {
-            sim: "cargaProva", cfg: { m: 1 },
-            q: "Arraste a carga de prova até um ponto em que o campo valha 3,0 × 10³ N/C.",
-            exp: "Isso acontece a cerca de 30 cm da carga de 30 nC, em qualquer direção: E = 8,99 × 10⁹ × 30 × 10⁻⁹ / (0,30)² ≈ 3,0 × 10³ N/C.",
-            dica: "O campo aumenta quando a carga de prova se aproxima da carga de 30 nC."
-          },
-          {
             sim: "cargaProva", cfg: { m: 2 },
             q: "Mapeie o campo: use \"Marcar o vetor aqui\" em 6 pontos diferentes.",
             exp: "Ponto a ponto, a carga de prova revela o mapa de vetores do campo: maiores perto da carga, menores longe, sempre apontando para longe dela. O mapa continua lá depois que a carga de prova sai.",
@@ -974,26 +762,12 @@ const MODULOS = [
               ["Porque o campo elétrico só existe perto de metais", false, "Ele existe em volta de qualquer objeto carregado, inclusive no vácuo."],
               ["Porque a temperatura é medida em graus", false, "A unidade não define o tipo de campo; o que define é ter direção e sentido."]
             ] },
-          { q: "Qual é a unidade do campo elétrico no SI?",
-            op: [
-              ["N/C", true, "De E = F/q₀: newton dividido por coulomb."],
-              ["C/N", false, "É o inverso: o campo é força dividida por carga."],
-              ["N", false, "Newton é unidade de força. O campo é força por unidade de carga."],
-              ["C/m²", false, "Essa é a unidade da densidade superficial de carga σ."]
-            ] },
           { q: "Por que a carga de prova deve ser pequena?",
             op: [
               ["Para não perturbar a distribuição de cargas do objeto que cria o campo", true, "Uma carga grande deslocaria as cargas do objeto e mudaria o próprio campo que se quer medir."],
               ["Para que a força medida seja zero", false, "A força não é zero; ela é dividida por q₀, e o resultado não depende do tamanho de q₀."],
               ["Porque cargas grandes não sentem campo", false, "Cargas maiores sentem forças maiores. O problema é que elas perturbam o objeto."],
               ["Porque a carga de prova precisa ser negativa", false, "Por convenção a carga de prova é positiva; por isso E tem o mesmo sentido de F."]
-            ] },
-          { q: "Sobre uma carga de prova de 2,0 × 10⁻⁹ C age uma força de 6,0 × 10⁻⁶ N. Qual é o módulo do campo nesse ponto?",
-            op: [
-              ["3,0 × 10³ N/C", true, "E = F/q₀ = 6,0 × 10⁻⁶ / 2,0 × 10⁻⁹ = 3,0 × 10³ N/C."],
-              ["1,2 × 10⁻¹⁴ N/C", false, "Esse é o produto F · q₀. O campo é a razão F/q₀."],
-              ["3,3 × 10⁻⁴ N/C", false, "Essa é a razão invertida, q₀/F."],
-              ["3,0 × 10⁻³ N/C", false, "Confira os expoentes: 10⁻⁶ / 10⁻⁹ = 10³."]
             ] }
         ]
       },
@@ -1006,12 +780,6 @@ const MODULOS = [
             q: "A carga do centro é negativa. Trace 4 linhas de campo a partir de pontos diferentes.",
             exp: "Todas as linhas terminam na carga negativa. Perto dela as linhas ficam mais juntas: é onde o campo é mais intenso. E em cada ponto o vetor campo é tangente à linha.",
             dica: "Arraste o ponto de prova e clique em \"Traçar linha por aqui\"."
-          },
-          {
-            sim: "linhasCampo", cfg: { m: 1 },
-            q: "Com duas cargas positivas iguais, encontre o ponto em que o campo é zero.",
-            exp: "No ponto médio, os campos das duas cargas têm o mesmo módulo e sentidos opostos. Nenhuma linha de campo passa por ali: as linhas das duas cargas se afastam umas das outras.",
-            dica: "Trace algumas linhas para ver de onde elas fogem."
           },
           {
             sim: "linhasCampo", cfg: { m: 2 },
@@ -1032,20 +800,6 @@ const MODULOS = [
               ["Que o campo é mais fraco ali", false, "É o contrário: linhas espaçadas indicam campo fraco."],
               ["Que o campo é nulo ali", false, "Onde o campo é nulo não passam linhas."],
               ["Que há carga negativa ali", false, "A densidade de linhas indica o módulo do campo, não o sinal das cargas."]
-            ] },
-          { q: "Onde começam e onde terminam as linhas de campo elétrico?",
-            op: [
-              ["Começam em cargas positivas e terminam em cargas negativas", true, "As linhas se afastam das cargas positivas e se aproximam das negativas."],
-              ["Começam em cargas negativas e terminam em positivas", false, "O sentido é o inverso: o campo aponta para longe das cargas positivas."],
-              ["Formam laços fechados em volta das cargas", false, "Linhas fechadas são típicas do campo magnético. As do campo eletrostático têm início e fim."],
-              ["Começam e terminam na mesma carga", false, "Uma linha sai de uma carga positiva e chega a uma negativa, que pode estar muito longe."]
-            ] },
-          { q: "Como é o campo perto de uma placa muito grande com carga positiva uniforme?",
-            op: [
-              ["Uniforme: perpendicular à placa, apontando para longe dela, com o mesmo módulo em todos os pontos", true, "Os componentes paralelos à placa se cancelam aos pares, e sobra só o perpendicular."],
-              ["Paralelo à placa", false, "Os componentes paralelos se cancelam por simetria."],
-              ["Mais forte longe da placa", false, "Para uma placa muito grande, o módulo do campo não depende da distância."],
-              ["Apontando para a placa", false, "A carga da placa é positiva, então o campo aponta para longe dela."]
             ] }
         ]
       },
@@ -1059,39 +813,12 @@ const MODULOS = [
             exp: "O campo aponta para a carga negativa. Para a seta apontar para a direita, P precisa ficar à esquerda da carga.",
             dica: "Troque o sinal em \"Sinal da carga\". A seta azul em P aponta para a carga."
           },
-          {
-            sim: "cargaPontual", cfg: { m: 2 },
-            q: "Monte um campo de 900 N/C apontando para cima, usando o sinal, o valor da carga e a posição de P.",
-            exp: "Há mais de uma solução. Por exemplo: +1,0 nC com P 10 cm acima da carga, pois 8,99 × 10⁹ × 1,0 × 10⁻⁹ / (0,10)² ≈ 900 N/C. Ou −1,0 nC com P 10 cm abaixo.",
-            dica: "Primeiro acerte a direção, depois ajuste o valor com a carga e a distância."
-          },
           { q: "Qual é o módulo do campo de uma carga pontual q a uma distância r?",
             op: [
               ["E = |q|/(4πε₀r²)", true, "Eq. 22-3: o valor absoluto de q dá o módulo; o sentido é decidido pelo sinal."],
               ["E = |q|/(4πε₀r)", false, "Faltou o quadrado: o campo de uma carga pontual cai com 1/r²."],
               ["E = |q q₀|/(4πε₀r²)", false, "Essa é a força sobre q₀. Dividindo por q₀, sobra o campo."],
               ["E = |q|/(2πε₀r)", false, "Essa forma lembra o campo de um fio infinito, com λ no lugar de q."]
-            ] },
-          { q: "Se a distância até uma carga pontual dobra, o campo:",
-            op: [
-              ["Cai para um quarto", true, "E ∝ 1/r²: com r multiplicado por 2, E é dividido por 2² = 4."],
-              ["Cai pela metade", false, "Isso valeria para 1/r, como no fio infinito."],
-              ["Cai para um oitavo", false, "Isso valeria para 1/r³, como no dipolo."],
-              ["Não muda", false, "Só o campo de uma placa infinita não depende da distância."]
-            ] },
-          { q: "Perto de uma carga negativa, o campo elétrico aponta:",
-            op: [
-              ["Para a carga", true, "Uma carga de prova positiva seria atraída por ela; o campo tem o sentido dessa força."],
-              ["Para longe da carga", false, "Esse é o sentido para uma carga positiva."],
-              ["Perpendicular à reta que liga o ponto à carga", false, "O campo de uma carga pontual é sempre radial."],
-              ["Depende do sinal da carga de prova", false, "O campo não depende da carga de prova; o sinal de q₀ só mudaria o sentido da força sobre ela."]
-            ] },
-          { q: "Qual é o módulo do campo a 0,10 m de uma carga de 2,0 nC? Use k = 8,99 × 10⁹ N·m²/C².",
-            op: [
-              ["≈ 1,8 × 10³ N/C", true, "E = kq/r² = 8,99 × 10⁹ × 2,0 × 10⁻⁹ / (0,10)² ≈ 1,8 × 10³ N/C."],
-              ["≈ 1,8 × 10² N/C", false, "Esse valor sai de kq/r, sem elevar a distância ao quadrado."],
-              ["≈ 1,8 × 10⁵ N/C", false, "Esse valor usaria r = 0,010 m. Confira: 10 cm = 0,10 m."],
-              ["≈ 3,6 × 10³ N/C", false, "Esse é o dobro do valor certo. O fator 2 aparece no campo do fio, não no da carga pontual."]
             ] }
         ]
       },
@@ -1099,12 +826,6 @@ const MODULOS = [
         id: "e05", cena: "CampoSuperposicao", titulo: "Superposição: Exemplo 22.01",
         texto: "Com várias cargas, o campo total é a soma vetorial dos campos de cada uma. No Exemplo 22.01, três cargas a uma distância d da origem produzem um campo resultante ao longo do eixo x.",
         perguntas: [
-          {
-            sim: "tresCampos", cfg: { m: 0 },
-            q: "Monte o Exemplo 22.01: q₁ = +2Q, q₂ = −2Q e q₃ = −4Q.",
-            exp: "E₁ e E₂ apontam na mesma direção e, somados, empatam com E₃. Os componentes y se cancelam e os x se somam: o campo total é 6,93 Q/(4πε₀d²), no sentido positivo de x.",
-            dica: "Use as três barras. Cada seta azul é o campo de uma carga; a amarela é a soma."
-          },
           {
             sim: "tresCampos", cfg: { m: 1 },
             q: "Zere o campo na origem, sem zerar todas as cargas.",
@@ -1130,20 +851,6 @@ const MODULOS = [
               ["Porque as três cargas têm o mesmo valor", false, "As cargas são +2Q, −2Q e −4Q, todas diferentes."],
               ["Porque a origem está sobre o eixo y", false, "Estar sobre um eixo não anula componentes. O cancelamento vem da simetria dos vetores."],
               ["Porque cargas negativas não produzem componente y", false, "Cargas negativas produzem campo em qualquer direção, apontando para elas."]
-            ] },
-          { q: "Qual é o campo total na origem no Exemplo 22.01?",
-            op: [
-              ["6,93Q/(4πε₀d²), no sentido positivo de x", true, "E = 2E₃ cos 30° = 2 · 4Q/(4πε₀d²) · 0,866 = 6,93Q/(4πε₀d²)."],
-              ["8Q/(4πε₀d²)", false, "Esse valor soma os módulos 2Q + 2Q + 4Q e ignora as direções dos vetores."],
-              ["Zero", false, "Só os componentes y se cancelam; os componentes x se somam."],
-              ["4Q/(4πε₀d²), no sentido positivo de x", false, "Esse é só o módulo de E₃, que é igual ao de E₁ + E₂. A resultante é 2E₃ cos 30°."]
-            ] },
-          { q: "Ao somar campos, onde deve ficar a origem de cada vetor?",
-            op: [
-              ["No ponto onde o campo está sendo calculado", true, "O Halliday recomenda isso: cada vetor representa o campo naquele ponto."],
-              ["Na carga que produz o campo", false, "Desenhar os vetores a partir das cargas costuma levar a erros na soma vetorial."],
-              ["No centro de massa das cargas", false, "O centro de massa não tem papel nessa soma; o que importa é o ponto de cálculo."],
-              ["Tanto faz", false, "Não faz diferença para o resultado, mas desenhar a partir das cargas induz a erros de direção."]
             ] }
         ]
       },
@@ -1163,26 +870,12 @@ const MODULOS = [
             exp: "No eixo, longe do dipolo, o campo aponta sempre no sentido do momento dipolar p, que vai da carga negativa para a positiva.",
             dica: "O sentido de p aparece ao lado do dipolo."
           },
-          { q: "O momento dipolar elétrico p:",
-            op: [
-              ["Tem módulo qd e aponta da carga negativa para a positiva", true, "p = qd, com q o valor absoluto de cada carga."],
-              ["Tem módulo qd e aponta da carga positiva para a negativa", false, "Esse é o sentido das linhas de campo entre as cargas, não o de p."],
-              ["Tem módulo q/d", false, "O momento dipolar é o produto da carga pela distância: p = qd."],
-              ["Tem módulo 2qd", false, "q é o valor absoluto de uma das cargas, e p = qd, sem o fator 2."]
-            ] },
           { q: "Longe do dipolo, num ponto do eixo, o campo é proporcional a:",
             op: [
               ["1/z³", true, "Eq. 22-9: E = p/(2πε₀z³)."],
               ["1/z²", false, "Essa é a dependência de uma carga isolada."],
               ["1/z", false, "Essa é a dependência do fio infinito."],
               ["Não depende de z", false, "Só o campo de uma placa infinita não depende da distância."]
-            ] },
-          { q: "Longe do dipolo, se a distância dobra, o campo fica:",
-            op: [
-              ["8 vezes menor", true, "Com E ∝ 1/z³, dobrar z divide E por 2³ = 8."],
-              ["4 vezes menor", false, "Isso valeria para 1/z², o campo de uma carga isolada."],
-              ["2 vezes menor", false, "Isso valeria para 1/z, o campo de um fio."],
-              ["2 vezes maior", false, "Afastar-se do dipolo sempre diminui o campo."]
             ] },
           { q: "Por que o campo do dipolo cai mais depressa que o de uma carga isolada?",
             op: [
@@ -1203,32 +896,12 @@ const MODULOS = [
             exp: "O campo do dipolo cai com a altitude, mas o campo crítico do ar cai ainda mais depressa, porque o ar fica rarefeito. Lá em cima, mesmo um campo fraco arranca elétrons dos átomos, que emitem luz.",
             dica: "Compare as duas barras: o sprite acende quando a azul passa da vermelha."
           },
-          {
-            sim: "sprites", cfg: { m: 2 },
-            q: "Um relâmpago mais fraco transferiu só 100 C. Com essa carga, encontre uma altitude em que o sprite acenda.",
-            exp: "Com metade da carga, o campo é metade em toda altitude. O sprite só acende mais alto, onde o campo crítico do ar é ainda menor.",
-            dica: "Mantenha q em 100 C e suba o medidor."
-          },
           { q: "No modelo do Exemplo 22.02, a nuvem e o solo formam:",
             op: [
               ["Um dipolo elétrico vertical, com −q na nuvem e +q a uma distância h abaixo do solo", true, "A distância entre as cargas é 2h, e o campo é calculado com a equação do dipolo."],
               ["Duas cargas positivas", false, "O relâmpago transfere carga negativa para a nuvem; as cargas do modelo têm sinais opostos."],
               ["Uma placa infinita", false, "O modelo usa duas cargas pontuais opostas, isto é, um dipolo."],
               ["Uma carga pontual isolada", false, "Uma carga isolada não descreveria a carga positiva que fica abaixo do solo."]
-            ] },
-          { q: "O campo a 30 km de altitude é de cerca de 1,6 × 10³ N/C. Quanto vale a 60 km?",
-            op: [
-              ["≈ 2,0 × 10² N/C", true, "Dobrar a altitude divide o campo do dipolo por 2³ = 8."],
-              ["≈ 8,0 × 10² N/C", false, "Isso corresponderia a um campo que cai com 1/z."],
-              ["≈ 4,0 × 10² N/C", false, "Isso corresponderia a um campo que cai com 1/z², como o de uma carga isolada."],
-              ["≈ 1,6 × 10³ N/C", false, "O campo do dipolo diminui com a altitude."]
-            ] },
-          { q: "Por que os sprites aparecem a 60 km, se ali o campo é menor que a 30 km?",
-            op: [
-              ["Porque lá o ar é tão rarefeito que o campo crítico de ionização é ainda menor que o campo", true, "Quanto menor a densidade do ar, menor o campo crítico E_c. A 60 km, E supera E_c e os átomos emitem luz."],
-              ["Porque o campo é maior a 60 km", false, "A 60 km o campo é cerca de 8 vezes menor que a 30 km."],
-              ["Porque a 60 km não há ar", false, "Há ar, só que rarefeito. Sem ar não haveria átomos para emitir luz."],
-              ["Porque a nuvem fica a 60 km", false, "No exemplo, a carga da nuvem está a cerca de 6 km de altitude."]
             ] }
         ]
       },
@@ -1261,20 +934,6 @@ const MODULOS = [
               ["Os paralelos ao eixo", false, "Os paralelos apontam todos no mesmo sentido e se somam."],
               ["Nenhum componente se cancela", false, "A simetria do anel cancela os componentes perpendiculares."],
               ["Todos os componentes", false, "Os componentes paralelos ao eixo se somam; o campo só é nulo no centro."]
-            ] },
-          { q: "Qual é o campo no centro do anel (z = 0)?",
-            op: [
-              ["Zero", true, "Pela Eq. 22-16, E = 0 em z = 0: uma carga de prova no centro seria empurrada igualmente em todas as direções."],
-              ["Máximo", false, "O campo é máximo num ponto do eixo fora do anel; no centro ele é nulo."],
-              ["q/(4πε₀R²)", false, "Esse seria o campo de uma carga pontual a uma distância R. No centro, as contribuições se cancelam."],
-              ["Infinito", false, "Todas as cargas estão à distância R do centro, sem nenhuma singularidade ali."]
-            ] },
-          { q: "Muito longe do anel (z ≫ R), o campo no eixo:",
-            op: [
-              ["Fica igual ao de uma carga pontual q", true, "De longe, o anel parece uma partícula: E → q/(4πε₀z²), a Eq. 22-17."],
-              ["Cai com 1/z³", false, "Essa é a queda do dipolo. O anel tem carga total q, que domina de longe."],
-              ["Fica constante", false, "O campo diminui quando o ponto se afasta."],
-              ["É exatamente zero", false, "Ele diminui com a distância, mas não se anula."]
             ] }
         ]
       },
@@ -1282,12 +941,6 @@ const MODULOS = [
         id: "e09", cena: "CampoArco", titulo: "O arco de 120°: Exemplo 22.03",
         texto: "Uma barra em arco de 120° tem carga −Q. No centro de curvatura, os componentes perpendiculares ao eixo de simetria se cancelam, e integramos o resto de −60° a 60°.",
         perguntas: [
-          {
-            sim: "arcoCentro", cfg: { m: 0 },
-            q: "Monte o arco do Exemplo 22.03: abertura de 120° e carga negativa.",
-            exp: "O campo no centro vale 0,83 Q/(4πε₀r²) e aponta para a barra, ao longo do eixo de simetria. Os componentes perpendiculares ao eixo se cancelam aos pares.",
-            dica: "Use a barra \"Abertura do arco\" e escolha o sinal da carga."
-          },
           {
             sim: "arcoCentro", cfg: { m: 1 },
             q: "Abra o arco até ele virar um anel completo e veja o campo no centro.",
@@ -1300,27 +953,6 @@ const MODULOS = [
               ["Para longe da barra", false, "Assim seria se a carga fosse positiva."],
               ["Perpendicular ao eixo de simetria", false, "Os componentes perpendiculares ao eixo se cancelam aos pares."],
               ["É nulo", false, "Os componentes ao longo do eixo se somam; o campo não é nulo."]
-            ] },
-          { q: "Por que podemos trocar ds por r dθ na integral?",
-            op: [
-              ["Porque um arco de raio r que subtende um ângulo dθ tem comprimento r dθ", true, "Como r é constante no arco centrado em P, a integral fica só em θ."],
-              ["Porque ds e dθ são iguais", false, "Um é comprimento, o outro é ângulo: ds = r dθ."],
-              ["Porque r varia ao longo do arco", false, "No arco centrado em P, r é constante, e isso simplifica a integral."],
-              ["Para eliminar λ da conta", false, "λ continua na expressão; a troca elimina a variável s."]
-            ] },
-          { q: "Qual é a densidade linear do arco de 120°, de raio r e carga Q?",
-            op: [
-              ["λ = Q/(2πr/3) ≈ 0,477Q/r", true, "O arco tem um terço do perímetro da circunferência: 2πr/3."],
-              ["λ = Q/(2πr)", false, "Essa seria a densidade de uma circunferência inteira."],
-              ["λ = Q/r", false, "O comprimento do arco é 2πr/3, não r."],
-              ["λ = 3Q/r", false, "Faltou o fator 2π do comprimento do arco."]
-            ] },
-          { q: "Qual é o primeiro passo do método geral para linhas de carga?",
-            op: [
-              ["Escolher um elemento de carga dq e tratá-lo como partícula", true, "Depois vêm dq = λ ds, o campo dE, a simetria e a integral."],
-              ["Integrar diretamente sobre o objeto, sem dividir", false, "Para integrar, primeiro é preciso expressar o campo de um elemento."],
-              ["Usar E = kQ/r² com a carga total", false, "Isso só vale se o objeto puder ser tratado como partícula."],
-              ["Ignorar a simetria do problema", false, "A simetria é o que permite cancelar componentes e simplificar a integral."]
             ] }
         ]
       },
@@ -1335,12 +967,6 @@ const MODULOS = [
             dica: "Acompanhe o medidor à direita enquanto aumenta o raio."
           },
           {
-            sim: "discoPlaca", cfg: { m: 1 },
-            q: "Com raio de 20 cm, aproxime P até o campo chegar a 90% do campo de uma placa infinita.",
-            exp: "A 2 cm de um disco de 20 cm de raio, ele parece infinito. Visto de muito perto, o campo depende só da densidade de carga σ.",
-            dica: "Diminua a altura de P."
-          },
-          {
             sim: "discoPlaca", cfg: { m: 2 },
             q: "Com raio de 5 cm, leve P a 50 cm de altura, compare os números do painel e responda à pergunta.",
             exp: "A dez raios de distância, o campo do disco é 99% do de uma carga pontual com a mesma carga. De perto, placa infinita; de longe, partícula.",
@@ -1353,26 +979,12 @@ const MODULOS = [
               ["Em cargas pontuais apenas na borda", false, "A carga está espalhada por toda a superfície, não só na borda."],
               ["Em fios retos que passam pelo centro", false, "O caminho do Halliday usa anéis, cujo campo no eixo já foi calculado."]
             ] },
-          { q: "Qual é a carga de um anel fino de raio r e largura dr no disco?",
-            op: [
-              ["dq = σ(2πr dr)", true, "A área do anel é o perímetro 2πr vezes a largura dr."],
-              ["dq = σπr²", false, "Essa é a carga de um disco inteiro de raio r, não de um anel fino."],
-              ["dq = λ ds", false, "Essa forma vale para linhas de carga. No disco usamos a densidade superficial σ."],
-              ["dq = σ dr", false, "σ é carga por área; é preciso multiplicar por uma área, 2πr dr."]
-            ] },
           { q: "Qual é o campo de uma placa infinita isolante com densidade σ?",
             op: [
               ["E = σ/(2ε₀)", true, "Eq. 22-27: com R → ∞, o segundo termo da Eq. 22-26 se anula."],
               ["E = σ/ε₀", false, "Esse é o campo junto à superfície de um condutor carregado, outro resultado."],
               ["E = 0", false, "O campo não se anula; ele fica constante."],
               ["E = σ/(4πε₀z²)", false, "Essa forma decai com a distância, mas o campo da placa infinita não depende de z."]
-            ] },
-          { q: "Muito perto de um disco finito (z → 0), o campo no eixo:",
-            op: [
-              ["Fica igual ao de uma placa infinita, σ/(2ε₀)", true, "Visto de muito perto, o disco parece infinito."],
-              ["Fica nulo", false, "Com z → 0, o termo z/√(z² + R²) vai a zero, e sobra σ/(2ε₀)."],
-              ["Fica infinito", false, "A carga está espalhada pela superfície, e o campo tende a um valor finito."],
-              ["Fica igual ao de uma carga pontual", false, "Isso valeria muito longe do disco, não muito perto."]
             ] }
         ]
       },
@@ -1386,38 +998,12 @@ const MODULOS = [
             exp: "Com o campo apontando para baixo, a gota negativa sofre força para cima, pois F = qE com q negativo. No equilíbrio, a força elétrica iguala o peso: |q|E = mg.",
             dica: "Para a gota negativa subir, o campo precisa apontar para baixo."
           },
-          {
-            sim: "millikan", cfg: { m: 1 },
-            q: "Outra gota negativa. Equilibre-a e use o campo de equilíbrio para descobrir a carga dela.",
-            exp: "q = mg/E = 4,8 × 10⁻¹⁴ / 6,0 × 10⁴ = 8,0 × 10⁻¹⁹ C, ou seja, 5 elétrons. Foi assim que Millikan viu que a carga é sempre um múltiplo inteiro de e.",
-            dica: "Primeiro deixe a gota parada; a pergunta aparece em seguida."
-          },
-          {
-            sim: "millikan", cfg: { m: 2 },
-            q: "Agora a gota tem carga positiva. Ajuste o campo até ela ficar parada.",
-            exp: "Para segurar uma carga positiva, o campo precisa apontar para cima: a força sobre uma carga positiva tem o mesmo sentido do campo.",
-            dica: "Arraste a barra do campo para o outro lado."
-          },
-          { q: "Uma carga negativa está num campo que aponta para a direita. A força sobre ela aponta:",
-            op: [
-              ["Para a esquerda", true, "F = qE com q negativo: a força tem o sentido oposto ao do campo."],
-              ["Para a direita", false, "Esse seria o sentido para uma carga positiva."],
-              ["Para lugar nenhum: a força é nula", false, "Qualquer carga num campo diferente de zero sofre força."],
-              ["Perpendicular ao campo", false, "A força elétrica tem a mesma direção do campo; só o sentido depende do sinal."]
-            ] },
           { q: "O campo E na equação F = qE inclui o campo da própria partícula?",
             op: [
               ["Não: é o campo externo, produzido pelas outras cargas", true, "Uma partícula não é afetada pelo próprio campo elétrico."],
               ["Sim, sempre", false, "O Halliday ressalta que o campo da equação é o externo."],
               ["Só se a partícula for positiva", false, "O sinal da carga não muda isso: o próprio campo nunca entra."],
               ["Só se a partícula estiver parada", false, "Parada ou não, a partícula não sente o próprio campo."]
-            ] },
-          { q: "No experimento de Millikan, o campo entre as placas aponta para baixo. O que acontece com uma gota de carga negativa?",
-            op: [
-              ["Sofre uma força para cima e pode ser freada ou subir", true, "F = qE com q negativo aponta contra o campo, ou seja, para cima."],
-              ["Sofre uma força para baixo e cai mais depressa", false, "Isso aconteceria com uma gota positiva."],
-              ["Não sente o campo", false, "Toda gota carregada sente a força elétrica; só gotas neutras não sentem."],
-              ["É empurrada para os lados", false, "O campo é vertical, então a força também é vertical."]
             ] },
           { q: "O que Millikan concluiu sobre as cargas das gotas?",
             op: [
@@ -1433,12 +1019,6 @@ const MODULOS = [
         texto: "Em algumas impressoras, gotas de tinta carregadas são desviadas por um campo entre placas. No Exemplo 22.04 o desvio é de 0,64 mm. Já um campo forte demais no ar provoca centelhas.",
         perguntas: [
           {
-            sim: "jatoTinta", cfg: { m: 0 },
-            q: "Monte o Exemplo 22.04: E = 1,4 × 10⁶ N/C, Q = 1,5 × 10⁻¹³ C e vₓ = 18 m/s.",
-            exp: "O desvio ao sair das placas é de 0,64 mm, como no livro: y = QEL²/(2mvₓ²), com L = 1,6 cm e m = 1,3 × 10⁻¹⁰ kg.",
-            dica: "Ajuste as três barras e observe a trajetória."
-          },
-          {
             sim: "jatoTinta", cfg: { m: 1 },
             q: "Mudando só a carga da gota, dobre o desvio para 1,28 mm.",
             exp: "O desvio é proporcional à carga: com Q = 3,0 × 10⁻¹³ C, o dobro, o desvio dobra. É assim que a impressora decide onde cada gota cai no papel.",
@@ -1450,26 +1030,12 @@ const MODULOS = [
             exp: "Com o dobro da velocidade, 36 m/s, a gota passa metade do tempo entre as placas. Como o desvio depende do tempo ao quadrado, ele cai para um quarto.",
             dica: "Mantenha E e Q nos valores do exemplo."
           },
-          { q: "O campo entre as placas aponta para baixo. Por que a gota negativa é desviada para cima?",
-            op: [
-              ["Porque F = qE com q negativo aponta contra o campo", true, "Para carga negativa, a força tem o sentido oposto ao do campo."],
-              ["Por causa da gravidade", false, "A gravidade puxaria para baixo, e no exemplo ela é desprezível."],
-              ["Porque as placas atraem a tinta", false, "Quem age sobre a gota é o campo elétrico, por meio de F = qE."],
-              ["Porque o campo aponta para cima", false, "O campo aponta para baixo; é a carga negativa que inverte o sentido da força."]
-            ] },
           { q: "Entre as placas, como é o movimento da gota?",
             op: [
               ["Velocidade constante em x e aceleração constante em y: uma parábola", true, "A força elétrica é vertical e constante, como num lançamento horizontal."],
               ["Circular", false, "Uma força constante em módulo e direção produz uma parábola, não um círculo."],
               ["Retilíneo e uniforme", false, "Há uma força vertical, então a gota acelera em y."],
               ["Acelerado em x", false, "Não há força horizontal; vₓ permanece 18 m/s."]
-            ] },
-          { q: "Qual é o desvio vertical da gota ao deixar as placas no Exemplo 22.04?",
-            op: [
-              ["≈ 0,64 mm", true, "y = QEL²/(2mvₓ²) = (1,5 × 10⁻¹³)(1,4 × 10⁶)(1,6 × 10⁻²)² / [2(1,3 × 10⁻¹⁰)(18)²] ≈ 6,4 × 10⁻⁴ m."],
-              ["≈ 1,28 mm", false, "Faltou o fator ½ de y = ½ a t²."],
-              ["≈ 6,4 mm", false, "Confira a conversão: 6,4 × 10⁻⁴ m são 0,64 mm."],
-              ["≈ 0,064 mm", false, "Confira a conversão: 6,4 × 10⁻⁴ m são 0,64 mm."]
             ] },
           { q: "O que é ruptura dielétrica do ar?",
             op: [
@@ -1509,20 +1075,6 @@ const MODULOS = [
               ["0°", false, "Com p alinhado a E, sen θ = 0 e o torque é nulo."],
               ["180°", false, "Invertido, sen θ = 0 e o torque também é nulo, num equilíbrio instável."],
               ["45°", false, "sen 45° ≈ 0,71; o máximo é em 90°."]
-            ] },
-          { q: "Em que orientação a energia potencial do dipolo é mínima?",
-            op: [
-              ["Com p alinhado a E (θ = 0), em que U = −pE", true, "U = −pE cos θ é mínima com cos θ = 1."],
-              ["Com θ = 90°", false, "Em 90° a energia vale zero, que é só a referência escolhida."],
-              ["Com θ = 180°", false, "Invertido, U = +pE: é a energia máxima."],
-              ["É igual em qualquer orientação", false, "U depende de θ; por isso o campo tende a girar o dipolo."]
-            ] },
-          { q: "Que trabalho um agente externo realiza para girar a molécula de água de θ = 0 a 180°, com p = 6,2 × 10⁻³⁰ C·m e E = 1,5 × 10⁴ N/C?",
-            op: [
-              ["2pE ≈ 1,9 × 10⁻²⁵ J", true, "W_a = U(180°) − U(0) = pE − (−pE) = 2pE."],
-              ["pE ≈ 9,3 × 10⁻²⁶ J", false, "pE é o torque máximo em N·m. O trabalho para a volta de 180° é o dobro."],
-              ["Zero", false, "A energia passa de −pE a +pE; o agente externo precisa fornecer essa diferença."],
-              ["−2pE ≈ −1,9 × 10⁻²⁵ J", false, "Esse é o trabalho realizado pelo campo. O do agente externo tem o sinal oposto."]
             ] }
         ]
       },
@@ -1548,13 +1100,6 @@ const MODULOS = [
             exp: "As mesmas linhas atravessam a superfície, seja ela grande ou pequena. O saldo só depende da carga envolvida. Essa contagem é o fluxo elétrico, e a regra é a Lei de Gauss.",
             dica: "Use a barra \"Raio da superfície\", do mínimo ao máximo."
           },
-          { q: "Como os campos de uma carga isolada e de um dipolo dependem da distância, longe deles?",
-            op: [
-              ["Carga: 1/r². Dipolo: 1/r³", true, "O dipolo cai mais depressa porque suas duas cargas quase se cancelam."],
-              ["Carga: 1/r³. Dipolo: 1/r²", false, "Está invertido: o dipolo é que cai mais depressa."],
-              ["Os dois caem com 1/r²", false, "O dipolo cai com 1/r³."],
-              ["Carga: 1/r. Dipolo: 1/r²", false, "1/r é a queda do fio infinito, não da carga pontual."]
-            ] },
           { q: "Qual atalho permite calcular campos de distribuições muito simétricas?",
             op: [
               ["A Lei de Gauss, que relaciona o fluxo do campo através de uma superfície fechada com a carga envolvida", true, "É o assunto da próxima guia."],
@@ -1575,12 +1120,6 @@ const MODULOS = [
         texto: "Antes da lei de Gauss, um objeto: uma longa linha de cargas positivas igualmente espaçadas. A grandeza que descreve essa distribuição é a densidade linear de carga, λ.",
         perguntas: [
           {
-            sim: "gaussLinha", cfg: { m: 0 },
-            q: "Com o fio de 1,5 m, ajuste a carga total até a densidade linear ficar em λ = 4,0 μC/m.",
-            exp: "λ = Q/L. Com L = 1,5 m, λ = 4,0 μC/m pede Q = λL = 4,0 × 1,5 = 6,0 μC. A densidade é a carga em cada metro de fio, então ela depende da carga e do comprimento ao mesmo tempo.",
-            dica: "Use a barra \"Carga total do fio\". Lembre que λ = Q/L, então Q = λ·L."
-          },
-          {
             sim: "gaussLinha", cfg: { m: 1 },
             q: "O fio A tem λ = 2,0 μC/m. Ajuste o fio B para ter a mesma densidade, mas com comprimento diferente de 3,0 m.",
             exp: "Dois fios de comprimentos diferentes têm a mesma λ quando a carga cresce junto com o comprimento: Q = λL. Um fio de 2,0 m com 4,0 μC, um de 1,0 m com 2,0 μC e um de 3,0 m com 6,0 μC dão todos 2,0 μC/m.",
@@ -1592,20 +1131,6 @@ const MODULOS = [
               ["A carga por unidade de área", false, "Carga por área é a densidade superficial σ, usada para placas e cascas. No fio, a carga se distribui ao longo de uma linha."],
               ["A carga por unidade de volume", false, "Carga por volume é a densidade volumétrica ρ. O fio é tratado como uma linha, sem espessura."],
               ["O número de cargas do fio", false, "λ não é uma contagem: é carga dividida por comprimento, medida em C/m."]
-            ] },
-          { q: "Qual é a unidade de λ no SI?",
-            op: [
-              ["C/m", true, "Carga, em coulomb, dividida por comprimento, em metro."],
-              ["C/m²", false, "Essa é a unidade da densidade superficial σ."],
-              ["C·m", false, "Carga vezes comprimento é a unidade de um momento de dipolo, não de uma densidade."],
-              ["N/C", false, "Essa é a unidade do campo elétrico."]
-            ] },
-          { q: "Um fio de 2,0 m tem carga de 6,0 μC distribuída uniformemente. Qual é a carga em um trecho de 50 cm?",
-            op: [
-              ["1,5 μC", true, "λ = 6,0 μC / 2,0 m = 3,0 μC/m. Em 0,50 m: 3,0 × 0,50 = 1,5 μC."],
-              ["3,0 μC", false, "3,0 μC/m é o valor de λ. Falta multiplicar pelo comprimento do trecho, 0,50 m."],
-              ["12 μC", false, "Multiplicar a carga total pelo comprimento não faz sentido aqui. Primeiro calcule λ = Q/L."],
-              ["6,0 μC", false, "Essa é a carga do fio inteiro. Um trecho de 50 cm é só um quarto do fio."]
             ] }
         ]
       },
@@ -1625,20 +1150,6 @@ const MODULOS = [
             exp: "Perto da ponta, falta a parceira simétrica das cargas da esquerda, e o campo inclina: é o efeito de borda. Acrescentando à direita tantas cargas quantas existem à esquerda de P, cada carga ganha a sua parceira, e os componentes paralelos ao fio voltam a se cancelar.",
             dica: "Use a barra \"Cargas acrescentadas à direita\". Conte quantas cargas há à esquerda de P."
           },
-          { q: "Num ponto acima do meio do fio, por que o campo resultante é perpendicular ao fio?",
-            op: [
-              ["Para cada carga à esquerda há uma simétrica à direita, e os componentes paralelos ao fio se cancelam", true, "Os componentes ao longo do fio têm o mesmo módulo e sentidos opostos. Os componentes perpendiculares se somam."],
-              ["Porque só a carga logo abaixo do ponto produz campo ali", false, "Todas as cargas produzem campo no ponto. A direção resultante vem da soma de todas, organizadas em pares simétricos."],
-              ["Porque o campo de cada carga já é perpendicular ao fio", false, "O campo de cada carga aponta para fora dela, em direções inclinadas. Só a soma de cada par é perpendicular."],
-              ["Porque as cargas são positivas", false, "Com cargas negativas o campo apontaria para o fio, mas continuaria perpendicular. A direção vem da simetria, não do sinal."]
-            ] },
-          { q: "Como se chama a inclinação do campo perto das pontas de um fio finito?",
-            op: [
-              ["Efeito de borda", true, "Perto das pontas falta a carga parceira simétrica, e os componentes paralelos ao fio deixam de se cancelar."],
-              ["Blindagem eletrostática", false, "Blindagem é o anulamento do campo dentro de um condutor fechado. Aqui o assunto é a ponta do fio."],
-              ["Indução eletrostática", false, "Indução é a separação de cargas num condutor causada por outra carga próxima. Não é o que acontece nas pontas do fio."],
-              ["Efeito Joule", false, "O efeito Joule é o aquecimento de um condutor percorrido por corrente. Não tem relação com a direção do campo."]
-            ] },
           { q: "Num ponto acima da ponta direita do fio, para onde o campo se inclina?",
             op: [
               ["Para a direita, afastando-se do resto do fio", true, "Quase todas as cargas estão à esquerda desse ponto. Como elas são positivas, a soma dos componentes paralelos ao fio aponta para a direita."],
@@ -1664,13 +1175,6 @@ const MODULOS = [
             exp: "Perto do fio, as pontas ficam longe em comparação com a distância até P, e o fio parece infinito mesmo com poucas cargas. Aproximar P e aumentar o número de cargas têm o mesmo efeito.",
             dica: "Reduza a distância de P ao fio com a barra e acompanhe a razão no painel."
           },
-          { q: "Por que podemos tratar o fio como infinito perto do centro dele?",
-            op: [
-              ["Porque, longe das pontas, o efeito de borda é desprezível", true, "Quando a distância ao fio é muito menor que a distância às pontas, a falta de simetria nas pontas não altera o campo de forma perceptível."],
-              ["Porque fios reais são infinitos", false, "Nenhum fio real é infinito. É uma aproximação válida quando a distância ao fio é muito menor que o comprimento dele."],
-              ["Porque o campo de um fio não depende da distância", false, "Depende: o resultado final mostra que o campo cai com 1/r."],
-              ["Porque as cargas das pontas são neutras", false, "As cargas das pontas são iguais às outras. O que muda ali é a falta de parceiras simétricas."]
-            ] },
           { q: "Para um fio infinito com carga positiva, o campo elétrico:",
             op: [
               ["Aponta radialmente para fora e tem o mesmo módulo em todos os pontos à mesma distância do fio", true, "Essa é a simetria cilíndrica: girar em torno do fio ou deslizar ao longo dele não muda nada."],
@@ -1702,20 +1206,6 @@ const MODULOS = [
               ["Porque o cilindro é a única superfície que funciona com a lei de Gauss", false, "A lei vale para qualquer superfície fechada. O cilindro é escolhido porque simplifica o cálculo."],
               ["Porque o fio tem forma de cilindro", false, "A forma do fio não é o motivo; o que importa é a simetria do campo que ele produz."],
               ["Porque o cilindro impede o campo de sair", false, "A superfície gaussiana é imaginária e não bloqueia nada. O campo a atravessa normalmente."]
-            ] },
-          { q: "Por que uma esfera centrada no fio não é uma boa superfície gaussiana para este problema?",
-            op: [
-              ["O campo cruzaria a esfera com ângulos diferentes em cada ponto", true, "Sem um ângulo fixo entre E e dA, nem um módulo constante, não dá para tirar E da integral."],
-              ["Porque a lei de Gauss não vale para esferas", false, "A lei de Gauss vale para qualquer superfície fechada, inclusive esferas. Só o cálculo ficaria difícil."],
-              ["Porque a esfera não envolve carga", false, "Uma esfera centrada no fio envolve o trecho de fio dentro dela. O problema é a geometria, não a carga."],
-              ["Porque o campo é nulo sobre a esfera", false, "O campo não é nulo ali. Ele só não tem módulo nem ângulo constantes sobre a esfera."]
-            ] },
-          { q: "Quantas partes tem a superfície gaussiana cilíndrica?",
-            op: [
-              ["Três: duas tampas e a lateral", true, "As tampas S1 e S3 e a lateral S2 formam juntas uma superfície fechada."],
-              ["Uma: só a lateral", false, "Sem as tampas o cilindro fica aberto, e a lei de Gauss exige superfície fechada."],
-              ["Duas: as tampas", false, "As tampas sozinhas não fecham nada; falta a lateral."],
-              ["Quatro", false, "Um cilindro tem duas tampas e uma lateral: três partes."]
             ] }
         ]
       },
@@ -1728,12 +1218,6 @@ const MODULOS = [
             q: "Mude r e L até o fluxo total ficar 3 vezes maior que o inicial.",
             exp: "O fluxo é q_env/ε₀, e q_env = λL. Só o comprimento L muda a carga envolvida: triplicando L, o fluxo triplica. O raio r não altera o fluxo.",
             dica: "Teste as duas barras e observe qual delas muda o fluxo no painel."
-          },
-          {
-            sim: "gaussFluxo", cfg: { m: 1 },
-            q: "Ajuste λ e L para o fluxo total valer 3,4 × 10⁵ N·m²/C.",
-            exp: "Φ = λL/ε₀. Para 3,4 × 10⁵ N·m²/C, λL precisa valer cerca de 3,0 μC, como 2,0 μC/m × 1,5 m ou 3,0 μC/m × 1,0 m.",
-            dica: "Use Φ = λL/ε₀, com ε₀ = 8,85 × 10⁻¹². Acompanhe o painel enquanto ajusta."
           },
           { q: "O que a lei de Gauss afirma?",
             op: [
@@ -1748,13 +1232,6 @@ const MODULOS = [
               ["Sim, se estiver perto da superfície", false, "Mesmo perto, o fluxo líquido de uma carga externa é zero. Ela muda o campo em cada ponto, mas não o fluxo total."],
               ["Sim, com sinal oposto ao da carga", false, "Não há contribuição líquida, nem positiva nem negativa."],
               ["Só se for negativa", false, "O sinal não muda nada: qualquer carga externa dá fluxo líquido zero."]
-            ] },
-          { q: "O que a simetria cilíndrica garante sobre o campo na lateral do cilindro?",
-            op: [
-              ["Módulo igual em todos os pontos e direção perpendicular à superfície", true, "Todos os pontos da lateral estão à mesma distância r do fio, e o campo é radial."],
-              ["Campo nulo na lateral", false, "O campo na lateral não é nulo: é ele que produz todo o fluxo."],
-              ["Campo paralelo à lateral", false, "O campo fica paralelo à superfície nas tampas. Na lateral ele é radial, perpendicular a ela."],
-              ["Campo mais forte perto das tampas", false, "Na lateral, todos os pontos estão à mesma distância r do fio; o módulo é o mesmo em toda ela."]
             ] }
         ]
       },
@@ -1768,20 +1245,6 @@ const MODULOS = [
             exp: "O vetor área é perpendicular à superfície e aponta para fora. Na lateral ele é radial, paralelo ao campo; nas tampas ele aponta ao longo do eixo, para fora do cilindro: para a esquerda em S1 e para a direita em S3.",
             dica: "Escolha o ponto, gire dA com a barra e compare com a seta azul, que é o campo. O vetor área sai da superfície, perpendicular a ela."
           },
-          { q: "Na lateral do cilindro, o vetor área dA aponta:",
-            op: [
-              ["Radialmente para fora, paralelo ao campo", true, "dA é perpendicular à superfície e aponta para fora; na lateral, essa direção é radial, a mesma do campo."],
-              ["Ao longo do eixo do cilindro", false, "Essa é a direção do vetor área nas tampas."],
-              ["Para dentro do cilindro", false, "Por convenção, numa superfície fechada o vetor área aponta sempre para fora."],
-              ["Tangente à superfície", false, "O vetor área é sempre perpendicular à superfície, nunca tangente."]
-            ] },
-          { q: "Nas tampas, o vetor área dA aponta:",
-            op: [
-              ["Ao longo do eixo do cilindro, para fora", true, "As tampas são planas e perpendiculares ao eixo, então dA é paralelo ao eixo e aponta para fora do cilindro."],
-              ["Radialmente para fora do fio", false, "Essa é a direção do campo e também de dA na lateral. Na tampa, dA é perpendicular ao plano dela."],
-              ["Para o centro do cilindro", false, "Numa superfície fechada, dA aponta para fora."],
-              ["Não tem direção definida", false, "Em cada ponto de uma superfície lisa o vetor área tem direção bem definida: perpendicular a ela."]
-            ] },
           { q: "Por que a integral fechada pode ser dividida em três?",
             op: [
               ["Porque a superfície é formada por três partes, e a integral sobre o todo é a soma das integrais sobre as partes", true, "∮ = ∫S1 + ∫S2 + ∫S3: integrais se somam sobre partes que não se sobrepõem."],
@@ -1801,26 +1264,12 @@ const MODULOS = [
             exp: "Com o dobro do raio, E cai pela metade (E ∝ 1/r) e a área da lateral dobra (A = 2πrL): o produto, que é o fluxo, não muda. Ele depende só da carga envolvida, λL.",
             dica: "Leve a barra do raio de 10 para 20 cm e observe os três números no painel."
           },
-          { q: "Qual é o ângulo entre E e dA na lateral do cilindro?",
-            op: [
-              ["0°", true, "Os dois apontam radialmente para fora, e cos 0° = 1."],
-              ["90°", false, "90° é o ângulo nas tampas. Na lateral os vetores são paralelos."],
-              ["180°", false, "180° seria com o campo entrando na superfície, como para um fio negativo. Aqui o fio é positivo e o campo sai."],
-              ["45°", false, "Não há inclinação: o campo é radial, exatamente na direção do vetor área."]
-            ] },
           { q: "Por que E pode sair da integral sobre a lateral?",
             op: [
               ["Porque o módulo de E é o mesmo em todos os pontos da lateral", true, "Todos os pontos da lateral estão à mesma distância r do fio, então E é constante ali e sai como fator."],
               ["Porque E é zero na lateral", false, "Se E fosse zero, o fluxo seria zero. O campo na lateral é justamente o que procuramos."],
               ["Porque E é constante em todo o espaço", false, "E varia com a distância ao fio. Só é constante sobre a lateral, onde a distância é fixa."],
               ["Porque sempre se pode tirar E de uma integral", false, "Só quando o módulo é constante sobre a superfície. Por isso a escolha da superfície é tão importante."]
-            ] },
-          { q: "Qual é a área da lateral de um cilindro de raio r e comprimento L?",
-            op: [
-              ["2πrL", true, "Desenrolada, a lateral vira um retângulo de lados 2πr, o perímetro do círculo, e L."],
-              ["πr²L", false, "Esse é o volume do cilindro, não a área da lateral."],
-              ["πr²", false, "Essa é a área de uma tampa."],
-              ["2πr² + 2πrL", false, "Essa é a área total, com as duas tampas. No fluxo, só a lateral contribui."]
             ] }
         ]
       },
@@ -1834,20 +1283,6 @@ const MODULOS = [
             exp: "Na lateral, E e dA são paralelos (0°) e cada pedacinho contribui para o fluxo. Nas tampas, E fica no plano da superfície e dA é perpendicular a ele (90°): cos 90° = 0, e nada contribui.",
             dica: "Arraste o ponto pelo contorno do cilindro. Leve-o até a lateral e também até uma das tampas."
           },
-          { q: "Qual é o ângulo entre E e dA nas tampas?",
-            op: [
-              ["90°", true, "E é radial e fica no plano da tampa; dA é perpendicular a esse plano. cos 90° = 0."],
-              ["0°", false, "0° é o ângulo na lateral. Na tampa, E fica no plano da superfície."],
-              ["180°", false, "180° significaria o campo entrando pela tampa. Ele só passa rente a ela."],
-              ["Varia de ponto a ponto", false, "Em qualquer ponto da tampa, E está no plano dela e dA é perpendicular ao plano: sempre 90°."]
-            ] },
-          { q: "Quanto vale o fluxo elétrico através das duas tampas?",
-            op: [
-              ["Zero", true, "Com cos 90° = 0 em todos os pontos, as integrais em S1 e S3 se anulam."],
-              ["O mesmo que o fluxo na lateral", false, "Todo o fluxo atravessa a lateral. Nas tampas, o campo não atravessa a superfície."],
-              ["λL/ε₀", false, "Esse é o fluxo total da superfície fechada, que vem inteiro da lateral."],
-              ["Depende do raio das tampas", false, "Seja qual for o raio, E fica no plano da tampa e o fluxo é zero."]
-            ] },
           { q: "O fluxo nas tampas é zero porque:",
             op: [
               ["O campo é paralelo à superfície da tampa", true, "O fluxo mede o quanto o campo atravessa a superfície. Um campo rente a ela não a atravessa."],
@@ -1862,12 +1297,6 @@ const MODULOS = [
         texto: "Juntando as peças: só a lateral contribui, a carga envolvida é λL e o comprimento L se cancela. O resultado é E = λ/(2πε₀r), apontando radialmente.",
         perguntas: [
           {
-            sim: "gaussResultado", cfg: { m: 0 },
-            q: "Com λ = 2,0 μC/m, leve P até o campo valer 1,8 × 10⁵ N/C.",
-            exp: "E = λ/(2πε₀r) = 2kλ/r. Com λ = 2,0 μC/m, E = 1,8 × 10⁵ N/C pede r = 2 × 8,99 × 10⁹ × 2,0 × 10⁻⁶ ÷ 1,8 × 10⁵ ≈ 0,20 m: o dobro da distância em que E vale 3,6 × 10⁵ N/C.",
-            dica: "O campo cai com 1/r. Se a 10 cm ele vale 3,6 × 10⁵ N/C, a que distância ele vale a metade disso?"
-          },
-          {
             sim: "gaussResultado", cfg: { m: 1 },
             q: "Dobre λ para 4,0 μC/m e reposicione P para o campo continuar igual ao que era a 10 cm, com λ = 2,0 μC/m.",
             exp: "E ∝ λ/r: dobrando λ, o campo dobra; para voltar ao valor de antes, r também precisa dobrar, de 10 para 20 cm.",
@@ -1880,26 +1309,12 @@ const MODULOS = [
               ["E = λ/(2ε₀)", false, "Um campo que não depende da distância é o de um plano infinito, σ/(2ε₀)."],
               ["E = λL/ε₀", false, "Isso é o fluxo total, não o campo. Falta dividir pela área 2πrL."]
             ] },
-          { q: "Se a distância ao fio dobra, o campo:",
-            op: [
-              ["Cai pela metade", true, "E é proporcional a 1/r: com r dobrado, E fica dividido por 2."],
-              ["Cai para um quarto", false, "Isso valeria para uma carga pontual, com 1/r². O campo do fio cai mais devagar, com 1/r."],
-              ["Não muda", false, "Só o campo de um plano infinito não depende da distância."],
-              ["Dobra", false, "Afastar-se do fio diminui o campo."]
-            ] },
           { q: "Por que o comprimento L do cilindro gaussiano não aparece no resultado?",
             op: [
               ["Porque a carga envolvida e a área lateral são ambas proporcionais a L", true, "Com o dobro de L há o dobro de carga, λL, e o dobro de área, 2πrL; a razão não muda."],
               ["Porque L é infinito", false, "O fio é tratado como infinito, mas o cilindro gaussiano tem comprimento finito L. Ele se cancela na conta."],
               ["Porque L é sempre 1 m", false, "L pode ter qualquer valor; justamente por isso ele se cancela."],
               ["Porque as tampas eliminam L", false, "As tampas têm fluxo zero. O cancelamento de L vem da carga e da área lateral."]
-            ] },
-          { q: "Um fio longo tem λ = 2,0 μC/m. Qual é o módulo do campo a 10 cm dele?",
-            op: [
-              ["≈ 3,6 × 10⁵ N/C", true, "E = λ/(2πε₀r) = 2kλ/r = 2 × 8,99 × 10⁹ × 2,0 × 10⁻⁶ / 0,10 ≈ 3,6 × 10⁵ N/C."],
-              ["≈ 1,8 × 10⁵ N/C", false, "Faltou o fator 2: λ/(2πε₀r) é igual a 2kλ/r, não a kλ/r."],
-              ["≈ 3,6 × 10⁶ N/C", false, "Confira a distância: 10 cm = 0,10 m, não 0,010 m."],
-              ["≈ 1,8 × 10⁶ N/C", false, "Esse valor sai de kλ/r², a forma da carga pontual. Para o fio, E = 2kλ/r."]
             ] }
         ]
       }
@@ -1935,6 +1350,10 @@ const POSICOES_REMOVIDAS = { c01: [0], c03: [0], c05: [1], c09: [2], c10: [1, 2]
   }
   progresso.migRemocoes = 1;
 })();
+// Número de jogos de cada etapa do Campo e da Gauss ANTES da revisão enxuta. As duas migrações abaixo precisam dele
+// para encaixar respostas muito antigas; contar os jogos atuais daria o deslocamento errado depois da revisão.
+const JOGOS_ANTES = { e01: 2, e02: 3, e03: 3, e04: 2, e05: 3, e06: 2, e07: 2, e08: 2, e09: 2, e10: 3, e11: 3, e12: 3,
+  e13: 2, e14: 3, g01: 2, g02: 2, g03: 2, g04: 2, g05: 2, g06: 1, g07: 1, g08: 1, g09: 2 };
 // As etapas do Campo elétrico ganharam 3 jogos antes das perguntas: desloca, uma única vez, as respostas já salvas.
 (function () {
   if (progresso.migCampo) return;
@@ -1942,7 +1361,7 @@ const POSICOES_REMOVIDAS = { c01: [0], c03: [0], c05: [1], c09: [2], c10: [1, 2]
   if (campo && campo.etapas) campo.etapas.forEach(e => {
     const st = progresso.etapas[e.id];
     if (!st || !st.resp || !st.resp.length) return;
-    st.resp = Array(e.perguntas.filter(p => p.sim).length).fill(null).concat(st.resp);
+    st.resp = Array(JOGOS_ANTES[e.id] || 0).fill(null).concat(st.resp);
     st.fim = false;
   });
   progresso.migCampo = 1;
@@ -1954,11 +1373,32 @@ const POSICOES_REMOVIDAS = { c01: [0], c03: [0], c05: [1], c09: [2], c10: [1, 2]
   if (gauss && gauss.etapas) gauss.etapas.forEach(e => {
     const st = progresso.etapas[e.id];
     if (!st || !st.resp || !st.resp.length) return;
-    st.resp = Array(e.perguntas.filter(p => p.sim).length).fill(null).concat(st.resp);
+    st.resp = Array(JOGOS_ANTES[e.id] || 0).fill(null).concat(st.resp);
     st.fim = false;
   });
   progresso.migGauss = 1;
 })();   // { etapas: { c01: { resp: [{t, ok}], fim: bool } }, atualizado }
+// Revisão enxuta (nov/2026): saíram as atividades com conta, as repetidas dentro da etapa ou entre etapas vizinhas,
+// as de memorização e uma que ia além do vídeo; na c12, a versão conceitual da quantização entrou no lugar da que pedia
+// conta. MAPA_ENXUTA[etapa][posição nova] = posição antiga (layout já migrado acima); null marca atividade nova.
+// Roda uma única vez e preserva as respostas das atividades que ficaram.
+const MAPA_ENXUTA = { c01: [0, 1, 2, 4], c02: [0, 1, 3, 4], c03: [0, 2], c04: [0, 1, 5, 6], c05: [1, 2],
+  c06: [0, 2, 3, 4, 5], c07: [0, 1, 3, 5], c08: [1, 2, 3], c09: [0, 2, 3], c10: [0, 2], c11: [0, 1, 3, 5],
+  c12: [null, 1, 3], c13: [0, 3, 4], e01: [1, 2, 3], e02: [0, 2, 3, 5], e03: [0, 2, 3, 4], e04: [0, 2],
+  e05: [1, 2, 3, 4], e06: [0, 1, 3, 5], e07: [0, 2], e08: [0, 1, 2, 3], e09: [1, 2], e10: [0, 2, 3, 5],
+  e11: [0, 4, 6], e12: [1, 2, 4, 6], e13: [0, 1, 2, 3], e14: [0, 1, 2, 4], g01: [1, 2], g02: [0, 1, 4],
+  g03: [0, 1, 3], g04: [0, 1, 2], g05: [0, 2, 3], g06: [0, 3], g07: [0, 2], g08: [0, 3], g09: [1, 2, 4] };
+(function () {
+  if (progresso.migEnxuta) return;
+  for (const id in MAPA_ENXUTA) {
+    const st = progresso.etapas[id];
+    if (!st || !Array.isArray(st.resp) || !st.resp.length) continue;
+    const antigo = st.resp;
+    st.resp = MAPA_ENXUTA[id].map(k => (k === null ? null : antigo[k] || null));
+    if (MAPA_ENXUTA[id].includes(null)) st.fim = false;
+  }
+  progresso.migEnxuta = 1;
+})();
 let refProgresso = null;           // na versão do GitHub o progresso fica no navegador
 let ui = { modulo: "coulomb", etapa: null, q: null, ultimaErrada: null, revisao: false, explorar: false };
 
